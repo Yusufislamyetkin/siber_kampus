@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "compile": "esbuild sk-data.jsx --outfile=sk-data.js --minify --jsx=transform --format=iife && esbuild sk-articles.jsx --outfile=sk-articles.js --minify --jsx=transform --format=iife && esbuild sk-docs.jsx --outfile=sk-docs.js --minify --jsx=transform --format=iife && esbuild app.jsx --outfile=app.js --minify --jsx=transform --format=iife && esbuild app-auth.jsx --outfile=app-auth.js --minify --jsx=transform --format=iife && esbuild app-pages.jsx --outfile=app-pages.js --minify --jsx=transform --format=iife && npx @tailwindcss/cli -i ./index.css -o ./style.css --minify"
+    "compile": "esbuild sk-data.jsx --outfile=sk-data.js --minify --jsx=transform --format=iife && esbuild sk-articles.jsx --outfile=sk-articles.js --minify --jsx=transform --format=iife && esbuild sk-docs.jsx --outfile=sk-docs.js --minify --jsx=transform --format=iife && esbuild app.jsx --outfile=app.js --minify --jsx=transform --format=iife && esbuild app-auth.jsx --outfile=app-auth.js --minify --jsx=transform --format=iife && esbuild app-pages.jsx --outfile=app-pages.js --minify --jsx=transform --format=iife"
   },
   "keywords": [
     "siberkampus",
