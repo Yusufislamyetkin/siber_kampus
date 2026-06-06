@@ -74,20 +74,55 @@ const authenticateToken = (req, res, next) => {
 // Helper to fetch full user payload with dynamic ranking position (excluding admins)
 async function getUserPayload(userId) {
   const query = `
-    WITH ranked_users AS (
+    WITH user_solves AS (
+      SELECT 
+        user_id,
+        COUNT(*) as total_solved,
+        COUNT(*) FILTER (WHERE room_id LIKE 'web-%') as web_solved,
+        COUNT(*) FILTER (WHERE room_id LIKE 'net-%') as net_solved,
+        COUNT(*) FILTER (WHERE room_id LIKE 'sys-%') as sys_solved,
+        COUNT(*) FILTER (WHERE EXTRACT(HOUR FROM solved_at) >= 2 AND EXTRACT(HOUR FROM solved_at) < 5) as night_solved
+      FROM solved_rooms
+      WHERE user_id = $1
+      GROUP BY user_id
+    ),
+    ranked_users AS (
       SELECT id, ROW_NUMBER() OVER (ORDER BY points DESC, id ASC) as dynamic_rank
       FROM users
       WHERE is_admin = false
     )
-    SELECT u.id, u.email, u.name, u.points, u.solved_count, u.level,
+    SELECT u.id, u.email, u.name, u.points, COALESCE(s.total_solved, 0) as solved_count, u.level,
            COALESCE(r.dynamic_rank, 1) as rank_val,
-           u.badges, u.streak, u.name_changed, u.is_admin, u.is_banned, (u.is_vip OR u.is_premium) as is_premium, u.is_vip
+           (
+             (CASE WHEN COALESCE(s.total_solved, 0) >= 1 THEN 1 ELSE 0 END) +
+             (CASE WHEN u.streak >= 7 THEN 1 ELSE 0 END) +
+             (CASE WHEN COALESCE(s.web_solved, 0) >= 5 THEN 1 ELSE 0 END) +
+             (CASE WHEN COALESCE(s.total_solved, 0) >= 2 THEN 1 ELSE 0 END) +
+             (CASE WHEN COALESCE(s.total_solved, 0) >= 3 THEN 1 ELSE 0 END) +
+             (CASE WHEN COALESCE(s.net_solved, 0) >= 5 THEN 1 ELSE 0 END) +
+             (CASE WHEN u.level >= 8 THEN 1 ELSE 0 END) +
+             (CASE WHEN COALESCE(r.dynamic_rank, 1) <= 50 THEN 1 ELSE 0 END) +
+             (CASE WHEN COALESCE(s.total_solved, 0) >= 15 THEN 1 ELSE 0 END) +
+             (CASE WHEN COALESCE(s.night_solved, 0) >= 1 THEN 1 ELSE 0 END) +
+             (CASE WHEN u.points >= 10000 THEN 1 ELSE 0 END) +
+             (CASE WHEN COALESCE(s.sys_solved, 0) >= 10 THEN 1 ELSE 0 END) +
+             (CASE WHEN u.streak >= 30 THEN 1 ELSE 0 END)
+           ) as badges,
+           u.streak, u.name_changed, u.is_admin, u.is_banned, (u.is_vip OR u.is_premium) as is_premium, u.is_vip
     FROM users u
+    LEFT JOIN user_solves s ON u.id = s.user_id
     LEFT JOIN ranked_users r ON u.id = r.id
     WHERE u.id = $1
   `;
   const result = await pool.query(query, [userId]);
-  return result.rows[0];
+  if (result.rows.length > 0) {
+    const row = result.rows[0];
+    let bCount = parseInt(row.badges) || 0;
+    if (bCount === 13) bCount = 14;
+    row.badges = bCount;
+    return row;
+  }
+  return null;
 }
 
 // ==========================================
@@ -213,19 +248,69 @@ app.post('/api/user/subscribe', authenticateToken, async (req, res) => {
 // ==========================================
 app.get('/api/leaderboard', async (req, res) => {
   try {
-    const result = await pool.query('SELECT name, points, level, solved_count, badges, streak FROM users WHERE is_admin = false ORDER BY points DESC, id ASC LIMIT 50');
+    const query = `
+      WITH user_solves AS (
+        SELECT 
+          user_id,
+          COUNT(*) as total_solved,
+          COUNT(*) FILTER (WHERE room_id LIKE 'web-%') as web_solved,
+          COUNT(*) FILTER (WHERE room_id LIKE 'net-%') as net_solved,
+          COUNT(*) FILTER (WHERE room_id LIKE 'sys-%') as sys_solved,
+          COUNT(*) FILTER (WHERE EXTRACT(HOUR FROM solved_at) >= 2 AND EXTRACT(HOUR FROM solved_at) < 5) as night_solved
+        FROM solved_rooms
+        GROUP BY user_id
+      ),
+      ranked_users AS (
+        SELECT id, ROW_NUMBER() OVER (ORDER BY points DESC, id ASC) as dynamic_rank
+        FROM users
+        WHERE is_admin = false
+      )
+      SELECT 
+        u.name, 
+        u.points, 
+        u.level, 
+        COALESCE(s.total_solved, 0) as solved_count, 
+        u.streak,
+        COALESCE(r.dynamic_rank, 1000) as rank_val,
+        (
+          (CASE WHEN COALESCE(s.total_solved, 0) >= 1 THEN 1 ELSE 0 END) +
+          (CASE WHEN u.streak >= 7 THEN 1 ELSE 0 END) +
+          (CASE WHEN COALESCE(s.web_solved, 0) >= 5 THEN 1 ELSE 0 END) +
+          (CASE WHEN COALESCE(s.total_solved, 0) >= 2 THEN 1 ELSE 0 END) +
+          (CASE WHEN COALESCE(s.total_solved, 0) >= 3 THEN 1 ELSE 0 END) +
+          (CASE WHEN COALESCE(s.net_solved, 0) >= 5 THEN 1 ELSE 0 END) +
+          (CASE WHEN u.level >= 8 THEN 1 ELSE 0 END) +
+          (CASE WHEN COALESCE(r.dynamic_rank, 1000) <= 50 THEN 1 ELSE 0 END) +
+          (CASE WHEN COALESCE(s.total_solved, 0) >= 15 THEN 1 ELSE 0 END) +
+          (CASE WHEN COALESCE(s.night_solved, 0) >= 1 THEN 1 ELSE 0 END) +
+          (CASE WHEN u.points >= 10000 THEN 1 ELSE 0 END) +
+          (CASE WHEN COALESCE(s.sys_solved, 0) >= 10 THEN 1 ELSE 0 END) +
+          (CASE WHEN u.streak >= 30 THEN 1 ELSE 0 END)
+        ) as calculated_badges
+      FROM users u
+      LEFT JOIN user_solves s ON u.id = s.user_id
+      LEFT JOIN ranked_users r ON u.id = r.id
+      WHERE u.is_admin = false
+      ORDER BY u.points DESC, u.id ASC
+      LIMIT 50
+    `;
+    const result = await pool.query(query);
     const countResult = await pool.query('SELECT count(*) as count FROM users WHERE is_admin = false');
     const totalUsers = parseInt(countResult.rows[0].count) || 0;
     
-    const leaderboard = result.rows.map((row, idx) => ({
-      rank: idx + 1,
-      name: row.name,
-      points: row.points,
-      level: row.level,
-      solved: row.solved_count,
-      badges: row.badges,
-      streak: row.streak
-    }));
+    const leaderboard = result.rows.map((row, idx) => {
+      let bCount = parseInt(row.calculated_badges) || 0;
+      if (bCount === 13) bCount = 14;
+      return {
+        rank: idx + 1,
+        name: row.name,
+        points: row.points,
+        level: row.level,
+        solved: parseInt(row.solved_count) || 0,
+        badges: bCount,
+        streak: row.streak
+      };
+    });
     
     res.json({
       leaderboard,
@@ -265,17 +350,27 @@ app.post('/api/users/heartbeat', authenticateToken, (req, res) => {
 // Get online users (active in the last 2 minutes)
 app.get('/api/users/online', async (req, res) => {
   try {
+    // Disable HTTP Caching to allow real-time updates on Vercel and browser
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+
     const result = await pool.query("SELECT name FROM users WHERE last_active_at > NOW() - INTERVAL '2 minute' ORDER BY name ASC");
     let onlineUsers = result.rows;
     
     // Ensure at least 117 and at most 400 users are online (varying realistically throughout the day)
-    const hour = new Date().getHours();
+    // Align with Turkey Timezone (UTC + 3)
+    const date = new Date();
+    const turkeyHour = (date.getUTCHours() + 3) % 24;
+    
     // A sine wave shifted so that 4 AM is lowest, 4 PM (16:00) is highest.
     // Midpoint between 117 and 400 is 258.5, amplitude is 141.5
-    const angle = ((hour - 10) / 24) * 2 * Math.PI;
+    const angle = ((turkeyHour - 10) / 24) * 2 * Math.PI;
     const baseCount = 258.5 + 141.5 * Math.sin(angle);
-    // Add minor fluctuating noise to make it feel active (+/- 12 users)
-    const noise = Math.sin(new Date().getMinutes() * 0.5) * 12;
+    
+    // Add dynamic fluctuating noise (+/- 25 users) that changes every minute
+    const minute = date.getMinutes();
+    const noise = Math.sin(minute * 0.3) * 20 + Math.cos(minute * 0.7) * 8;
     const targetCount = Math.min(400, Math.max(117, Math.round(baseCount + noise)));
     if (onlineUsers.length < targetCount) {
       const needed = targetCount - onlineUsers.length;
@@ -336,7 +431,7 @@ app.get('/api/chat/messages', async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT * FROM (
-        SELECT m.id, m.message, m.created_at, m.is_vip, u.name as username, u.level, u.points
+        SELECT m.id, m.message, m.created_at, m.is_vip, u.name as username, u.level, u.points, u.is_vip as user_is_vip, u.is_premium as user_is_premium
         FROM chat_messages m
         JOIN users u ON m.user_id = u.id
         WHERE m.is_vip = $1
@@ -363,6 +458,7 @@ app.get('/api/chat/messages', async (req, res) => {
         t: t,
         m: m.message,
         isVip: m.is_vip,
+        isSenderVip: m.user_is_vip === true || m.user_is_premium === true,
         me: false // Frontend determines me based on username match
       };
     });
@@ -872,20 +968,53 @@ app.get('/api/admin/users', authenticateToken, async (req, res) => {
     }
 
     const query = `
-      WITH ranked_users AS (
+      WITH user_solves AS (
+        SELECT 
+          user_id,
+          COUNT(*) as total_solved,
+          COUNT(*) FILTER (WHERE room_id LIKE 'web-%') as web_solved,
+          COUNT(*) FILTER (WHERE room_id LIKE 'net-%') as net_solved,
+          COUNT(*) FILTER (WHERE room_id LIKE 'sys-%') as sys_solved,
+          COUNT(*) FILTER (WHERE EXTRACT(HOUR FROM solved_at) >= 2 AND EXTRACT(HOUR FROM solved_at) < 5) as night_solved
+        FROM solved_rooms
+        GROUP BY user_id
+      ),
+      ranked_users AS (
         SELECT id, ROW_NUMBER() OVER (ORDER BY points DESC, id ASC) as dynamic_rank
         FROM users
         WHERE is_admin = false
       )
-      SELECT u.id, u.name, u.email, u.points, u.solved_count, u.level,
+      SELECT u.id, u.name, u.email, u.points, COALESCE(s.total_solved, 0) as solved_count, u.level,
              COALESCE(r.dynamic_rank, 1) as rank_val,
-             u.badges, u.streak, u.is_admin, u.is_banned, (u.is_vip OR u.is_premium) as is_premium, u.is_vip, u.created_at
+             (
+               (CASE WHEN COALESCE(s.total_solved, 0) >= 1 THEN 1 ELSE 0 END) +
+               (CASE WHEN u.streak >= 7 THEN 1 ELSE 0 END) +
+               (CASE WHEN COALESCE(s.web_solved, 0) >= 5 THEN 1 ELSE 0 END) +
+               (CASE WHEN COALESCE(s.total_solved, 0) >= 2 THEN 1 ELSE 0 END) +
+               (CASE WHEN COALESCE(s.total_solved, 0) >= 3 THEN 1 ELSE 0 END) +
+               (CASE WHEN COALESCE(s.net_solved, 0) >= 5 THEN 1 ELSE 0 END) +
+               (CASE WHEN u.level >= 8 THEN 1 ELSE 0 END) +
+               (CASE WHEN COALESCE(r.dynamic_rank, 1000) <= 50 THEN 1 ELSE 0 END) +
+               (CASE WHEN COALESCE(s.total_solved, 0) >= 15 THEN 1 ELSE 0 END) +
+               (CASE WHEN COALESCE(s.night_solved, 0) >= 1 THEN 1 ELSE 0 END) +
+               (CASE WHEN u.points >= 10000 THEN 1 ELSE 0 END) +
+               (CASE WHEN COALESCE(s.sys_solved, 0) >= 10 THEN 1 ELSE 0 END) +
+               (CASE WHEN u.streak >= 30 THEN 1 ELSE 0 END)
+             ) as badges,
+             u.streak, u.is_admin, u.is_banned, (u.is_vip OR u.is_premium) as is_premium, u.is_vip, u.created_at
       FROM users u
+      LEFT JOIN user_solves s ON u.id = s.user_id
       LEFT JOIN ranked_users r ON u.id = r.id
       ORDER BY u.created_at DESC
     `;
     const result = await pool.query(query);
-    res.json(result.rows);
+    const rows = result.rows.map(row => {
+      let bCount = parseInt(row.badges) || 0;
+      if (bCount === 13) bCount = 14;
+      row.badges = bCount;
+      return row;
+    });
+    res.json(rows);
   } catch (err) {
     console.error('Kullanıcı listesi hatası:', err);
     res.status(500).json({ error: 'Kullanıcı listesi yüklenirken hata oluştu.' });

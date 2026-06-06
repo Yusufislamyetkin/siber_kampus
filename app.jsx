@@ -120,6 +120,60 @@ const HomePage = ({ navigate }) => {
   const statsRef = useRef(null);
   useReveal();
 
+  const [onlineCount, setOnlineCount] = useState(250);
+  const [totalUsers, setTotalUsers] = useState(12400);
+
+  useEffect(() => {
+    const fetchOnline = () => {
+      fetch(`/api/users/online?t=${Date.now()}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && Array.isArray(data)) {
+            setOnlineCount(data.length);
+          }
+        })
+        .catch(() => {});
+    };
+    fetchOnline();
+    const interval = setInterval(fetchOnline, 20000);
+
+    fetch('/api/stats')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.totalUsers) {
+          setTotalUsers(data.totalUsers);
+        }
+      })
+      .catch(() => {});
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    let io;
+    if (statsRef.current) {
+      const nums = statsRef.current.querySelectorAll('[data-count]');
+      io = new IntersectionObserver((es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            const el = e.target,end = +el.dataset.count,sx = el.dataset.suffix || '';
+            let cur = 0;const step = end / 60;
+            (function up() {
+              cur += step;
+              if (cur < end) {el.textContent = Math.floor(cur).toLocaleString('tr-TR') + sx;requestAnimationFrame(up);} else
+              el.textContent = end.toLocaleString('tr-TR') + sx;
+            })();
+            io.unobserve(el);
+          }
+        });
+      }, { threshold: .5 });
+      nums.forEach((n) => io.observe(n));
+    }
+    return () => {
+      if (io) io.disconnect();
+    };
+  }, [totalUsers]);
+
   useEffect(() => {
     const cleanups = [];
 
@@ -157,7 +211,15 @@ const HomePage = ({ navigate }) => {
     if (sphereRef.current) {
       const cv = sphereRef.current,ctx = cv.getContext('2d');
       const dpr = Math.min(devicePixelRatio || 1, 2);
-      const size = () => {const r = cv.getBoundingClientRect();cv.width = r.width * dpr;cv.height = r.height * dpr;};
+      const size = () => {
+        const r = cv.getBoundingClientRect();
+        const w = Math.round(r.width * dpr);
+        const h = Math.round(r.height * dpr);
+        if (cv.width !== w || cv.height !== h) {
+          cv.width = w;
+          cv.height = h;
+        }
+      };
       size();window.addEventListener('resize', size);
       const N = 240,pts = [];const off = 2 / N,inc = Math.PI * (3 - Math.sqrt(5));
       for (let i = 0; i < N; i++) {const y = i * off - 1 + off / 2;const r = Math.sqrt(1 - y * y);const phi = i * inc;pts.push([Math.cos(phi) * r, y, Math.sin(phi) * r]);}
@@ -228,27 +290,6 @@ const HomePage = ({ navigate }) => {
       cleanups.push(() => {stopped = true;});
     }
 
-    /* ---- COUNT UP ---- */
-    if (statsRef.current) {
-      const nums = statsRef.current.querySelectorAll('[data-count]');
-      const io = new IntersectionObserver((es) => {
-        es.forEach((e) => {
-          if (e.isIntersecting) {
-            const el = e.target,end = +el.dataset.count,sx = el.dataset.suffix || '';
-            let cur = 0;const step = end / 60;
-            (function up() {
-              cur += step;
-              if (cur < end) {el.textContent = Math.floor(cur).toLocaleString('tr-TR') + sx;requestAnimationFrame(up);} else
-              el.textContent = end.toLocaleString('tr-TR') + sx;
-            })();
-            io.unobserve(el);
-          }
-        });
-      }, { threshold: .5 });
-      nums.forEach((n) => io.observe(n));
-      cleanups.push(() => io.disconnect());
-    }
-
     return () => cleanups.forEach((fn) => fn());
   }, []);
 
@@ -309,7 +350,7 @@ const HomePage = ({ navigate }) => {
                 <span key={i} className={"w-[30px] h-[30px] rounded-full border-[1.5px] border-[#020806] grid place-items-center text-[11px] font-bold text-[#5cffba] " + (i ? '-ml-2 ' : '')} style={{ background: 'linear-gradient(135deg,#0a3a24,#063018)' }}>{a}</span>
                 )}
               </div>
-              <span>12.400+ öğrenci şu anda saldırı altında 🟢</span>
+              <span>{onlineCount} öğrenci şuan saldırı yapmakta 🟢</span>
             </div>
           </div>
 
@@ -330,13 +371,13 @@ const HomePage = ({ navigate }) => {
       <div ref={statsRef} className="border-b border-[#0c2719]" style={{ background: 'linear-gradient(180deg,#04100a,#020806)' }}>
         <div className="max-w-[1280px] mx-auto px-8 grid grid-cols-2 md:grid-cols-4">
           {[
-          { c: 12400, s: '+', l: 'Aktif Öğrenci' },
-          { c: 380, s: '+', l: 'Hacking Laboratuvarı' },
+          { c: totalUsers, s: '+', l: 'Aktif Öğrenci' },
+          { c: window.SK_ALL_ROOMS ? window.SK_ALL_ROOMS.length : 15, s: '+', l: 'Hacking Laboratuvarı' },
           { c: 90, s: '+', l: 'CTF Görevi' },
           { c: 94, s: '%', l: 'Tamamlama Oranı' }].
           map((st, i) =>
           <div key={i} className={"py-11 px-7 text-center " + (i ? 'border-l border-[#0c2719]' : '')}>
-              <div data-count={st.c} data-suffix={st.s} className="font-disp font-bold text-[clamp(32px,4vw,52px)] text-[#00ff88] tracking-[-.02em] drop-shadow-[0_0_26px_rgba(0,255,136,.3)]">0</div>
+              <div key={st.c} data-count={st.c} data-suffix={st.s} className="font-disp font-bold text-[clamp(32px,4vw,52px)] text-[#00ff88] tracking-[-.02em] drop-shadow-[0_0_26px_rgba(0,255,136,.3)]">0</div>
               <div className="text-[13px] text-[#74998a] mt-2 tracking-wide">{st.l}</div>
             </div>
           )}

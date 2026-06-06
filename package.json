@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "compile": "esbuild sk-data.jsx --outfile=sk-data.js --minify --jsx=transform --format=iife && esbuild sk-articles.jsx --outfile=sk-articles.js --minify --jsx=transform --format=iife && esbuild sk-docs.jsx --outfile=sk-docs.js --minify --jsx=transform --format=iife && esbuild app.jsx --outfile=app.js --minify --jsx=transform --format=iife && esbuild app-auth.jsx --outfile=app-auth.js --minify --jsx=transform --format=iife && esbuild app-pages.jsx --outfile=app-pages.js --minify --jsx=transform --format=iife"
+    "compile": "esbuild sk-data.jsx --outfile=sk-data.js --minify --jsx=transform --format=iife && esbuild sk-articles.jsx --outfile=sk-articles.js --minify --jsx=transform --format=iife && esbuild sk-docs.jsx --outfile=sk-docs.js --minify --jsx=transform --format=iife && esbuild app.jsx --outfile=app.js --minify --jsx=transform --format=iife && esbuild app-auth.jsx --outfile=app-auth.js --minify --jsx=transform --format=iife && esbuild app-pages.jsx --outfile=app-pages.js --minify --jsx=transform --format=iife && npx @tailwindcss/cli -i ./index.css -o ./style.css --minify"
   },
   "keywords": [
     "siberkampus",
@@ -27,6 +27,10 @@
     "@babel/cli": "^7.29.7",
     "@babel/core": "^7.29.7",
     "@babel/preset-react": "^7.29.7",
-    "esbuild": "^0.28.0"
+    "@tailwindcss/cli": "^4.3.0",
+    "autoprefixer": "^10.5.0",
+    "esbuild": "^0.28.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.0"
   }
 }

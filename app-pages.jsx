@@ -17,6 +17,19 @@ const Label = ({ children }) => (
 
 /* ============ HAKKIMIZDA ============ */
 const AboutPage = ({ navigate }) => {
+  const [totalUsers, setTotalUsers] = useState(12400);
+
+  useEffect(() => {
+    fetch('/api/stats')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.totalUsers) {
+          setTotalUsers(data.totalUsers);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const values = [
     { icon: '⚡', t: 'Pratik Önce Gelir', d: 'Teoriyi değil, parmaklarının klavyede gerçek sistemi ele geçirdiği anı önemsiyoruz.' },
     { icon: '🛡️', t: 'Etik & Sorumluluk', d: 'Saldırıyı öğretiyoruz ki savunmayı kurabilesin. Her şey izole, güvenli ve yasal sınırlar içinde.' },
@@ -54,7 +67,7 @@ const AboutPage = ({ navigate }) => {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            {[['12.400+', 'Aktif Öğrenci'], ['380+', 'Hacking Laboratuvarı'], ['90+', 'CTF Görevi'], ['2026', 'Kuruluş']].map(([n, l], i) => (
+            {[[totalUsers.toLocaleString('tr-TR') + '+', 'Aktif Öğrenci'], [(window.SK_ALL_ROOMS ? window.SK_ALL_ROOMS.length : 15) + '+', 'Hacking Laboratuvarı'], ['90+', 'CTF Görevi'], ['2026', 'Kuruluş']].map(([n, l], i) => (
               <div key={i} className="rounded-2xl border border-[#0c2719] p-7 text-center" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                 <div className="font-disp font-bold text-3xl text-[#00ff88] drop-shadow-[0_0_22px_rgba(0,255,136,.3)]">{n}</div>
                 <div className="text-xs text-[#74998a] mt-2 tracking-wide">{l}</div>
@@ -318,16 +331,16 @@ const NotFoundPage = ({ navigate }) => (
 /* ============ PROFİL (herkese açık) ============ */
 const ProfilePage = ({ navigate, data }) => {
   const [user] = useUser();
-  const own = !data;
-  const u = data || { 
-    name: user.name, 
-    pts: user.points, 
-    r: user.rank, 
-    lvl: user.level, 
-    solved: user.solved_count, 
-    badges: user.badges, 
-    streak: user.streak 
-  };
+  const own = !data || (data.name === user.name);
+  const u = own ? {
+    name: user.name,
+    pts: user.points,
+    r: user.rank,
+    lvl: user.level,
+    solved: user.solved,
+    badges: user.badges,
+    streak: user.streak
+  } : data;
   const initials = u.name.split(' ').map(s => s[0]).join('').slice(0, 2).toUpperCase();
   const solvedList = own 
     ? JSON.parse(localStorage.getItem('sk_solved_rooms') || '[]') 

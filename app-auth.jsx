@@ -233,107 +233,226 @@ const ME = window.__SK_USER;
 const AppHeader = ({ navigate, active }) => {
   const [open, setOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showVIPMentorModal, setShowVIPMentorModal] = useState(false);
   const [user] = useUser();
+
+  useEffect(() => {
+    const handleOpen = () => setShowVIPMentorModal(true);
+    window.addEventListener('open_vip_mentor_modal', handleOpen);
+    return () => window.removeEventListener('open_vip_mentor_modal', handleOpen);
+  }, []);
+
   const nav = [['Dashboard', 'dashboard', '▣'], ['Leaderboard', 'leaderboard', '🏆'], ['Sohbet', 'chat', '💬']];
   if (user && user.is_admin) {
     nav.push(['Yönetim Paneli', 'admin', '⚙️']);
   }
   return (
-    <header className="sticky top-0 z-50 bg-[rgba(2,8,6,.88)] backdrop-blur-md border-b border-[#0c2719]">
-      <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-[64px]">
-        <div className="flex items-center gap-8">
-          <button onClick={() => navigate('dashboard')} className="flex items-center gap-2.5 font-disp font-bold text-lg text-[#eafff5]">
-            <span className="w-[30px] h-[30px] border-[1.5px] border-[#00ff88] rounded-lg grid place-items-center text-[#00ff88] font-mono text-[13px] font-bold shadow-[0_0_14px_-4px_var(--glow)]">&gt;_</span>
-            siber<b className="text-[#00ff88]">kampus</b>
-          </button>
-          <nav className="hidden md:flex items-center gap-1">
+    <>
+      <header className="sticky top-0 z-50 bg-[rgba(2,8,6,.88)] backdrop-blur-md border-b border-[#0c2719]">
+        <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-[64px]">
+          <div className="flex items-center gap-8">
+            <button onClick={() => navigate('dashboard')} className="flex items-center gap-2.5 font-disp font-bold text-lg text-[#eafff5]">
+              <span className="w-[30px] h-[30px] border-[1.5px] border-[#00ff88] rounded-lg grid place-items-center text-[#00ff88] font-mono text-[13px] font-bold shadow-[0_0_14px_-4px_var(--glow)]">&gt;_</span>
+              siber<b className="text-[#00ff88]">kampus</b>
+            </button>
+            <nav className="hidden md:flex items-center gap-1">
+              {nav.map(([t, p, ic]) => (
+                <button key={p} onClick={() => navigate(p)} className={"px-3.5 py-2 rounded-lg text-sm font-mono transition-colors flex items-center gap-2 " + (active === p ? 'text-[#00ff88] bg-[rgba(0,255,136,.06)]' : 'text-[#74998a] hover:text-[#cdeede]')}>
+                  <span className="text-xs">{ic}</span>{t}
+                </button>
+              ))}
+            </nav>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#103a26] bg-[rgba(0,255,136,.03)]">
+              <span className="text-[#00ff88] text-sm">◆</span>
+              <span className="font-mono text-sm text-[#eafff5] font-bold">{user.points}</span>
+              <span className="text-xs text-[#74998a]">puan</span>
+            </div>
+            <div className="relative">
+              <button onClick={() => setOpen(o => !o)} aria-label="Kullanıcı Menüsü" className="flex items-center gap-2 pl-1.5 pr-3 py-1.5 rounded-lg border border-[#103a26] hover:border-[#00ff88] transition-colors">
+                <span className="w-7 h-7 rounded-md grid place-items-center text-[#5cffba] font-bold text-xs border border-[#103a26]" style={{ background: 'linear-gradient(135deg,#0a3a24,#052b18)' }}>{user.avatar}</span>
+                <span className="hidden sm:inline text-sm text-[#cdeede] font-mono">{user.name}</span>
+                <span className="text-[#74998a] text-[10px]">▼</span>
+              </button>
+              {open && (
+                <div className="absolute right-0 top-[calc(100%+8px)] w-44 bg-[#04100a] border border-[#103a26] rounded-lg p-1.5 shadow-[0_20px_50px_-20px_#000] z-50">
+                  {[['Profilim', 'profile'], ['Rozetlerim', 'badges'], ['Sertifikalarım', 'certificates']].map(([t, p], i) => (
+                    <button key={i} onClick={() => { setOpen(false); navigate(p); }} className="w-full text-left px-3 py-2 rounded-md text-sm text-[#74998a] hover:text-[#cdeede] hover:bg-[rgba(0,255,136,.04)] transition-colors">{t}</button>
+                  ))}
+                  <div className="h-px bg-[#0c2719] my-1.5"></div>
+                  <button onClick={() => { 
+                    setOpen(false); 
+                    localStorage.removeItem('sk_token');
+                    localStorage.removeItem('sk_user_name');
+                    localStorage.removeItem('sk_user_points');
+                    localStorage.removeItem('sk_user_solved');
+                    localStorage.removeItem('sk_user_level');
+                    localStorage.removeItem('sk_user_rank');
+                    localStorage.removeItem('sk_name_changed');
+                    localStorage.removeItem('sk_user_badges');
+                    localStorage.removeItem('sk_user_streak');
+                    localStorage.removeItem('sk_solved_rooms');
+                    localStorage.removeItem('sk_room_progress');
+                    localStorage.removeItem('sk_unlocked_hints');
+                    localStorage.removeItem('sk_user_is_admin');
+                    localStorage.removeItem('sk_user_is_banned');
+                    window.__SK_USER_FETCHED = false;
+                    Object.assign(window.__SK_USER, {
+                      name: 'Misafir',
+                      handle: 'misafir',
+                      avatar: 'MS',
+                      points: 0,
+                      rank: 1000,
+                      level: 1,
+                      maxLevel: 10,
+                      solved: 0,
+                      badges: 0,
+                      streak: 1,
+                      nameChanged: false,
+                      is_admin: false,
+                      is_banned: false,
+                      is_premium: false,
+                      subscription: 'free'
+                    });
+                    window.dispatchEvent(new Event('sk_user_update'));
+                    navigate('home'); 
+                  }} className="w-full text-left px-3 py-2 rounded-md text-sm text-[#ff2e88] hover:bg-[rgba(255,46,136,.06)] transition-colors">Çıkış Yap</button>
+                </div>
+              )}
+            </div>
+            
+            <button onClick={() => setMobileMenuOpen(o => !o)} aria-label="Mobil Menüyü Aç/Kapat" className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 border border-[#103a26] rounded bg-[#04100a] transition-all">
+              <span className={`w-5 h-0.5 bg-[#00ff88] transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`w-5 h-0.5 bg-[#00ff88] transition-opacity ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`w-5 h-0.5 bg-[#00ff88] transition-transform ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            </button>
+          </div>
+        </div>
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-[#0c2719] bg-[#04100a] px-6 py-4 flex flex-col gap-2">
             {nav.map(([t, p, ic]) => (
-              <button key={p} onClick={() => navigate(p)} className={"px-3.5 py-2 rounded-lg text-sm font-mono transition-colors flex items-center gap-2 " + (active === p ? 'text-[#00ff88] bg-[rgba(0,255,136,.06)]' : 'text-[#74998a] hover:text-[#cdeede]')}>
-                <span className="text-xs">{ic}</span>{t}
+              <button key={p} onClick={() => { setMobileMenuOpen(false); navigate(p); }} className={`w-full text-left py-2.5 px-4 rounded-lg text-sm font-mono flex items-center gap-3 transition-colors ${active === p ? 'text-[#00ff88] bg-[rgba(0,255,136,.06)]' : 'text-[#74998a] hover:text-[#cdeede]'}`}>
+                <span>{ic}</span>{t}
               </button>
             ))}
-          </nav>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#103a26] bg-[rgba(0,255,136,.03)]">
-            <span className="text-[#00ff88] text-sm">◆</span>
-            <span className="font-mono text-sm text-[#eafff5] font-bold">{user.points}</span>
-            <span className="text-xs text-[#74998a]">puan</span>
+            <div className="sm:hidden mt-2 p-3 border border-[#103a26] bg-[rgba(0,255,136,.03)] rounded flex items-center justify-between text-xs">
+              <span className="text-[#74998a]">Toplam Puan:</span>
+              <span className="font-mono font-bold text-[#00ff88]">◆ {user.points}</span>
+            </div>
           </div>
-          <div className="relative">
-            <button onClick={() => setOpen(o => !o)} aria-label="Kullanıcı Menüsü" className="flex items-center gap-2 pl-1.5 pr-3 py-1.5 rounded-lg border border-[#103a26] hover:border-[#00ff88] transition-colors">
-              <span className="w-7 h-7 rounded-md grid place-items-center text-[#5cffba] font-bold text-xs border border-[#103a26]" style={{ background: 'linear-gradient(135deg,#0a3a24,#052b18)' }}>{user.avatar}</span>
-              <span className="hidden sm:inline text-sm text-[#cdeede] font-mono">{user.name}</span>
-              <span className="text-[#74998a] text-[10px]">▼</span>
-            </button>
-            {open && (
-              <div className="absolute right-0 top-[calc(100%+8px)] w-44 bg-[#04100a] border border-[#103a26] rounded-lg p-1.5 shadow-[0_20px_50px_-20px_#000] z-50">
-                {[['Profilim', 'profile'], ['Rozetlerim', 'badges'], ['Sertifikalarım', 'certificates']].map(([t, p], i) => (
-                  <button key={i} onClick={() => { setOpen(false); navigate(p); }} className="w-full text-left px-3 py-2 rounded-md text-sm text-[#74998a] hover:text-[#cdeede] hover:bg-[rgba(0,255,136,.04)] transition-colors">{t}</button>
-                ))}
-                <div className="h-px bg-[#0c2719] my-1.5"></div>
-                <button onClick={() => { 
-                  setOpen(false); 
-                  localStorage.removeItem('sk_token');
-                  localStorage.removeItem('sk_user_name');
-                  localStorage.removeItem('sk_user_points');
-                  localStorage.removeItem('sk_user_solved');
-                  localStorage.removeItem('sk_user_level');
-                  localStorage.removeItem('sk_user_rank');
-                  localStorage.removeItem('sk_name_changed');
-                  localStorage.removeItem('sk_user_badges');
-                  localStorage.removeItem('sk_user_streak');
-                  localStorage.removeItem('sk_solved_rooms');
-                  localStorage.removeItem('sk_room_progress');
-                  localStorage.removeItem('sk_unlocked_hints');
-                  localStorage.removeItem('sk_user_is_admin');
-                  localStorage.removeItem('sk_user_is_banned');
-                  window.__SK_USER_FETCHED = false;
-                  Object.assign(window.__SK_USER, {
-                    name: 'Misafir',
-                    handle: 'misafir',
-                    avatar: 'MS',
-                    points: 0,
-                    rank: 1000,
-                    level: 1,
-                    maxLevel: 10,
-                    solved: 0,
-                    badges: 0,
-                    streak: 1,
-                    nameChanged: false,
-                    is_admin: false,
-                    is_banned: false,
-                    is_premium: false,
-                    subscription: 'free'
-                  });
-                  window.dispatchEvent(new Event('sk_user_update'));
-                  navigate('home'); 
-                }} className="w-full text-left px-3 py-2 rounded-md text-sm text-[#ff2e88] hover:bg-[rgba(255,46,136,.06)] transition-colors">Çıkış Yap</button>
+        )}
+      </header>
+
+      {showVIPMentorModal && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4" onClick={() => setShowVIPMentorModal(false)}>
+          <div 
+            className="border border-[#103a26] rounded-2xl max-w-[560px] w-full overflow-hidden shadow-[0_0_80px_rgba(255,209,102,.15)]" 
+            style={{ background: 'linear-gradient(165deg,#07150e,#020806)', animation: 'modalScaleIn .4s cubic-bezier(0.16,1,0.3,1) both' }} 
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header branding */}
+            <div className="bg-[#ffd166]/10 border-b border-[#ffd166]/20 px-6 py-3.5 flex items-center justify-between">
+              <span className="font-mono text-xs text-[#ffd166] tracking-[0.2em] uppercase font-bold">👑 BİRE BİR EĞİTİM VE MENTÖRLÜK</span>
+              <button onClick={() => setShowVIPMentorModal(false)} className="text-[#ffd166] hover:text-white transition-colors text-sm font-mono">[X]</button>
+            </div>
+
+            <div className="p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center md:items-start">
+              {/* Tutor Image Panel */}
+              <div className="relative w-[140px] h-[180px] rounded-xl overflow-hidden border border-[#ffd166]/30 bg-black/40 shadow-[0_0_30px_-5px_rgba(255,209,102,.3)] flex-none">
+                <img src="/ogretici.jpg" className="w-full h-full object-cover opacity-90 mix-blend-lighten" alt="Siber Mentör" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020806] via-transparent to-transparent z-10"></div>
+                <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,209,102,0.06)_1px,transparent_1px)] bg-[size:100%_4px] opacity-40 z-10"></div>
+                <div className="absolute top-2 left-2 font-disp font-bold text-[8px] tracking-widest text-[#ffd166] bg-black/75 px-1.5 py-0.5 border border-[#ffd166]/20 rounded uppercase z-10">
+                  <span className="inline-block w-1 h-1 rounded-full bg-[#ffd166] mr-1 sk-pulse"></span> Çevrimiçi
+                </div>
+                <div className="absolute bottom-2 left-2 right-2 z-10 text-left">
+                  <div className="font-disp font-bold text-xs text-white">Siber Mentör</div>
+                  <div className="text-[8px] font-mono text-[#74998a]">VIP Yol Arkadaşın</div>
+                </div>
               </div>
-            )}
-          </div>
-          
-          <button onClick={() => setMobileMenuOpen(o => !o)} aria-label="Mobil Menüyü Aç/Kapat" className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 border border-[#103a26] rounded bg-[#04100a] transition-all">
-            <span className={`w-5 h-0.5 bg-[#00ff88] transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`w-5 h-0.5 bg-[#00ff88] transition-opacity ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-5 h-0.5 bg-[#00ff88] transition-transform ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-          </button>
-        </div>
-      </div>
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[#0c2719] bg-[#04100a] px-6 py-4 flex flex-col gap-2">
-          {nav.map(([t, p, ic]) => (
-            <button key={p} onClick={() => { setMobileMenuOpen(false); navigate(p); }} className={`w-full text-left py-2.5 px-4 rounded-lg text-sm font-mono flex items-center gap-3 transition-colors ${active === p ? 'text-[#00ff88] bg-[rgba(0,255,136,.06)]' : 'text-[#74998a] hover:text-[#cdeede]'}`}>
-              <span>{ic}</span>{t}
-            </button>
-          ))}
-          <div className="sm:hidden mt-2 p-3 border border-[#103a26] bg-[rgba(0,255,136,.03)] rounded flex items-center justify-between text-xs">
-            <span className="text-[#74998a]">Toplam Puan:</span>
-            <span className="font-mono font-bold text-[#00ff88]">◆ {user.points}</span>
+
+              {/* Speech Box */}
+              <div className="flex-1 text-left">
+                <div className="relative bg-[#07150e] border border-[#103a26] rounded-xl p-5 shadow-inner">
+                  {/* Small arrow for speech bubble */}
+                  <div className="hidden md:block absolute left-[-8px] top-8 w-4 h-4 bg-[#07150e] border-l border-b border-[#103a26] rotate-45"></div>
+                  
+                  {user.is_premium || user.is_vip ? (
+                    <>
+                      <div className="font-disp font-bold text-base text-[#ffd166] mb-3">Hoş geldin VIP Siber Hacking Öğrencim! 👑</div>
+                      <p className="text-xs text-[#cdeede] leading-relaxed mb-3">
+                        Bire bir mentörlük desteğin aktif durumdadır!
+                      </p>
+                      <p className="text-xs text-[#9fc4b5] leading-relaxed mb-3">
+                        Kişisel öğrenme taleplerine göre hazırlanmış müfredat planımız ve saatlik/aylık ders programımız doğrultusunda canlı pentest seanslarımıza devam edebiliriz.
+                      </p>
+                      <p className="text-xs text-[#9fc4b5] leading-relaxed mb-3">
+                        Bire bir canlı dersler, kariyer planlaması ve işe giriş sürecine kadar olan mentörlük desteği için Discord kanallarımız veya Canlı Destek üzerinden doğrudan bana yazabilirsin.
+                      </p>
+                      <p className="text-xs text-[#9fc4b5] leading-relaxed">
+                        Eğitim sonundaki başarı sertifikanı almak ve hedeflerine ulaşmak için çalışmaya devam edelim!
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <div className="font-disp font-bold text-base text-[#ffd166] mb-3">Selam Geleceğin Hacker'ı! 👋</div>
+                      <p className="text-xs text-[#cdeede] leading-relaxed mb-3">
+                        Bire Bir Online Siber Güvenlik Eğitimi ile siber güvenlik kariyerini en üst seviyeye taşımaya hazır mısın?
+                      </p>
+                      <ul className="text-xs text-[#9fc4b5] leading-relaxed mb-3 space-y-1.5 list-disc pl-4">
+                        <li><strong>Saatlik veya Aylık Kurs:</strong> Kendi bütçene ve zaman planına göre eğitim alabilirsin.</li>
+                        <li><strong>Kişiselleştirilmiş Müfredat:</strong> Senin öğrenme taleplerine ve hedeflerine göre tamamen özel bir çalışma planı hazırlanır ve ilerlemen adım adım takip edilir.</li>
+                        <li><strong>Resmi Başarı Sertifikası:</strong> Eğitimi tamamladığında özgeçmişine ekleyebileceğin resmi sertifika verilir.</li>
+                        <li><strong>Kariyer & İşe Giriş Desteği:</strong> Profesyonel kariyer planlaması yardımı ve işe kabul sürecine kadar bire bir mentorluk desteği sunulur.</li>
+                      </ul>
+                      <p className="text-xs text-[#9fc4b5] leading-relaxed font-mono text-[10px] text-[#74998a] border-t border-[#103a26] pt-3 mt-3">
+                        // Kişinin öğrenme talebine göre plan ve ilerleme takibi yapılır.
+                      </p>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Actions Panel */}
+            <div className="bg-[#020806]/60 border-t border-[#0c2719] px-6 py-4 flex flex-col sm:flex-row gap-2.5 justify-end">
+              <button 
+                onClick={() => setShowVIPMentorModal(false)}
+                className="order-2 sm:order-1 px-4 py-2.5 border border-[#103a26] text-[#74998a] hover:text-[#eafff5] hover:border-[#74998a] rounded-xl text-xs font-mono transition-colors"
+              >
+                Kapat
+              </button>
+              {user.is_premium || user.is_vip ? (
+                <button 
+                  onClick={() => {
+                    setShowVIPMentorModal(false);
+                    // Open support widget (Eylül) or trigger direct action
+                    const supportLauncher = document.querySelector('[aria-label="Destek Sohbetini Aç/Kapat"]');
+                    if (supportLauncher) {
+                      supportLauncher.click();
+                    }
+                  }}
+                  className="order-1 sm:order-2 px-4 py-2.5 rounded-xl bg-[#00ff88] text-[#021008] font-bold hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] transition-all font-mono text-xs"
+                >
+                  💬 Canlı Desteğe Yaz
+                </button>
+              ) : (
+                <button 
+                  onClick={() => {
+                    setShowVIPMentorModal(false);
+                    navigate('pricing');
+                  }}
+                  className="order-1 sm:order-2 px-4 py-2.5 rounded-xl bg-[#ffd166] text-[#021008] font-bold hover:bg-[#ff9500] hover:shadow-[0_0_20px_rgba(255,209,102,0.3)] transition-all font-mono text-xs animate-pulse"
+                >
+                  ⚡ VIP Üyeliğe Yükselt
+                </button>
+              )}
+            </div>
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 };
 
@@ -421,6 +540,76 @@ const DashboardPage = ({ navigate, data }) => {
           <button onClick={() => document.getElementById('categories-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-6 py-3 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] transition-all">Yeni Görev Başlat →</button>
         </div>
 
+        {/* VIP Bire Bir Mentörlük Banner */}
+        <div 
+          onClick={() => window.dispatchEvent(new Event('open_vip_mentor_modal'))}
+          className="mb-8 p-5 rounded-xl border cursor-pointer transition-all duration-500 flex flex-col md:flex-row items-center justify-between gap-5 relative overflow-hidden group select-none animate-[borderGlow_3s_infinite_ease-in-out]"
+          style={{
+            background: 'linear-gradient(135deg, rgba(8,32,20,0.95) 0%, rgba(18,50,30,0.9) 50%, rgba(35,60,25,0.85) 100%)',
+          }}
+        >
+          {/* Style block for local custom keyframe animations */}
+          <style dangerouslySetInnerHTML={{__html: `
+            @keyframes borderGlow {
+              0%, 100% { border-color: rgba(255, 209, 102, 0.25); box-shadow: 0 0 15px rgba(255, 209, 102, 0.1), inset 0 0 15px rgba(255, 209, 102, 0.05); }
+              50% { border-color: rgba(255, 209, 102, 1); box-shadow: 0 0 25px rgba(255, 209, 102, 0.45), inset 0 0 20px rgba(255, 209, 102, 0.15); }
+            }
+            @keyframes badgeBlink {
+              0%, 100% { opacity: 0.7; transform: scale(0.97); }
+              50% { opacity: 1; transform: scale(1.03); filter: brightness(1.2); }
+            }
+            @keyframes textFlash {
+              0%, 100% { text-shadow: 0 0 4px rgba(255, 209, 102, 0.2); opacity: 0.8; }
+              50% { text-shadow: 0 0 12px rgba(255, 209, 102, 0.8); opacity: 1; color: #ffffff; }
+            }
+            @keyframes scanline {
+              0% { transform: translateY(-100%); }
+              100% { transform: translateY(100%); }
+            }
+          `}} />
+
+          {/* Grid overlay for digital tech look */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,255,136,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,255,136,0.03)_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none"></div>
+          
+          {/* Laser scanline animation */}
+          <div className="absolute inset-0 w-full h-0.5 bg-[#ffd166]/10 opacity-30 pointer-events-none animate-[scanline_6s_linear_infinite]" style={{}}></div>
+
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5 w-full">
+            {/* Status indicator */}
+            <div className="flex items-center gap-2.5 shrink-0">
+              <span className="relative flex h-3.5 w-3.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd166] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#ffd166]"></span>
+              </span>
+              <div 
+                className="px-3 py-1.5 rounded-lg border border-[#ffd166]/40 bg-[#ffd166]/10 text-[#ffd166] text-xs font-mono font-bold tracking-wider uppercase animate-[badgeBlink_2s_infinite_ease-in-out]"
+                style={{}}
+              >
+                ⚡ CANLI BİRE BİR MENTÖRLÜK
+              </div>
+            </div>
+
+            {/* Description & features */}
+            <div className="flex-1 min-w-0">
+              <h2 className="text-sm md:text-base font-disp font-bold text-[#eafff5] flex flex-wrap items-center gap-2 animate-[textFlash_3s_infinite_ease-in-out]" style={{}}>
+                Online Bire Bir Siber Güvenlik Eğitimi & Kariyer Yolculuğu 👑
+              </h2>
+              <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-[#74998a] font-mono">
+                <span className="flex items-center gap-1.5"><b className="text-[#ffd166]">🕒</b> Saatlik veya Aylık Kurs</span>
+                <span className="flex items-center gap-1.5"><b className="text-[#ffd166]">🎯</b> Kişiye Özel Öğrenme Planı & İlerleme</span>
+                <span className="flex items-center gap-1.5"><b className="text-[#ffd166]">🎓</b> Resmi Başarı Sertifikası</span>
+                <span className="flex items-center gap-1.5"><b className="text-[#ffd166]">💼</b> Kariyer Planlama & İşe Giriş Desteği</span>
+              </div>
+            </div>
+          </div>
+
+          <button 
+            className="w-full lg:w-auto px-5 py-3 rounded-lg bg-[#ffd166] text-[#021008] text-xs font-mono font-bold uppercase tracking-wider hover:bg-white hover:shadow-[0_0_20px_rgba(255,209,102,0.6)] transition-all shrink-0 animate-pulse"
+          >
+            Planla & Detayları Gör ➔
+          </button>
+        </div>
+
         {/* summary + goals */}
         <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-5 mb-10">
           <div className="rounded-2xl border border-[#0c2719] p-7" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
@@ -462,164 +651,190 @@ const DashboardPage = ({ navigate, data }) => {
           </div>
         </div>
 
-        {/* recommendations or in progress */}
+        {/* recommendations (sequential unsolved rooms) */}
         <div className="mb-10">
-          <h2 className="text-2xl text-[#eafff5] mb-5">{inProgress.length > 0 ? 'Başlanmış Görevler' : 'Sana Uygun Görevler'}</h2>
+          <h2 className="text-2xl text-[#eafff5] mb-5">Sana Uygun Görevler</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {inProgress.length > 0 ? (
-              inProgress.map((t, i) => (
-                <div key={i} className="rounded-xl border border-[#0c2719] p-6 hover:border-[#00ff88] transition-all group" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2"><span className="text-lg">🎮</span><h3 className="text-lg text-[#eafff5] group-hover:text-[#00ff88] transition-colors" style={{ lineHeight: 1.25 }}>{t.name}</h3></div>
-                      <span className="text-xs text-[#74998a]">{t.cat}</span>
-                    </div>
-                    <span className="font-mono text-sm text-[#ffd166]">{'⭐'.repeat(t.stars || 2)}</span>
-                  </div>
-                  <div className="flex justify-between text-xs text-[#74998a] mb-2"><span>İlerleme</span><span className="text-[#00ff88]">{t.progress}%</span></div>
-                  <div className="h-2 rounded-full bg-[#0c2719] overflow-hidden mb-5"><div className="h-full rounded-full bg-gradient-to-r from-[#00d978] to-[#00ff88]" style={{ width: t.progress + '%' }}></div></div>
-                  <button onClick={() => navigate('roomArticle', t)} className="w-full font-mono text-sm font-bold text-[#021008] bg-[#00ff88] py-2.5 rounded-lg hover:shadow-[0_0_24px_-4px_var(--glow)] transition-all">Devam Et →</button>
-                </div>
-              ))
-            ) : (
-              (() => {
-                const allRooms = window.SK_ALL_ROOMS || [];
-                const solved = solvedList;
-                const unsolvedBeginnerRooms = allRooms.filter(r => r.difficulty === 'Başlangıç' && !solved.includes(r.id)).slice(0, 2);
-                return unsolvedBeginnerRooms.length > 0 ? (
-                  unsolvedBeginnerRooms.map((t, i) => (
-                    <div key={i} className="rounded-xl border border-[#0c2719] p-6 hover:border-[#5cffba] transition-all group" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
+            {(() => {
+              const allRooms = window.SK_ALL_ROOMS || [];
+              const solved = solvedList;
+              const unsolvedRooms = allRooms.filter(r => !solved.includes(r.id)).slice(0, 2);
+              return unsolvedRooms.length > 0 ? (
+                unsolvedRooms.map((t, i) => {
+                  const roomProgress = progressMap[t.id] || 0;
+                  const hasStarted = roomProgress > 0 && roomProgress < 100;
+                  return (
+                    <div key={i} className={"rounded-xl border p-6 transition-all group " + (hasStarted ? "border-[#00ff88] hover:border-[#00ff88]" : "border-[#0c2719] hover:border-[#5cffba]")} style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                       <div className="flex items-start justify-between mb-4">
                         <div>
-                          <div className="flex items-center gap-2 mb-2"><span className="text-lg">💡</span><h3 className="text-lg text-[#eafff5] group-hover:text-[#5cffba] transition-colors" style={{ lineHeight: 1.25 }}>{t.name}</h3></div>
-                          <span className="text-xs text-[#74998a]">{t.catSlug === 'web-exploitation' ? '🌐 Web' : t.catSlug === 'network-pentest' ? '🔗 Ağ' : '💻 Sistem'}</span>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="text-lg">{hasStarted ? '🎮' : '💡'}</span>
+                            <h3 className={"text-lg text-[#eafff5] transition-colors " + (hasStarted ? "group-hover:text-[#00ff88]" : "group-hover:text-[#5cffba]")} style={{ lineHeight: 1.25 }}>{t.name}</h3>
+                          </div>
+                          <span className="text-xs text-[#74998a]">{t.catSlug === 'web-exploitation' ? '🌐 Web Exploitation' : t.catSlug === 'network-pentest' ? '🔗 Ağ Sızma Testi' : '💻 Sistem Güvenliği'}</span>
                         </div>
-                        <span className="text-xs px-2 py-1 rounded bg-[#5cffba]/10 text-[#5cffba] border border-[#5cffba]/20">Yeni</span>
+                        {hasStarted ? (
+                          <span className="text-xs px-2 py-1 rounded bg-[#00ff88]/10 text-[#00ff88] border border-[#00ff88]/20">Devam Ediyor</span>
+                        ) : (
+                          <span className="text-xs px-2 py-1 rounded bg-[#5cffba]/10 text-[#5cffba] border border-[#5cffba]/20">Sıradaki</span>
+                        )}
                       </div>
-                      <p className="text-xs text-[#74998a] mb-4">{t.desc}</p>
-                      <div className="flex items-center justify-between text-xs text-[#5c8a74]">
-                        <span>◆ {t.points} Puan</span>
-                        <span>👥 {(t.users || 0).toLocaleString('tr-TR')}</span>
-                      </div>
-                      <button onClick={() => navigate('roomArticle', t)} className="w-full font-mono text-sm font-bold text-[#021008] bg-[#5cffba] py-2.5 rounded-lg hover:shadow-[0_0_24px_-4px_rgba(92,255,186,.4)] transition-all mt-4">Başla →</button>
+                      
+                      {hasStarted ? (
+                        <>
+                          <div className="flex justify-between text-xs text-[#74998a] mb-2"><span>İlerleme</span><span className="text-[#00ff88]">{roomProgress}%</span></div>
+                          <div className="h-2 rounded-full bg-[#0c2719] overflow-hidden mb-5"><div className="h-full rounded-full bg-gradient-to-r from-[#00d978] to-[#00ff88]" style={{ width: roomProgress + '%' }}></div></div>
+                          <button onClick={() => navigate('roomArticle', t)} className="w-full font-mono text-sm font-bold text-[#021008] bg-[#00ff88] py-2.5 rounded-lg hover:shadow-[0_0_24px_-4px_var(--glow)] transition-all">Devam Et →</button>
+                        </>
+                      ) : (
+                        <>
+                          <p className="text-xs text-[#74998a] mb-4">{t.desc || 'Temel pratikleri öğren ve siber güvenlik becerilerini geliştir.'}</p>
+                          <div className="flex items-center justify-between text-xs text-[#5c8a74] mb-4">
+                            <span>◆ {t.points} Puan</span>
+                            <span>👥 {(t.users || 0).toLocaleString('tr-TR')} çözdü</span>
+                          </div>
+                          <button onClick={() => navigate('roomArticle', t)} className="w-full font-mono text-sm font-bold text-[#021008] bg-[#5cffba] py-2.5 rounded-lg hover:shadow-[0_0_24px_-4px_rgba(92,255,186,.4)] transition-all">Başla →</button>
+                        </>
+                      )}
                     </div>
-                  ))
-                ) : (
-                  <div className="col-span-full py-8 text-center border border-dashed border-[#103a26] rounded-xl bg-[#020806]/40">
-                    <span className="text-3xl block mb-2">🎓</span>
-                    <p className="text-sm text-[#74998a] mb-1">Harika! Başlangıç seviyesi görevlerin hepsi çözülmüş.</p>
-                    <button onClick={() => document.getElementById('categories-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="text-xs text-[#00ff88] hover:underline">Orta seviye görevlere geç →</button>
-                  </div>
-                );
-              })()
-            )}
+                  );
+                })
+              ) : (
+                <div className="col-span-full py-8 text-center border border-dashed border-[#103a26] rounded-xl bg-[#020806]/40">
+                  <span className="text-3xl block mb-2">🏆</span>
+                  <p className="text-sm text-[#74998a] mb-1">Müthiş! Kampüsteki tüm görevleri başarıyla tamamladın.</p>
+                  <button onClick={() => navigate('leaderboard')} className="text-xs text-[#00ff88] hover:underline">Liderlik tablosunu incele →</button>
+                </div>
+              );
+            })()}
           </div>
         </div>
 
-        {/* categories and learning pathways */}
-        <div id="categories-section" className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6 mb-10 scroll-mt-24">
-          {/* Left Column: Categories */}
-          <div>
-            <h2 className="text-2xl text-[#eafff5] mb-2">Kategori Seç & Başla</h2>
-            <p className="text-sm text-[#74998a] mb-5">İlgilendiğin siber güvenlik alanındaki laboratuvarları seç ve çözmeye başla.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {categories.map((c, i) => (
-                <button key={i} onClick={() => navigate('category', c)} className="text-left rounded-xl border border-[#0c2719] p-6 hover:border-[#00ff88] hover:-translate-y-1 transition-all group" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="w-11 h-11 rounded-lg grid place-items-center text-xl border border-[#103a26] bg-[rgba(0,255,136,.04)]">{c.icon}</span>
-                    <span className="font-mono text-xs text-[#3d564b] group-hover:text-[#00ff88] transition-colors">→</span>
-                  </div>
-                  <h3 className="text-[15px] text-[#eafff5] mb-1 group-hover:text-[#00ff88] transition-colors">{c.name}</h3>
-                  <p className="text-xs text-[#74998a]">{c.solvedCount} / {c.count} tamamlandı</p>
-                </button>
-              ))}
+        {/* Pathway Section (Uzmanın Yolu) - Premium Showcase */}
+        <div className="mb-10">
+          <div className="flex items-center gap-2.5 mb-5">
+            <span className="text-xl">👑</span>
+            <div>
+              <h2 className="text-2xl text-[#ffd166] font-disp font-bold tracking-wide">Uzmanın Yolu (VIP)</h2>
+              <p className="text-xs text-[#9fc4b5] mt-1">Sıfırdan siber güvenlik uzmanlığına giden, canlı ağ testleri ve mentor destekli VIP yolculuk.</p>
             </div>
           </div>
+          
+          <div className="grid grid-cols-1 gap-6">
+            {(window.SK_PATHWAYS || []).map((pw, i) => {
+              const allItems = pw.phases.flatMap(p => p.items);
+              const solvedCount = allItems.filter(it => {
+                if (it.type === 'room') return solvedList.includes(it.id);
+                if (it.type === 'doc') return (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id);
+                return false;
+              }).length;
+              const totalCount = allItems.length;
+              const pct = totalCount > 0 ? Math.round((solvedCount / totalCount) * 100) : 0;
+              const currentPhase = pw.phases.find(p => {
+                const done = p.items.every(it => it.type === 'room' ? solvedList.includes(it.id) : it.type === 'doc' ? (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id) : false);
+                return !done;
+              });
 
-          {/* Right Column: Learning Pathways */}
-          <div>
-            <h2 className="text-2xl text-[#eafff5] mb-2">Uzmanın Yolu</h2>
-            <p className="text-sm text-[#74998a] mb-5">Sıfırdan siber güvenlik uzmanlığına giden adım adım planlanmış yol.</p>
-            <div className="space-y-4">
-              {(window.SK_PATHWAYS || []).map((pw, i) => {
-                const allItems = pw.phases.flatMap(p => p.items);
-                const solvedCount = allItems.filter(it => {
-                  if (it.type === 'room') return solvedList.includes(it.id);
-                  if (it.type === 'doc') return (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id);
-                  return false;
-                }).length;
-                const totalCount = allItems.length;
-                const pct = totalCount > 0 ? Math.round((solvedCount / totalCount) * 100) : 0;
-                const currentPhase = pw.phases.find(p => {
-                  const done = p.items.every(it => it.type === 'room' ? solvedList.includes(it.id) : it.type === 'doc' ? (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id) : false);
-                  return !done;
-                });
-                return (
-                  <button key={i} onClick={() => navigate('pathway', pw)} className="w-full text-left rounded-xl border border-[#0c2719] p-6 hover:border-[#00ff88] hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(0,255,136,.35)] transition-all group" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="w-12 h-12 rounded-lg grid place-items-center text-xl border border-[#103a26] bg-[rgba(0,255,136,.04)]">{pw.icon}</span>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
-                          <h3 className="text-base text-[#eafff5] font-disp font-bold group-hover:text-[#00ff88] transition-colors truncate">{pw.name}</h3>
-                          <span className="text-[9px] font-bold px-1.5 py-0.5 rounded text-[#ffd166] bg-[#ffd166]/10 border border-[#ffd166]/20 font-mono">VIP GEREKLİ</span>
+              return (
+                <div key={i} onClick={() => navigate('pathway', pw)} className="cursor-pointer rounded-2xl border border-[#ffd166]/20 p-6 md:p-8 hover:border-[#ffd166] hover:shadow-[0_0_35px_rgba(255,209,102,0.12)] transition-all group relative overflow-hidden" style={{ background: 'linear-gradient(165deg, #091a13 0%, #030e09 100%)' }}>
+                  {/* VIP Glow Decorative Elements */}
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#ffd166]/5 rounded-full blur-3xl pointer-events-none group-hover:bg-[#ffd166]/8 transition-all"></div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#00ff88]/5 rounded-full blur-2xl pointer-events-none"></div>
+
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+                    <div className="flex items-start gap-4">
+                      <span className="w-14 h-14 rounded-xl grid place-items-center text-3xl border border-[#ffd166]/20 bg-[#ffd166]/5 shadow-[0_0_15px_rgba(255,209,102,0.1)] group-hover:scale-105 transition-transform">{pw.icon}</span>
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="text-lg md:text-xl text-[#eafff5] font-disp font-bold group-hover:text-[#ffd166] transition-colors">{pw.name}</h3>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full text-[#ffd166] bg-[#ffd166]/10 border border-[#ffd166]/30 font-mono tracking-wider">👑 VIP PROGRAMI</span>
                         </div>
-                        <p className="text-xs text-[#74998a] mt-0.5 truncate">{pw.desc}</p>
+                        <p className="text-sm text-[#74998a] mt-1.5 max-w-2xl">{pw.desc}</p>
                       </div>
                     </div>
-                    <div className="mb-3">
-                      <div className="flex items-center justify-between text-xs mb-1.5">
-                        <span className="text-[#74998a] truncate">{currentPhase ? `Şu an: ${currentPhase.name}` : 'Tamamlandı!'}</span>
-                        <span className="text-[#00ff88] font-mono font-bold">{solvedCount}/{totalCount} · %{pct}</span>
-                      </div>
-                      <div className="w-full h-2 rounded-full bg-[#0c2719] overflow-hidden">
-                        <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: 'linear-gradient(90deg,#00ff88,#5cffba)' }}></div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 text-xs text-[#5c8a74]">
-                      <span>{pw.phases.length} faz</span>
-                      <span>·</span>
-                      <span>{pw.phases.flatMap(p => p.items.filter(it => it.type === 'room')).length} lab</span>
-                      <span>·</span>
-                      <span>{pw.phases.flatMap(p => p.items.filter(it => it.type === 'doc')).length} döküman</span>
-                      <span className="ml-auto font-mono text-[#00ff88] group-hover:translate-x-1 transition-transform">→</span>
-                    </div>
-                  </button>
-                );
-              })}
 
-              {/* VIP Marketing Card */}
-              <div className="rounded-xl border border-[#ffd166]/30 p-5 bg-[rgba(255,209,102,0.02)] relative overflow-hidden group hover:border-[#ffd166]/50 transition-all" style={{ background: 'linear-gradient(165deg, rgba(13,38,25,0.8), rgba(4,16,10,0.95))' }}>
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ffd166]/5 rounded-full blur-3xl pointer-events-none group-hover:bg-[#ffd166]/10 transition-colors"></div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-lg">👑</span>
-                  <h4 className="text-sm font-disp font-bold text-[#ffd166] uppercase tracking-wider">VIP Uzmanlık Programı</h4>
-                  <span className="ml-auto text-[10px] font-mono px-2 py-0.5 rounded bg-[#ffd166]/15 text-[#ffd166] border border-[#ffd166]/30">PROFESYONEL</span>
+                    <div className="flex flex-col items-start md:items-end gap-1.5 min-w-[150px] md:text-right">
+                      <span className="text-[10px] font-mono text-[#5c8a74] uppercase tracking-wider block">MÜFREDAT İLERLEMESİ</span>
+                      <span className="text-xl font-mono font-bold text-[#ffd166]">{solvedCount}/{totalCount} Adım</span>
+                      <span className="text-xs text-[#5cffba] font-mono">%{pct} Tamamlandı</span>
+                    </div>
+                  </div>
+
+                  {/* Curriculums Preview / Timeline */}
+                  <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 relative z-10">
+                    {pw.phases.map((phase, pIdx) => {
+                      const isComplete = phase.items.every(it => it.type === 'room' ? solvedList.includes(it.id) : it.type === 'doc' ? (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id) : false);
+                      return (
+                        <div key={phase.id} className={`p-3 rounded-lg border ${isComplete ? 'border-[#00ff88]/30 bg-[#00ff88]/5' : 'border-[#103a26]/60 bg-[#020806]/40'} transition-all`}>
+                          <div className="flex items-center justify-between mb-1.5">
+                            <span className="text-[10px] font-mono text-[#5c8a74]">FAZ {pIdx + 1}</span>
+                            <span className="text-xs">{isComplete ? '🟢' : '⚪'}</span>
+                          </div>
+                          <div className="text-xs text-[#eafff5] font-semibold truncate" title={phase.name}>{phase.name}</div>
+                          <div className="text-[10px] text-[#74998a] mt-1">{phase.items.length} Görev</div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Progress Bar */}
+                  <div className="mt-6 w-full h-1.5 rounded-full bg-[#0c2719] overflow-hidden relative z-10">
+                    <div className="h-full rounded-full transition-all duration-700" style={{ width: `${pct}%`, background: 'linear-gradient(90deg,#ffd166,#00ff88)' }}></div>
+                  </div>
+                  
+                  <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#5c8a74] relative z-10">
+                    <div className="flex flex-wrap gap-x-4 gap-y-1">
+                      <span>🎯 Toplam 4 Canlı Hacking Hedefi</span>
+                      <span>•</span>
+                      <span>👥 Bire Bir Mentor Desteği</span>
+                    </div>
+                    <span className="font-mono text-[#ffd166] group-hover:translate-x-1.5 transition-transform flex items-center gap-1 self-end sm:self-auto">Yolu İncele →</span>
+                  </div>
                 </div>
-                <p className="text-xs text-[#9fc4b5] leading-relaxed mb-4">
-                  Sıradan laboratuvarların ötesine geçin. Bire bir uzman mentör öğretmen eşliğinde gerçek senaryolarla sızma testi yapın.
-                </p>
-                <div className="space-y-2.5 mb-5">
-                  <div className="flex items-start gap-2 text-[11px] text-[#cdeede]">
-                    <span className="text-[#ffd166] flex-none">✓</span>
-                    <span><strong>4 Canlı Hedef Ağ:</strong> E-Ticaret, Bankacılık, Kurumsal Ağlar ve API altyapıları üzerinde canlı hacking deneyimi.</span>
-                  </div>
-                  <div className="flex items-start gap-2 text-[11px] text-[#cdeede]">
-                    <span className="text-[#ffd166] flex-none">✓</span>
-                    <span><strong>Bire Bir Mentör:</strong> Hatalarınızı analiz eden ve bire bir yol gösteren uzman öğretmen desteği.</span>
-                  </div>
-                  <div className="flex items-start gap-2 text-[11px] text-[#cdeede]">
-                    <span className="text-[#ffd166] flex-none">✓</span>
-                    <span><strong>Zengin Eğitim Kaynakları:</strong> Sektör standardı ileri düzey metodolojiler ve sızma testi makaleleri.</span>
-                  </div>
-                </div>
-                <button 
-                  onClick={() => navigate('pricing')} 
-                  className="w-full font-mono text-xs font-bold text-[#021008] bg-[#ffd166] py-2.5 rounded-lg hover:shadow-[0_0_20px_rgba(255,209,102,0.3)] hover:bg-[#ffe082] transition-all uppercase tracking-wider"
-                >
-                  ⚡ VIP Üyeliğe Yükselt
-                </button>
-              </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Categories Section (Kategori Seç & Başla) */}
+        <div id="categories-section" className="mb-10 scroll-mt-24">
+          <div className="flex items-center justify-between mb-5">
+            <div>
+              <h2 className="text-2xl text-[#eafff5] font-disp font-bold">Kategori Seç & Başla</h2>
+              <p className="text-xs text-[#74998a] mt-1">İlgilendiğin siber güvenlik alanındaki laboratuvarları seç ve çözmeye başla.</p>
             </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {categories.map((c, i) => {
+              const catPct = c.count > 0 ? Math.round((c.solvedCount / c.count) * 100) : 0;
+              return (
+                <button key={i} onClick={() => navigate('category', c)} className="text-left rounded-xl border border-[#0c2719] p-6 hover:border-[#00ff88] hover:-translate-y-1 transition-all group relative overflow-hidden" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
+                  {/* Decorative faint background glow */}
+                  <div className="absolute top-[-50%] right-[-50%] w-48 h-48 bg-[#00ff88]/5 rounded-full blur-2xl pointer-events-none group-hover:bg-[#00ff88]/10 transition-all"></div>
+                  
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="w-12 h-12 rounded-lg grid place-items-center text-2xl border border-[#103a26] bg-[rgba(0,255,136,.04)] group-hover:border-[#00ff88]/40 transition-colors">{c.icon}</span>
+                    <div className="text-right">
+                      <span className="text-[10px] font-mono text-[#5c8a74] uppercase tracking-wider block">Tamamlanma</span>
+                      <span className="text-sm font-mono font-bold text-[#00ff88] group-hover:text-[#5cffba] transition-colors">%{catPct}</span>
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-base text-[#eafff5] font-bold mb-1.5 group-hover:text-[#00ff88] transition-colors">{c.name}</h3>
+                  <p className="text-xs text-[#74998a] line-clamp-2 leading-relaxed mb-4">{c.desc}</p>
+                  
+                  <div className="w-full h-1.5 rounded-full bg-[#0c2719] overflow-hidden mb-3.5">
+                    <div className="h-full rounded-full bg-[#00ff88] transition-all duration-500" style={{ width: `${catPct}%` }}></div>
+                  </div>
+
+                  <div className="flex items-center justify-between text-xs text-[#5c8a74]">
+                    <span>{c.solvedCount} / {c.count} laboratuvar</span>
+                    <span className="font-mono text-[#00ff88] group-hover:translate-x-1 transition-transform">Pratik Yap →</span>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -717,6 +932,9 @@ const CategoryPage = ({ navigate, data }) => {
   const dc = { 'Başlangıç': 'text-[#5cffba] bg-[rgba(92,255,186,.1)]', 'Orta': 'text-[#ffd166] bg-[rgba(255,209,102,.1)]', 'İleri': 'text-[#ff8c42] bg-[rgba(255,140,66,.1)]', 'Uzman': 'text-[#ff2e88] bg-[rgba(255,46,136,.1)]' };
   const total = cat.rooms.reduce((a, r) => a + r.points, 0);
   const solvedList = JSON.parse(localStorage.getItem('sk_solved_rooms') || '[]');
+  const [user] = useUser();
+  const [premiumModal, setPremiumModal] = useState(false);
+
   return (
     <>
       <AppHeader navigate={navigate} active="dashboard" />
@@ -740,32 +958,127 @@ const CategoryPage = ({ navigate, data }) => {
       </section>
       <section className="py-12">
         <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {cat.rooms.map((room, i) => (
-            <div key={room.id} onClick={() => navigate('roomArticle', { ...room, cat: cat.name })} className="group cursor-pointer border border-[#0c2719] rounded-xl p-7 hover:border-[#00ff88] hover:shadow-[0_24px_50px_-28px_rgba(0,255,136,.35)] transition-all" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-              <div className="flex items-start justify-between mb-3 gap-3">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1.5"><span className="font-mono text-xs text-[#5c8a74]">{room.id.toUpperCase()}</span></div>
-                  <h2 className="text-lg text-[#eafff5] group-hover:text-[#00ff88] transition-colors" style={{ lineHeight: 1.25 }}>{room.name}</h2>
-                  <p className="text-sm text-[#74998a] mt-1.5">{room.desc}</p>
+          {cat.rooms.map((room, i) => {
+            const isPremiumLocked = room.premium && !user.is_premium;
+            return (
+              <div 
+                key={room.id} 
+                onClick={() => {
+                  if (isPremiumLocked) {
+                    setPremiumModal(true);
+                  } else {
+                    navigate('roomArticle', { ...room, cat: cat.name });
+                  }
+                }} 
+                className={`group cursor-pointer border rounded-xl p-7 hover:shadow-[0_24px_50px_-28px_rgba(0,255,136,.35)] transition-all ${
+                  isPremiumLocked 
+                    ? 'border-[#ffd166]/20 hover:border-[#ffd166] hover:shadow-[0_24px_50px_-28px_rgba(255,209,102,.12)]' 
+                    : 'border-[#0c2719] hover:border-[#00ff88]'
+                }`}
+                style={{ background: isPremiumLocked ? 'linear-gradient(165deg,#0d1a12,#04100a)' : 'linear-gradient(165deg,#07150e,#04100a)' }}
+              >
+                <div className="flex items-start justify-between mb-3 gap-3">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="font-mono text-xs text-[#5c8a74]">{room.id.toUpperCase()}</span>
+                      {room.premium && (
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded text-[#ffd166] bg-[#ffd166]/10 border border-[#ffd166]/20 font-mono tracking-wider">👑 VIP</span>
+                      )}
+                    </div>
+                    <h2 className={`text-lg transition-colors ${isPremiumLocked ? 'text-[#eafff5] group-hover:text-[#ffd166]' : 'text-[#eafff5] group-hover:text-[#00ff88]'}`} style={{ lineHeight: 1.25 }}>{room.name}</h2>
+                    <p className="text-sm text-[#74998a] mt-1.5">{room.desc}</p>
+                  </div>
+                  <span className={"text-xs font-bold px-3 py-1.5 rounded whitespace-nowrap " + (dc[room.difficulty] || '')}>{room.difficulty}</span>
                 </div>
-                <span className={"text-xs font-bold px-3 py-1.5 rounded whitespace-nowrap " + (dc[room.difficulty] || '')}>{room.difficulty}</span>
-              </div>
-              <div className="flex items-center justify-between pt-4 border-t border-[#0c2719] text-xs text-[#5c8a74]">
-                <div className="flex items-center gap-4">
-                  <span>👥 {room.users.toLocaleString('tr-TR')}</span>
-                  <span className="font-mono text-[#00ff88]">◆ {room.points}</span>
+                <div className="flex items-center justify-between pt-4 border-t border-[#0c2719] text-xs text-[#5c8a74]">
+                  <div className="flex items-center gap-4">
+                    <span>👥 {room.users.toLocaleString('tr-TR')}</span>
+                    <span className={isPremiumLocked ? 'font-mono text-[#ffd166]' : 'font-mono text-[#00ff88]'}>◆ {room.points}</span>
+                  </div>
+                  {solvedList.includes(room.id) ? (
+                    <span className="text-[#00ff88] font-bold">✓ Çözüldü</span>
+                  ) : isPremiumLocked ? (
+                    <span className="text-[#ffd166] font-bold group-hover:text-[#ffe082] transition-colors flex items-center gap-1">🔒 VIP Kilit Aç →</span>
+                  ) : (
+                    <span className="group-hover:text-[#00ff88] transition-colors">Başla →</span>
+                  )}
                 </div>
-                {solvedList.includes(room.id) ? (
-                  <span className="text-[#00ff88] font-bold">✓ Çözüldü</span>
-                ) : (
-                  <span className="group-hover:text-[#00ff88] transition-colors">Başla →</span>
-                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
       <SKFooter navigate={navigate} />
+
+      {premiumModal && (
+        <div className="fixed inset-0 bg-[#020806]/90 z-[999] grid place-items-center p-4 overflow-y-auto" onClick={() => setPremiumModal(false)}>
+          <div 
+            className="relative max-w-2xl w-full border border-[#ffd166]/30 bg-[#04100a] rounded-2xl shadow-[0_0_80px_rgba(255,209,102,.15)] overflow-hidden" 
+            style={{ background: 'linear-gradient(165deg,#07150e,#020806)', animation: 'modalScaleIn .4s cubic-bezier(0.16,1,0.3,1) both' }} 
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header branding */}
+            <div className="bg-[#ffd166]/10 border-b border-[#ffd166]/20 px-6 py-3.5 flex items-center justify-between">
+              <span className="font-mono text-xs text-[#ffd166] tracking-[0.2em] uppercase font-bold">👑 UZMANIN YOLU · VIP MENTÖRLÜK</span>
+              <button onClick={() => setPremiumModal(false)} className="text-[#ffd166] hover:text-white transition-colors text-sm font-mono">[X]</button>
+            </div>
+
+            <div className="p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center md:items-start">
+              {/* Tutor Image Panel */}
+              <div className="relative w-[180px] h-[220px] rounded-xl overflow-hidden border border-[#ffd166]/30 bg-black/40 shadow-[0_0_30px_-5px_rgba(255,209,102,.3)] flex-none">
+                <img src="/ogretici.jpg" className="w-full h-full object-cover opacity-90 mix-blend-lighten" alt="Siber Mentör" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020806] via-transparent to-transparent z-10"></div>
+                <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,209,102,0.06)_1px,transparent_1px)] bg-[size:100%_4px] opacity-40 z-10"></div>
+                <div className="absolute top-2 left-2 font-disp font-bold text-[8px] tracking-widest text-[#ffd166] bg-black/75 px-1.5 py-0.5 border border-[#ffd166]/20 rounded uppercase z-10">
+                  <span className="inline-block w-1 h-1 rounded-full bg-[#ffd166] mr-1 sk-pulse"></span> Çevrimiçi
+                </div>
+                <div className="absolute bottom-2 left-2 right-2 z-10 text-left">
+                  <div className="font-disp font-bold text-xs text-white">Siber Mentör</div>
+                  <div className="text-[8px] font-mono text-[#74998a]">VIP Yol Arkadaşın</div>
+                </div>
+              </div>
+
+              {/* Speech Box */}
+              <div className="flex-1 text-left">
+                <div className="relative bg-[#07150e] border border-[#103a26] rounded-xl p-5 md:p-6 shadow-inner">
+                  {/* Small arrow for speech bubble */}
+                  <div className="hidden md:block absolute left-[-8px] top-10 w-4 h-4 bg-[#07150e] border-l border-b border-[#103a26] rotate-45"></div>
+                  
+                  <div className="font-disp font-bold text-lg text-[#ffd166] mb-3">Merhaba Siber Kampüslü! 👋</div>
+                  <p className="text-sm text-[#cdeede] leading-relaxed mb-4">
+                    Bu muhteşem yolculukta ilerlemek ve bu laboratuvara erişmek için <strong>VIP üye</strong> olman gerekiyor.
+                  </p>
+                  <p className="text-sm text-[#9fc4b5] leading-relaxed mb-4">
+                    VIP üyeliğinde seninle <strong>bire bir mentörlük</strong> yapacağız. Çözdüğün laboratuvarları inceleyecek, hatalarını analiz edecek ve takıldığın yerlerde sana özel rehberlik edeceğim.
+                  </p>
+                  <p className="text-sm text-[#9fc4b5] leading-relaxed">
+                    Ayrıca, <strong>gerçekçi hedef sitelerde</strong> (E-Ticaret, Bankacılık ve Kurumsal Ağlar) canlı hacking ve sızma testi çalışmalarını beraber yürüteceğiz!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Actions Panel */}
+            <div className="bg-[#020806]/60 border-t border-[#0c2719] px-6 py-5 flex flex-col sm:flex-row gap-3 justify-end">
+              <button 
+                onClick={() => setPremiumModal(false)}
+                className="order-2 sm:order-1 px-5 py-3 border border-[#103a26] text-[#74998a] hover:text-[#eafff5] hover:border-[#74998a] rounded-xl text-xs font-mono transition-colors"
+              >
+                Daha Sonra
+              </button>
+              <button 
+                onClick={() => {
+                  setPremiumModal(false);
+                  navigate('pricing');
+                }} 
+                className="order-1 sm:order-2 px-6 py-3 font-mono text-xs font-bold text-[#021008] bg-[#ffd166] rounded-xl hover:shadow-[0_0_24px_rgba(255,209,102,0.4)] hover:bg-[#ffe082] transition-all uppercase tracking-wider"
+              >
+                VIP Üyeliğe Yükselt 👑
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
@@ -4439,6 +4752,70 @@ const RoomArticlePage = ({ navigate, data }) => {
   const info = (window.MENTOR_LESSONS_INFO && window.MENTOR_LESSONS_INFO[room.id]) || { goals: [], realWorld: '' };
   const article = ROOM_ARTICLES[room.id] || buildArticleFromInfo(room, info);
 
+  const [user] = useUser();
+
+  if (room.premium && !user.is_premium) {
+    return (
+      <>
+        <AppHeader navigate={navigate} active="dashboard" />
+        <div className="border-b border-[#0c2719] bg-[#04100a]">
+          <div className="max-w-[1280px] mx-auto px-6 py-3 flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3 text-sm md:text-base">
+              <button onClick={() => navigate('dashboard')} className="text-[#74998a] hover:text-[#00ff88] transition-colors">← Dashboard</button>
+              <span className="text-[#5c8a74]">/</span>
+              <button onClick={() => navigate('category', parentCat)} className="text-[#74998a] hover:text-[#00ff88] transition-colors">{parentCat.name}</button>
+              <span className="text-[#5c8a74]">/</span>
+              <span className="text-[#eafff5] font-mono">{room.name}</span>
+            </div>
+          </div>
+        </div>
+
+        <section className="py-20 px-6 max-w-[800px] mx-auto text-center">
+          <div 
+            className="border border-[#ffd166]/30 bg-[#04100a] rounded-2xl shadow-[0_0_80px_rgba(255,209,102,.12)] p-8 md:p-12 relative overflow-hidden"
+            style={{ background: 'linear-gradient(165deg,#07150e,#020806)' }}
+          >
+            <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-[radial-gradient(circle_at_top_right,rgba(255,209,102,0.08),transparent_70%)] pointer-events-none"></div>
+            
+            <span className="w-16 h-16 mx-auto rounded-full grid place-items-center text-3xl border border-[#ffd166]/30 bg-[#ffd166]/10 text-[#ffd166] mb-6 animate-bounce">👑</span>
+            
+            <h2 className="text-2xl md:text-3xl font-disp font-bold text-[#eafff5] mb-4">VIP Üyelik Gerekli</h2>
+            
+            <p className="text-[#9fc4b5] text-sm md:text-base leading-relaxed mb-6 max-w-lg mx-auto">
+              <strong>{room.name}</strong> laboratuvarı ve ders brifingi VIP Uzmanlık Programı kapsamındadır. Ücretsiz üyeler bu laboratuvar ortamlarına erişemezler.
+            </p>
+
+            <div className="flex flex-col md:flex-row gap-5 items-center justify-center p-6 border border-[#ffd166]/10 bg-[#ffd166]/[0.02] rounded-xl mb-8 text-left max-w-xl mx-auto">
+              <img src="/ogretici.jpg" className="w-20 h-24 object-cover rounded-lg border border-[#ffd166]/20 flex-none bg-black/40" alt="Siber Mentör" />
+              <div>
+                <span className="font-disp font-bold text-sm text-[#ffd166] block mb-1">Mentör Mesajı:</span>
+                <p className="text-xs text-[#74998a] leading-relaxed">
+                  "Bu odadaki senaryoları çözerken sana bire bir mentörlük yapacağım, kodunu ve yaklaşımlarını inceleyeceğim. Gerçek sistem sızma testleri için hazır mısın?"
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={() => navigate('category', parentCat)}
+                className="px-6 py-3.5 border border-[#103a26] text-[#74998a] hover:text-[#eafff5] hover:border-[#74998a] rounded-xl text-xs font-mono transition-all"
+              >
+                Geri Dön
+              </button>
+              <button 
+                onClick={() => navigate('pricing')} 
+                className="px-8 py-3.5 font-mono text-xs font-bold text-[#021008] bg-[#ffd166] rounded-xl hover:shadow-[0_0_24px_rgba(255,209,102,0.4)] hover:bg-[#ffe082] transition-all uppercase tracking-wider"
+              >
+                VIP Planları İncele & Katıl ⚡
+              </button>
+            </div>
+          </div>
+        </section>
+        <SKFooter navigate={navigate} />
+      </>
+    );
+  }
+
   const [step, setStep] = useState(0);
   const [instantAll, setInstantAll] = useState(false);
   const [mentorName, setMentorName] = useState('Siber Mentör');
@@ -4547,6 +4924,14 @@ const RoomArticlePage = ({ navigate, data }) => {
               <span className={"font-bold text-sm px-3 py-1.5 rounded " + (dc[room.difficulty] || dc['Başlangıç'])}>{room.difficulty}</span>
               <span className="text-sm text-[#74998a] px-3 py-1.5 rounded border border-[#103a26]">{parentCat.icon} {parentCat.name}</span>
               {room.points ? <span className="font-mono text-sm text-[#00ff88] px-3 py-1.5 rounded border border-[#103a26]">◆ {room.points} Puan</span> : null}
+              {!instantAll && (
+                <button 
+                  onClick={() => setInstantAll(true)} 
+                  className="px-3.5 py-1.5 rounded border border-[#00ff88]/50 text-[#00ff88] bg-[rgba(0,255,136,.03)] hover:bg-[rgba(0,255,136,.12)] text-xs font-mono font-bold uppercase transition-all"
+                >
+                  ⏩ Brifingin Tamamını Gör
+                </button>
+              )}
             </div>
           </div>
 
@@ -4689,6 +5074,68 @@ const RoomPage = ({ navigate, data }) => {
   };
 
   const [user, updateUser] = useUser();
+
+  if (room.premium && !user.is_premium) {
+    return (
+      <>
+        <AppHeader navigate={navigate} active="dashboard" />
+        <div className="border-b border-[#0c2719] bg-[#04100a]">
+          <div className="max-w-[1280px] mx-auto px-6 py-3 flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3 text-sm md:text-base">
+              <button onClick={() => navigate('dashboard')} className="text-[#74998a] hover:text-[#00ff88] transition-colors">← Dashboard</button>
+              <span className="text-[#5c8a74]">/</span>
+              <button onClick={() => navigate('category', parentCat)} className="text-[#74998a] hover:text-[#00ff88] transition-colors">{parentCat.name}</button>
+              <span className="text-[#5c8a74]">/</span>
+              <span className="text-[#eafff5] font-mono">{room.name}</span>
+            </div>
+          </div>
+        </div>
+
+        <section className="py-20 px-6 max-w-[800px] mx-auto text-center">
+          <div 
+            className="border border-[#ffd166]/30 bg-[#04100a] rounded-2xl shadow-[0_0_80px_rgba(255,209,102,.12)] p-8 md:p-12 relative overflow-hidden"
+            style={{ background: 'linear-gradient(165deg,#07150e,#020806)' }}
+          >
+            <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-[radial-gradient(circle_at_top_right,rgba(255,209,102,0.08),transparent_70%)] pointer-events-none"></div>
+            
+            <span className="w-16 h-16 mx-auto rounded-full grid place-items-center text-3xl border border-[#ffd166]/30 bg-[#ffd166]/10 text-[#ffd166] mb-6 animate-bounce">👑</span>
+            
+            <h2 className="text-2xl md:text-3xl font-disp font-bold text-[#eafff5] mb-4">VIP Üyelik Gerekli</h2>
+            
+            <p className="text-[#9fc4b5] text-sm md:text-base leading-relaxed mb-6 max-w-lg mx-auto">
+              <strong>{room.name}</strong> laboratuvar ortamı VIP Uzmanlık Programı kapsamındadır. Ücretsiz üyeler bu laboratuvar ortamlarına erişemezler.
+            </p>
+
+            <div className="flex flex-col md:flex-row gap-5 items-center justify-center p-6 border border-[#ffd166]/10 bg-[#ffd166]/[0.02] rounded-xl mb-8 text-left max-w-xl mx-auto">
+              <img src="/ogretici.jpg" className="w-20 h-24 object-cover rounded-lg border border-[#ffd166]/20 flex-none bg-black/40" alt="Siber Mentör" />
+              <div>
+                <span className="font-disp font-bold text-sm text-[#ffd166] block mb-1">Mentör Mesajı:</span>
+                <p className="text-xs text-[#74998a] leading-relaxed">
+                  "Bu odadaki senaryoları çözerken sana bire bir mentörlük yapacağım, kodunu ve yaklaşımlarını inceleyeceğim. Gerçek sistem sızma testleri için hazır mısın?"
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={() => navigate('category', parentCat)}
+                className="px-6 py-3.5 border border-[#103a26] text-[#74998a] hover:text-[#eafff5] hover:border-[#74998a] rounded-xl text-xs font-mono transition-all"
+              >
+                Geri Dön
+              </button>
+              <button 
+                onClick={() => navigate('pricing')} 
+                className="px-8 py-3.5 font-mono text-xs font-bold text-[#021008] bg-[#ffd166] rounded-xl hover:shadow-[0_0_24px_rgba(255,209,102,0.4)] hover:bg-[#ffe082] transition-all uppercase tracking-wider"
+              >
+                VIP Planları İncele & Katıl ⚡
+              </button>
+            </div>
+          </div>
+        </section>
+        <SKFooter navigate={navigate} />
+      </>
+    );
+  }
   if (!config.hints) {
     config.hints = [];
   }
@@ -5539,7 +5986,7 @@ const ChatPage = ({ navigate }) => {
     const selectRandomUsers = () => {
       const listWithoutMe = onlineUsers.filter(u => u !== user.name);
       const shuffled = [...listWithoutMe].sort(() => 0.5 - Math.random());
-      setShuffledOnline(shuffled.slice(0, 40));
+      setShuffledOnline(shuffled.slice(0, 10));
     };
 
     selectRandomUsers();
@@ -5551,7 +5998,7 @@ const ChatPage = ({ navigate }) => {
     const token = localStorage.getItem('sk_token');
 
     const fetchOnline = () => {
-      fetch('/api/users/online')
+      fetch(`/api/users/online?t=${Date.now()}`)
         .then(res => res.json())
         .then(data => {
           if (Array.isArray(data)) {
@@ -5581,6 +6028,9 @@ const ChatPage = ({ navigate }) => {
   const online = onlineUsers.length > 0 ? onlineUsers : [user.name || 'Sen'];
   const token = localStorage.getItem('sk_token');
   const isGuest = !token;
+
+  const displayedOnlineCount = (shuffledOnline.length > 0 ? shuffledOnline.length : Math.min(10, online.filter(u => u !== user.name).length)) + 1;
+  const extraOnlineCount = totalOnlineCount - displayedOnlineCount;
 
   return (
     <>
@@ -5637,7 +6087,30 @@ const ChatPage = ({ navigate }) => {
                   <div key={i} className="text-center"><span className="inline-block font-mono text-xs text-[#00ff88] bg-[rgba(0,255,136,.05)] border border-[#103a26] px-3 py-1.5 rounded-full">⚙ {m.m}</span></div>
                 ) : (
                   <div key={i} className={"flex gap-3 " + (m.me ? 'flex-row-reverse' : '')}>
-                    <span className={"w-9 h-9 flex-none rounded-lg grid place-items-center font-bold text-xs border " + (m.me ? 'bg-[#00ff88] text-[#021008] border-[#00ff88]' : 'text-[#5cffba] border-[#103a26]')} style={m.me ? {} : { background: 'linear-gradient(135deg,#0a3a24,#052b18)' }}>{m.u.slice(0, 2).toUpperCase()}</span>
+                    {(() => {
+                      const isVipUser = m.isSenderVip || (m.me && (user.is_premium || user.is_vip));
+                      return (
+                        <div className="relative flex-none">
+                          <span 
+                            className={"w-9 h-9 rounded-lg grid place-items-center font-bold text-xs border " + (
+                              isVipUser
+                                ? (m.me ? 'border-[#ffd166] text-[#021008] shadow-[0_0_12px_rgba(255,209,102,0.45)]' : 'border-[#ffd166] text-[#ffd166] shadow-[0_0_12px_rgba(255,209,102,0.3)]')
+                                : (m.me ? 'bg-[#00ff88] text-[#021008] border-[#00ff88]' : 'text-[#5cffba] border-[#103a26]')
+                            )} 
+                            style={
+                              isVipUser
+                                ? (m.me ? { background: 'linear-gradient(135deg,#ffd166,#b38f1d)' } : { background: 'linear-gradient(135deg,#241c09,#120e03)' })
+                                : (m.me ? {} : { background: 'linear-gradient(135deg,#0a3a24,#052b18)' })
+                            }
+                          >
+                            {m.u.slice(0, 2).toUpperCase()}
+                          </span>
+                          {isVipUser && (
+                            <span className="absolute -top-1.5 -right-1.5 text-xs animate-bounce" style={{ animationDuration: '3s' }}>👑</span>
+                          )}
+                        </div>
+                      );
+                    })()}
                     <div className={"max-w-[78%] " + (m.me ? 'text-right' : '')}>
                       <div className={"flex items-center gap-2 mb-1 " + (m.me ? 'justify-end' : '')}>
                         <span className="text-sm text-[#eafff5] font-medium">{m.u}</span>
@@ -5661,7 +6134,7 @@ const ChatPage = ({ navigate }) => {
             <div className="rounded-2xl border border-[#0c2719] p-6" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
               <h3 className="text-[#eafff5] font-disp font-bold mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#00ff88] shadow-[0_0_8px_#00ff88]"></span>Çevrimiçi</h3>
               <div className="space-y-2.5">
-                {(shuffledOnline.length > 0 ? shuffledOnline : online.slice(0, 40)).map((u, i) => (
+                {(shuffledOnline.length > 0 ? shuffledOnline : online.slice(0, 10)).map((u, i) => (
                   <div key={i} className="flex items-center gap-2.5">
                     <span className="w-7 h-7 rounded-md grid place-items-center text-[#5cffba] font-bold text-[10px] border border-[#103a26]" style={{ background: 'linear-gradient(135deg,#0a3a24,#052b18)' }}>{u.slice(0, 2).toUpperCase()}</span>
                     <span className="text-sm text-[#cdeede]">{u}</span>
@@ -5673,7 +6146,7 @@ const ChatPage = ({ navigate }) => {
                   <span className="text-sm text-[#00ff88] font-medium">{user.name || 'Sen'} (Sen)</span>
                   <span className="ml-auto w-2 h-2 rounded-full bg-[#ffd166]"></span>
                 </div>
-                <p className="text-xs text-[#5c8a74] pt-2">{totalOnlineCount > 40 ? '+' + (totalOnlineCount - 40) + ' kişi daha…' : ''}</p>
+                <p className="text-xs text-[#5c8a74] pt-2">{extraOnlineCount > 0 ? '+' + extraOnlineCount + ' kişi daha…' : ''}</p>
               </div>
             </div>
             <div className="rounded-2xl border border-[#0c2719] p-6" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
@@ -6738,46 +7211,69 @@ const PathwayPage = ({ navigate, data }) => {
       </section>
 
       {premiumModal && (
-        <div className="fixed inset-0 bg-[#020806]/85 z-[999] grid place-items-center p-4 overflow-y-auto" onClick={() => setPremiumModal(false)}>
-          <div className="relative max-w-lg w-full border border-[#ffd166]/30 bg-[#04100a] rounded-2xl shadow-[0_0_80px_rgba(255,209,102,.15)] p-8 text-center" style={{ background: 'linear-gradient(165deg,#07150e,#020806)', animation: 'modalScaleIn .5s cubic-bezier(0.16,1,0.3,1) both' }} onClick={e => e.stopPropagation()}>
-            <span className="font-mono text-xs text-[#ffd166] tracking-[0.2em] uppercase mb-2 block">👑 PREMİUM & VİP EĞİTİM YOLU</span>
-            <h3 className="text-2xl font-disp font-bold text-[#eafff5] mb-4">Siber Kampüs Premium / VIP Gerekli</h3>
-            <p className="text-[#9fc4b5] text-sm leading-relaxed mb-6">
-              Bu öğrenme yolunda yer alan premium dökümanlar, sızma testi makaleleri ve canlı hedef pentest laboratuvarları yalnızca <strong>VIP Üyelerimize</strong> açıktır.
-            </p>
-            
-            {/* VIP Features card */}
-            <div className="rounded-xl border border-[#ffd166]/20 bg-[rgba(255,209,102,0.02)] p-5 text-left mb-6 space-y-3">
-              <div className="text-xs font-bold text-[#ffd166] tracking-wider uppercase mb-1">// PRO UZMANLIK AVANTAJLARI:</div>
-              <div className="flex items-start gap-2 text-xs text-[#cdeede]">
-                <span className="text-[#ffd166] flex-none">✓</span>
-                <span><strong>Gerçek Pentest Odaları:</strong> E-Ticaret, Bankacılık, Kurumsal Ağlar ve API servisleri gibi 4 farklı canlı altyapıda sızma testi ve hacking yapma fırsatı!</span>
+        <div className="fixed inset-0 bg-[#020806]/90 z-[999] grid place-items-center p-4 overflow-y-auto" onClick={() => setPremiumModal(false)}>
+          <div 
+            className="relative max-w-2xl w-full border border-[#ffd166]/30 bg-[#04100a] rounded-2xl shadow-[0_0_80px_rgba(255,209,102,.15)] overflow-hidden" 
+            style={{ background: 'linear-gradient(165deg,#07150e,#020806)', animation: 'modalScaleIn .4s cubic-bezier(0.16,1,0.3,1) both' }} 
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header branding */}
+            <div className="bg-[#ffd166]/10 border-b border-[#ffd166]/20 px-6 py-3.5 flex items-center justify-between">
+              <span className="font-mono text-xs text-[#ffd166] tracking-[0.2em] uppercase font-bold">👑 UZMANIN YOLU · VIP MENTÖRLÜK</span>
+              <button onClick={() => setPremiumModal(false)} className="text-[#ffd166] hover:text-white transition-colors text-sm font-mono">[X]</button>
+            </div>
+
+            <div className="p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center md:items-start">
+              {/* Tutor Image Panel */}
+              <div className="relative w-[180px] h-[220px] rounded-xl overflow-hidden border border-[#ffd166]/30 bg-black/40 shadow-[0_0_30px_-5px_rgba(255,209,102,.3)] flex-none">
+                <img src="/ogretici.jpg" className="w-full h-full object-cover opacity-90 mix-blend-lighten" alt="Siber Mentör" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020806] via-transparent to-transparent z-10"></div>
+                <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,209,102,0.06)_1px,transparent_1px)] bg-[size:100%_4px] opacity-40 z-10"></div>
+                <div className="absolute top-2 left-2 font-disp font-bold text-[8px] tracking-widest text-[#ffd166] bg-black/75 px-1.5 py-0.5 border border-[#ffd166]/20 rounded uppercase z-10">
+                  <span className="inline-block w-1 h-1 rounded-full bg-[#ffd166] mr-1 sk-pulse"></span> Çevrimiçi
+                </div>
+                <div className="absolute bottom-2 left-2 right-2 z-10 text-left">
+                  <div className="font-disp font-bold text-xs text-white">Siber Mentör</div>
+                  <div className="text-[8px] font-mono text-[#74998a]">VIP Yol Arkadaşın</div>
+                </div>
               </div>
-              <div className="flex items-start gap-2 text-xs text-[#cdeede]">
-                <span className="text-[#ffd166] flex-none">✓</span>
-                <span><strong>Bire Bir Uzman Mentör:</strong> Hatalarını analiz eden, sana özel yol gösteren ve sorularını anında yanıtlayan uzman öğretmen desteği!</span>
-              </div>
-              <div className="flex items-start gap-2 text-xs text-[#cdeede]">
-                <span className="text-[#ffd166] flex-none">✓</span>
-                <span><strong>Zengin Eğitim Kaynakları:</strong> Sektör standardı araçların (Kali Linux, Burp Suite, Nmap, Gobuster) ileri seviye metodolojileri ve özel rehberler!</span>
+
+              {/* Speech Box */}
+              <div className="flex-1 text-left">
+                <div className="relative bg-[#07150e] border border-[#103a26] rounded-xl p-5 md:p-6 shadow-inner">
+                  {/* Small arrow for speech bubble */}
+                  <div className="hidden md:block absolute left-[-8px] top-10 w-4 h-4 bg-[#07150e] border-l border-b border-[#103a26] rotate-45"></div>
+                  
+                  <div className="font-disp font-bold text-lg text-[#ffd166] mb-3">Merhaba Siber Kampüslü! 👋</div>
+                  <p className="text-sm text-[#cdeede] leading-relaxed mb-4">
+                    Bu muhteşem yolculukta ilerlemek ve bu dökümana erişmek için <strong>VIP üye</strong> olman gerekiyor.
+                  </p>
+                  <p className="text-sm text-[#9fc4b5] leading-relaxed mb-4">
+                    VIP üyeliğinde seninle <strong>bire bir mentörlük</strong> yapacağız. Çözdüğün laboratuvarları inceleyecek, hatalarını analiz edecek ve takıldığın yerlerde sana özel rehberlik edeceğim.
+                  </p>
+                  <p className="text-sm text-[#9fc4b5] leading-relaxed">
+                    Ayrıca, <strong>gerçekçi hedef sitelerde</strong> (E-Ticaret, Bankacılık ve Kurumsal Ağlar) canlı hacking ve sızma testi çalışmalarını beraber yürüteceğiz!
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-col gap-3">
+            {/* Actions Panel */}
+            <div className="bg-[#020806]/60 border-t border-[#0c2719] px-6 py-5 flex flex-col sm:flex-row gap-3 justify-end">
+              <button 
+                onClick={() => setPremiumModal(false)}
+                className="order-2 sm:order-1 px-5 py-3 border border-[#103a26] text-[#74998a] hover:text-[#eafff5] hover:border-[#74998a] rounded-xl text-xs font-mono transition-colors"
+              >
+                Daha Sonra
+              </button>
               <button 
                 onClick={() => {
                   setPremiumModal(false);
                   navigate('pricing');
                 }} 
-                className="w-full font-mono text-sm font-bold text-[#021008] bg-[#ffd166] py-3.5 rounded-xl hover:shadow-[0_0_24px_rgba(255,209,102,0.4)] transition-all uppercase tracking-wider"
+                className="order-1 sm:order-2 px-6 py-3 font-mono text-xs font-bold text-[#021008] bg-[#ffd166] rounded-xl hover:shadow-[0_0_24px_rgba(255,209,102,0.4)] hover:bg-[#ffe082] transition-all uppercase tracking-wider"
               >
-                ⚡ Planları Gör & VIP'ye Yükselt
-              </button>
-              <button 
-                onClick={() => setPremiumModal(false)}
-                className="w-full border border-[#103a26] text-[#74998a] hover:text-[#eafff5] py-3 rounded-xl text-sm font-mono transition-colors"
-              >
-                Kapat
+                ⚡ VIP Üyeliğe Yükselt
               </button>
             </div>
           </div>
@@ -6802,7 +7298,8 @@ const DocPage = ({ navigate, data }) => {
   
   useEffect(() => {
     setStep(0);
-    setInstantAll(false);
+    const completed = JSON.parse(localStorage.getItem('sk_completed_docs') || '[]');
+    setInstantAll(completed.includes(docId));
     window.scrollTo(0, 0);
   }, [docId]);
 
@@ -6908,6 +7405,14 @@ const DocPage = ({ navigate, data }) => {
               <HeroGlowType text={doc.tagline} speed={18} instant={instantAll} />
             </p>
           </div>
+          {!instantAll && (
+            <button 
+              onClick={() => setInstantAll(true)} 
+              className="px-5 py-2.5 rounded-lg border border-[#00ff88] text-[#00ff88] bg-[rgba(0,255,136,.04)] hover:bg-[rgba(0,255,136,.12)] text-xs font-mono font-bold uppercase tracking-wider transition-all shrink-0"
+            >
+              ⏩ Brifingin Tamamını Gör
+            </button>
+          )}
         </div>
       </div>
 
