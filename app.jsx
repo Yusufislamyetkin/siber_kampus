@@ -1,6 +1,3 @@
-import { injectSpeedInsights } from '@vercel/speed-insights';
-injectSpeedInsights();
-
 const { useState, useRef, useEffect } = React;
 
 /* ============ SCROLL REVEAL HOOK ============ */
