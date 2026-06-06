@@ -516,53 +516,74 @@ const DashboardPage = ({ navigate, data }) => {
           </div>
         </div>
 
-        {/* learning pathways */}
-        <div id="categories-section" className="mb-10 scroll-mt-24">
-          <h2 className="text-2xl text-[#eafff5] mb-2">Öğrenme Yolları</h2>
-          <p className="text-sm text-[#74998a] mb-5">Sıfırdan uzmana — adım adım ilerle, gerçek sistemlerde pratik yap.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {(window.SK_PATHWAYS || []).map((pw, i) => {
-              const allItems = pw.phases.flatMap(p => p.items);
-              const solvedCount = allItems.filter(it => {
-                if (it.type === 'room') return solvedList.includes(it.id);
-                if (it.type === 'doc') return (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id);
-                return false;
-              }).length;
-              const totalCount = allItems.length;
-              const pct = totalCount > 0 ? Math.round((solvedCount / totalCount) * 100) : 0;
-              const currentPhase = pw.phases.find(p => {
-                const done = p.items.every(it => it.type === 'room' ? solvedList.includes(it.id) : it.type === 'doc' ? (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id) : false);
-                return !done;
-              });
-              return (
-                <button key={i} onClick={() => navigate('pathway', pw)} className="text-left rounded-xl border border-[#0c2719] p-7 hover:border-[#00ff88] hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(0,255,136,.35)] transition-all group" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="w-14 h-14 rounded-xl grid place-items-center text-2xl border border-[#103a26] bg-[rgba(0,255,136,.04)]">{pw.icon}</span>
-                    <div className="flex-1">
-                      <h3 className="text-lg text-[#eafff5] font-disp font-bold group-hover:text-[#00ff88] transition-colors">{pw.name}</h3>
-                      <p className="text-xs text-[#74998a] mt-0.5">{pw.desc}</p>
-                    </div>
+        {/* categories and learning pathways */}
+        <div id="categories-section" className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6 mb-10 scroll-mt-24">
+          {/* Left Column: Categories */}
+          <div>
+            <h2 className="text-2xl text-[#eafff5] mb-2">Kategori Seç & Başla</h2>
+            <p className="text-sm text-[#74998a] mb-5">İlgilendiğin siber güvenlik alanındaki laboratuvarları seç ve çözmeye başla.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {categories.map((c, i) => (
+                <button key={i} onClick={() => navigate('category', c)} className="text-left rounded-xl border border-[#0c2719] p-6 hover:border-[#00ff88] hover:-translate-y-1 transition-all group" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="w-11 h-11 rounded-lg grid place-items-center text-xl border border-[#103a26] bg-[rgba(0,255,136,.04)]">{c.icon}</span>
+                    <span className="font-mono text-xs text-[#3d564b] group-hover:text-[#00ff88] transition-colors">→</span>
                   </div>
-                  <div className="mb-3">
-                    <div className="flex items-center justify-between text-xs mb-1.5">
-                      <span className="text-[#74998a]">{currentPhase ? `Şu an: ${currentPhase.name}` : 'Tamamlandı!'}</span>
-                      <span className="text-[#00ff88] font-mono font-bold">{solvedCount}/{totalCount} · %{pct}</span>
-                    </div>
-                    <div className="w-full h-2 rounded-full bg-[#0c2719] overflow-hidden">
-                      <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: 'linear-gradient(90deg,#00ff88,#5cffba)' }}></div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-[#5c8a74]">
-                    <span>{pw.phases.length} faz</span>
-                    <span>·</span>
-                    <span>{pw.phases.flatMap(p => p.items.filter(it => it.type === 'room')).length} lab</span>
-                    <span>·</span>
-                    <span>{pw.phases.flatMap(p => p.items.filter(it => it.type === 'doc')).length} döküman</span>
-                    <span className="ml-auto font-mono text-[#00ff88] group-hover:translate-x-1 transition-transform">→</span>
-                  </div>
+                  <h3 className="text-[15px] text-[#eafff5] mb-1 group-hover:text-[#00ff88] transition-colors">{c.name}</h3>
+                  <p className="text-xs text-[#74998a]">{c.solvedCount} / {c.count} tamamlandı</p>
                 </button>
-              );
-            })}
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column: Learning Pathways */}
+          <div>
+            <h2 className="text-2xl text-[#eafff5] mb-2">Uzmanın Yolu</h2>
+            <p className="text-sm text-[#74998a] mb-5">Sıfırdan siber güvenlik uzmanlığına giden adım adım planlanmış yol.</p>
+            <div className="space-y-4">
+              {(window.SK_PATHWAYS || []).map((pw, i) => {
+                const allItems = pw.phases.flatMap(p => p.items);
+                const solvedCount = allItems.filter(it => {
+                  if (it.type === 'room') return solvedList.includes(it.id);
+                  if (it.type === 'doc') return (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id);
+                  return false;
+                }).length;
+                const totalCount = allItems.length;
+                const pct = totalCount > 0 ? Math.round((solvedCount / totalCount) * 100) : 0;
+                const currentPhase = pw.phases.find(p => {
+                  const done = p.items.every(it => it.type === 'room' ? solvedList.includes(it.id) : it.type === 'doc' ? (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id) : false);
+                  return !done;
+                });
+                return (
+                  <button key={i} onClick={() => navigate('pathway', pw)} className="w-full text-left rounded-xl border border-[#0c2719] p-6 hover:border-[#00ff88] hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(0,255,136,.35)] transition-all group" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="w-12 h-12 rounded-lg grid place-items-center text-xl border border-[#103a26] bg-[rgba(0,255,136,.04)]">{pw.icon}</span>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base text-[#eafff5] font-disp font-bold group-hover:text-[#00ff88] transition-colors truncate">{pw.name}</h3>
+                        <p className="text-xs text-[#74998a] mt-0.5 truncate">{pw.desc}</p>
+                      </div>
+                    </div>
+                    <div className="mb-3">
+                      <div className="flex items-center justify-between text-xs mb-1.5">
+                        <span className="text-[#74998a] truncate">{currentPhase ? `Şu an: ${currentPhase.name}` : 'Tamamlandı!'}</span>
+                        <span className="text-[#00ff88] font-mono font-bold">{solvedCount}/{totalCount} · %{pct}</span>
+                      </div>
+                      <div className="w-full h-2 rounded-full bg-[#0c2719] overflow-hidden">
+                        <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: 'linear-gradient(90deg,#00ff88,#5cffba)' }}></div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 text-xs text-[#5c8a74]">
+                      <span>{pw.phases.length} faz</span>
+                      <span>·</span>
+                      <span>{pw.phases.flatMap(p => p.items.filter(it => it.type === 'room')).length} lab</span>
+                      <span>·</span>
+                      <span>{pw.phases.flatMap(p => p.items.filter(it => it.type === 'doc')).length} döküman</span>
+                      <span className="ml-auto font-mono text-[#00ff88] group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
