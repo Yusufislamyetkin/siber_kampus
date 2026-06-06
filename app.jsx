@@ -51,7 +51,7 @@ const Header = ({ navigate }) => {
         </nav>
         <div className="flex items-center gap-3.5">
           <button onClick={() => navigate('login')} className="hidden sm:inline-flex font-mono text-sm text-[#cdeede] px-[18px] py-[11px] border border-[#103a26] bg-transparent hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">Giriş Yap</button>
-          <button onClick={() => navigate('register')} className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-[22px] py-3 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] hover:-translate-y-px transition-all">Ücretsiz Başla</button>
+          <button onClick={() => navigate('register')} className="hidden sm:inline-flex font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-[22px] py-3 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] hover:-translate-y-px transition-all">Ücretsiz Başla</button>
           
           <button onClick={() => setMobileMenuOpen(o => !o)} className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 border border-[#103a26] rounded bg-[#04100a] transition-all">
             <span className={`w-5 h-0.5 bg-[#00ff88] transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
