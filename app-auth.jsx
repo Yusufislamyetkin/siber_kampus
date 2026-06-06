@@ -5352,6 +5352,9 @@ const ChatPage = ({ navigate }) => {
   const [input, setInput] = useState('');
   const scrollRef = useRef(null);
   const isFirstLoad = useRef(true);
+  const prevMsgsCount = useRef(0);
+  const prevLastMsgId = useRef(null);
+  const userJustSentMessage = useRef(false);
   const [activeChat, setActiveChat] = useState('general');
   const [showVIPModal, setShowVIPModal] = useState(false);
   const [vipCount, setVipCount] = useState(0);
@@ -5401,13 +5404,22 @@ const ChatPage = ({ navigate }) => {
   useEffect(() => {
     if (scrollRef.current && msgs.length > 0) {
       const el = scrollRef.current;
-      const isNearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 150;
-      const lastMsgIsMe = msgs[msgs.length - 1].me;
+      const lastMsg = msgs[msgs.length - 1];
+      const lastMsgId = lastMsg.id || (lastMsg.u + '_' + lastMsg.t + '_' + (lastMsg.m ? lastMsg.m.slice(0, 10) : ''));
       
-      if (isFirstLoad.current || isNearBottom || lastMsgIsMe) {
+      const countChanged = msgs.length !== prevMsgsCount.current;
+      const lastMsgChanged = lastMsgId !== prevLastMsgId.current;
+      
+      const isNearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 150;
+      
+      if (isFirstLoad.current || userJustSentMessage.current || (isNearBottom && (countChanged || lastMsgChanged))) {
         el.scrollTop = el.scrollHeight;
         isFirstLoad.current = false;
+        userJustSentMessage.current = false;
       }
+      
+      prevMsgsCount.current = msgs.length;
+      prevLastMsgId.current = lastMsgId;
     }
   }, [msgs]);
 
@@ -5418,6 +5430,7 @@ const ChatPage = ({ navigate }) => {
     
     // Add locally for snappiness
     const newMsg = { u: user.name, role: user.points > 1200 ? 'Siber Mentör' : 'Öğrenci', t: tStr, m: input, me: true };
+    userJustSentMessage.current = true;
     setMsgs(m => [...m, newMsg]);
     const originalInput = input;
     setInput('');

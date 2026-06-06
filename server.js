@@ -268,8 +268,15 @@ app.get('/api/users/online', async (req, res) => {
     const result = await pool.query("SELECT name FROM users WHERE last_active_at > NOW() - INTERVAL '2 minute' ORDER BY name ASC");
     let onlineUsers = result.rows;
     
-    // Ensure at least 117 users are online (varying randomly between 117 and 137)
-    const targetCount = 117 + Math.floor(Math.random() * 21);
+    // Ensure at least 117 and at most 400 users are online (varying realistically throughout the day)
+    const hour = new Date().getHours();
+    // A sine wave shifted so that 4 AM is lowest, 4 PM (16:00) is highest.
+    // Midpoint between 117 and 400 is 258.5, amplitude is 141.5
+    const angle = ((hour - 10) / 24) * 2 * Math.PI;
+    const baseCount = 258.5 + 141.5 * Math.sin(angle);
+    // Add minor fluctuating noise to make it feel active (+/- 12 users)
+    const noise = Math.sin(new Date().getMinutes() * 0.5) * 12;
+    const targetCount = Math.min(400, Math.max(117, Math.round(baseCount + noise)));
     if (onlineUsers.length < targetCount) {
       const needed = targetCount - onlineUsers.length;
       const existingNames = onlineUsers.map(u => u.name);
