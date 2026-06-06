@@ -247,7 +247,7 @@ const AppHeader = ({ navigate, active }) => {
             <span className="text-xs text-[#74998a]">puan</span>
           </div>
           <div className="relative">
-            <button onClick={() => setOpen(o => !o)} className="flex items-center gap-2 pl-1.5 pr-3 py-1.5 rounded-lg border border-[#103a26] hover:border-[#00ff88] transition-colors">
+            <button onClick={() => setOpen(o => !o)} aria-label="Kullanıcı Menüsü" className="flex items-center gap-2 pl-1.5 pr-3 py-1.5 rounded-lg border border-[#103a26] hover:border-[#00ff88] transition-colors">
               <span className="w-7 h-7 rounded-md grid place-items-center text-[#5cffba] font-bold text-xs border border-[#103a26]" style={{ background: 'linear-gradient(135deg,#0a3a24,#052b18)' }}>{user.avatar}</span>
               <span className="hidden sm:inline text-sm text-[#cdeede] font-mono">{user.name}</span>
               <span className="text-[#74998a] text-[10px]">▼</span>
@@ -299,7 +299,7 @@ const AppHeader = ({ navigate, active }) => {
             )}
           </div>
           
-          <button onClick={() => setMobileMenuOpen(o => !o)} className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 border border-[#103a26] rounded bg-[#04100a] transition-all">
+          <button onClick={() => setMobileMenuOpen(o => !o)} aria-label="Mobil Menüyü Aç/Kapat" className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 border border-[#103a26] rounded bg-[#04100a] transition-all">
             <span className={`w-5 h-0.5 bg-[#00ff88] transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
             <span className={`w-5 h-0.5 bg-[#00ff88] transition-opacity ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
             <span className={`w-5 h-0.5 bg-[#00ff88] transition-transform ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
@@ -324,7 +324,7 @@ const AppHeader = ({ navigate, active }) => {
 };
 
 const SectionLabel = ({ children }) => (
-  <span className="font-mono text-[12px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5 mb-4"><span className="text-[#3d564b] font-bold">//</span> {children}</span>
+  <span className="font-mono text-[12px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5 mb-4"><span className="text-[#5c8a74] font-bold">//</span> {children}</span>
 );
 
 /* ============ DASHBOARD ============ */
@@ -483,7 +483,7 @@ const DashboardPage = ({ navigate, data }) => {
                         <span className="text-xs px-2 py-1 rounded bg-[#5cffba]/10 text-[#5cffba] border border-[#5cffba]/20">Yeni</span>
                       </div>
                       <p className="text-xs text-[#74998a] mb-4">{t.desc}</p>
-                      <div className="flex items-center justify-between text-xs text-[#3d564b]">
+                      <div className="flex items-center justify-between text-xs text-[#5c8a74]">
                         <span>◆ {t.points} Puan</span>
                         <span>👥 {(t.users || 0).toLocaleString('tr-TR')}</span>
                       </div>
@@ -510,7 +510,7 @@ const DashboardPage = ({ navigate, data }) => {
               <button key={i} onClick={() => navigate('category', c)} className="text-left rounded-xl border border-[#0c2719] p-6 hover:border-[#00ff88] hover:-translate-y-1 transition-all group" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                 <div className="flex items-center justify-between mb-3">
                   <span className="w-11 h-11 rounded-lg grid place-items-center text-xl border border-[#103a26] bg-[rgba(0,255,136,.04)]">{c.icon}</span>
-                  <span className="font-mono text-xs text-[#3d564b] group-hover:text-[#00ff88] transition-colors">→</span>
+                  <span className="font-mono text-xs text-[#5c8a74] group-hover:text-[#00ff88] transition-colors">→</span>
                 </div>
                 <h3 className="text-[15px] text-[#eafff5] mb-1 group-hover:text-[#00ff88] transition-colors">{c.name}</h3>
                 <p className="text-xs text-[#74998a]">{c.solvedCount} / {c.count} tamamlandı</p>
@@ -527,7 +527,7 @@ const DashboardPage = ({ navigate, data }) => {
               {badges.map((b, i) => (
                 <div key={i} className={"flex items-center justify-between p-3 rounded-lg border " + (b.done ? 'border-[#103a26] bg-[rgba(0,255,136,.03)]' : 'border-[#0c2719] opacity-60')}>
                   <span className="flex items-center gap-3"><span className="text-lg grayscale-0" style={{ filter: b.done ? 'none' : 'grayscale(1)' }}>{b.icon}</span><span className={"text-sm " + (b.done ? 'text-[#eafff5]' : 'text-[#74998a]')}>{b.name}</span></span>
-                  <span className={"font-mono text-xs " + (b.done ? 'text-[#00ff88]' : 'text-[#3d564b]')}>{b.done ? '✓ ' + b.when : '✗ ' + b.when}</span>
+                  <span className={"font-mono text-xs " + (b.done ? 'text-[#00ff88]' : 'text-[#5c8a74]')}>{b.done ? '✓ ' + b.when : '✗ ' + b.when}</span>
                 </div>
               ))}
             </div>
@@ -555,7 +555,7 @@ const DashboardPage = ({ navigate, data }) => {
               <path d={line} fill="none" stroke="#00ff88" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" style={{ filter: 'drop-shadow(0 0 6px rgba(0,255,136,.5))' }} />
               {pts.map((p, i) => (<circle key={i} cx={p[0]} cy={p[1]} r={i === pts.length - 1 ? 4 : 2.5} fill={i === pts.length - 1 ? '#eafff5' : '#00ff88'} />))}
             </svg>
-            <div className="flex justify-between mt-2 text-[10px] text-[#3d564b] font-mono px-1">
+            <div className="flex justify-between mt-2 text-[10px] text-[#5c8a74] font-mono px-1">
               {dayLabels.map((m, i) => (<span key={i} className={i % 2 ? 'opacity-0 md:opacity-100' : ''}>{m}</span>))}
             </div>
 
@@ -590,7 +590,7 @@ const DashboardPage = ({ navigate, data }) => {
                   </div>
                   <div className="flex justify-between text-xs">
                     <span className="text-[#74998a]">Çözüm Oranı</span>
-                    <span className={"font-mono font-bold " + (solvedList.length > 0 ? 'text-[#00ff88]' : 'text-[#3d564b]')}>{solvedList.length > 0 ? '+%' + Math.min(99, Math.round(solvedList.length * 5)) + ' artış' : '%0'}</span>
+                    <span className={"font-mono font-bold " + (solvedList.length > 0 ? 'text-[#00ff88]' : 'text-[#5c8a74]')}>{solvedList.length > 0 ? '+%' + Math.min(99, Math.round(solvedList.length * 5)) + ' artış' : '%0'}</span>
                   </div>
                   <div className="flex justify-between text-xs">
                     <span className="text-[#74998a]">Ort. Süre / Gün</span>
@@ -640,13 +640,13 @@ const CategoryPage = ({ navigate, data }) => {
             <div key={room.id} onClick={() => navigate('roomArticle', { ...room, cat: cat.name })} className="group cursor-pointer border border-[#0c2719] rounded-xl p-7 hover:border-[#00ff88] hover:shadow-[0_24px_50px_-28px_rgba(0,255,136,.35)] transition-all" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
               <div className="flex items-start justify-between mb-3 gap-3">
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1.5"><span className="font-mono text-xs text-[#3d564b]">{room.id.toUpperCase()}</span></div>
+                  <div className="flex items-center gap-2 mb-1.5"><span className="font-mono text-xs text-[#5c8a74]">{room.id.toUpperCase()}</span></div>
                   <h2 className="text-lg text-[#eafff5] group-hover:text-[#00ff88] transition-colors" style={{ lineHeight: 1.25 }}>{room.name}</h2>
                   <p className="text-sm text-[#74998a] mt-1.5">{room.desc}</p>
                 </div>
                 <span className={"text-xs font-bold px-3 py-1.5 rounded whitespace-nowrap " + (dc[room.difficulty] || '')}>{room.difficulty}</span>
               </div>
-              <div className="flex items-center justify-between pt-4 border-t border-[#0c2719] text-xs text-[#3d564b]">
+              <div className="flex items-center justify-between pt-4 border-t border-[#0c2719] text-xs text-[#5c8a74]">
                 <div className="flex items-center gap-4">
                   <span>👥 {room.users.toLocaleString('tr-TR')}</span>
                   <span className="font-mono text-[#00ff88]">◆ {room.points}</span>
@@ -942,10 +942,10 @@ const WEB_ROOM_CONFIGS = {
                     </div>
 
                     {/* Step 2 */}
-                    <div className={`p-4 rounded-xl border transition-all ${step2Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step1Done ? 'border-[#0c2719] opacity-40 text-[#3d564b]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
+                    <div className={`p-4 rounded-xl border transition-all ${step2Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step1Done ? 'border-[#0c2719] opacity-40 text-[#5c8a74]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
                       <div className="flex items-center justify-between font-bold text-sm md:text-base mb-1.5">
                         <span className="flex items-center gap-2">
-                          <span className={step2Done ? "text-[#00ff88]" : step1Done ? "text-[#ffd166]" : "text-[#3d564b]"}>{step2Done ? "✓ Adım 2:" : "○ Adım 2:"}</span>
+                          <span className={step2Done ? "text-[#00ff88]" : step1Done ? "text-[#ffd166]" : "text-[#5c8a74]"}>{step2Done ? "✓ Adım 2:" : "○ Adım 2:"}</span>
                           Mantıksal OR Koşulu Ekleme
                         </span>
                         {step2Done ? (
@@ -953,7 +953,7 @@ const WEB_ROOM_CONFIGS = {
                         ) : step1Done ? (
                           <span className="text-sm text-[#ffd166] font-mono bg-[#ffd166]/10 px-2.5 py-1 rounded font-bold animate-pulse">Aktif Adım</span>
                         ) : (
-                          <span className="text-sm text-[#3d564b] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
+                          <span className="text-sm text-[#5c8a74] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
                         )}
                       </div>
                       <p className="text-sm leading-relaxed text-[#74998a]">
@@ -962,10 +962,10 @@ const WEB_ROOM_CONFIGS = {
                     </div>
 
                     {/* Step 3 */}
-                    <div className={`p-4 rounded-xl border transition-all ${step3Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step2Done ? 'border-[#0c2719] opacity-40 text-[#3d564b]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
+                    <div className={`p-4 rounded-xl border transition-all ${step3Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step2Done ? 'border-[#0c2719] opacity-40 text-[#5c8a74]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
                       <div className="flex items-center justify-between font-bold text-sm md:text-base mb-1.5">
                         <span className="flex items-center gap-2">
-                          <span className={step3Done ? "text-[#00ff88]" : step2Done ? "text-[#ffd166]" : "text-[#3d564b]"}>{step3Done ? "✓ Adım 3:" : "○ Adım 3:"}</span>
+                          <span className={step3Done ? "text-[#00ff88]" : step2Done ? "text-[#ffd166]" : "text-[#5c8a74]"}>{step3Done ? "✓ Adım 3:" : "○ Adım 3:"}</span>
                           Şifre Kontrolünü Yorum Yapmak
                         </span>
                         {step3Done ? (
@@ -973,7 +973,7 @@ const WEB_ROOM_CONFIGS = {
                         ) : step2Done ? (
                           <span className="text-sm text-[#ffd166] font-mono bg-[#ffd166]/10 px-2.5 py-1 rounded font-bold animate-pulse">Aktif Adım</span>
                         ) : (
-                          <span className="text-sm text-[#3d564b] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
+                          <span className="text-sm text-[#5c8a74] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
                         )}
                       </div>
                       <p className="text-sm leading-relaxed text-[#74998a]">
@@ -1693,10 +1693,10 @@ const WEB_ROOM_CONFIGS = {
                       </p>
                     </div>
 
-                    <div className={`p-4 rounded-xl border transition-all ${step2Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step1Done ? 'border-[#0c2719] opacity-40 text-[#3d564b]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
+                    <div className={`p-4 rounded-xl border transition-all ${step2Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step1Done ? 'border-[#0c2719] opacity-40 text-[#5c8a74]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
                       <div className="flex items-center justify-between font-bold text-sm md:text-base mb-1.5">
                         <span className="flex items-center gap-2">
-                          <span className={step2Done ? "text-[#00ff88]" : step1Done ? "text-[#ffd166]" : "text-[#3d564b]"}>{step2Done ? "✓ Adım 2:" : "○ Adım 2:"}</span>
+                          <span className={step2Done ? "text-[#00ff88]" : step1Done ? "text-[#ffd166]" : "text-[#5c8a74]"}>{step2Done ? "✓ Adım 2:" : "○ Adım 2:"}</span>
                           Varsayılan Şifreyi Girin
                         </span>
                         {step2Done ? (
@@ -1704,7 +1704,7 @@ const WEB_ROOM_CONFIGS = {
                         ) : step1Done ? (
                           <span className="text-sm text-[#ffd166] font-mono bg-[#ffd166]/10 px-2.5 py-1 rounded font-bold animate-pulse">Aktif Adım</span>
                         ) : (
-                          <span className="text-sm text-[#3d564b] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
+                          <span className="text-sm text-[#5c8a74] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
                         )}
                       </div>
                       <p className="text-sm leading-relaxed text-[#74998a]">
@@ -1893,10 +1893,10 @@ const WEB_ROOM_CONFIGS = {
                       </p>
                     </div>
 
-                    <div className={`p-4 rounded-xl border transition-all ${step2Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step1Done ? 'border-[#0c2719] opacity-40 text-[#3d564b]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
+                    <div className={`p-4 rounded-xl border transition-all ${step2Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step1Done ? 'border-[#0c2719] opacity-40 text-[#5c8a74]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
                       <div className="flex items-center justify-between font-bold text-sm md:text-base mb-1.5">
                         <span className="flex items-center gap-2">
-                          <span className={step2Done ? "text-[#00ff88]" : step1Done ? "text-[#ffd166]" : "text-[#3d564b]"}>{step2Done ? "✓ Adım 2:" : "○ Adım 2:"}</span>
+                          <span className={step2Done ? "text-[#00ff88]" : step1Done ? "text-[#ffd166]" : "text-[#5c8a74]"}>{step2Done ? "✓ Adım 2:" : "○ Adım 2:"}</span>
                           Bayrak Dosyasını Okuyun
                         </span>
                         {step2Done ? (
@@ -1904,7 +1904,7 @@ const WEB_ROOM_CONFIGS = {
                         ) : step1Done ? (
                           <span className="text-sm text-[#ffd166] font-mono bg-[#ffd166]/10 px-2.5 py-1 rounded font-bold animate-pulse">Aktif Adım</span>
                         ) : (
-                          <span className="text-sm text-[#3d564b] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
+                          <span className="text-sm text-[#5c8a74] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
                         )}
                       </div>
                       <p className="text-sm leading-relaxed text-[#74998a]">
@@ -2070,7 +2070,7 @@ const WEB_ROOM_CONFIGS = {
                     />
                     <button
                       type="submit"
-                      className={`w-full font-bold py-2 rounded transition-all text-xs ${step3Ready ? 'text-[#021008] bg-[#00ff88] hover:shadow-[0_0_15px_rgba(0,255,136,.3)]' : 'text-[#3d564b] bg-[#103a26] cursor-not-allowed'}`}
+                      className={`w-full font-bold py-2 rounded transition-all text-xs ${step3Ready ? 'text-[#021008] bg-[#00ff88] hover:shadow-[0_0_15px_rgba(0,255,136,.3)]' : 'text-[#5c8a74] bg-[#103a26] cursor-not-allowed'}`}
                     >
                       Doğrula
                     </button>
@@ -2234,10 +2234,10 @@ const WEB_ROOM_CONFIGS = {
                       </p>
                     </div>
 
-                    <div className={`p-4 rounded-xl border transition-all ${step2Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step1Done ? 'border-[#0c2719] opacity-40 text-[#3d564b]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
+                    <div className={`p-4 rounded-xl border transition-all ${step2Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step1Done ? 'border-[#0c2719] opacity-40 text-[#5c8a74]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
                       <div className="flex items-center justify-between font-bold text-sm md:text-base mb-1.5">
                         <span className="flex items-center gap-2">
-                          <span className={step2Done ? "text-[#00ff88]" : step1Done ? "text-[#ffd166]" : "text-[#3d564b]"}>{step2Done ? "✓ Adım 2:" : "○ Adım 2:"}</span>
+                          <span className={step2Done ? "text-[#00ff88]" : step1Done ? "text-[#ffd166]" : "text-[#5c8a74]"}>{step2Done ? "✓ Adım 2:" : "○ Adım 2:"}</span>
                           Sunucu Dosyasını Okuyun
                         </span>
                         {step2Done ? (
@@ -2245,7 +2245,7 @@ const WEB_ROOM_CONFIGS = {
                         ) : step1Done ? (
                           <span className="text-sm text-[#ffd166] font-mono bg-[#ffd166]/10 px-2.5 py-1 rounded font-bold animate-pulse">Aktif Adım</span>
                         ) : (
-                          <span className="text-sm text-[#3d564b] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
+                          <span className="text-sm text-[#5c8a74] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
                         )}
                       </div>
                       <p className="text-sm leading-relaxed text-[#74998a]">
@@ -2483,7 +2483,7 @@ const WEB_ROOM_CONFIGS = {
                       />
                       <button
                         type="submit"
-                        className={`w-full font-bold py-2 rounded transition-all text-xs ${step3Ready ? 'text-[#021008] bg-[#00ff88] hover:shadow-[0_0_15px_rgba(0,255,136,.3)]' : 'text-[#3d564b] bg-[#103a26] cursor-not-allowed'}`}
+                        className={`w-full font-bold py-2 rounded transition-all text-xs ${step3Ready ? 'text-[#021008] bg-[#00ff88] hover:shadow-[0_0_15px_rgba(0,255,136,.3)]' : 'text-[#5c8a74] bg-[#103a26] cursor-not-allowed'}`}
                       >
                         Çerezi Güncelle ve Yenile
                       </button>
@@ -2599,7 +2599,7 @@ Service detection performed. Nmap done: 1 IP address (1 host up) scanned in 18.2
           ? <span className="text-sm text-[#00ff88] font-mono bg-[#00ff88]/10 px-2.5 py-1 rounded font-bold">Başarılı</span>
           : active
             ? <span className="text-sm text-[#ffd166] font-mono bg-[#ffd166]/10 px-2.5 py-1 rounded font-bold animate-pulse">Aktif Adım</span>
-            : <span className="text-sm text-[#3d564b] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
+            : <span className="text-sm text-[#5c8a74] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
       );
 
       const renderLeftPanel = () => (
@@ -2702,7 +2702,7 @@ Service detection performed. Nmap done: 1 IP address (1 host up) scanned in 18.2
                     <div className={`p-4 rounded-xl border transition-all ${s2 ? 'border-[#00ff88]/30 bg-[#00ff88]/5' : !s1 ? 'border-[#0c2719] opacity-40' : 'border-[#103a26] bg-black/25'}`}>
                       <div className="flex items-center justify-between font-bold mb-1.5">
                         <span className="flex items-center gap-2">
-                          <span className={s2 ? 'text-[#00ff88]' : s1 ? 'text-[#ffd166]' : 'text-[#3d564b]'}>{s2 ? '✓ Adım 2:' : '○ Adım 2:'}</span>
+                          <span className={s2 ? 'text-[#00ff88]' : s1 ? 'text-[#ffd166]' : 'text-[#5c8a74]'}>{s2 ? '✓ Adım 2:' : '○ Adım 2:'}</span>
                           Port ve Servis Sürümü Taraması
                         </span>
                         <StepBadge done={s2} active={s1 && !s2} />
@@ -2717,7 +2717,7 @@ Service detection performed. Nmap done: 1 IP address (1 host up) scanned in 18.2
                     <div className={`p-4 rounded-xl border transition-all ${s3 ? 'border-[#00ff88]/30 bg-[#00ff88]/5' : !s2 ? 'border-[#0c2719] opacity-40' : 'border-[#103a26] bg-black/25'}`}>
                       <div className="flex items-center justify-between font-bold mb-1.5">
                         <span className="flex items-center gap-2">
-                          <span className={s3 ? 'text-[#00ff88]' : s2 ? 'text-[#ffd166]' : 'text-[#3d564b]'}>{s3 ? '✓ Adım 3:' : '○ Adım 3:'}</span>
+                          <span className={s3 ? 'text-[#00ff88]' : s2 ? 'text-[#ffd166]' : 'text-[#5c8a74]'}>{s3 ? '✓ Adım 3:' : '○ Adım 3:'}</span>
                           NSE Scriptleri ile Derin Tarama
                         </span>
                         <StepBadge done={s3} active={s2 && !s3} />
@@ -2742,7 +2742,7 @@ Service detection performed. Nmap done: 1 IP address (1 host up) scanned in 18.2
                     <div className="flex-1 min-h-[260px] max-h-[300px] overflow-y-auto p-3.5 bg-black/85 border border-[#103a26] rounded-xl font-mono text-xs leading-relaxed shadow-inner">
                       <div className="text-[#5cffba]">Nmap interaktif konsolu hazır. 'help' yazabilirsin.</div>
                       {hist.length === 0 && (
-                        <div className="text-[#3d564b] mt-1">// İlk komutu dene: nmap -sn 10.10.84.0/24</div>
+                        <div className="text-[#5c8a74] mt-1">// İlk komutu dene: nmap -sn 10.10.84.0/24</div>
                       )}
                       {hist.map((h, i) => (
                         <div key={i} className="mt-2">
@@ -3590,11 +3590,11 @@ const RoomArticlePage = ({ navigate, data }) => {
         <div className="max-w-[1280px] mx-auto px-6 py-3 flex items-center justify-between flex-wrap gap-3">
           <div className="flex items-center gap-3 text-sm md:text-base">
             <button onClick={() => navigate('dashboard')} className="text-[#74998a] hover:text-[#00ff88] transition-colors">← Dashboard</button>
-            <span className="text-[#3d564b]">/</span>
+            <span className="text-[#5c8a74]">/</span>
             <button onClick={() => navigate('category', parentCat)} className="text-[#74998a] hover:text-[#00ff88] transition-colors">{parentCat.name}</button>
-            <span className="text-[#3d564b]">/</span>
+            <span className="text-[#5c8a74]">/</span>
             <span className="text-[#eafff5] font-mono">{room.name}</span>
-            <span className="text-[#3d564b]">/</span>
+            <span className="text-[#5c8a74]">/</span>
             <span className="text-[#00ff88] font-mono">Brifing</span>
           </div>
           <span className="font-mono text-xs text-[#74998a]">{article.readTime}</span>
@@ -4035,10 +4035,10 @@ const RoomPage = ({ navigate, data }) => {
         <div className="max-w-[1280px] mx-auto px-6 py-3 flex items-center justify-between flex-wrap gap-3">
           <div className="flex items-center gap-3 text-sm md:text-base">
             <button onClick={() => navigate('dashboard')} className="text-[#74998a] hover:text-[#00ff88] transition-colors">← Dashboard</button>
-            <span className="text-[#3d564b]">/</span>
+            <span className="text-[#5c8a74]">/</span>
             <button onClick={() => navigate('category', parentCat)} className="text-[#74998a] hover:text-[#00ff88] transition-colors">{parentCat.name}</button>
-            <span className="text-[#3d564b]">/</span>
-            <span className="text-[#eafff5] font-mono">{config.title}</span>
+            <span className="text-[#5c8a74]">/</span>
+            <h1 className="text-[#eafff5] font-mono inline text-sm md:text-base font-normal">{config.title}</h1>
           </div>
           <div className="flex items-center gap-2.5 text-sm">
             <span className={"font-bold px-3 py-1.5 rounded " + (dc[room.difficulty] || dc['Başlangıç'])}>{room.difficulty}</span>
@@ -4097,7 +4097,7 @@ const RoomPage = ({ navigate, data }) => {
                 <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-black/20 hover:bg-black/35 border-t border-x border-transparent rounded-t-lg text-sm text-[#74998a] h-[32px] min-w-[140px] max-w-[180px] cursor-pointer transition-colors">
                   <span className="text-xs">🌐</span>
                   <span className="truncate flex-1 font-mono text-xs">Yeni Sekme</span>
-                  <button type="button" className="text-[#3d564b] hover:text-[#74998a] font-bold ml-1 text-xs">×</button>
+                  <button type="button" className="text-[#5c8a74] hover:text-[#74998a] font-bold ml-1 text-xs">×</button>
                 </div>
                 {/* Add Tab Button */}
                 <button type="button" className="w-6 h-6 rounded-md hover:bg-white/5 flex items-center justify-center text-[#74998a] text-sm font-sans mb-1 font-bold">+</button>
@@ -4121,7 +4121,7 @@ const RoomPage = ({ navigate, data }) => {
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ff5f57] animate-ping"></span>
                       ⚠ Güvenli değil
                     </span>
-                    <span className="text-[#3d564b] font-bold">|</span>
+                    <span className="text-[#5c8a74] font-bold">|</span>
                     {/* Dynamic Host and Path URL Highlight */}
                     <span className="text-[#74998a] tracking-wide select-all">
                       https://<span className="text-[#00ff88] font-bold">hedefsite.com</span>/{room.slug === 'web-sql-injection' ? 'admingiris' : (room.slug || 'exploit')}
@@ -4496,7 +4496,7 @@ const LeaderboardPage = ({ navigate }) => {
                   const locked = dynBadges.filter(b => !b.done);
                   return (<>
                     {earned.slice(0, 5).map((b, i) => (<span key={i} className="w-11 h-11 rounded-lg grid place-items-center text-lg border border-[#103a26] bg-[rgba(0,255,136,.03)]">{b.icon}</span>))}
-                    {earned.length < 5 && Array.from({ length: Math.min(3, 5 - earned.length) }).map((_, i) => (<span key={'l'+i} className="w-11 h-11 rounded-lg grid place-items-center text-lg border border-[#0c2719] text-[#3d564b]">?</span>))}
+                    {earned.length < 5 && Array.from({ length: Math.min(3, 5 - earned.length) }).map((_, i) => (<span key={'l'+i} className="w-11 h-11 rounded-lg grid place-items-center text-lg border border-[#0c2719] text-[#5c8a74]">?</span>))}
                   </>);
                 })()}
               </div>
@@ -4659,7 +4659,7 @@ const ChatPage = ({ navigate }) => {
                   )}
                 </button>
               </div>
-              <span className="text-xs text-[#3d564b] ml-auto font-mono">{totalOnlineCount || 1} aktif</span>
+              <span className="text-xs text-[#5c8a74] ml-auto font-mono">{totalOnlineCount || 1} aktif</span>
             </div>
             <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-4">
               {msgs.map((m, i) => (
@@ -4671,8 +4671,8 @@ const ChatPage = ({ navigate }) => {
                     <div className={"max-w-[78%] " + (m.me ? 'text-right' : '')}>
                       <div className={"flex items-center gap-2 mb-1 " + (m.me ? 'justify-end' : '')}>
                         <span className="text-sm text-[#eafff5] font-medium">{m.u}</span>
-                        <span className="text-[10px] text-[#3d564b] font-mono px-1.5 py-0.5 rounded bg-[#04100a] border border-[#0c2719]">{m.role}</span>
-                        <span className="text-[10px] text-[#3d564b]">{m.t}</span>
+                        <span className="text-[10px] text-[#5c8a74] font-mono px-1.5 py-0.5 rounded bg-[#04100a] border border-[#0c2719]">{m.role}</span>
+                        <span className="text-[10px] text-[#5c8a74]">{m.t}</span>
                       </div>
                       <div className={"px-3.5 py-2.5 rounded-xl text-sm leading-relaxed break-words " + (m.me ? 'bg-[rgba(0,255,136,.08)] border border-[#103a26] text-[#cdeede] rounded-tr-sm' : 'bg-[#04100a] border border-[#0c2719] text-[#cdeede] rounded-tl-sm')}>{m.m}</div>
                     </div>
@@ -4703,7 +4703,7 @@ const ChatPage = ({ navigate }) => {
                   <span className="text-sm text-[#00ff88] font-medium">{ME.name} (Sen)</span>
                   <span className="ml-auto w-2 h-2 rounded-full bg-[#ffd166]"></span>
                 </div>
-                <p className="text-xs text-[#3d564b] pt-2">{totalOnlineCount > 8 ? '+' + (totalOnlineCount - 8) + ' kişi daha…' : ''}</p>
+                <p className="text-xs text-[#5c8a74] pt-2">{totalOnlineCount > 8 ? '+' + (totalOnlineCount - 8) + ' kişi daha…' : ''}</p>
               </div>
             </div>
             <div className="rounded-2xl border border-[#0c2719] p-6" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
@@ -5018,7 +5018,7 @@ const AdminPage = ({ navigate }) => {
                   onChange={e => setUserSearch(e.target.value)}
                   className="w-full bg-[#020806] border border-[#103a26] rounded-lg pl-4 pr-10 py-2.5 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-sm"
                 />
-                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#3d564b]">🔍</span>
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#5c8a74]">🔍</span>
               </div>
               <button
                 onClick={fetchUsers}
@@ -5058,7 +5058,7 @@ const AdminPage = ({ navigate }) => {
                             </span>
                             <div>
                               <div className="text-[#eafff5] font-medium">{u.name}</div>
-                              <div className="text-xs text-[#3d564b]">ID: {u.id} {u.is_admin && <span className="text-[#ffd166]">[Yönetici]</span>}</div>
+                              <div className="text-xs text-[#5c8a74]">ID: {u.id} {u.is_admin && <span className="text-[#ffd166]">[Yönetici]</span>}</div>
                             </div>
                           </div>
                         </td>
@@ -5249,7 +5249,7 @@ const AdminPage = ({ navigate }) => {
                           <span className="text-[10px] text-[#74998a] font-mono">{b.readTime || b.read_time}</span>
                         </div>
                         <h4 className="text-[#eafff5] font-medium text-sm truncate">{b.title}</h4>
-                        <p className="text-xs text-[#3d564b] mt-1 font-mono">
+                        <p className="text-xs text-[#5c8a74] mt-1 font-mono">
                           Yazar: {b.author} • {b.date || 'Bugün'}
                         </p>
                       </div>
@@ -5307,10 +5307,10 @@ const AdminPage = ({ navigate }) => {
                         <div className="min-w-0">
                           <div className="flex items-center gap-2 mb-1 flex-wrap">
                             <span className="text-sm text-[#eafff5] font-medium">{msg.u}</span>
-                            <span className="text-[10px] text-[#3d564b] font-mono px-1.5 py-0.5 rounded bg-[#04100a] border border-[#0c2719]">
+                            <span className="text-[10px] text-[#5c8a74] font-mono px-1.5 py-0.5 rounded bg-[#04100a] border border-[#0c2719]">
                               {msg.role}
                             </span>
-                            <span className="text-[10px] text-[#3d564b]">{msg.t}</span>
+                            <span className="text-[10px] text-[#5c8a74]">{msg.t}</span>
                             {isUserBanned && (
                               <span className="text-[10px] text-[#ff2e88] font-mono font-bold">[YASAKLI]</span>
                             )}

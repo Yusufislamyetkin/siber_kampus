@@ -53,7 +53,7 @@ const Header = ({ navigate }) => {
           <button onClick={() => navigate('login')} className="hidden sm:inline-flex font-mono text-sm text-[#cdeede] px-[18px] py-[11px] border border-[#103a26] bg-transparent hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">Giriş Yap</button>
           <button onClick={() => navigate('register')} className="hidden sm:inline-flex font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-[22px] py-3 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] hover:-translate-y-px transition-all">Ücretsiz Başla</button>
           
-          <button onClick={() => setMobileMenuOpen(o => !o)} className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 border border-[#103a26] rounded bg-[#04100a] transition-all">
+          <button onClick={() => setMobileMenuOpen(o => !o)} aria-label="Mobil Menüyü Aç/Kapat" className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 border border-[#103a26] rounded bg-[#04100a] transition-all">
             <span className={`w-5 h-0.5 bg-[#00ff88] transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
             <span className={`w-5 h-0.5 bg-[#00ff88] transition-opacity ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
             <span className={`w-5 h-0.5 bg-[#00ff88] transition-transform ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
@@ -98,7 +98,7 @@ const Footer = ({ navigate }) =>
       { h: 'Güvenlik Araçları II', items: [['XSS Payload Oluşturucu', 'tools/xss-generator'], ['SQLi Payload Oluşturucu', 'tools/sqli-generator'], ['Cron Zamanlayıcı', 'tools/cron-explainer'], ['Base64 Dosya/Görsel', 'tools/base64-file'], ['DNS Güvenlik Sorgulama', 'tools/dns-lookup']] }].
       map((col, i) =>
       <div key={i}>
-            <h4 className="font-mono text-xs tracking-[.16em] uppercase text-[#3d564b] mb-[18px] font-medium">{col.h}</h4>
+            <div className="font-disp font-bold text-xs tracking-widest text-[#74998a] uppercase mb-[18px]">{col.h}</div>
             {col.items.map(([t, p], j) =>
         <button key={j} onClick={() => p && navigate(p)} className="block text-left text-[#74998a] text-sm py-1.5 hover:text-[#00ff88] transition-colors">{t}</button>
         )}
@@ -106,7 +106,7 @@ const Footer = ({ navigate }) =>
       )}
       </div>
       <div className="flex justify-between items-center pt-7 flex-wrap gap-4">
-        <p className="text-[13px] text-[#3d564b]">© 2026 siberkampus — Tüm hakları saklıdır.</p>
+        <p className="text-[13px] text-[#5c8a74]">© 2026 siberkampus — Tüm hakları saklıdır.</p>
         <div className="flex items-center gap-2.5 text-[13px] text-[#74998a]">
           <span className="w-2 h-2 rounded-full bg-[#00ff88] shadow-[0_0_8px_#00ff88] sk-pulse"></span>
           Tüm sistemler çalışıyor<span className="term-cursor !h-[13px] ml-1"></span>
@@ -307,7 +307,7 @@ const HomePage = ({ navigate }) => {
               <button onClick={() => navigate('rooms')} className="font-mono text-[15px] font-bold text-[#021008] bg-[#00ff88] px-[30px] py-4 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] hover:-translate-y-px transition-all">İlk Laboratuvarını Çöz →</button>
               <button onClick={() => navigate('rooms')} className="font-mono text-[15px] text-[#cdeede] px-[30px] py-4 border border-[#103a26] hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">CTF Görevlerini Gör</button>
             </div>
-            <div className="flex items-center gap-3.5 mt-[26px] text-[13px] text-[#3d564b]">
+            <div className="flex items-center gap-3.5 mt-[26px] text-[13px] text-[#5c8a74]">
               <div className="flex">
                 {['AK', 'MY', 'EÇ', '+9'].map((a, i) =>
                 <span key={i} className={"w-[30px] h-[30px] rounded-full border-[1.5px] border-[#020806] grid place-items-center text-[11px] font-bold text-[#5cffba] " + (i ? '-ml-2 ' : '')} style={{ background: 'linear-gradient(135deg,#0a3a24,#063018)' }}>{a}</span>
@@ -323,7 +323,7 @@ const HomePage = ({ navigate }) => {
               <span className="w-[11px] h-[11px] rounded-full bg-[#ff5f57]"></span>
               <span className="w-[11px] h-[11px] rounded-full bg-[#febc2e]"></span>
               <span className="w-[11px] h-[11px] rounded-full bg-[#28c840]"></span>
-              <span className="ml-2 text-xs text-[#3d564b]">root@siberkampus: ~/lab-07-web-exploit</span>
+              <span className="ml-2 text-xs text-[#5c8a74]">root@siberkampus: ~/lab-07-web-exploit</span>
             </div>
             <div ref={termRef} className="p-[18px] min-h-[240px] leading-[1.85] font-mono" style={{ letterSpacing: "1px", height: "340px", padding: "12px" }}></div>
           </div>
@@ -351,7 +351,7 @@ const HomePage = ({ navigate }) => {
       <section className="py-[108px]">
         <div className="max-w-[1280px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="reveal">
-            <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5"><span className="text-[#3d564b] font-bold">//</span> Pratik &gt; Teori</span>
+            <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> Pratik &gt; Teori</span>
             <h2 className="text-[clamp(30px,4vw,46px)] text-[#eafff5] my-[18px]">CTF ve Hacking <em className="not-italic text-[#00ff88]">Laboratuvarlarıyla</em> Pratik Yap</h2>
             <div className="text-[15.5px] text-[#74998a] leading-[1.85] max-w-[560px] space-y-[15px]">
               <p>siberkampus'ta öğrenmenin merkezinde gerçek dünyayı taklit eden <strong className="text-[#cdeede] font-medium">hacking laboratuvarları</strong> ve <strong className="text-[#cdeede] font-medium">CTF (Capture The Flag) görevleri</strong> bulunur. Her laboratuvar, izole edilmiş güvenli bir ortamda canlanan gerçek bir sistemdir; sızma testi adımlarını birebir uygular, açıkları kendi ellerinle keşfeder ve gizlenmiş bayrağı yakalamak için düşünmen gerekir.</p>
@@ -378,7 +378,7 @@ const HomePage = ({ navigate }) => {
       <section className="py-[108px]" style={{ background: 'linear-gradient(180deg,#020806,#04100a)' }}>
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="text-center max-w-[640px] mx-auto mb-14 reveal">
-            <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5"><span className="text-[#3d564b] font-bold">//</span> Neden siberkampus</span>
+            <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> Neden siberkampus</span>
             <h2 className="text-[clamp(28px,4vw,42px)] text-[#eafff5] mt-4">Seni Gerçekten Uzman Yapan Kampüs</h2>
             <p className="text-[#74998a] mt-4 text-[15px]">Video izleyip unuttuğun kurslardan değil; her gün kendini test ettiğin, savaştığın ve kazandığın canlı bir laboratuvardan bahsediyoruz.</p>
           </div>
@@ -386,7 +386,7 @@ const HomePage = ({ navigate }) => {
             {features.map((f, i) =>
             <div key={i} className="reveal group relative overflow-hidden rounded-2xl border border-[#0c2719] p-[30px] hover:border-[#103a26] hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(0,255,136,.35)] transition-all" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                 <span className="absolute top-0 left-0 w-full h-0.5 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" style={{ background: 'linear-gradient(90deg,#00ff88,transparent)' }}></span>
-                <span className="absolute top-[22px] right-6 font-mono text-xs text-[#3d564b]">{f.num}</span>
+                <span className="absolute top-[22px] right-6 font-mono text-xs text-[#5c8a74]">{f.num}</span>
                 <div className="w-[46px] h-[46px] border border-[#103a26] rounded-[10px] grid place-items-center text-[#00ff88] text-xl mb-5 bg-[rgba(0,255,136,.04)]">{f.icon}</div>
                 <h3 className="text-[19px] text-[#eafff5] mb-2.5">{f.title}</h3>
                 <p className="text-sm text-[#74998a] leading-[1.7]">{f.desc}</p>
@@ -400,7 +400,7 @@ const HomePage = ({ navigate }) => {
       <section className="py-[108px]">
         <div className="max-w-[1280px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="reveal lg:order-2">
-            <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5"><span className="text-[#3d564b] font-bold">//</span> Yol Haritası</span>
+            <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> Yol Haritası</span>
             <h2 className="text-[clamp(30px,4vw,46px)] text-[#eafff5] my-[18px]">Sıfırdan <em className="not-italic text-[#00ff88]">Kariyere</em> Giden Net Bir Yol</h2>
             <div className="text-[15.5px] text-[#74998a] leading-[1.85] max-w-[560px] space-y-[15px]">
               <p>Çoğu insan siber güvenliğe başlamak ister ama nereden başlayacağını bilemediği için kaybolur. siberkampus tam da bu sorunu çözmek için kuruldu. Sana dağınık videolar değil, <strong className="text-[#cdeede] font-medium">uçtan uca bir yol haritası</strong> sunuyoruz: ilk gün hangi komutu yazacağından başlayarak, ileri seviye sızma testi metodolojilerine kadar her adım sıralı ve mantıklı bir şekilde önüne geliyor.</p>
@@ -416,10 +416,10 @@ const HomePage = ({ navigate }) => {
             <div key={i} className="relative flex gap-[18px] items-start border border-[#0c2719] rounded-xl px-[22px] py-5 hover:border-[#103a26] transition-colors" style={{ background: 'linear-gradient(160deg,#07150e,#04100a)' }}>
                 <span className="w-[38px] h-[38px] flex-none rounded-[9px] border border-[#103a26] text-[#00ff88] grid place-items-center font-mono font-bold bg-[rgba(0,255,136,.04)]">{r.n}</span>
                 <div>
-                  <h4 className="font-disp text-[16.5px] text-[#eafff5] mb-1">{r.h}</h4>
+                  <h3 className="font-disp text-[16.5px] text-[#eafff5] mb-1">{r.h}</h3>
                   <p className="text-[13px] text-[#74998a] leading-[1.6]">{r.p}</p>
                 </div>
-                <span className="absolute top-[18px] right-5 font-mono text-[11px] text-[#3d564b]">{r.tag}</span>
+                <span className="absolute top-[18px] right-5 font-mono text-[11px] text-[#5c8a74]">{r.tag}</span>
               </div>
             )}
           </div>
@@ -430,7 +430,7 @@ const HomePage = ({ navigate }) => {
       <section className="py-[108px]" style={{ background: 'linear-gradient(180deg,#020806,#04100a)' }}>
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="text-center max-w-[640px] mx-auto mb-12 reveal">
-            <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5"><span className="text-[#3d564b] font-bold">//</span> Topluluk</span>
+            <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> Topluluk</span>
             <h2 className="text-[clamp(28px,4vw,42px)] text-[#eafff5] mt-4">Klavyenin Başına Geçenler Ne Diyor?</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px]">
@@ -503,12 +503,12 @@ const BlogListPage = ({ navigate }) => {
       <section className="py-20 border-b border-[#0c2719] relative overflow-hidden">
         <div className="absolute top-[-30%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center,rgba(0,255,136,.10),transparent 62%)' }}></div>
         <div className="max-w-[1280px] mx-auto px-8 relative z-[2]">
-          <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5"><span className="text-[#3d564b] font-bold">//</span> Blog</span>
+          <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> Blog</span>
           <h1 className="text-[clamp(36px,5vw,56px)] text-[#eafff5] my-5">Siber Güvenlik Makaleleri</h1>
           <p className="text-[#74998a] max-w-[600px] mb-10">Hacking, sızma testi ve siber güvenliğin derinlerine inen yazılar. Alanında uzmanlar tarafından kaleme alınmış en güncel içerikler.</p>
           <div className="relative max-w-[480px]">
             <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Makale veya kategori ara..." className="w-full bg-[#07150e] border border-[#103a26] rounded-lg pl-4 pr-10 py-3 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none transition-colors font-mono text-sm" />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#3d564b]">⌕</span>
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#5c8a74]">⌕</span>
           </div>
         </div>
       </section>
@@ -521,11 +521,11 @@ const BlogListPage = ({ navigate }) => {
               <article key={b.id} onClick={() => navigate('blog-detail', b)} className="reveal group cursor-pointer border border-[#0c2719] rounded-xl p-8 hover:border-[#00ff88] hover:-translate-y-1 transition-all" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                 <div className="flex justify-between items-start mb-4">
                   <span className="text-xs text-[#5cffba] border border-[#103a26] bg-[rgba(0,255,136,.04)] px-2.5 py-1 rounded-full">{b.category}</span>
-                  <span className="text-xs text-[#3d564b]">{b.readTime}</span>
+                  <span className="text-xs text-[#5c8a74]">{b.readTime}</span>
                 </div>
                 <h2 className="text-2xl text-[#eafff5] mb-3 group-hover:text-[#00ff88] transition-colors">{b.title}</h2>
                 <p className="text-[#74998a] mb-6 text-[15px]">{b.excerpt}</p>
-                <div className="flex justify-between items-center text-xs text-[#3d564b]">
+                <div className="flex justify-between items-center text-xs text-[#5c8a74]">
                   <div className="flex items-center gap-3"><span>{b.author}</span><span>•</span><span>{b.date}</span></div>
                   <span className="group-hover:text-[#00ff88] transition-colors">Oku →</span>
                 </div>
@@ -628,20 +628,20 @@ const BlogDetailPage = ({ blog, navigate }) => {
             )}
           </div>
           <div className="border-t border-[#0c2719] mt-14 pt-12">
-            <h3 className="text-2xl text-[#eafff5] mb-8">İlgili Makaleler</h3>
+            <h2 className="text-2xl text-[#eafff5] mb-8">İlgili Makaleler</h2>
             <div className="grid gap-4">
               {related.map((p) =>
                 <div key={p.id} onClick={() => navigate('blog-detail', p)} className="cursor-pointer group bg-[#07150e] border border-[#0c2719] rounded-lg p-6 hover:border-[#00ff88] hover:bg-[#0a1d13] transition-all">
                   <span className="text-xs text-[#5cffba] border border-[#103a26] bg-[rgba(0,255,136,.04)] px-2.5 py-1 rounded-full">{p.category}</span>
-                  <h4 className="text-lg text-[#eafff5] my-3 group-hover:text-[#00ff88] transition-colors">{p.title}</h4>
-                  <span className="text-xs text-[#3d564b] group-hover:text-[#00ff88] transition-colors">Oku →</span>
+                  <h3 className="text-lg text-[#eafff5] my-3 group-hover:text-[#00ff88] transition-colors">{p.title}</h3>
+                  <span className="text-xs text-[#5c8a74] group-hover:text-[#00ff88] transition-colors">Oku →</span>
                 </div>
               )}
               {related.length === 0 && <p className="text-[#74998a] text-sm">İlgili başka makale bulunamadı.</p>}
             </div>
           </div>
           <div className="mt-12 rounded-xl border border-[#103a26] p-10 text-center" style={{ background: 'linear-gradient(90deg,#07150e,#04100a)' }}>
-            <h3 className="text-2xl text-[#eafff5] mb-4">Bu Konuyu Pratik Yapmak İster misin?</h3>
+            <h2 className="text-2xl text-[#eafff5] mb-4">Bu Konuyu Pratik Yapmak İster misin?</h2>
             <p className="text-[#74998a] mb-6 max-w-[520px] mx-auto">Siberkampus'ta bu makaleyle ilgili laboratuvarlar ve CTF görevleri seni bekliyor. Hemen başla ve gerçek bir sistem üzerinde çalışarak öğren.</p>
             <button onClick={() => navigate('rooms')} className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-7 py-3 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] transition-all">Laboratuvarları Gör →</button>
           </div>
@@ -668,7 +668,7 @@ const RoomsPage = ({ navigate }) => {
       <section className="py-20 border-b border-[#0c2719] relative overflow-hidden">
         <div className="absolute top-[-30%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center,rgba(0,255,136,.10),transparent 62%)' }}></div>
         <div className="max-w-[1280px] mx-auto px-8 relative z-[2]">
-          <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5"><span className="text-[#3d564b] font-bold">//</span> Laboratuvarlar</span>
+          <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> Laboratuvarlar</span>
           <h1 className="text-[clamp(36px,5vw,56px)] text-[#eafff5] my-5">Hacking Laboratuvarları</h1>
           <p className="text-[#74998a] max-w-[600px]">{allRooms.length} adet uygulamalı laboratuvarla sıfırdan uzman seviyesine kadar çıkmanı sağlayacak CTF görevleri. Kayıt ol ve hemen başla!</p>
         </div>
@@ -679,13 +679,13 @@ const RoomsPage = ({ navigate }) => {
           <div key={r.id} onClick={() => setSelected(r)} className="reveal group cursor-pointer border border-[#0c2719] rounded-xl p-8 hover:border-[#00ff88] hover:shadow-[0_24px_50px_-28px_rgba(0,255,136,.35)] transition-all" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
               <div className="flex items-start justify-between mb-4 gap-3">
                 <div>
-                  <div className="flex items-center gap-2 mb-2"><span className="font-mono text-xs text-[#3d564b]">{r.id.toUpperCase()}</span><span className="text-xs text-[#3d564b]">·</span><span className="text-xs text-[#3d564b]">{r.cat}</span></div>
+                  <div className="flex items-center gap-2 mb-2"><span className="font-mono text-xs text-[#5c8a74]">{r.id.toUpperCase()}</span><span className="text-xs text-[#5c8a74]">·</span><span className="text-xs text-[#5c8a74]">{r.cat}</span></div>
                   <h2 className="text-xl text-[#eafff5] group-hover:text-[#00ff88] transition-colors mb-2">{r.name}</h2>
                   <p className="text-sm text-[#74998a]">{r.desc}</p>
                 </div>
                 <span className={"text-xs font-bold px-3 py-1.5 rounded whitespace-nowrap " + (dc[r.difficulty] || dc['Orta'])}>{r.difficulty}</span>
               </div>
-              <div className="flex items-center justify-between pt-4 border-t border-[#0c2719] text-xs text-[#3d564b]">
+              <div className="flex items-center justify-between pt-4 border-t border-[#0c2719] text-xs text-[#5c8a74]">
                 <span>◆ {r.points} puan</span>
                 <span className="group-hover:text-[#00ff88] transition-colors">Detay →</span>
               </div>
@@ -696,7 +696,7 @@ const RoomsPage = ({ navigate }) => {
       {selected &&
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" onClick={() => setSelected(null)}>
           <div className="border border-[#103a26] rounded-xl max-w-[520px] w-full p-10 shadow-[0_0_60px_-20px_var(--glow)]" style={{ background: '#020806' }} onClick={(e) => e.stopPropagation()}>
-            <span className="font-mono text-xs text-[#3d564b]">{selected.id.toUpperCase()} · {selected.cat}</span>
+            <span className="font-mono text-xs text-[#5c8a74]">{selected.id.toUpperCase()} · {selected.cat}</span>
             <h2 className="text-3xl text-[#eafff5] mt-2 mb-4">{selected.name}</h2>
             <p className="text-[#74998a] mb-6">{selected.desc}</p>
             <div className="space-y-3 mb-8">
@@ -728,7 +728,7 @@ const Field = ({ label, hint, ...props }) => (
   <div>
     <label className="block text-sm font-medium text-[#cdeede] mb-2">{label}</label>
     <input {...props} className="w-full bg-[#07150e] border border-[#103a26] rounded-lg px-4 py-3 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none transition-colors font-mono text-sm" />
-    {hint && <p className="text-xs text-[#3d564b] mt-2">{hint}</p>}
+    {hint && <p className="text-xs text-[#5c8a74] mt-2">{hint}</p>}
   </div>
 );
 
@@ -970,7 +970,7 @@ const LiveChat = () => {
               <div className="text-sm text-[#eafff5] font-medium font-disp">Canlı Destek</div>
               <div className="text-[11px] text-[#00ff88] flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-[#00ff88]"></span>Eylül · çevrimiçi</div>
             </div>
-            <button onClick={toggle} className="w-7 h-7 grid place-items-center rounded-lg text-[#74998a] hover:text-[#eafff5] hover:bg-white/5 transition-colors text-lg">×</button>
+            <button onClick={toggle} aria-label="Kapat" className="w-7 h-7 grid place-items-center rounded-lg text-[#74998a] hover:text-[#eafff5] hover:bg-white/5 transition-colors text-lg">×</button>
           </div>
           {/* body */}
           <div ref={bodyRef} className="flex-1 overflow-y-auto p-4 space-y-3">
@@ -995,13 +995,13 @@ const LiveChat = () => {
           {/* input */}
           <div className="p-3 border-t border-[#0c2719] flex gap-2">
             <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && push(input)} placeholder="Mesajını yaz…" className="flex-1 bg-[#020806] border border-[#103a26] rounded-lg px-3.5 py-2.5 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none text-[13px]" />
-            <button onClick={() => push(input)} className="w-10 flex-none grid place-items-center font-bold text-[#021008] bg-[#00ff88] rounded-lg hover:shadow-[0_0_20px_-4px_var(--glow)] transition-all">↑</button>
+            <button onClick={() => push(input)} aria-label="Mesaj Gönder" className="w-10 flex-none grid place-items-center font-bold text-[#021008] bg-[#00ff88] rounded-lg hover:shadow-[0_0_20px_-4px_var(--glow)] transition-all">↑</button>
           </div>
         </div>
       }
       {/* LAUNCHER — hidden when panel is open */}
       {!open &&
-      <button onClick={toggle} className="ml-auto flex items-center justify-center w-14 h-14 rounded-2xl bg-[#00ff88] text-[#021008] shadow-[0_10px_30px_-6px_var(--glow)] hover:scale-105 transition-transform relative">
+      <button onClick={toggle} aria-label="Destek Sohbetini Aç/Kapat" className="ml-auto flex items-center justify-center w-14 h-14 rounded-2xl bg-[#00ff88] text-[#021008] shadow-[0_10px_30px_-6px_var(--glow)] hover:scale-105 transition-transform relative">
           {unread > 0 && <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1.5 grid place-items-center rounded-full bg-[#ff2e88] text-white text-[11px] font-bold border-2 border-[#020806]">{unread}</span>}
           <span className="absolute inset-0 rounded-2xl bg-[#00ff88] animate-ping opacity-20"></span>
           <span className="text-2xl">💬</span>
@@ -1361,7 +1361,7 @@ const App = () => {
               </button>
               <button 
                 onClick={() => setTrainingPromptRoom(null)} 
-                className="text-[#3d564b] hover:text-[#74998a] text-xs transition-colors mt-2 underline"
+                className="text-[#5c8a74] hover:text-[#74998a] text-xs transition-colors mt-2 underline"
               >
                 İptal Et
               </button>

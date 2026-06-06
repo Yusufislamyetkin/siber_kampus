@@ -16,7 +16,7 @@ const Footer = ({ navigate }) => {
           </div>
 
           <div>
-            <h4 className="font-mono text-xs tracking-widest text-[#3d564b] uppercase mb-4 font-medium">Platform</h4>
+            <div className="font-disp font-bold text-xs tracking-widest text-[#74998a] uppercase mb-4">Platform</div>
             <div className="space-y-3">
               <button onClick={() => navigate('rooms')} className="block text-[#74998a] text-sm hover:text-[#00ff88] transition-colors">Laboratuvarlar</button>
               <button onClick={() => navigate('blogs')} className="block text-[#74998a] text-sm hover:text-[#00ff88] transition-colors">Blog</button>
@@ -26,7 +26,7 @@ const Footer = ({ navigate }) => {
           </div>
 
           <div>
-            <h4 className="font-mono text-xs tracking-widest text-[#3d564b] uppercase mb-4 font-medium">Kampüs</h4>
+            <div className="font-disp font-bold text-xs tracking-widest text-[#74998a] uppercase mb-4">Kampüs</div>
             <div className="space-y-3">
               <a href="#" className="block text-[#74998a] text-sm hover:text-[#00ff88] transition-colors">Hakkımızda</a>
               <a href="#" className="block text-[#74998a] text-sm hover:text-[#00ff88] transition-colors">Mentörler</a>
@@ -36,7 +36,7 @@ const Footer = ({ navigate }) => {
           </div>
 
           <div>
-            <h4 className="font-mono text-xs tracking-widest text-[#3d564b] uppercase mb-4 font-medium">İletişim</h4>
+            <div className="font-disp font-bold text-xs tracking-widest text-[#74998a] uppercase mb-4">İletişim</div>
             <div className="space-y-3">
               <a href="#" className="block text-[#74998a] text-sm hover:text-[#00ff88] transition-colors">Destek</a>
               <a href="#" className="block text-[#74998a] text-sm hover:text-[#00ff88] transition-colors">Kurumsal</a>
@@ -47,7 +47,7 @@ const Footer = ({ navigate }) => {
         </div>
 
         <div className="flex items-center justify-between flex-wrap gap-4">
-          <p className="text-sm text-[#3d564b]">© 2026 siberkampus — Tüm hakları saklıdır.</p>
+          <p className="text-sm text-[#5c8a74]">© 2026 siberkampus — Tüm hakları saklıdır.</p>
           <div className="flex items-center gap-3 text-sm text-[#74998a]">
             <span className="w-2 h-2 rounded-full bg-[#00ff88] shadow-[0_0_8px_#00ff88]"></span>
             Tüm sistemler çalışıyor

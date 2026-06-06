@@ -12,7 +12,7 @@ const useUser = window.SKuseUser;
 const PAGES = (window.__SK_PAGES = window.__SK_PAGES || {});
 
 const Label = ({ children }) => (
-  <span className="font-mono text-[12px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5 mb-4"><span className="text-[#3d564b] font-bold">//</span> {children}</span>
+  <span className="font-mono text-[12px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5 mb-4"><span className="text-[#5c8a74] font-bold">//</span> {children}</span>
 );
 
 /* ============ HAKKIMIZDA ============ */
@@ -187,7 +187,7 @@ const SupportPage = ({ navigate }) => {
           <h1 className="text-[clamp(32px,5vw,52px)] text-[#eafff5] my-4">Nasıl yardımcı olabiliriz?</h1>
           <div className="relative max-w-[520px] mx-auto mt-8">
             <input placeholder="Bir şey ara… (örn: ipucu, sertifika)" className="w-full bg-[#07150e] border border-[#103a26] rounded-lg pl-4 pr-10 py-3.5 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-sm" />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#3d564b]">⌕</span>
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#5c8a74]">⌕</span>
           </div>
         </div>
       </section>
@@ -236,7 +236,7 @@ const LegalLayout = ({ navigate, kicker, title, updated, sections }) => (
       <div className="max-w-[800px] mx-auto px-8">
         <Label>{kicker}</Label>
         <h1 className="text-[clamp(30px,4.5vw,46px)] text-[#eafff5] my-3">{title}</h1>
-        <p className="text-xs text-[#3d564b] font-mono">Son güncelleme: {updated}</p>
+        <p className="text-xs text-[#5c8a74] font-mono">Son güncelleme: {updated}</p>
       </div>
     </section>
     <section className="py-16">
@@ -295,7 +295,7 @@ const NotFoundPage = ({ navigate }) => (
         <div className="rounded-xl overflow-hidden border border-[#103a26] shadow-[0_40px_80px_-30px_#000]" style={{ background: 'linear-gradient(160deg,#06140d,#040d08)' }}>
           <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[#0c2719] bg-black/25">
             <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></span><span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></span><span className="w-2.5 h-2.5 rounded-full bg-[#28c840]"></span>
-            <span className="ml-2 font-mono text-xs text-[#3d564b]">root@siberkampus: ~/lost</span>
+            <span className="ml-2 font-mono text-xs text-[#5c8a74]">root@siberkampus: ~/lost</span>
           </div>
           <div className="p-8 font-mono text-sm leading-relaxed">
             <p className="text-[#00ff88]">$ locate /your/page</p>
@@ -371,7 +371,7 @@ const ProfilePage = ({ navigate, data }) => {
             <div className="flex items-center justify-between mb-5"><h2 className="text-lg text-[#eafff5]">Rozetler</h2>{own && <button onClick={() => navigate('badges')} className="text-xs text-[#00ff88] hover:text-[#5cffba]">Tümü →</button>}</div>
             <div className="grid grid-cols-4 gap-3">
               {badges.map((b, i) => (<span key={i} className="aspect-square rounded-lg grid place-items-center text-2xl border border-[#103a26] bg-[rgba(0,255,136,.03)]">{b}</span>))}
-              {Array.from({ length: 3 }).map((_, i) => (<span key={i} className="aspect-square rounded-lg grid place-items-center text-2xl border border-[#0c2719] text-[#3d564b]">?</span>))}
+              {Array.from({ length: 3 }).map((_, i) => (<span key={i} className="aspect-square rounded-lg grid place-items-center text-2xl border border-[#0c2719] text-[#5c8a74]">?</span>))}
             </div>
           </div>
         </div>
@@ -394,7 +394,7 @@ const BadgesPage = ({ navigate }) => {
         <button onClick={() => navigate('dashboard')} className="text-sm text-[#74998a] hover:text-[#00ff88] transition-colors mb-6">← Dashboard'a dön</button>
         <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
           <div><SectionLabel>Başarımlar</SectionLabel><h1 className="text-[clamp(28px,4vw,42px)] text-[#eafff5]">Rozetlerim</h1></div>
-          <div className="text-right"><div className="font-disp font-bold text-3xl text-[#00ff88]">{earned}<span className="text-[#3d564b] text-2xl">/{all.length}</span></div><div className="text-xs text-[#74998a]">rozet kazanıldı</div></div>
+          <div className="text-right"><div className="font-disp font-bold text-3xl text-[#00ff88]">{earned}<span className="text-[#5c8a74] text-2xl">/{all.length}</span></div><div className="text-xs text-[#74998a]">rozet kazanıldı</div></div>
         </div>
         <div className="h-2 rounded-full bg-[#0c2719] overflow-hidden mb-10"><div className="h-full rounded-full bg-gradient-to-r from-[#00d978] to-[#00ff88] shadow-[0_0_12px_var(--glow)]" style={{ width: (earned / all.length * 100) + '%' }}></div></div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -697,7 +697,7 @@ const CertificatesPage = ({ navigate }) => {
               <span className="text-[#00ff88]">🔒</span>
               <p className="text-sm text-[#74998a]">Sertifika İsminiz Kilitlendi: <strong className="text-[#eafff5] font-mono">{user.name}</strong></p>
             </div>
-            <span className="text-xs text-[#3d564b] font-mono">// Değiştirilemez</span>
+            <span className="text-xs text-[#5c8a74] font-mono">// Değiştirilemez</span>
           </div>
         )}
 
@@ -1233,7 +1233,7 @@ const formatBin = (binStr, cidr) => {
   let formatted = [];
   for (let i = 0; i < 32; i++) {
     if (i > 0 && i % 8 === 0) {
-      formatted.push(<span key={'dot-' + i} className="text-[#3d564b] mx-0.5">.</span>);
+      formatted.push(<span key={'dot-' + i} className="text-[#5c8a74] mx-0.5">.</span>);
     }
     const isNet = i < cidr;
     formatted.push(
@@ -1644,7 +1644,7 @@ const ToolsPage = ({ navigate, data }) => {
             <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[820px] h-[440px] z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center,rgba(0,255,136,.13),transparent 62%)' }}></div>
             <div className="max-w-[860px] mx-auto px-8 relative z-[2] text-center py-20">
               <span className="font-mono text-[12px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5 mb-4">
-                <span className="text-[#3d564b] font-bold">//</span> Gelişmiş Güvenlik Kitleri
+                <span className="text-[#5c8a74] font-bold">//</span> Gelişmiş Güvenlik Kitleri
               </span>
               <h1 className="text-[clamp(34px,5vw,52px)] text-[#eafff5] mb-5 font-disp font-bold">Online Siber Güvenlik <span className="text-[#00ff88]">Araçları</span></h1>
               <p className="text-[#74998a] text-base leading-relaxed max-w-[640px] mx-auto">Tamamen tarayıcınızda çalışan, 100% istemci taraflı (client-side) çalışan, SEO dostu ve Türkçe siber güvenlik araç kiti. Bilgileriniz asla sunucularımıza gönderilmez.</p>
@@ -1685,7 +1685,7 @@ const ToolsPage = ({ navigate, data }) => {
             <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
               {/* Sidebar Menu */}
               <div className="space-y-2">
-                <div className="hidden lg:block font-mono text-xs uppercase text-[#3d564b] font-medium tracking-[.12em] mb-4">Araç Kütüphanesi</div>
+                <div className="hidden lg:block font-mono text-xs uppercase text-[#5c8a74] font-medium tracking-[.12em] mb-4">Araç Kütüphanesi</div>
                 <div className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible gap-2 pb-3 lg:pb-0 border-b border-[#0c2719] lg:border-b-0">
                   {toolsList.map(t => (
                     <button key={t.slug} onClick={() => navigate('tools', { slug: t.slug })} className={`flex items-center gap-3 px-4 py-3 rounded-lg text-left text-sm font-mono transition-all flex-shrink-0 lg:flex-shrink-1 ${t.slug === slug ? 'text-[#00ff88] bg-[rgba(0,255,136,.06)] border border-[#103a26]' : 'text-[#74998a] hover:text-[#cdeede] hover:bg-white/5 border border-transparent'}`}>
@@ -1722,7 +1722,7 @@ const ToolsPage = ({ navigate, data }) => {
                     
                     {/* Shell payload tabs */}
                     <div className="mb-4">
-                      <label className="block text-xs font-mono uppercase text-[#3d564b] mb-2">Shell payload tipi</label>
+                      <label className="block text-xs font-mono uppercase text-[#5c8a74] mb-2">Shell payload tipi</label>
                       <div className="flex flex-wrap gap-2">
                         {[
                           { id: 'bash', label: 'Bash' },
@@ -1801,7 +1801,7 @@ const ToolsPage = ({ navigate, data }) => {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                       <div>
-                        <label className="block text-xs font-mono uppercase text-[#3d564b] mb-2">Dönüştürme Formatı</label>
+                        <label className="block text-xs font-mono uppercase text-[#5c8a74] mb-2">Dönüştürme Formatı</label>
                         <select value={encFormat} onChange={e => setEncFormat(e.target.value)} className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-4 py-2.5 text-[#cdeede] focus:border-[#00ff88] focus:outline-none font-mono text-sm">
                           <option value="base64">Base64 (Metin standardı)</option>
                           <option value="url">URL Encoding (Web URL parametreleri)</option>
@@ -1811,7 +1811,7 @@ const ToolsPage = ({ navigate, data }) => {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-xs font-mono uppercase text-[#3d564b] mb-2">İşlem Yönü</label>
+                        <label className="block text-xs font-mono uppercase text-[#5c8a74] mb-2">İşlem Yönü</label>
                         <div className="grid grid-cols-2 gap-2">
                           <button onClick={() => setEncMode('encode')} className={`py-2 border font-mono text-xs rounded-lg transition-colors ${encMode === 'encode' ? 'bg-[rgba(0,255,136,.1)] border-[#00ff88] text-[#00ff88]' : 'border-[#103a26] text-[#74998a] hover:text-[#cdeede]'}`}>Kodla (Encode)</button>
                           <button onClick={() => setEncMode('decode')} className={`py-2 border font-mono text-xs rounded-lg transition-colors ${encMode === 'decode' ? 'bg-[rgba(0,255,136,.1)] border-[#00ff88] text-[#00ff88]' : 'border-[#103a26] text-[#74998a] hover:text-[#cdeede]'}`}>Kodu Çöz (Decode)</button>
@@ -1821,7 +1821,7 @@ const ToolsPage = ({ navigate, data }) => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mb-6">
                       <div className="flex flex-col">
-                        <div className="flex justify-between text-xs font-mono uppercase text-[#3d564b] mb-2">
+                        <div className="flex justify-between text-xs font-mono uppercase text-[#5c8a74] mb-2">
                           <span>Girdi Metni</span>
                           <span>{encText.length} karakter</span>
                         </div>
@@ -1829,7 +1829,7 @@ const ToolsPage = ({ navigate, data }) => {
                       </div>
                       
                       <div className="flex flex-col">
-                        <div className="flex justify-between text-xs font-mono uppercase text-[#3d564b] mb-2">
+                        <div className="flex justify-between text-xs font-mono uppercase text-[#5c8a74] mb-2">
                           <span>Çıktı Metni</span>
                           <span>{encResult.length} karakter</span>
                         </div>
@@ -1887,7 +1887,7 @@ const ToolsPage = ({ navigate, data }) => {
 
                             {/* Pools checklist */}
                             <div className="rounded-xl border border-[#0c2719] p-4 bg-[#020806] text-xs font-mono space-y-2">
-                              <div className="text-[#3d564b] border-b border-[#0c2719] pb-1.5 uppercase font-bold">Karakter Analizi</div>
+                              <div className="text-[#5c8a74] border-b border-[#0c2719] pb-1.5 uppercase font-bold">Karakter Analizi</div>
                               <div className="flex justify-between">
                                 <span>[a-z] Küçük Harf:</span>
                                 <span className={passAnalysis.hasLower ? 'text-[#00ff88]' : 'text-red-500'}>{passAnalysis.hasLower ? '✓ Var' : '✗ Yok'}</span>
@@ -1912,7 +1912,7 @@ const ToolsPage = ({ navigate, data }) => {
 
                             {/* Crack times table */}
                             <div className="rounded-xl border border-[#0c2719] p-4 bg-[#020806] text-xs font-mono space-y-2">
-                              <div className="text-[#3d564b] border-b border-[#0c2719] pb-1.5 uppercase font-bold">Kırılma Süresi Tahminleri</div>
+                              <div className="text-[#5c8a74] border-b border-[#0c2719] pb-1.5 uppercase font-bold">Kırılma Süresi Tahminleri</div>
                               <div className="flex justify-between">
                                 <span>Web Giriş Saldırısı (100 tahmin/sn):</span>
                                 <span className="text-orange-400 font-bold">{formatTime(passAnalysis.crackTimes.online)}</span>
@@ -2177,7 +2177,7 @@ const ToolsPage = ({ navigate, data }) => {
                     </div>
 
                     <div className="relative mb-6">
-                      <div className="flex justify-between text-xs font-mono uppercase text-[#3d564b] mb-2">
+                      <div className="flex justify-between text-xs font-mono uppercase text-[#5c8a74] mb-2">
                         <span>Oluşturulan XSS Payload</span>
                         <span>{getXssPayload().length} karakter</span>
                       </div>
@@ -2247,7 +2247,7 @@ const ToolsPage = ({ navigate, data }) => {
                     </div>
 
                     <div className="relative mb-6">
-                      <div className="flex justify-between text-xs font-mono uppercase text-[#3d564b] mb-2">
+                      <div className="flex justify-between text-xs font-mono uppercase text-[#5c8a74] mb-2">
                         <span>SQL Injection Test Payload</span>
                         <span>{getSqliPayload().length} karakter</span>
                       </div>
@@ -2281,7 +2281,7 @@ const ToolsPage = ({ navigate, data }) => {
                     {cronInputMode === 'interactive' ? (
                       <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
                         <div>
-                          <label className="block text-xs font-mono uppercase text-[#3d564b] mb-2">Dakika</label>
+                          <label className="block text-xs font-mono uppercase text-[#5c8a74] mb-2">Dakika</label>
                           <select value={cronMin} onChange={e => setCronMin(e.target.value)} className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-3 py-2 text-[#cdeede] focus:border-[#00ff88] focus:outline-none font-mono text-xs">
                             <option value="*">Her Dakika (*)</option>
                             <option value="*/5">5 Dk'da Bir (*/5)</option>
@@ -2291,7 +2291,7 @@ const ToolsPage = ({ navigate, data }) => {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-xs font-mono uppercase text-[#3d564b] mb-2">Saat</label>
+                          <label className="block text-xs font-mono uppercase text-[#5c8a74] mb-2">Saat</label>
                           <select value={cronHour} onChange={e => setCronHour(e.target.value)} className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-3 py-2 text-[#cdeede] focus:border-[#00ff88] focus:outline-none font-mono text-xs">
                             <option value="*">Her Saat (*)</option>
                             <option value="*/2">2 Saatte Bir (*/2)</option>
@@ -2301,7 +2301,7 @@ const ToolsPage = ({ navigate, data }) => {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-xs font-mono uppercase text-[#3d564b] mb-2">Gün (Ayın)</label>
+                          <label className="block text-xs font-mono uppercase text-[#5c8a74] mb-2">Gün (Ayın)</label>
                           <select value={cronDay} onChange={e => setCronDay(e.target.value)} className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-3 py-2 text-[#cdeede] focus:border-[#00ff88] focus:outline-none font-mono text-xs">
                             <option value="*">Her Gün (*)</option>
                             <option value="1">Ayın 1. Günü (1)</option>
@@ -2310,7 +2310,7 @@ const ToolsPage = ({ navigate, data }) => {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-xs font-mono uppercase text-[#3d564b] mb-2">Ay</label>
+                          <label className="block text-xs font-mono uppercase text-[#5c8a74] mb-2">Ay</label>
                           <select value={cronMonth} onChange={e => setCronMonth(e.target.value)} className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-3 py-2 text-[#cdeede] focus:border-[#00ff88] focus:outline-none font-mono text-xs">
                             <option value="*">Her Ay (*)</option>
                             <option value="*/3">3 Ayda Bir (*/3)</option>
@@ -2319,7 +2319,7 @@ const ToolsPage = ({ navigate, data }) => {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-xs font-mono uppercase text-[#3d564b] mb-2">Gün (Haftanın)</label>
+                          <label className="block text-xs font-mono uppercase text-[#5c8a74] mb-2">Gün (Haftanın)</label>
                           <select value={cronDow} onChange={e => setCronDow(e.target.value)} className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-3 py-2 text-[#cdeede] focus:border-[#00ff88] focus:outline-none font-mono text-xs">
                             <option value="*">Her Gün (*)</option>
                             <option value="1-5">Hafta İçi (1-5)</option>
@@ -2396,7 +2396,7 @@ const ToolsPage = ({ navigate, data }) => {
 
                         {b64FileName && (
                           <div className="border border-[#0c2719] bg-[#020806] rounded-xl p-4 font-mono text-xs space-y-2">
-                            <div className="text-[#3d564b] border-b border-[#0c2719] pb-1.5 uppercase font-bold">Dosya Bilgileri</div>
+                            <div className="text-[#5c8a74] border-b border-[#0c2719] pb-1.5 uppercase font-bold">Dosya Bilgileri</div>
                             <div className="flex justify-between">
                               <span className="text-[#74998a]">Dosya Adı:</span>
                               <span className="text-[#eafff5] font-bold">{b64FileName}</span>
@@ -2414,7 +2414,7 @@ const ToolsPage = ({ navigate, data }) => {
 
                         {b64Encoded && (
                           <div className="relative">
-                            <div className="flex justify-between text-xs font-mono uppercase text-[#3d564b] mb-2">
+                            <div className="flex justify-between text-xs font-mono uppercase text-[#5c8a74] mb-2">
                               <span>Base64 Veri Çıktısı (Data URL)</span>
                               <span>{b64Encoded.length} karakter</span>
                             </div>

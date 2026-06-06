@@ -12,9 +12,39 @@ const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'super_secret_cyber_key_2026';
 
 // DB Connection Pool
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.POSTGRES_URL_NON_POOLING
-});
+const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.POSTGRES_URL_NON_POOLING;
+let poolConfig = {};
+
+if (connectionString) {
+  const isLocalhost = connectionString.includes('localhost') || connectionString.includes('127.0.0.1');
+  if (isLocalhost) {
+    poolConfig = { connectionString };
+  } else {
+    try {
+      const dbUrl = new URL(connectionString);
+      dbUrl.searchParams.delete('sslmode');
+      poolConfig = {
+        connectionString: dbUrl.toString(),
+        ssl: {
+          rejectUnauthorized: false
+        }
+      };
+    } catch (err) {
+      poolConfig = {
+        connectionString,
+        ssl: {
+          rejectUnauthorized: false
+        }
+      };
+    }
+  }
+} else {
+  poolConfig = { connectionString };
+}
+
+const pool = new Pool(poolConfig);
+
+
 
 app.use(cors());
 app.use(express.json());
@@ -743,19 +773,55 @@ async function initDatabase() {
     console.log('✓ Veritabanı şeması hazır.');
 
     // Check if we need to seed data
-    const usersCount = await pool.query('SELECT count(*) FROM users');
-    if (parseInt(usersCount.rows[0].count) === 0) {
-      console.log('🌱 Veritabanı boş, admin kullanıcısı ekleniyor...');
-      
+    // Check if mentor exists
+    const mentorCheck = await pool.query('SELECT id FROM users WHERE email = $1', ['mentor@siberkampus.com']);
+    if (mentorCheck.rows.length === 0) {
+      console.log('🌱 Admin kullanıcısı ekleniyor...');
       const mentorPwHash = await bcrypt.hash('mentor123', 10);
-
-      // Only seed the admin user Siber Mentör
       await pool.query(`
         INSERT INTO users (email, password_hash, name, points, solved_count, level, is_admin) VALUES 
         ('mentor@siberkampus.com', $1, 'Siber Mentör', 0, 0, 1, true)
       `, [mentorPwHash]);
-
       console.log('✓ Admin kullanıcısı başarıyla eklendi.');
+    }
+
+    // Check if demo user exists
+    const demoCheck = await pool.query('SELECT id FROM users WHERE email = $1', ['demo@siberkampus.com']);
+    if (demoCheck.rows.length === 0) {
+      console.log('🌱 Demo kullanıcısı ekleniyor...');
+      const demoPwHash = await bcrypt.hash('demo123456', 10);
+      const demoUserRes = await pool.query(`
+        INSERT INTO users (email, password_hash, name, points, solved_count, level, streak, badges, rank_val) VALUES 
+        ('demo@siberkampus.com', $1, 'Demo Kullanıcı', 350, 6, 5, 30, 5, 250)
+        RETURNING id
+      `, [demoPwHash]);
+      const demoUserId = demoUserRes.rows[0].id;
+
+      // Seed solved rooms for demo user
+      await pool.query(`
+        INSERT INTO solved_rooms (user_id, room_id, points_earned) VALUES
+        ($1, 'web-01', 50),
+        ($1, 'web-02', 60),
+        ($1, 'web-04', 50),
+        ($1, 'sys-01', 60),
+        ($1, 'sys-02', 70),
+        ($1, 'net-01', 60)
+        ON CONFLICT DO NOTHING
+      `, [demoUserId]);
+
+      // Seed progress for demo user
+      await pool.query(`
+        INSERT INTO room_progress (user_id, room_id, progress_percent) VALUES
+        ($1, 'web-01', 100),
+        ($1, 'web-02', 100),
+        ($1, 'web-04', 100),
+        ($1, 'sys-01', 100),
+        ($1, 'sys-02', 100),
+        ($1, 'net-01', 100)
+        ON CONFLICT DO NOTHING
+      `, [demoUserId]);
+
+      console.log('✓ Demo kullanıcısı ve ilerlemesi başarıyla eklendi.');
     }
 
     // Seed default blogs if empty
