@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build": "esbuild sk-data.jsx --outfile=sk-data.js --minify --jsx=transform && esbuild sk-articles.jsx --outfile=sk-articles.js --minify --jsx=transform && esbuild app.jsx --outfile=app.js --minify --jsx=transform && esbuild app-auth.jsx --outfile=app-auth.js --minify --jsx=transform && esbuild app-pages.jsx --outfile=app-pages.js --minify --jsx=transform"
   },
   "keywords": [
     "siberkampus",
@@ -21,5 +22,11 @@
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "pg": "^8.21.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.29.7",
+    "@babel/core": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
+    "esbuild": "^0.28.0"
   }
 }
