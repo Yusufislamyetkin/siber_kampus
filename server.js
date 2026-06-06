@@ -661,6 +661,12 @@ app.post('/api/blogs', authenticateToken, async (req, res) => {
 // Get all users list (admin only)
 app.get('/api/admin/users', authenticateToken, async (req, res) => {
   try {
+    // Check if admin
+    const adminCheck = await pool.query('SELECT is_admin FROM users WHERE id = $1', [req.user.id]);
+    if (adminCheck.rows.length === 0 || !adminCheck.rows[0].is_admin) {
+      return res.status(403).json({ error: 'Bu işlem için yetkiniz bulunmamaktadır.' });
+    }
+
     const query = `
       WITH ranked_users AS (
         SELECT id, ROW_NUMBER() OVER (ORDER BY points DESC, id ASC) as dynamic_rank
