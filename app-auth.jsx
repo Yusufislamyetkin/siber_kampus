@@ -559,7 +559,10 @@ const DashboardPage = ({ navigate, data }) => {
                     <div className="flex items-center gap-4 mb-4">
                       <span className="w-12 h-12 rounded-lg grid place-items-center text-xl border border-[#103a26] bg-[rgba(0,255,136,.04)]">{pw.icon}</span>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-base text-[#eafff5] font-disp font-bold group-hover:text-[#00ff88] transition-colors truncate">{pw.name}</h3>
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-base text-[#eafff5] font-disp font-bold group-hover:text-[#00ff88] transition-colors truncate">{pw.name}</h3>
+                          <span className="text-[9px] font-bold px-1.5 py-0.5 rounded text-[#ffd166] bg-[#ffd166]/10 border border-[#ffd166]/20 font-mono">VIP GEREKLİ</span>
+                        </div>
                         <p className="text-xs text-[#74998a] mt-0.5 truncate">{pw.desc}</p>
                       </div>
                     </div>
@@ -583,6 +586,39 @@ const DashboardPage = ({ navigate, data }) => {
                   </button>
                 );
               })}
+
+              {/* VIP Marketing Card */}
+              <div className="rounded-xl border border-[#ffd166]/30 p-5 bg-[rgba(255,209,102,0.02)] relative overflow-hidden group hover:border-[#ffd166]/50 transition-all" style={{ background: 'linear-gradient(165deg, rgba(13,38,25,0.8), rgba(4,16,10,0.95))' }}>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ffd166]/5 rounded-full blur-3xl pointer-events-none group-hover:bg-[#ffd166]/10 transition-colors"></div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-lg">👑</span>
+                  <h4 className="text-sm font-disp font-bold text-[#ffd166] uppercase tracking-wider">VIP Uzmanlık Programı</h4>
+                  <span className="ml-auto text-[10px] font-mono px-2 py-0.5 rounded bg-[#ffd166]/15 text-[#ffd166] border border-[#ffd166]/30">PROFESYONEL</span>
+                </div>
+                <p className="text-xs text-[#9fc4b5] leading-relaxed mb-4">
+                  Sıradan laboratuvarların ötesine geçin. Bire bir uzman mentör öğretmen eşliğinde gerçek senaryolarla sızma testi yapın.
+                </p>
+                <div className="space-y-2.5 mb-5">
+                  <div className="flex items-start gap-2 text-[11px] text-[#cdeede]">
+                    <span className="text-[#ffd166] flex-none">✓</span>
+                    <span><strong>4 Canlı Hedef Ağ:</strong> E-Ticaret, Bankacılık, Kurumsal Ağlar ve API altyapıları üzerinde canlı hacking deneyimi.</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-[11px] text-[#cdeede]">
+                    <span className="text-[#ffd166] flex-none">✓</span>
+                    <span><strong>Bire Bir Mentör:</strong> Hatalarınızı analiz eden ve bire bir yol gösteren uzman öğretmen desteği.</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-[11px] text-[#cdeede]">
+                    <span className="text-[#ffd166] flex-none">✓</span>
+                    <span><strong>Zengin Eğitim Kaynakları:</strong> Sektör standardı ileri düzey metodolojiler ve sızma testi makaleleri.</span>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => navigate('pricing')} 
+                  className="w-full font-mono text-xs font-bold text-[#021008] bg-[#ffd166] py-2.5 rounded-lg hover:shadow-[0_0_20px_rgba(255,209,102,0.3)] hover:bg-[#ffe082] transition-all uppercase tracking-wider"
+                >
+                  ⚡ VIP Üyeliğe Yükselt
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -6566,7 +6602,8 @@ const PathwayPage = ({ navigate, data }) => {
                 {/* Items with connecting line */}
                 <div className={`ml-[29px] border-l-2 ${lineColor} pl-7 py-3 space-y-2`}>
                   {phase.items.map((item, ii) => {
-                    const locked = !phase.unlocked || isPremium || !item.unlocked;
+                    const isPremiumItem = (item.type === 'doc' || item.type === 'target') && !user.is_premium;
+                    const locked = !isPremiumItem && (!phase.unlocked || isPremium || !item.unlocked);
                     const solved = item.isSolved;
                     const inProgress = !solved && item.progress > 0 && item.progress < 100;
                     const isDoc = item.type === 'doc';
@@ -6575,23 +6612,31 @@ const PathwayPage = ({ navigate, data }) => {
                     return (
                       <div
                         key={item.id}
-                        onClick={() => !locked && handleItemClick(phase, item)}
+                        onClick={() => {
+                          if (isPremiumItem) {
+                            setPremiumModal(true);
+                          } else if (!locked) {
+                            handleItemClick(phase, item);
+                          }
+                        }}
                         className={`relative flex items-center gap-4 p-4 rounded-xl border transition-all ${
-                          locked
-                            ? 'opacity-35 border-[#0c2719] cursor-not-allowed'
-                            : solved
-                              ? 'border-[#00ff88]/30 bg-[rgba(0,255,136,.03)] cursor-pointer'
-                              : inProgress
-                                ? 'border-[#00ff88]/50 bg-[rgba(0,255,136,.05)] shadow-[0_0_20px_rgba(0,255,136,.08)] cursor-pointer'
-                                : 'border-[#103a26] hover:border-[#00ff88]/40 hover:shadow-[0_0_20px_rgba(0,255,136,.06)] cursor-pointer'
+                          isPremiumItem
+                            ? 'border-[#ffd166]/20 bg-[rgba(255,209,102,.02)] hover:border-[#ffd166]/40 cursor-pointer shadow-[0_0_15px_rgba(255,209,102,.02)] hover:shadow-[0_0_25px_rgba(255,209,102,.06)]'
+                            : locked
+                              ? 'opacity-35 border-[#0c2719] cursor-not-allowed'
+                              : solved
+                                ? 'border-[#00ff88]/30 bg-[rgba(0,255,136,.03)] cursor-pointer'
+                                : inProgress
+                                  ? 'border-[#00ff88]/50 bg-[rgba(0,255,136,.05)] shadow-[0_0_20px_rgba(0,255,136,.08)] cursor-pointer'
+                                  : 'border-[#103a26] hover:border-[#00ff88]/40 hover:shadow-[0_0_20px_rgba(0,255,136,.06)] cursor-pointer'
                         }`}
                       >
                         {/* Connector dot */}
-                        <div className={`absolute -left-[37px] w-3 h-3 rounded-full border-2 ${solved ? 'bg-[#00ff88] border-[#00ff88]' : inProgress ? 'bg-[#020806] border-[#00ff88]' : locked ? 'bg-[#020806] border-[#0c2719]' : 'bg-[#020806] border-[#103a26]'}`}></div>
+                        <div className={`absolute -left-[37px] w-3 h-3 rounded-full border-2 ${solved ? 'bg-[#00ff88] border-[#00ff88]' : inProgress ? 'bg-[#020806] border-[#00ff88]' : isPremiumItem ? 'bg-[#020806] border-[#ffd166]' : locked ? 'bg-[#020806] border-[#0c2719]' : 'bg-[#020806] border-[#103a26]'}`}></div>
 
                         {/* Icon */}
                         <span className="w-9 h-9 rounded-lg grid place-items-center text-sm flex-none border border-[#103a26] bg-[#020806]">
-                          {locked ? '🔒' : solved ? '✅' : inProgress ? '⏳' : isDoc ? '📄' : isTarget ? '🎯' : '▶'}
+                          {isPremiumItem ? '👑' : locked ? '🔒' : solved ? '✅' : inProgress ? '⏳' : isDoc ? '📄' : isTarget ? '🎯' : '▶'}
                         </span>
 
                         {/* Content */}
@@ -6600,7 +6645,8 @@ const PathwayPage = ({ navigate, data }) => {
                             <span className="text-sm text-[#eafff5] font-medium truncate">{item.name || item.id}</span>
                             {isDoc && <span className="text-[10px] text-[#5c8a74] bg-[#04100a] border border-[#0c2719] px-1.5 py-0.5 rounded font-mono">DÖKÜMAN</span>}
                             {isTarget && <span className="text-[10px] text-[#ffd166] bg-[rgba(255,209,102,.08)] border border-[#ffd166]/20 px-1.5 py-0.5 rounded font-mono">HEDEF SİTE</span>}
-                            {item.difficulty && <span className={"text-[10px] font-bold px-2 py-0.5 rounded " + (dc[item.difficulty] || '')}>{item.difficulty}</span>}
+                            {isPremiumItem && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded text-[#ffd166] bg-[#ffd166]/10 border border-[#ffd166]/20 font-mono">VIP GEREKLİ</span>}
+                            {!isPremiumItem && item.difficulty && <span className={"text-[10px] font-bold px-2 py-0.5 rounded " + (dc[item.difficulty] || '')}>{item.difficulty}</span>}
                           </div>
                           {inProgress && (
                             <div className="mt-2 flex items-center gap-2">
@@ -6630,12 +6676,30 @@ const PathwayPage = ({ navigate, data }) => {
 
       {premiumModal && (
         <div className="fixed inset-0 bg-[#020806]/85 z-[999] grid place-items-center p-4 overflow-y-auto" onClick={() => setPremiumModal(false)}>
-          <div className="relative max-w-md w-full border border-[#ffd166]/30 bg-[#04100a] rounded-2xl shadow-[0_0_80px_rgba(255,209,102,.15)] p-8 text-center" style={{ background: 'linear-gradient(165deg,#07150e,#020806)', animation: 'modalScaleIn .5s cubic-bezier(0.16,1,0.3,1) both' }} onClick={e => e.stopPropagation()}>
-            <span className="font-mono text-xs text-[#ffd166] tracking-[0.2em] uppercase mb-2 block">👑 PREMIUM BÖLÜM</span>
-            <h3 className="text-2xl font-disp font-bold text-[#eafff5] mb-4">Siber Kampüs Premium Gerekli</h3>
-            <p className="text-[#9fc4b5] text-sm leading-relaxed mb-8">
-              Bu aşama (Gerçek Pentest Operasyonları) ve içerisindeki canlı hedef sızma testi laboratuvarları yalnızca Premium üyelerimize açıktır. Premium üyeliğe yükselerek hemen başlayın!
+          <div className="relative max-w-lg w-full border border-[#ffd166]/30 bg-[#04100a] rounded-2xl shadow-[0_0_80px_rgba(255,209,102,.15)] p-8 text-center" style={{ background: 'linear-gradient(165deg,#07150e,#020806)', animation: 'modalScaleIn .5s cubic-bezier(0.16,1,0.3,1) both' }} onClick={e => e.stopPropagation()}>
+            <span className="font-mono text-xs text-[#ffd166] tracking-[0.2em] uppercase mb-2 block">👑 PREMİUM & VİP EĞİTİM YOLU</span>
+            <h3 className="text-2xl font-disp font-bold text-[#eafff5] mb-4">Siber Kampüs Premium / VIP Gerekli</h3>
+            <p className="text-[#9fc4b5] text-sm leading-relaxed mb-6">
+              Bu öğrenme yolunda yer alan premium teorik dökümanlar, ileri düzey sızma testi makaleleri ve gerçekçi canlı pentest laboratuvarları yalnızca <strong>VIP Üyelerimize</strong> açıktır.
             </p>
+            
+            {/* VIP Features card */}
+            <div className="rounded-xl border border-[#ffd166]/20 bg-[rgba(255,209,102,0.02)] p-5 text-left mb-6 space-y-3">
+              <div className="text-xs font-bold text-[#ffd166] tracking-wider uppercase mb-1">// PRO UZMANLIK AVANTAJLARI:</div>
+              <div className="flex items-start gap-2 text-xs text-[#cdeede]">
+                <span className="text-[#ffd166] flex-none">✓</span>
+                <span><strong>Gerçek Pentest Odaları:</strong> E-Ticaret, Bankacılık, Kurumsal Ağlar ve API servisleri gibi 4 farklı canlı altyapıda sızma testi ve hacking yapma fırsatı!</span>
+              </div>
+              <div className="flex items-start gap-2 text-xs text-[#cdeede]">
+                <span className="text-[#ffd166] flex-none">✓</span>
+                <span><strong>Bire Bir Uzman Mentör:</strong> Hatalarını analiz eden, sana özel yol gösteren ve sorularını anında yanıtlayan uzman öğretmen desteği!</span>
+              </div>
+              <div className="flex items-start gap-2 text-xs text-[#cdeede]">
+                <span className="text-[#ffd166] flex-none">✓</span>
+                <span><strong>Zengin Eğitim Kaynakları:</strong> Sektör standardı araçların (Kali Linux, Burp Suite, Nmap, Gobuster) ileri seviye metodolojileri ve özel rehberler!</span>
+              </div>
+            </div>
+
             <div className="flex flex-col gap-3">
               <button 
                 onClick={() => {
@@ -6644,7 +6708,7 @@ const PathwayPage = ({ navigate, data }) => {
                 }} 
                 className="w-full font-mono text-sm font-bold text-[#021008] bg-[#ffd166] py-3.5 rounded-xl hover:shadow-[0_0_24px_rgba(255,209,102,0.4)] transition-all uppercase tracking-wider"
               >
-                ⚡ Planları Gör & Yükselt
+                ⚡ Planları Gör & VIP'ye Yükselt
               </button>
               <button 
                 onClick={() => setPremiumModal(false)}
