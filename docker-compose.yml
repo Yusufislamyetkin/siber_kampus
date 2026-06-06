@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: siberkampus-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: sk_user
+      POSTGRES_PASSWORD: sk_password_secure_2026
+      POSTGRES_DB: siberkampus
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+    driver: local

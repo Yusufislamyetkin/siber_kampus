@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Siber Güvenlik Uzmanı Ol | siberkampus — CTF & Hacking Laboratuvarları</title>
+<meta name="description" content="siberkampus, CTF görevleri ve gerçek hacking laboratuvarlarıyla sıfırdan siber güvenlik uzmanı olmanı sağlayan uygulamalı eğitim kampüsüdür. Hemen ücretsiz başla." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#020806;
+    --bg-2:#04100a;
+    --surface:#07150e;
+    --surface-2:#0a1d13;
+    --border:#103a26;
+    --border-soft:#0c2719;
+    --green:#00ff88;
+    --green-2:#00d978;
+    --mint:#5cffba;
+    --text:#cdeede;
+    --muted:#74998a;
+    --dim:#3d564b;
+    --glow:rgba(0,255,136,.55);
+    --maxw:1280px;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --disp:"Chakra Petch",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--mono);
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--green);color:#021008}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.04;letter-spacing:-.01em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .mono-label{
+    font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--green);display:inline-flex;align-items:center;gap:10px;
+  }
+  .mono-label::before{content:"//";color:var(--dim);font-weight:700}
+
+  /* global scanline + noise overlay */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:60;
+    background:repeating-linear-gradient(0deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.18) 3px,rgba(0,0,0,0) 4px);
+    mix-blend-mode:multiply;opacity:.5;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(2,8,6,.72);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:-.02em;color:#eafff5}
+  .logo .mk{
+    width:34px;height:34px;border:1.5px solid var(--green);border-radius:8px;
+    display:grid;place-items:center;color:var(--green);font-family:var(--mono);font-size:15px;font-weight:700;
+    box-shadow:0 0 18px -4px var(--glow), inset 0 0 12px -6px var(--glow);
+  }
+  .logo b{color:var(--green)}
+  nav.links{display:flex;gap:34px;align-items:center}
+  nav.links a{font-size:14px;color:var(--muted);transition:color .2s;position:relative}
+  nav.links a:hover{color:var(--text)}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:-7px;height:1.5px;width:0;background:var(--green);transition:width .25s}
+  nav.links a:hover::after{width:100%}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .btn{
+    font-family:var(--mono);font-weight:500;font-size:14px;cursor:pointer;border:none;background:none;
+    display:inline-flex;align-items:center;gap:9px;transition:all .2s;white-space:nowrap;
+  }
+  .btn-ghost{background:transparent;color:var(--text);padding:11px 18px;border:1px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--green);color:var(--green)}
+  .btn-primary{
+    background:var(--green);color:#021008;padding:12px 22px;font-weight:700;
+    clip-path:polygon(0 0,100% 0,100% 70%,calc(100% - 12px) 100%,0 100%);
+    box-shadow:0 0 0 0 var(--glow);
+  }
+  .btn-primary:hover{box-shadow:0 0 28px -4px var(--glow);transform:translateY(-1px)}
+  .menu-toggle{display:none;background:none;border:1px solid var(--border);color:var(--green);padding:8px 12px;font-family:var(--mono);cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border-soft)}
+  #matrix{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.32}
+  .grid-floor{
+    position:absolute;left:50%;bottom:-10%;width:240%;height:70%;transform:translateX(-50%) perspective(420px) rotateX(62deg);
+    background-image:linear-gradient(rgba(0,255,136,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,.16) 1px,transparent 1px);
+    background-size:48px 48px;z-index:0;
+    mask-image:linear-gradient(to top,#000 0%,transparent 75%);
+    animation:floor 7s linear infinite;
+  }
+  @keyframes floor{to{background-position:0 48px}}
+  .hero-glow{
+    position:absolute;top:-12%;left:50%;transform:translateX(-50%);width:900px;height:560px;z-index:0;
+    background:radial-gradient(ellipse at center,rgba(0,255,136,.16),transparent 62%);pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;
+    padding-top:96px;padding-bottom:104px}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--mint);border:1px solid var(--border);background:rgba(0,255,136,.04);padding:7px 14px;border-radius:100px;margin-bottom:26px;
+  }
+  .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  h1.hero-title{
+    font-size:clamp(40px,6vw,78px);color:#eafff5;margin-bottom:18px;letter-spacing:-.025em;
+  }
+  h1.hero-title .glitch{position:relative;color:var(--green);display:inline-block;text-shadow:0 0 32px rgba(0,255,136,.45)}
+  h1.hero-title .glitch::before,h1.hero-title .glitch::after{
+    content:attr(data-text);position:absolute;left:0;top:0;width:100%;overflow:hidden;
+  }
+  h1.hero-title .glitch::before{color:#00e0ff;animation:glitchA 3.4s infinite steps(2,end);clip-path:inset(0 0 55% 0)}
+  h1.hero-title .glitch::after{color:#ff2e88;animation:glitchB 3.4s infinite steps(2,end);clip-path:inset(55% 0 0 0)}
+  @keyframes glitchA{0%,92%,100%{transform:translate(0)}93%{transform:translate(-3px,-1px)}96%{transform:translate(2px,1px)}}
+  @keyframes glitchB{0%,92%,100%{transform:translate(0)}93%{transform:translate(3px,1px)}96%{transform:translate(-2px,-1px)}}
+  .hero-lead{font-size:16.5px;color:var(--muted);max-width:560px;margin-bottom:32px;line-height:1.75}
+  .hero-lead p{margin-bottom:15px}
+  .hero-lead p:last-child{margin-bottom:0}
+  .hero-lead strong{color:var(--text);font-weight:500}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn-lg{padding:16px 30px;font-size:15px}
+  .trust{display:flex;align-items:center;gap:14px;margin-top:26px;font-size:13px;color:var(--dim)}
+  .trust .avs{display:flex}
+  .trust .av{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--bg);margin-left:-8px;
+    background:linear-gradient(135deg,#0a3a24,#063018);display:grid;place-items:center;color:var(--mint);font-size:11px;font-weight:700}
+  .trust .av:first-child{margin-left:0}
+
+  /* terminal card in hero */
+  .term{
+    background:linear-gradient(160deg,#06140d,#040d08);border:1px solid var(--border);border-radius:12px;overflow:hidden;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 1px rgba(0,255,136,.05),0 0 60px -20px var(--glow);
+    font-size:13.5px;
+  }
+  .term-bar{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--border-soft);background:rgba(0,0,0,.25)}
+  .term-bar .d{width:11px;height:11px;border-radius:50%}
+  .term-bar .d:nth-child(1){background:#ff5f57}.term-bar .d:nth-child(2){background:#febc2e}.term-bar .d:nth-child(3){background:#28c840}
+  .term-bar span{margin-left:8px;color:var(--dim);font-size:12px}
+  .term-body{padding:18px;min-height:240px;line-height:1.85}
+  .term-body .p{color:var(--green)}
+  .term-body .c{color:var(--mint)}
+  .term-body .o{color:var(--muted)}
+  .term-body .ok{color:var(--green)}
+  .term-body .warn{color:#ffd166}
+  .cursor{display:inline-block;width:9px;height:16px;background:var(--green);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ---------- STATS ---------- */
+  .stats{border-bottom:1px solid var(--border-soft);background:linear-gradient(180deg,var(--bg-2),var(--bg))}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .stat{padding:44px 28px;text-align:center;border-left:1px solid var(--border-soft)}
+  .stat:first-child{border-left:none}
+  .stat .num{font-family:var(--disp);font-weight:700;font-size:clamp(32px,4vw,52px);color:var(--green);
+    text-shadow:0 0 26px rgba(0,255,136,.3);letter-spacing:-.02em}
+  .stat .lbl{font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.04em}
+
+  /* ---------- SECTIONS ---------- */
+  section.block{padding:108px 0;position:relative}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  h2.sec-title{font-size:clamp(30px,4vw,46px);color:#eafff5;margin:18px 0 22px}
+  h2.sec-title em{font-style:normal;color:var(--green)}
+  .sec-p{font-size:15.5px;color:var(--muted);line-height:1.85;max-width:560px}
+  .sec-p p{margin-bottom:15px}
+  .sec-p p:last-child{margin-bottom:0}
+  .sec-p strong{color:var(--text);font-weight:500}
+  .pill-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .pill{font-size:12.5px;color:var(--mint);border:1px solid var(--border);padding:8px 14px;border-radius:100px;background:rgba(0,255,136,.03)}
+  .pill::before{content:"› ";color:var(--green)}
+
+  /* wireframe sphere holder */
+  .sphere-wrap{position:relative;aspect-ratio:1;display:grid;place-items:center}
+  #sphere{width:100%;height:100%}
+  .sphere-wrap::before{content:"";position:absolute;inset:8%;border-radius:50%;
+    background:radial-gradient(circle at center,rgba(0,255,136,.13),transparent 60%)}
+  .sphere-tag{position:absolute;font-family:var(--mono);font-size:11.5px;color:var(--mint);
+    border:1px solid var(--border);background:rgba(2,8,6,.85);padding:5px 10px;border-radius:6px;backdrop-filter:blur(4px)}
+
+  /* ---------- FEATURES ---------- */
+  .feat-head{text-align:center;max-width:640px;margin:0 auto 56px}
+  .feat-head h2{font-size:clamp(28px,4vw,42px);color:#eafff5;margin-top:16px}
+  .feat-head p{color:var(--muted);margin-top:16px;font-size:15px}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    background:linear-gradient(165deg,var(--surface),var(--bg-2));border:1px solid var(--border-soft);
+    border-radius:14px;padding:30px 26px;transition:all .25s;position:relative;overflow:hidden;
+  }
+  .card::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--green),transparent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+  .card:hover{border-color:var(--border);transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(0,255,136,.35)}
+  .card:hover::before{transform:scaleX(1)}
+  .card .ic{width:46px;height:46px;border:1px solid var(--border);border-radius:10px;display:grid;place-items:center;
+    color:var(--green);margin-bottom:20px;font-size:20px;background:rgba(0,255,136,.04)}
+  .card h3{font-size:19px;color:#eafff5;margin-bottom:10px}
+  .card p{font-size:14px;color:var(--muted);line-height:1.7}
+  .card .idx{position:absolute;top:22px;right:24px;font-family:var(--mono);font-size:12px;color:var(--dim)}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi{background:linear-gradient(180deg,var(--bg),var(--bg-2))}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+  .quote{background:var(--surface);border:1px solid var(--border-soft);border-radius:14px;padding:30px 28px;position:relative}
+  .quote .mark{font-family:var(--disp);font-size:54px;line-height:.4;color:var(--green);opacity:.35;height:26px}
+  .quote p{font-size:14.5px;color:var(--text);line-height:1.75;margin:14px 0 22px}
+  .quote .who{display:flex;align-items:center;gap:12px}
+  .quote .who .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#0a3a24,#052b18);
+    display:grid;place-items:center;color:var(--mint);font-weight:700;font-size:15px;border:1px solid var(--border)}
+  .quote .who .nm{font-size:14px;color:#eafff5;font-weight:500}
+  .quote .who .rl{font-size:12px;color:var(--muted)}
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{position:relative;overflow:hidden;border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft)}
+  .cta-band .grid-floor{opacity:.5}
+  .cta-inner{position:relative;z-index:2;text-align:center;padding:96px 0}
+  .cta-inner h2{font-size:clamp(32px,5vw,56px);color:#eafff5;margin-bottom:18px}
+  .cta-inner h2 em{font-style:normal;color:var(--green);text-shadow:0 0 30px rgba(0,255,136,.4)}
+  .cta-inner p{color:var(--muted);max-width:520px;margin:0 auto 34px;font-size:15.5px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--bg-2);border-top:1px solid var(--border-soft);padding:64px 0 36px}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid var(--border-soft)}
+  .foot-brand p{color:var(--muted);font-size:14px;margin-top:18px;max-width:300px;line-height:1.7}
+  .foot-col h4{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:18px;font-weight:500}
+  .foot-col a{display:block;color:var(--muted);font-size:14px;padding:6px 0;transition:color .2s}
+  .foot-col a:hover{color:var(--green)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:16px}
+  .foot-bottom p{font-size:13px;color:var(--dim)}
+  .foot-bottom .status{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--muted)}
+  .foot-bottom .status .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.6s infinite}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:980px){
+    .hero-inner,.split{grid-template-columns:1fr;gap:42px}
+    .term{max-width:520px}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(3){border-left:none}
+    .feat-grid,.testi-grid{grid-template-columns:1fr 1fr}
+    .foot-top{grid-template-columns:1fr 1fr}
+    nav.links{display:none}
+    .menu-toggle{display:inline-block}
+  }
+  @media(max-width:620px){
+    .wrap{padding:0 20px}
+    .feat-grid,.testi-grid,.stats-grid,.foot-top{grid-template-columns:1fr}
+    .stat{border-left:none;border-top:1px solid var(--border-soft)}
+    .stat:first-child{border-top:none}
+    section.block{padding:76px 0}
+    .nav-cta .btn-ghost{display:none}
+    body::after{opacity:.3}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .grid-floor,.glitch::before,.glitch::after{animation:none}
+    #matrix{opacity:.18}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">
+      <span class="mk">&gt;_</span>
+      siber<b>kampus</b>
+    </a>
+    <nav class="links">
+      <a href="#laboratuvarlar">Laboratuvarlar</a>
+      <a href="#ctf">CTF Görevleri</a>
+      <a href="#neden">Neden Biz</a>
+      <a href="#yorumlar">Yorumlar</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="btn btn-ghost">Giriş Yap</button>
+      <button class="btn btn-primary">Ücretsiz Başla</button>
+      <button class="menu-toggle">≡</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="laboratuvarlar">
+  <canvas id="matrix"></canvas>
+  <div class="grid-floor"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="hero-badge"><span class="dot"></span> Türkiye'nin uygulamalı hacking kampüsü</span>
+      <h1 class="hero-title"><span class="glitch" data-text="Siber Güvenlik">Siber Güvenlik</span><br />Uzmanı</h1>
+      <div class="hero-lead">
+        <p>siberkampus, <strong>siber güvenlik uzmanı</strong> olmak isteyen herkes için tasarlanmış, tamamen uygulamalı bir öğrenme kampüsüdür. Sıkıcı teori ezberlemek yerine gerçek saldırı senaryolarını birebir canlandıran <strong>CTF görevleri</strong> ve <strong>hacking laboratuvarları</strong> üzerinde çalışırsın.</p>
+        <p>İster siber güvenliğe yeni başlayan bir öğrenci ol, ister kariyerini bu alana taşımak isteyen biri; sıfırdan başlayıp adım adım gerçek bir uzmana dönüşmen için gereken her şeyi tek bir platformda bulursun.</p>
+        <p>Web zafiyetlerinden ağ analizine, zararlı yazılım incelemesinden dijital adli bilişime kadar onlarca konuyu tarayıcının içinde, hiçbir kurulum yapmadan deneyimlersin.</p>
+        <p>Her görevde puan toplar, rozet kazanır ve seni işverenlere gösterecek bir beceri profili oluşturursun. Binlerce öğrenciyle birlikte öğrenir, mentörlerden geri bildirim alırsın. Yolculuğun ilk laboratuvarını çözdüğün anda başlar.</p>
+      </div>
+      <div class="hero-actions">
+        <button class="btn btn-primary btn-lg">İlk Laboratuvarını Çöz →</button>
+        <button class="btn btn-ghost btn-lg">CTF Görevlerini Gör</button>
+      </div>
+      <div class="trust">
+        <div class="avs">
+          <span class="av">AK</span><span class="av">MY</span><span class="av">EÇ</span><span class="av">+9</span>
+        </div>
+        <span>12.400+ öğrenci şu anda saldırı altında 🟢</span>
+      </div>
+    </div>
+
+    <div class="term">
+      <div class="term-bar">
+        <span class="d"></span><span class="d"></span><span class="d"></span>
+        <span>root@siberkampus: ~/lab-07-web-exploit</span>
+      </div>
+      <div class="term-body" id="termBody" style="font-size: 20px; font-weight: 400; height: 361px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="num" data-count="12400" data-suffix="+">0</div><div class="lbl">Aktif Öğrenci</div></div>
+      <div class="stat"><div class="num" data-count="380" data-suffix="+">0</div><div class="lbl">Hacking Laboratuvarı</div></div>
+      <div class="stat"><div class="num" data-count="90" data-suffix="+">0</div><div class="lbl">CTF Görevi</div></div>
+      <div class="stat"><div class="num" data-count="94" data-suffix="%">0</div><div class="lbl">Tamamlama Oranı</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 1: CTF / LABS ============ -->
+<section class="block" id="ctf">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="mono-label">Pratik &gt; Teori</span>
+      <h2 class="sec-title">CTF ve Hacking <em>Laboratuvarlarıyla</em> Pratik Yap</h2>
+      <div class="sec-p">
+        <p>siberkampus'ta öğrenmenin merkezinde gerçek dünyayı taklit eden <strong>hacking laboratuvarları</strong> ve <strong>CTF (Capture The Flag) görevleri</strong> bulunur. Her laboratuvar, izole edilmiş güvenli bir ortamda canlanan gerçek bir sistemdir; sızma testi adımlarını birebir uygular, açıkları kendi ellerinle keşfeder ve gizlenmiş bayrağı yakalamak için düşünmen gerekir.</p>
+        <p>SQL injection, XSS, ayrıcalık yükseltme, ağ pivotlama ve tersine mühendislik gibi konuları okuyarak değil, bizzat sömürerek öğrenirsin. Her görev zorluk seviyesine göre etiketlenir; başlangıç seviyesinden uzman seviyesine kadar kademeli ilerlersin.</p>
+        <p>Takıldığında ipuçları, çözüm videoları ve topluluğun desteği bir tık uzağındadır. Tarayıcı tabanlı altyapımız sayesinde sanal makine kurmakla, yapılandırmayla ya da bozulan ortamlarla uğraşmazsın; tek yapman gereken "Başlat" demek. Çözdüğün her bayrak puanını yükseltir, liderlik tablosunda seni yukarı taşır ve gerçek bir <strong>siber güvenlik uzmanının</strong> reflekslerini sana kazandırır.</p>
+      </div>
+      <div class="pill-list">
+        <span class="pill">Web Exploitation</span>
+        <span class="pill">Ağ Sızma Testi</span>
+        <span class="pill">Sistem Sömürüsü</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="sphere-wrap" style="opacity: 1; padding: 115px; margin: 0px; border-width: 0px; border-style: solid; border-radius: 0px">
+        <canvas id="sphere"></canvas>
+        <span class="sphere-tag" style="top:6%;left:0">scan: 0xA3F1 ✓</span>
+        <span class="sphere-tag" style="bottom:10%;right:-4%">node_active: 380</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="block" id="neden" style="background:linear-gradient(180deg,var(--bg),var(--bg-2))">
+  <div class="wrap">
+    <div class="feat-head reveal">
+      <span class="mono-label" style="justify-content:center;display:flex">Neden siberkampus</span>
+      <h2>Seni Gerçekten Uzman Yapan Kampüs</h2>
+      <p>Video izleyip unuttuğun kurslardan değil; her gün kendini test ettiğin, savaştığın ve kazandığın canlı bir laboratuvardan bahsediyoruz.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="card reveal"><span class="idx">01</span><div class="ic">⚡</div><h3>Kurulumsuz Laboratuvar</h3><p>Sanal makine, dual boot, bozuk yapılandırma yok. Tarayıcını aç, "Başlat" de ve saniyeler içinde canlı bir hedef sistemin karşısında ol.</p></div>
+      <div class="card reveal"><span class="idx">02</span><div class="ic">⌖</div><h3>Gerçek Saldırı Senaryoları</h3><p>Her görev, sahada karşına çıkacak gerçek zafiyetlerden üretildi. Sahte sorular değil, gerçek sistemleri ele geçirme deneyimi.</p></div>
+      <div class="card reveal"><span class="idx">03</span><div class="ic">↯</div><h3>Anlık Geri Bildirim</h3><p>Bayrağı yakaladığın an puanın artar, ilerlemen kaydedilir. Nerede hata yaptığını anında görür, eksiğini hemen kapatırsın.</p></div>
+      <div class="card reveal"><span class="idx">04</span><div class="ic">◈</div><h3>Mentör Desteği</h3><p>Takıldığın yerde alanında çalışan gerçek pentester'lardan ipucu ve geri bildirim al. Yalnız öğrenmek zorunda değilsin.</p></div>
+      <div class="card reveal"><span class="idx">05</span><div class="ic">⬡</div><h3>Rozet &amp; Sertifika</h3><p>Tamamladığın her yol için doğrulanabilir rozetler ve sertifikalar kazan. CV'ne ve LinkedIn'ine ekleyebileceğin somut kanıtlar.</p></div>
+      <div class="card reveal"><span class="idx">06</span><div class="ic">⟁</div><h3>Kariyer Yönlendirme</h3><p>Beceri profilin işe alım yapan şirketlere açılır. Hangi pozisyona hazır olduğunu görür, doğru fırsatlarla eşleşirsin.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: CAREER PATH ============ -->
+<section class="block">
+  <div class="wrap split">
+    <div class="reveal" style="order:2">
+      <span class="mono-label">Yol Haritası</span>
+      <h2 class="sec-title">Sıfırdan <em>Kariyere</em> Giden Net Bir Yol</h2>
+      <div class="sec-p">
+        <p>Çoğu insan siber güvenliğe başlamak ister ama nereden başlayacağını bilemediği için kaybolur. siberkampus tam da bu sorunu çözmek için kuruldu. Sana dağınık videolar değil, <strong>uçtan uca bir yol haritası</strong> sunuyoruz: ilk gün hangi komutu yazacağından başlayarak, ileri seviye sızma testi metodolojilerine kadar her adım sıralı ve mantıklı bir şekilde önüne geliyor.</p>
+        <p>Temel Linux ve ağ bilgisiyle ısınır, ardından web güvenliği, sistem sömürüsü ve raporlama becerilerini gerçek görevlerle pekiştirirsin. İlerledikçe profilin güçlenir; tamamladığın laboratuvarlar, kazandığın rozetler ve liderlik tablosundaki yerin senin için konuşan bir portföye dönüşür.</p>
+        <p>Kariyer değiştirmek isteyen biri ya da üniversite öğrencisi olman fark etmez; bu yol, seni izleyici koltuğundan çıkarıp klavyenin başına oturtur. Mezun olduğunda elinde sadece bir sertifika değil, gerçekten sistem ele geçirmiş bir <strong>siber güvenlik uzmanının</strong> özgüveni olur.</p>
+      </div>
+      <div class="hero-actions" style="margin-top:30px">
+        <button class="btn btn-primary btn-lg">Yol Haritasını Aç</button>
+      </div>
+    </div>
+    <div class="reveal" style="order:1">
+      <div class="roadmap">
+        <style>
+          .roadmap{display:flex;flex-direction:column;gap:14px}
+          .rm-step{display:flex;gap:18px;align-items:flex-start;border:1px solid var(--border-soft);background:linear-gradient(160deg,var(--surface),var(--bg-2));border-radius:12px;padding:20px 22px;position:relative;transition:border-color .2s}
+          .rm-step:hover{border-color:var(--border)}
+          .rm-step .n{width:38px;height:38px;flex:none;border-radius:9px;border:1px solid var(--border);color:var(--green);display:grid;place-items:center;font-family:var(--mono);font-weight:700;background:rgba(0,255,136,.04)}
+          .rm-step h4{font-family:var(--disp);font-size:16.5px;color:#eafff5;margin-bottom:4px}
+          .rm-step p{font-size:13px;color:var(--muted);line-height:1.6}
+          .rm-step .tag{position:absolute;top:18px;right:20px;font-family:var(--mono);font-size:11px;color:var(--dim)}
+        </style>
+        <div class="rm-step"><div class="n">01</div><div><h4>Temeller &amp; Linux</h4><p>Komut satırı, ağ temelleri ve güvenlik zihniyetiyle sağlam bir başlangıç.</p></div><span class="tag">~2 hafta</span></div>
+        <div class="rm-step"><div class="n">02</div><div><h4>Web &amp; Sistem Güvenliği</h4><p>Gerçek zafiyetleri sömürerek SQLi, XSS ve ayrıcalık yükseltmeyi öğren.</p></div><span class="tag">~4 hafta</span></div>
+        <div class="rm-step"><div class="n">03</div><div><h4>CTF &amp; İleri Sızma Testi</h4><p>Çok adımlı senaryolarda pivotlama, raporlama ve metodolojiyi ustalaştır.</p></div><span class="tag">~6 hafta</span></div>
+        <div class="rm-step"><div class="n">04</div><div><h4>Portföy &amp; Kariyer</h4><p>Beceri profilini işverenlere aç, doğru pozisyonlarla eşleş.</p></div><span class="tag">sürekli</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="block testi" id="yorumlar">
+  <div class="wrap">
+    <div class="feat-head reveal">
+      <span class="mono-label" style="justify-content:center;display:flex">Topluluk</span>
+      <h2>Klavyenin Başına Geçenler Ne Diyor?</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="quote reveal">
+        <div class="mark">”</div>
+        <p>Üniversitede teori öğrendim ama ilk defa siberkampus'ta gerçek bir sistemi ele geçirdim. 3 ay sonra ilk SOC analisti işime başladım. Laboratuvarlar olmasa bu hızda olmazdı.</p>
+        <div class="who"><div class="av">AK</div><div><div class="nm">Arda K.</div><div class="rl">SOC Analisti · eski öğrenci</div></div></div>
+      </div>
+      <div class="quote reveal">
+        <div class="mark">”</div>
+        <p>Muhasebeden geliyorum, kod bile bilmiyordum. Yol haritası beni elimden tutup götürdü. Her CTF görevini çözdükçe özgüvenim arttı. Şimdi pentester olarak çalışıyorum.</p>
+        <div class="who"><div class="av">MY</div><div><div class="nm">Melis Y.</div><div class="rl">Sızma Testi Uzmanı · kariyer değiştirdi</div></div></div>
+      </div>
+      <div class="quote reveal">
+        <div class="mark">”</div>
+        <p>Kurulumla uğraşmadan tarayıcıdan her şeye erişebilmek inanılmaz. Gece 2'de laboratuvar açıp bayrak avlıyorum. Bağımlılık yapıyor ama en iyi türden.</p>
+        <div class="who"><div class="av">EÇ</div><div><div class="nm">Emre Ç.</div><div class="rl">Bilgisayar Müh. öğrencisi</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="cta-band">
+  <div class="grid-floor"></div>
+  <div class="hero-glow" style="opacity:.7"></div>
+  <div class="wrap cta-inner reveal">
+    <h2>Bugün İlk <em>Bayrağını</em> Yakala.</h2>
+    <p>Kredi kartı yok, kurulum yok, bahane yok. Tarayıcını aç ve ilk hacking laboratuvarını ücretsiz çöz.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <button class="btn btn-primary btn-lg">Ücretsiz Hesap Aç →</button>
+      <button class="btn btn-ghost btn-lg">Görevleri İncele</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="#"><span class="mk">&gt;_</span> siber<b>kampus</b></a>
+        <p>Uygulamalı CTF görevleri ve hacking laboratuvarlarıyla yeni nesil siber güvenlik uzmanlarını yetiştiriyoruz.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Platform</h4>
+        <a href="#">Laboratuvarlar</a>
+        <a href="#">CTF Görevleri</a>
+        <a href="#">Yol Haritaları</a>
+        <a href="#">Liderlik Tablosu</a>
+      </div>
+      <div class="foot-col">
+        <h4>Kampüs</h4>
+        <a href="#">Hakkımızda</a>
+        <a href="#">Mentörler</a>
+        <a href="#">Topluluk</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h4>İletişim</h4>
+        <a href="#">Destek</a>
+        <a href="#">Kurumsal</a>
+        <a href="#">Kariyer</a>
+        <a href="#">Gizlilik</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 siberkampus — Tüm hakları saklıdır.</p>
+      <div class="status"><span class="dot"></span> Tüm sistemler çalışıyor<span class="cursor" style="height:13px;margin-left:4px"></span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- MATRIX RAIN ---------- */
+(function(){
+  const cv=document.getElementById('matrix');const ctx=cv.getContext('2d');
+  const hero=document.querySelector('.hero');
+  let cols,drops,W,H;const fs=15;
+  const chars='アカサタナハマヤラ0123456789ABCDEF<>{}#$%&*ANGRSU01'.split('');
+  function size(){W=cv.width=hero.offsetWidth;H=cv.height=hero.offsetHeight;cols=Math.floor(W/fs);drops=new Array(cols).fill(0).map(()=>Math.random()*-50);}
+  size();window.addEventListener('resize',size);
+  function draw(){
+    ctx.fillStyle='rgba(2,8,6,.10)';ctx.fillRect(0,0,W,H);
+    ctx.font=fs+'px JetBrains Mono, monospace';
+    for(let i=0;i<cols;i++){
+      const t=chars[Math.floor(Math.random()*chars.length)];
+      const x=i*fs,y=drops[i]*fs;
+      ctx.fillStyle=Math.random()>.975?'#eafff5':'rgba(0,255,136,'+(Math.random()*.5+.35)+')';
+      ctx.fillText(t,x,y);
+      if(y>H&&Math.random()>.975)drops[i]=0;
+      drops[i]+=1;
+    }
+  }
+  let raf;function loop(){draw();raf=requestAnimationFrame(loop);}
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){loop();}else{ctx.fillStyle='rgba(2,8,6,1)';ctx.fillRect(0,0,W,H);}
+})();
+
+/* ---------- WIREFRAME PARTICLE SPHERE ---------- */
+(function(){
+  const cv=document.getElementById('sphere');if(!cv)return;const ctx=cv.getContext('2d');
+  let W,H,DPR=Math.min(devicePixelRatio||1,2);
+  function size(){const r=cv.getBoundingClientRect();W=cv.width=r.width*DPR;H=cv.height=r.height*DPR;}
+  size();window.addEventListener('resize',size);
+  // fibonacci sphere points
+  const N=240,pts=[];const off=2/N,inc=Math.PI*(3-Math.sqrt(5));
+  for(let i=0;i<N;i++){const y=i*off-1+off/2;const r=Math.sqrt(1-y*y);const phi=i*inc;pts.push([Math.cos(phi)*r,y,Math.sin(phi)*r]);}
+  let a=0;const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    const cx=W/2,cy=H/2,R=Math.min(W,H)*0.40;
+    a+=reduce?0:0.0035;
+    const ca=Math.cos(a),sa=Math.sin(a),cb=Math.cos(a*.6),sb=Math.sin(a*.6);
+    const proj=pts.map(p=>{
+      let[x,y,z]=p;
+      // rotate Y
+      let x1=x*ca-z*sa,z1=x*sa+z*ca;
+      // rotate X
+      let y1=y*cb-z1*sb,z2=y*sb+z1*cb;
+      const persp=1.7/(1.7+z2);
+      return{sx:cx+x1*R*persp,sy:cy+y1*R*persp,z:z2,s:persp};
+    });
+    // links
+    for(let i=0;i<proj.length;i++){
+      for(let j=i+1;j<proj.length;j++){
+        const dx=proj[i].sx-proj[j].sx,dy=proj[i].sy-proj[j].sy;
+        const d=dx*dx+dy*dy;
+        if(d<(38*DPR)*(38*DPR)){
+          const al=(1-Math.sqrt(d)/(38*DPR))*0.28*((proj[i].z+1)/2);
+          ctx.strokeStyle='rgba(0,255,136,'+al+')';ctx.lineWidth=DPR*.6;
+          ctx.beginPath();ctx.moveTo(proj[i].sx,proj[i].sy);ctx.lineTo(proj[j].sx,proj[j].sy);ctx.stroke();
+        }
+      }
+    }
+    // nodes
+    proj.forEach(p=>{
+      const depth=(p.z+1)/2;
+      ctx.beginPath();ctx.arc(p.sx,p.sy,(1.1+depth*2)*DPR,0,7);
+      ctx.fillStyle='rgba('+(180-depth*180)+',255,'+(180+depth*40)+','+(0.35+depth*0.6)+')';
+      ctx.fill();
+    });
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+/* ---------- TERMINAL TYPING ---------- */
+(function(){
+  const el=document.getElementById('termBody');if(!el)return;
+  const lines=[
+    {t:'$ ',c:'p',x:'nmap -sV target.lab',d:55},
+    {t:'',c:'o',x:'  PORT     STATE  SERVICE',d:8},
+    {t:'',c:'o',x:'  22/tcp   open   ssh',d:8},
+    {t:'',c:'o',x:'  80/tcp   open   http',d:8},
+    {t:'$ ',c:'p',x:'sqlmap -u "/login" --dump',d:50},
+    {t:'',c:'warn',x:'  [!] injectable parameter found',d:8},
+    {t:'',c:'ok',x:'  [+] admin hash extracted',d:8},
+    {t:'$ ',c:'p',x:'cat /root/flag.txt',d:55},
+    {t:'',c:'ok',x:'  FLAG{s1ber_kampus_pwn3d}',d:8},
+    {t:'$ ',c:'p',x:'_',d:0,cur:true}
+  ];
+  let li=0;
+  function typeLine(){
+    if(li>=lines.length){return;}
+    const L=lines[li];const div=document.createElement('div');
+    const pre=document.createElement('span');pre.className='p';pre.textContent=L.t;div.appendChild(pre);
+    const span=document.createElement('span');span.className=L.c;div.appendChild(span);el.appendChild(div);
+    if(L.cur){const cu=document.createElement('span');cu.className='cursor';div.appendChild(cu);li++;return;}
+    let i=0;
+    (function ch(){
+      if(i<=L.x.length){span.textContent=L.x.slice(0,i);i++;setTimeout(ch,L.d);}
+      else{li++;setTimeout(typeLine,L.d>20?260:60);}
+    })();
+  }
+  typeLine();
+})();
+
+/* ---------- COUNT UP ---------- */
+(function(){
+  const nums=document.querySelectorAll('.num[data-count]');
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        const el=e.target;const end=+el.dataset.count;const sx=el.dataset.suffix||'';
+        let cur=0;const step=end/60;
+        (function up(){cur+=step;if(cur<end){el.textContent=Math.floor(cur).toLocaleString('tr-TR')+sx;requestAnimationFrame(up);}else{el.textContent=end.toLocaleString('tr-TR')+sx;}})();
+        io.unobserve(el);
+      }
+    });
+  },{threshold:.5});
+  nums.forEach(n=>io.observe(n));
+})();
+
+/* ---------- REVEAL ON SCROLL ---------- */
+(function(){
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+})();
+</script>
+</body>
+</html>
