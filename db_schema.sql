@@ -75,3 +75,16 @@ CREATE TABLE IF NOT EXISTS blogs (
     read_time VARCHAR(50) DEFAULT '5 dk',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- 8. Doc Progress Table
+CREATE TABLE IF NOT EXISTS user_doc_progress (
+  id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES users(id) ON DELETE CASCADE,
+  doc_id VARCHAR(40) NOT NULL,
+  completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT unique_user_doc UNIQUE(user_id, doc_id)
+);
+
+-- 9. Add is_premium column to users table if it doesn't exist
+ALTER TABLE users ADD COLUMN IF NOT EXISTS is_premium BOOLEAN DEFAULT FALSE;
+

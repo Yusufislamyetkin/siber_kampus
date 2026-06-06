@@ -2584,6 +2584,167 @@ const ToolsPage = ({ navigate, data }) => {
   );
 };
 
+/* ============ PRICING PAGE ============ */
+const PricingPage = ({ navigate }) => {
+  const HeaderCmp = window.SKHeader || (() => null);
+  const FooterCmp = window.SKFooter || (() => null);
+  const useUser = window.SKuseUser || (() => [null]);
+  const [user] = useUser();
+  
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleSubscribeSimulate = async () => {
+    if (!user) {
+      navigate('login');
+      return;
+    }
+    setLoading(true);
+    // Simulate payment process delay
+    setTimeout(async () => {
+      try {
+        const token = localStorage.getItem('sk_token');
+        const res = await fetch(`/api/admin/users/${user.id}/premium`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (res.ok) {
+          // Re-fetch profile or update localstorage
+          localStorage.setItem('sk_user_is_vip', 'true');
+          window.__SK_USER_FETCHED = false; // force refresh
+          window.dispatchEvent(new Event('sk_user_update'));
+          setSuccess(true);
+        } else {
+          alert('Ödeme simülasyonu başarısız oldu.');
+        }
+      } catch (err) {
+        alert('Ağ hatası.');
+      } finally {
+        setLoading(false);
+      }
+    }, 1500);
+  };
+
+  return (
+    <>
+      <HeaderCmp navigate={navigate} />
+      
+      {/* Hero */}
+      <section className="py-20 border-b border-[#0c2719] relative overflow-hidden">
+        <div className="absolute top-[-30%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center,rgba(0,255,136,.08),transparent 62%)' }}></div>
+        <div className="max-w-[1280px] mx-auto px-8 text-center relative z-[2]">
+          <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> ÜYELİK PLANLARI</span>
+          <h1 className="text-[clamp(36px,5vw,56px)] text-[#eafff5] my-5 font-disp">Siber Kampüs Premium</h1>
+          <p className="text-[#74998a] max-w-[640px] mx-auto text-base">Sıfırdan başlayarak gerçek dünyadaki sızma testi (pentest) süreçlerini uygulamalı olarak öğrenebileceğiniz premium eğitim ve hacking laboratuvarları planı.</p>
+        </div>
+      </section>
+
+      {/* Plans comparison */}
+      <section className="py-20 max-w-[1100px] mx-auto px-6">
+        {success ? (
+          <div className="rounded-2xl border border-[#00ff88] bg-[rgba(0,255,136,.03)] p-12 text-center max-w-lg mx-auto shadow-[0_0_50px_rgba(0,255,136,.15)]" style={{ animation: 'artCardIn .6s ease both' }}>
+            <span className="text-5xl block mb-6">👑</span>
+            <h2 className="text-3xl text-[#eafff5] font-disp font-bold mb-4">Tebrikler, Artık Premium Üyesiniz!</h2>
+            <p className="text-[#9fc4b5] text-sm leading-relaxed mb-8">
+              Ödeme simülasyonu başarıyla tamamlandı. Siber Kampüs Premium ayrıcalıklarınız hesabınıza anında tanımlandı. Artık "Gerçek Pentest Operasyonları" (Faz 5) ve tüm hedef siteler kullanımınıza açık!
+            </p>
+            <button onClick={() => navigate('dashboard')} className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-8 py-3.5 rounded-xl hover:shadow-[0_0_24px_var(--glow)] transition-all uppercase tracking-wider">
+              Kontrol Paneline Git →
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
+            {/* Free Plan */}
+            <div className="rounded-2xl border border-[#0c2719] p-8 flex flex-col justify-between bg-gradient-to-br from-[#07150e]/50 to-transparent hover:border-[#103a26] transition-all">
+              <div>
+                <div className="text-sm font-mono text-[#74998a] uppercase mb-1">Başlangıç Planı</div>
+                <h2 className="text-2xl text-[#eafff5] font-disp font-bold mb-2">Ücretsiz (Free)</h2>
+                <div className="text-3xl font-bold text-[#eafff5] font-mono mt-4 mb-6">0 TL <span className="text-xs text-[#74998a] font-normal">/ sonsuza kadar</span></div>
+                
+                <hr className="border-[#0c2719] my-6" />
+                
+                <ul className="space-y-3.5 text-sm text-[#9fc4b5] font-mono">
+                  <li className="flex items-center gap-2.5">
+                    <span className="text-[#00ff88] text-xs">✔</span> 15+ Temel Hacking Odası
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <span className="text-[#00ff88] text-xs">✔</span> Temel Zafiyet Eğitimleri (SQLi, XSS)
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <span className="text-[#00ff88] text-xs">✔</span> Genel Sohbet Kanalına Erişim
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <span className="text-[#00ff88] text-xs">✔</span> Profil ve Rozet Kazanımı
+                  </li>
+                  <li className="flex items-center gap-2.5 text-[#5c8a74]/60 line-through">
+                    <span className="text-red-500/50 text-xs">✗</span> Faz 5: Gerçek Hedef Sitelerde Pentest
+                  </li>
+                  <li className="flex items-center gap-2.5 text-[#5c8a74]/60 line-through">
+                    <span className="text-red-500/50 text-xs">✗</span> Doğrulanabilir Uzmanlık Sertifikası
+                  </li>
+                </ul>
+              </div>
+              
+              <button 
+                onClick={() => navigate(user ? 'dashboard' : 'register')} 
+                className="w-full mt-10 border border-[#103a26] text-[#74998a] hover:text-[#00ff88] hover:border-[#00ff88] py-3.5 rounded-xl font-mono text-sm transition-all text-center"
+              >
+                {user ? 'Zaten Kayıtlısınız' : 'Ücretsiz Kayıt Ol'}
+              </button>
+            </div>
+
+            {/* Premium Plan */}
+            <div className="rounded-2xl border border-[#00ff88]/50 p-8 flex flex-col justify-between bg-gradient-to-br from-[#07150e] to-[#04100a] shadow-[0_0_40px_rgba(0,255,136,0.06)] relative overflow-hidden hover:border-[#00ff88] transition-all">
+              <div className="absolute top-4 right-4 bg-[#ffd166]/10 border border-[#ffd166]/20 text-[#ffd166] text-[10px] font-bold px-2.5 py-0.5 rounded font-mono">EN POPÜLER</div>
+              <div>
+                <div className="text-sm font-mono text-[#00ff88] uppercase mb-1">Red Team Paket</div>
+                <h2 className="text-2xl text-[#eafff5] font-disp font-bold mb-2">Web Pentest Uzmanı</h2>
+                <div className="text-3xl font-bold text-[#eafff5] font-mono mt-4 mb-6">1200 TL <span className="text-xs text-[#74998a] font-normal">/ Tek Seferlik Ödeme</span></div>
+                
+                <hr className="border-[#103a26] my-6" />
+                
+                <ul className="space-y-3.5 text-sm text-[#eafff5] font-mono">
+                  <li className="flex items-center gap-2.5">
+                    <span className="text-[#00ff88] text-xs">✔</span> Bütün Ücretsiz Özellikler
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <span className="text-[#00ff88] text-xs">✔</span> **Faz 5: 4 Gerçek Pentest Hedef Sitesi**
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <span className="text-[#00ff88] text-xs">✔</span> **Doğrulanabilir Uzmanlık Sertifikası (jsPDF)**
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <span className="text-[#00ff88] text-xs">✔</span> Gelişmiş Zafiyet Analiz Rehberleri
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <span className="text-[#00ff88] text-xs">✔</span> VIP & Premium Profil Rozeti ve Chat Rengi
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <span className="text-[#00ff88] text-xs">✔</span> Öncelikli Mentör Destek & Soru-Cevap
+                  </li>
+                </ul>
+              </div>
+              
+              <button 
+                onClick={handleSubscribeSimulate}
+                disabled={loading || (user && user.is_premium)}
+                className="w-full mt-10 py-3.5 font-mono font-bold text-[#021008] bg-[#00ff88] rounded-xl hover:shadow-[0_0_30px_var(--glow)] disabled:opacity-50 disabled:hover:shadow-none transition-all uppercase tracking-wider text-center"
+              >
+                {loading ? 'Simülasyon Çalışıyor...' : (user && user.is_premium) ? 'Zaten Premiumsunuz' : 'Premium Satın Al ⚡'}
+              </button>
+            </div>
+          </div>
+        )}
+      </section>
+
+      <FooterCmp navigate={navigate} />
+    </>
+  );
+};
+
 /* ============ REGISTER PAGES ============ */
 Object.assign(PAGES, {
   about: AboutPage,
@@ -2596,4 +2757,5 @@ Object.assign(PAGES, {
   badges: BadgesPage,
   certificates: CertificatesPage,
   tools: ToolsPage,
+  pricing: PricingPage,
 });

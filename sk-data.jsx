@@ -343,6 +343,7 @@ const SK_PATHWAYS = [
         premium: true,
         items: [
           { type: 'doc', id: 'doc-pentest-methodology', name: 'Pentest Metodolojisi & Raporlama', readTime: '15 dk', required: true },
+          { type: 'doc', id: 'doc-recon-tools', name: 'Keşif Araçları: Nmap, Dirb, Gobuster', readTime: '12 dk', required: true },
           { type: 'target', id: 'target-01', name: 'Hedef Site 1: Keşif & Temel Zafiyetler', targetUrl: 'https://target1.siberkampus.org', flagCount: 5 },
           { type: 'target', id: 'target-02', name: 'Hedef Site 2: Orta Seviye Sömürü', targetUrl: 'https://target2.siberkampus.org', flagCount: 4 },
           { type: 'target', id: 'target-03', name: 'Hedef Site 3: İleri Seviye & Shell', targetUrl: 'https://target3.siberkampus.org', flagCount: 3 },

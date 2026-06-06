@@ -81,7 +81,7 @@ async function getUserPayload(userId) {
     )
     SELECT u.id, u.email, u.name, u.points, u.solved_count, u.level,
            COALESCE(r.dynamic_rank, 1) as rank_val,
-           u.badges, u.streak, u.name_changed, u.is_admin, u.is_banned, u.is_vip as is_premium, u.is_vip
+           u.badges, u.streak, u.name_changed, u.is_admin, u.is_banned, (u.is_vip OR u.is_premium) as is_premium, u.is_vip
     FROM users u
     LEFT JOIN ranked_users r ON u.id = r.id
     WHERE u.id = $1
@@ -587,6 +587,55 @@ app.post('/api/rooms/solve', authenticateToken, async (req, res) => {
   }
 });
 
+// GET /api/docs/progress — tamamlanan döküman ID listesi
+app.get('/api/docs/progress', authenticateToken, async (req, res) => {
+  try {
+    const result = await pool.query(
+      'SELECT doc_id FROM user_doc_progress WHERE user_id = $1',
+      [req.user.id]
+    );
+    res.json(result.rows.map(r => r.doc_id));
+  } catch (err) {
+    console.error('Döküman ilerlemesi çekme hatası:', err);
+    res.status(500).json({ error: 'Döküman ilerlemeleri yüklenirken hata oluştu.' });
+  }
+});
+
+// POST /api/docs/complete — döküman tamamlama
+app.post('/api/docs/complete', authenticateToken, async (req, res) => {
+  const { doc_id } = req.body;
+  if (!doc_id) {
+    return res.status(400).json({ error: 'Döküman ID gereklidir.' });
+  }
+  try {
+    await pool.query(
+      'INSERT INTO user_doc_progress (user_id, doc_id) VALUES ($1, $2) ON CONFLICT DO NOTHING',
+      [req.user.id, doc_id]
+    );
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('Döküman tamamlama hatası:', err);
+    res.status(500).json({ error: 'Döküman tamamlanırken hata oluştu.' });
+  }
+});
+
+// GET /api/pathway/progress — rooms + docs + targets hepsi bir arada
+app.get('/api/pathway/progress', authenticateToken, async (req, res) => {
+  try {
+    const [rooms, docs] = await Promise.all([
+      pool.query('SELECT room_id FROM solved_rooms WHERE user_id = $1', [req.user.id]),
+      pool.query('SELECT doc_id FROM user_doc_progress WHERE user_id = $1', [req.user.id])
+    ]);
+    res.json({
+      solvedRooms: rooms.rows.map(r => r.room_id),
+      completedDocs: docs.rows.map(r => r.doc_id)
+    });
+  } catch (err) {
+    console.error('Pathway ilerlemesi çekme hatası:', err);
+    res.status(500).json({ error: 'Pathway ilerlemesi yüklenirken hata oluştu.' });
+  }
+});
+
 // Dynamic sitemap.xml generator (public)
 app.get(['/api/sitemap.xml', '/sitemap.xml'], async (req, res) => {
   try {
@@ -830,7 +879,7 @@ app.get('/api/admin/users', authenticateToken, async (req, res) => {
       )
       SELECT u.id, u.name, u.email, u.points, u.solved_count, u.level,
              COALESCE(r.dynamic_rank, 1) as rank_val,
-             u.badges, u.streak, u.is_admin, u.is_banned, u.is_vip as is_premium, u.is_vip, u.created_at
+             u.badges, u.streak, u.is_admin, u.is_banned, (u.is_vip OR u.is_premium) as is_premium, u.is_vip, u.created_at
       FROM users u
       LEFT JOIN ranked_users r ON u.id = r.id
       ORDER BY u.created_at DESC
@@ -887,11 +936,38 @@ app.put('/api/admin/users/:id/vip', authenticateToken, async (req, res) => {
     }
 
     const nextVip = !user.rows[0].is_vip;
-    await pool.query('UPDATE users SET is_vip = $1 WHERE id = $2', [nextVip, userId]);
+    await pool.query('UPDATE users SET is_vip = $1, is_premium = $1 WHERE id = $2', [nextVip, userId]);
     res.json({ success: true, is_vip: nextVip, is_premium: nextVip });
   } catch (err) {
     console.error('Kullanıcı VIP hatası:', err);
     res.status(500).json({ error: 'Kullanıcı VIP durumu güncellenirken hata oluştu.' });
+  }
+});
+
+// Secure cleanup for deprecated blogs
+app.post('/api/blogs/cleanup', async (req, res) => {
+  const { secret } = req.body;
+  if (secret !== 'super_secret_cleanup_key_2026') {
+    return res.status(403).json({ error: 'Yetkisiz erişim.' });
+  }
+
+  try {
+    const allowedSlugs = [
+      'sql-injection-nedir-kapsamli-rehber',
+      'xss-saldirilari-turleri-ornekleri-savunma',
+      'reverse-shell-nedir-kurulum-tespit-savunma',
+      'linux-privilege-escalation-ayricalik-yukseltme',
+      'phishing-saldirilari-sosyal-muhendislik-savunma',
+      'kriptografi-temelleri-sifreleme-hash-dijital-imza'
+    ];
+    const delResult = await pool.query(
+      'DELETE FROM blogs WHERE NOT (slug = ANY($1::text[])) RETURNING id, title, slug',
+      [allowedSlugs]
+    );
+    res.json({ status: 'success', deleted: delResult.rows });
+  } catch (err) {
+    console.error('Blog temizleme hatası:', err);
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -910,7 +986,7 @@ app.put('/api/admin/users/:id/premium', authenticateToken, async (req, res) => {
     }
 
     const nextVip = !user.rows[0].is_vip;
-    await pool.query('UPDATE users SET is_vip = $1 WHERE id = $2', [nextVip, userId]);
+    await pool.query('UPDATE users SET is_vip = $1, is_premium = $1 WHERE id = $2', [nextVip, userId]);
     res.json({ success: true, is_vip: nextVip, is_premium: nextVip });
   } catch (err) {
     console.error('Kullanıcı premium hatası:', err);
@@ -1138,6 +1214,7 @@ async function initDatabase() {
     const schemaSql = fs.readFileSync(path.join(__dirname, 'db_schema.sql'), 'utf8');
     await pool.query(schemaSql);
     await pool.query('ALTER TABLE users ADD COLUMN IF NOT EXISTS is_vip BOOLEAN DEFAULT FALSE');
+    await pool.query('ALTER TABLE users ADD COLUMN IF NOT EXISTS is_premium BOOLEAN DEFAULT FALSE');
     await pool.query('ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS is_vip BOOLEAN DEFAULT FALSE');
     await pool.query('ALTER TABLE blogs ADD COLUMN IF NOT EXISTS seo_title VARCHAR(255)');
     await pool.query('ALTER TABLE blogs ADD COLUMN IF NOT EXISTS meta_description TEXT');
@@ -1293,25 +1370,31 @@ async function initDatabase() {
         );
       }
       console.log('✓ Blog yazıları güncellendi.');
+
+      // Delete any blogs that are not in our default list (short/deprecated legacy blogs)
+      const allowedSlugs = defaultBlogs.map(b => b.slug);
+      await pool.query(
+        'DELETE FROM blogs WHERE NOT (slug = ANY($1::text[]))',
+        [allowedSlugs]
+      );
+      console.log('✓ Eski/kısa blog yazıları temizlendi.');
     }
   } catch (err) {
     console.error('Veritabanı başlatma hatası:', err);
   }
 }
 
-// Start Server after DB Check
+// Always initialize database on startup (works in serverless environment too)
+initDatabase().catch(err => console.error('Veritabanı başlatma hatası:', err));
+
 if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
-  initDatabase().then(() => {
-    app.listen(PORT, () => {
-      console.log(`\n🚀 Express yerel sunucu basariyla baslatildi!`);
-      console.log(`   Siber Kampus sitesine erismek icin tiklayin:`);
-      console.log(`   👉 http://localhost:${PORT}/index.html (Dinamik React Sürümü)`);
-      console.log(`   👉 http://localhost:${PORT}/siberkampus%20Anasayfa.html (Statik Landing Page)\n`);
-      console.log(`Kapatmak için terminalde Ctrl+C tuşlarına basın.\n`);
-    });
+  app.listen(PORT, () => {
+    console.log(`\n🚀 Express yerel sunucu basariyla baslatildi!`);
+    console.log(`   Siber Kampus sitesine erismek icin tiklayin:`);
+    console.log(`   👉 http://localhost:${PORT}/index.html (Dinamik React Sürümü)`);
+    console.log(`   👉 http://localhost:${PORT}/siberkampus%20Anasayfa.html (Statik Landing Page)\n`);
+    console.log(`Kapatmak için terminalde Ctrl+C tuşlarına basın.\n`);
   });
-} else {
-  initDatabase();
 }
 
 module.exports = app;

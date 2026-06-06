@@ -1035,6 +1035,7 @@ const pageTitles = {
   terms: "Kullanım Şartları | siberkampus",
   privacy: "Gizlilik Politikası | siberkampus",
   tools: "Siber Güvenlik Araçları & Hesaplayıcılar | siberkampus",
+  pricing: "Premium Abonelik & Ücretler | siberkampus",
 };
 
 const updateSEOMeta = (p, d) => {
@@ -1105,6 +1106,10 @@ const updateSEOMeta = (p, d) => {
       desc = "Tamamen tarayıcınızda çalışan, 100% istemci taraflı çalışan, SEO uyumlu siber güvenlik araç kiti. Reverse Shell, Subnet, Encoder, Hash, SQLi ve DNS araçları.";
       keys = "siber güvenlik araçları, online siber araçlar, hacking araçları, network hesaplayıcılar, web güvenliği araçları";
     }
+  } else if (p === 'pricing') {
+    title = "Premium Abonelik & Ücretler | siberkampus";
+    desc = "Siber Kampüs Premium üyeliği ile gerçek hedef sitelerde pentest operasyonları yapın, doğrulanabilir sertifikalar kazanın.";
+    keys = "siber kampüs premium, siber güvenlik eğitim fiyatı, web pentest uzmanı eğitimi, siber güvenlik sertifikası";
   } else {
     const pageTitle = pageTitles[p] || "siberkampus";
     title = `${pageTitle}`;

@@ -194,6 +194,20 @@ function useUser() {
         }
       })
       .catch(err => console.error("Kullanıcı ilerlemesi senkronizasyon hatası:", err));
+
+      // Fetch Doc Progress
+      fetch('/api/docs/progress', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data && Array.isArray(data)) {
+          localStorage.setItem('sk_completed_docs', JSON.stringify(data));
+          syncUserFromLocalStorage();
+          rerender(n => n + 1);
+        }
+      })
+      .catch(err => console.error("Döküman ilerlemesi senkronizasyon hatası:", err));
     };
 
     const handler = () => {
@@ -6396,9 +6410,35 @@ const PathwayPage = ({ navigate, data }) => {
   if (!pathway) return <div className="text-center py-20 text-[#74998a]">Pathway bulunamadı.</div>;
 
   const [user] = useUser();
-  const solvedList = JSON.parse(localStorage.getItem('sk_solved_rooms') || '[]');
-  const completedDocs = JSON.parse(localStorage.getItem('sk_completed_docs') || '[]');
-  const progressMap = JSON.parse(localStorage.getItem('sk_room_progress') || '{}');
+  const [solvedList, setSolvedList] = useState(() => JSON.parse(localStorage.getItem('sk_solved_rooms') || '[]'));
+  const [completedDocs, setCompletedDocs] = useState(() => JSON.parse(localStorage.getItem('sk_completed_docs') || '[]'));
+  const [progressMap, setProgressMap] = useState(() => JSON.parse(localStorage.getItem('sk_room_progress') || '{}'));
+  const [premiumModal, setPremiumModal] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(false);
+
+  useEffect(() => {
+    const fetchProgress = async () => {
+      setLoadingProgress(true);
+      const token = localStorage.getItem('sk_token');
+      try {
+        const res = await fetch('/api/pathway/progress', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+          const result = await res.json();
+          localStorage.setItem('sk_solved_rooms', JSON.stringify(result.solvedRooms));
+          localStorage.setItem('sk_completed_docs', JSON.stringify(result.completedDocs));
+          setSolvedList(result.solvedRooms);
+          setCompletedDocs(result.completedDocs);
+        }
+      } catch (err) {
+        console.error('Pathway progress fetch error:', err);
+      } finally {
+        setLoadingProgress(false);
+      }
+    };
+    fetchProgress();
+  }, [pathway.slug]);
 
   const dc = { 'Başlangıç': 'text-[#5cffba] bg-[rgba(92,255,186,.1)]', 'Orta': 'text-[#ffd166] bg-[rgba(255,209,102,.1)]', 'İleri': 'text-[#ff8c42] bg-[rgba(255,140,66,.1)]', 'Uzman': 'text-[#ff2e88] bg-[rgba(255,46,136,.1)]' };
 
@@ -6422,7 +6462,11 @@ const PathwayPage = ({ navigate, data }) => {
   const overallPct = overallTotal > 0 ? Math.round((overallCompleted / overallTotal) * 100) : 0;
 
   const handleItemClick = (phase, item) => {
-    if (!phase.unlocked || phase.premiumLocked || !item.unlocked) return;
+    if (phase.premiumLocked) {
+      setPremiumModal(true);
+      return;
+    }
+    if (!phase.unlocked || !item.unlocked) return;
     if (item.type === 'room') {
       const roomObj = window.SK_ROOMS_MAP[item.id];
       if (roomObj) navigate('roomArticle', { ...roomObj, cat: pathway.name });
@@ -6452,7 +6496,7 @@ const PathwayPage = ({ navigate, data }) => {
           <div className="mt-6">
             <div className="flex items-center justify-between text-sm mb-2">
               <span className="text-[#74998a]">Genel İlerleme</span>
-              <span className="text-[#00ff88] font-mono font-bold">{overallCompleted}/{overallTotal} adım · %{overallPct}</span>
+              <span className="text-[#00ff88] font-mono font-bold">{overallCompleted}/{overallTotal} Adım · %{overallPct}</span>
             </div>
             <div className="w-full h-3 rounded-full bg-[#0c2719] overflow-hidden">
               <div className="h-full rounded-full transition-all duration-700" style={{ width: `${overallPct}%`, background: 'linear-gradient(90deg,#00ff88,#5cffba)' }}></div>
@@ -6473,7 +6517,10 @@ const PathwayPage = ({ navigate, data }) => {
             return (
               <div key={phase.id} className={`relative ${pi < phaseStats.length - 1 ? 'pb-2' : ''}`}>
                 {/* Phase Header */}
-                <div className={`flex items-center gap-4 p-5 rounded-xl border mb-1 ${isLocked || isPremium ? 'opacity-50 border-[#0c2719]' : isComplete ? 'border-[#00ff88]/40 bg-[rgba(0,255,136,.03)]' : 'border-[#103a26] bg-[rgba(7,21,14,.6)]'}`}>
+                <div 
+                  onClick={() => isPremium && setPremiumModal(true)}
+                  className={`flex items-center gap-4 p-5 rounded-xl border mb-1 ${isPremium ? 'cursor-pointer border-[#ffd166]/30 bg-[#ffd166]/[0.02] hover:border-[#ffd166]/50 transition-colors' : isLocked ? 'opacity-50 border-[#0c2719]' : isComplete ? 'border-[#00ff88]/40 bg-[rgba(0,255,136,.03)]' : 'border-[#103a26] bg-[rgba(7,21,14,.6)]'}`}
+                >
                   <span className="w-12 h-12 rounded-lg grid place-items-center text-xl border border-[#103a26] bg-[#020806] flex-none">{isPremium ? '👑' : phase.icon}</span>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 flex-wrap">
@@ -6483,7 +6530,9 @@ const PathwayPage = ({ navigate, data }) => {
                     <p className="text-xs text-[#74998a] mt-0.5">{phase.desc}</p>
                   </div>
                   <div className="text-right flex-none">
-                    {isLocked ? (
+                    {isPremium ? (
+                      <span className="text-xs text-[#ffd166] font-mono">👑 Premium</span>
+                    ) : isLocked ? (
                       <span className="text-xs text-[#5c8a74] font-mono">🔒 Kilitli</span>
                     ) : isComplete ? (
                       <span className="text-xs text-[#00ff88] font-bold font-mono">✅ {phase.completed}/{phase.total}</span>
@@ -6558,7 +6607,181 @@ const PathwayPage = ({ navigate, data }) => {
         </div>
       </section>
 
+      {premiumModal && (
+        <div className="fixed inset-0 bg-[#020806]/85 z-[999] grid place-items-center p-4 overflow-y-auto" onClick={() => setPremiumModal(false)}>
+          <div className="relative max-w-md w-full border border-[#ffd166]/30 bg-[#04100a] rounded-2xl shadow-[0_0_80px_rgba(255,209,102,.15)] p-8 text-center" style={{ background: 'linear-gradient(165deg,#07150e,#020806)', animation: 'modalScaleIn .5s cubic-bezier(0.16,1,0.3,1) both' }} onClick={e => e.stopPropagation()}>
+            <span className="font-mono text-xs text-[#ffd166] tracking-[0.2em] uppercase mb-2 block">👑 PREMIUM BÖLÜM</span>
+            <h3 className="text-2xl font-disp font-bold text-[#eafff5] mb-4">Siber Kampüs Premium Gerekli</h3>
+            <p className="text-[#9fc4b5] text-sm leading-relaxed mb-8">
+              Bu aşama (Gerçek Pentest Operasyonları) ve içerisindeki canlı hedef sızma testi laboratuvarları yalnızca Premium üyelerimize açıktır. Premium üyeliğe yükselerek hemen başlayın!
+            </p>
+            <div className="flex flex-col gap-3">
+              <button 
+                onClick={() => {
+                  setPremiumModal(false);
+                  navigate('pricing');
+                }} 
+                className="w-full font-mono text-sm font-bold text-[#021008] bg-[#ffd166] py-3.5 rounded-xl hover:shadow-[0_0_24px_rgba(255,209,102,0.4)] transition-all uppercase tracking-wider"
+              >
+                ⚡ Planları Gör & Yükselt
+              </button>
+              <button 
+                onClick={() => setPremiumModal(false)}
+                className="w-full border border-[#103a26] text-[#74998a] hover:text-[#eafff5] py-3 rounded-xl text-sm font-mono transition-colors"
+              >
+                Kapat
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {SKFooter && <SKFooter navigate={navigate} />}
+    </>
+  );
+};
+
+/* ============ DOC PAGE ============ */
+const DocPage = ({ navigate, data }) => {
+  const docId = typeof data === 'string' ? data : data?.id || '';
+  const pathwaySlug = data?.pathwaySlug || 'web-pentest';
+  
+  const doc = (window.SK_DOCS && window.SK_DOCS[docId]) || { title: 'Döküman', tagline: '', intro: '', sections: [], closing: '' };
+  
+  const [step, setStep] = useState(0);
+  const [instantAll, setInstantAll] = useState(false);
+  const [loading, setLoading] = useState(false);
+  
+  useEffect(() => {
+    setStep(0);
+    setInstantAll(false);
+    window.scrollTo(0, 0);
+  }, [docId]);
+
+  const handleComplete = async () => {
+    setLoading(true);
+    const token = localStorage.getItem('sk_token');
+    try {
+      const res = await fetch('/api/docs/complete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ doc_id: docId })
+      });
+      if (res.ok) {
+        const completed = JSON.parse(localStorage.getItem('sk_completed_docs') || '[]');
+        if (!completed.includes(docId)) {
+          completed.push(docId);
+          localStorage.setItem('sk_completed_docs', JSON.stringify(completed));
+        }
+        window.dispatchEvent(new Event('sk_user_update'));
+      }
+    } catch (e) {
+      console.error('Döküman tamamlanamadı:', e);
+    } finally {
+      setLoading(false);
+      navigate('pathway', pathwaySlug);
+    }
+  };
+
+  const cards = [];
+  cards.push({ key: 'intro', kind: 'intro', body: doc.intro });
+  (doc.sections || []).forEach((s, i) => cards.push({ key: 'sec' + i, kind: 'prose', icon: s.icon, heading: s.h, body: (s.body || []).join('\n') }));
+  cards.push({ key: 'closing', kind: 'closing', body: doc.closing });
+
+  const total = cards.length;
+  const advance = () => setStep(s => Math.min(total, s + 1));
+  const shownCount = instantAll ? total : Math.min(step + 1, total);
+
+  const renderProseCard = (c, i, isActive, content) => {
+    const typing = isActive && !instantAll;
+    if (c.kind === 'intro') {
+      return (
+        <div className={"relative border-l-2 pl-5 transition-colors duration-500 " + (typing ? "border-[#00ff88]" : "border-[#00ff88]/40")}>
+          {content}
+        </div>
+      );
+    }
+    return (
+      <section className={"rounded-2xl border p-6 transition-all duration-500 " + (c.kind === 'closing' ? (typing ? "border-[#00ff88] shadow-[0_0_30px_rgba(0,255,136,0.15)] text-center" : "border-[#00ff88]/25 text-center") : (typing ? "border-[#00ff88] shadow-[0_0_25px_rgba(0,255,136,0.12)]" : "border-[#103a26]")) + (typing ? " art-typing" : "")} style={{ background: c.kind === 'closing' ? 'radial-gradient(600px 200px at 50% 0%, rgba(0,255,136,.08), transparent), linear-gradient(165deg,#07150e,#04100a)' : 'linear-gradient(165deg,#07150e,#04100a)' }}>
+        {c.heading && (
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-2xl">{c.icon}</span>
+            <h2 className="text-xl font-disp font-bold text-[#eafff5]">{c.heading}</h2>
+          </div>
+        )}
+        <div className={c.kind === 'closing' ? "max-w-[620px] mx-auto" : ""}>{content}</div>
+        {c.kind === 'closing' && (instantAll || i < step) && (
+          <button 
+            disabled={loading}
+            onClick={handleComplete} 
+            className="mt-6 font-mono text-base font-bold text-[#021008] bg-[#00ff88] px-8 py-4 rounded-xl hover:shadow-[0_0_40px_-4px_var(--glow)] transition-all uppercase tracking-wider disabled:opacity-50"
+          >
+            {loading ? 'Kaydediliyor...' : '✅ Okundu Olarak İşaretle'}
+          </button>
+        )}
+      </section>
+    );
+  };
+
+  return (
+    <>
+      <AppHeader navigate={navigate} active="dashboard" />
+
+      {/* Breadcrumb */}
+      <div className="border-b border-[#0c2719] bg-[#04100a]">
+        <div className="max-w-[1280px] mx-auto px-6 py-3 flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-3 text-sm md:text-base">
+            <button onClick={() => navigate('dashboard')} className="text-[#74998a] hover:text-[#00ff88] transition-colors">← Dashboard</button>
+            <span className="text-[#5c8a74]">/</span>
+            <button onClick={() => navigate('pathway', pathwaySlug)} className="text-[#74998a] hover:text-[#00ff88] transition-colors">Öğrenme Yolu</button>
+            <span className="text-[#5c8a74]">/</span>
+            <span className="text-[#eafff5] font-mono">{doc.title}</span>
+          </div>
+          <span className="font-mono text-xs text-[#74998a]">{doc.readTime}</span>
+        </div>
+      </div>
+
+      {/* HERO */}
+      <div className="relative overflow-hidden border-b border-[#0c2719]" style={{ background: 'radial-gradient(900px 380px at 20% -10%, rgba(0,255,136,.10), transparent 60%), linear-gradient(165deg,#07150e,#020806)' }}>
+        <div className="grid-floor" style={{ opacity: .35 }}></div>
+        <div className="relative max-w-[1100px] mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center">
+          <div>
+            <span className="font-mono text-[11px] font-medium tracking-[.2em] uppercase text-[#00ff88] inline-flex items-center gap-2 mb-3">
+              <span className="w-2 h-2 rounded-full bg-[#00ff88] sk-pulse"></span>
+              <HeroGlowType text="// ÖĞRENME REHBERİ — TEORİK BRİFİNG" speed={8} instant={instantAll} />
+            </span>
+            <h1 className="text-[clamp(26px,4vw,42px)] font-disp font-bold text-[#eafff5] leading-tight mb-3 min-h-[46px]">
+              <HeroGlowType text={doc.title} speed={15} instant={instantAll} />
+            </h1>
+            <p className="text-[#74998a] text-base md:text-lg leading-relaxed max-w-[640px]">
+              <HeroGlowType text={doc.tagline} speed={18} instant={instantAll} />
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* BODY */}
+      <main className="max-w-[820px] mx-auto px-6 py-10 pb-28 space-y-6">
+        {cards.map((c, i) => {
+          const reveal = instantAll || i <= step;
+          if (!reveal) return null;
+          const isActive = !instantAll && i === step;
+
+          const content = isActive
+            ? <GlowType text={c.body} speed={isActive ? 20 : 0} onDone={advance} big={c.kind === 'intro'} />
+            : <GlowType text={c.body} instant big={c.kind === 'intro'} />;
+            
+          return (
+            <ArticleCard key={c.key} active={isActive} scroll={i > 0}>
+              {renderProseCard(c, i, isActive, content)}
+            </ArticleCard>
+          );
+        })}
+      </main>
+      <SKFooter navigate={navigate} />
     </>
   );
 };
@@ -6573,6 +6796,7 @@ Object.assign(PAGES, {
   category: CategoryPage,
   pathway: PathwayPage,
   admin: AdminPage,
+  doc: DocPage,
 });
 
 /* ============ SHARED EXPORTS (for app-pages.jsx, separate babel scope) ============ */
