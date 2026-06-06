@@ -13,7 +13,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'super_secret_cyber_key_2026';
 
 // DB Connection Pool
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.POSTGRES_URL_NON_POOLING
 });
 
 app.use(cors());
@@ -797,12 +797,18 @@ async function initDatabase() {
 }
 
 // Start Server after DB Check
-initDatabase().then(() => {
-  app.listen(PORT, () => {
-    console.log(`\n🚀 Express yerel sunucu basariyla baslatildi!`);
-    console.log(`   Siber Kampus sitesine erismek icin tiklayin:`);
-    console.log(`   👉 http://localhost:${PORT}/index.html (Dinamik React Sürümü)`);
-    console.log(`   👉 http://localhost:${PORT}/siberkampus%20Anasayfa.html (Statik Landing Page)\n`);
-    console.log(`Kapatmak için terminalde Ctrl+C tuşlarına basın.\n`);
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  initDatabase().then(() => {
+    app.listen(PORT, () => {
+      console.log(`\n🚀 Express yerel sunucu basariyla baslatildi!`);
+      console.log(`   Siber Kampus sitesine erismek icin tiklayin:`);
+      console.log(`   👉 http://localhost:${PORT}/index.html (Dinamik React Sürümü)`);
+      console.log(`   👉 http://localhost:${PORT}/siberkampus%20Anasayfa.html (Statik Landing Page)\n`);
+      console.log(`Kapatmak için terminalde Ctrl+C tuşlarına basın.\n`);
+    });
   });
-});
+} else {
+  initDatabase();
+}
+
+module.exports = app;
