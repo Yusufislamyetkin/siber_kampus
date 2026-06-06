@@ -17,11 +17,7 @@ function useReveal() {
       es.forEach((e) => {if (e.isIntersecting) {reveal(e.target);io.unobserve(e.target);}});
     }, { threshold: .08, rootMargin: '0px 0px -5% 0px' });
 
-    els.forEach((el) => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight * 1.1 && r.bottom > 0) reveal(el);else
-      io.observe(el);
-    });
+    els.forEach((el) => io.observe(el));
 
     // Safety net: reveal anything still hidden shortly after mount.
     const fallback = setTimeout(() => els.forEach(reveal), 600);

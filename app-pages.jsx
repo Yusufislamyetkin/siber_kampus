@@ -665,10 +665,22 @@ const CertificatesPage = ({ navigate }) => {
       ctx.fillText('🎖️', svgW/2, svgH - 56 * scale);
       
       const imgData = canvas.toDataURL('image/png', 1.0);
-      const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [1200, 850] });
-      pdf.addImage(imgData, 'PNG', 0, 0, 1200, 850);
-      pdf.save('siberkampus-sertifika-' + cert.code + '.pdf');
+      
+      const savePDF = () => {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [1200, 850] });
+        pdf.addImage(imgData, 'PNG', 0, 0, 1200, 850);
+        pdf.save('siberkampus-sertifika-' + cert.code + '.pdf');
+      };
+
+      if (window.jspdf) {
+        savePDF();
+      } else {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+        script.onload = () => savePDF();
+        document.head.appendChild(script);
+      }
     });
   };
 
