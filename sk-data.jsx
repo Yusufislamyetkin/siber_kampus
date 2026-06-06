@@ -344,10 +344,10 @@ const SK_PATHWAYS = [
         items: [
           { type: 'doc', id: 'doc-pentest-methodology', name: 'Pentest Metodolojisi & Raporlama', readTime: '15 dk', required: true },
           { type: 'doc', id: 'doc-recon-tools', name: 'Keşif Araçları: Nmap, Dirb, Gobuster', readTime: '12 dk', required: true },
-          { type: 'target', id: 'target-01', name: 'Hedef Site 1: Keşif & Temel Zafiyetler', targetUrl: 'https://target1.siberkampus.org', flagCount: 5 },
-          { type: 'target', id: 'target-02', name: 'Hedef Site 2: Orta Seviye Sömürü', targetUrl: 'https://target2.siberkampus.org', flagCount: 4 },
-          { type: 'target', id: 'target-03', name: 'Hedef Site 3: İleri Seviye & Shell', targetUrl: 'https://target3.siberkampus.org', flagCount: 3 },
-          { type: 'target', id: 'target-04', name: 'Hedef Site 4: Tam Pentest Operasyonu', targetUrl: 'https://target4.siberkampus.org', flagCount: 6 },
+          { type: 'target', id: 'target-01', name: 'Hedef Site 1: Keşif & Temel Zafiyetler', targetUrl: 'https://target-1-2a6xre5ei-kinyas-projects.vercel.app', flagCount: 5 },
+          { type: 'target', id: 'target-02', name: 'Hedef Site 2: E-Ticaret Platformu', targetUrl: 'https://target-2-579zyduy5-kinyas-projects.vercel.app', flagCount: 4 },
+          { type: 'target', id: 'target-03', name: 'Hedef Site 3: AlestaBank İnternet Şubesi', targetUrl: 'https://target-3-dcqwqbnoz-kinyas-projects.vercel.app', flagCount: 4 },
+          { type: 'target', id: 'target-04', name: 'Hedef Site 4: Vera Holding İntranet Portalı', targetUrl: 'https://target-4-qaladad8f-kinyas-projects.vercel.app', flagCount: 6 },
         ]
       }
     ]

@@ -5530,6 +5530,22 @@ const ChatPage = ({ navigate }) => {
   // Çevrimiçi listesi: aktif kullanıcıları çek (gerçek DB verisi)
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [totalOnlineCount, setTotalOnlineCount] = useState(0);
+  const [shuffledOnline, setShuffledOnline] = useState([]);
+
+  // Shuffle online users to only display 40 at a time, swapping them periodically
+  useEffect(() => {
+    if (onlineUsers.length === 0) return;
+    
+    const selectRandomUsers = () => {
+      const listWithoutMe = onlineUsers.filter(u => u !== user.name);
+      const shuffled = [...listWithoutMe].sort(() => 0.5 - Math.random());
+      setShuffledOnline(shuffled.slice(0, 40));
+    };
+
+    selectRandomUsers();
+    const interval = setInterval(selectRandomUsers, 30000);
+    return () => clearInterval(interval);
+  }, [onlineUsers, user.name]);
 
   useEffect(() => {
     const token = localStorage.getItem('sk_token');
@@ -5645,19 +5661,19 @@ const ChatPage = ({ navigate }) => {
             <div className="rounded-2xl border border-[#0c2719] p-6" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
               <h3 className="text-[#eafff5] font-disp font-bold mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#00ff88] shadow-[0_0_8px_#00ff88]"></span>Çevrimiçi</h3>
               <div className="space-y-2.5">
-                {online.map((u, i) => (
+                {(shuffledOnline.length > 0 ? shuffledOnline : online.slice(0, 40)).map((u, i) => (
                   <div key={i} className="flex items-center gap-2.5">
                     <span className="w-7 h-7 rounded-md grid place-items-center text-[#5cffba] font-bold text-[10px] border border-[#103a26]" style={{ background: 'linear-gradient(135deg,#0a3a24,#052b18)' }}>{u.slice(0, 2).toUpperCase()}</span>
                     <span className="text-sm text-[#cdeede]">{u}</span>
                     <span className="ml-auto w-2 h-2 rounded-full bg-[#00ff88]"></span>
                   </div>
                 ))}
-                <div className="flex items-center gap-2.5 pt-1">
-                  <span className="w-7 h-7 rounded-md grid place-items-center text-[#021008] font-bold text-[10px] bg-[#00ff88]">{ME.avatar}</span>
-                  <span className="text-sm text-[#00ff88] font-medium">{ME.name} (Sen)</span>
+                <div className="flex items-center gap-2.5 pt-1.5 border-t border-[#103a26]/30 mt-1.5">
+                  <span className="w-7 h-7 rounded-md grid place-items-center text-[#021008] font-bold text-[10px] bg-[#00ff88]">{(user.name || 'SE').slice(0, 2).toUpperCase()}</span>
+                  <span className="text-sm text-[#00ff88] font-medium">{user.name || 'Sen'} (Sen)</span>
                   <span className="ml-auto w-2 h-2 rounded-full bg-[#ffd166]"></span>
                 </div>
-                <p className="text-xs text-[#5c8a74] pt-2">{totalOnlineCount > 8 ? '+' + (totalOnlineCount - 8) + ' kişi daha…' : ''}</p>
+                <p className="text-xs text-[#5c8a74] pt-2">{totalOnlineCount > 40 ? '+' + (totalOnlineCount - 40) + ' kişi daha…' : ''}</p>
               </div>
             </div>
             <div className="rounded-2xl border border-[#0c2719] p-6" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
@@ -6505,7 +6521,7 @@ const PathwayPage = ({ navigate, data }) => {
       const isSolved = item.type === 'room' ? solvedList.includes(item.id) : item.type === 'doc' ? completedDocs.includes(item.id) : item.type === 'target' ? solvedList.includes(item.id) : false;
       const progress = item.type === 'room' ? (progressMap[item.id] || 0) : 0;
       const unlocked = window.isItemUnlocked(pathway, phase.id, idx, solvedList, completedDocs);
-      return { ...detail, isSolved, progress, unlocked, idx };
+      return { ...detail, isSolved, progress, unlocked, idx, targetUrl: item.targetUrl };
     });
     const completed = items.filter(i => i.isSolved).length;
     const total = items.length;
@@ -6519,6 +6535,10 @@ const PathwayPage = ({ navigate, data }) => {
   const overallPct = overallTotal > 0 ? Math.round((overallCompleted / overallTotal) * 100) : 0;
 
   const handleItemClick = (phase, item) => {
+    if (pathway.slug === 'web-pentest' && !user.is_premium) {
+      setPremiumModal(true);
+      return;
+    }
     if (phase.premiumLocked) {
       setPremiumModal(true);
       return;
@@ -6530,7 +6550,9 @@ const PathwayPage = ({ navigate, data }) => {
     } else if (item.type === 'doc') {
       navigate('doc', { id: item.id, pathwaySlug: pathway.slug });
     } else if (item.type === 'target') {
-      // Target sites — future feature
+      if (item.targetUrl) {
+        window.open(item.targetUrl, '_blank');
+      }
     }
   };
 
@@ -6561,6 +6583,47 @@ const PathwayPage = ({ navigate, data }) => {
           </div>
         </div>
       </section>
+
+      {/* VIP Uzmanlık Programı Card */}
+      {pathway.slug === 'web-pentest' && (
+        <section className="pt-10 pb-4 max-w-[900px] mx-auto px-6">
+          <div className="rounded-2xl border border-[#ffd166]/30 bg-gradient-to-br from-[#0b1b14] to-[#04100a] p-6 shadow-[0_0_50px_rgba(255,209,102,0.06)] relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-[radial-gradient(circle_at_top_right,rgba(255,209,102,0.1),transparent_70%)] pointer-events-none"></div>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-2xl animate-bounce">👑</span>
+              <div>
+                <h2 className="text-lg font-disp font-bold text-[#ffd166] tracking-wide">VIP Uzmanlık Programı</h2>
+                <span className="text-[10px] font-mono font-bold text-[#ffd166]/80 px-2 py-0.5 rounded bg-[#ffd166]/10 border border-[#ffd166]/20">PROFESYONEL</span>
+              </div>
+            </div>
+            <p className="text-sm text-[#eafff5] font-medium leading-relaxed mb-5">
+              Sıradan laboratuvarların ötesine geçin. Bire bir uzman mentör öğretmen eşliğinde gerçek senaryolarla sızma testi yapın.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <div className="p-4 rounded-xl border border-[#103a26]/50 bg-black/10">
+                <span className="text-[#ffd166] font-bold text-sm block mb-1">✓ 4 Canlı Hedef Ağ</span>
+                <p className="text-[11px] text-[#74998a] leading-relaxed">E-Ticaret, Bankacılık, Kurumsal Ağlar ve API altyapıları üzerinde canlı hacking deneyimi.</p>
+              </div>
+              <div className="p-4 rounded-xl border border-[#103a26]/50 bg-black/10">
+                <span className="text-[#ffd166] font-bold text-sm block mb-1">✓ Bire Bir Mentör</span>
+                <p className="text-[11px] text-[#74998a] leading-relaxed">Hatalarınızı analiz eden ve bire bir yol gösteren uzman öğretmen desteği.</p>
+              </div>
+              <div className="p-4 rounded-xl border border-[#103a26]/50 bg-black/10">
+                <span className="text-[#ffd166] font-bold text-sm block mb-1">✓ Zengin Eğitim Kaynakları</span>
+                <p className="text-[11px] text-[#74998a] leading-relaxed">Sektör standardı ileri düzey metodolojiler ve sızma testi makaleleri.</p>
+              </div>
+            </div>
+            {!user.is_premium && (
+              <button 
+                onClick={() => navigate('pricing')} 
+                className="w-full text-center font-mono text-xs font-bold text-[#021008] bg-[#ffd166] py-3 rounded-xl hover:shadow-[0_0_20px_rgba(255,209,102,0.4)] transition-all uppercase tracking-wider"
+              >
+                VIP Planları İncele & Katıl ⚡
+              </button>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Phase Map */}
       <section className="py-10">
@@ -6602,7 +6665,7 @@ const PathwayPage = ({ navigate, data }) => {
                 {/* Items with connecting line */}
                 <div className={`ml-[29px] border-l-2 ${lineColor} pl-7 py-3 space-y-2`}>
                   {phase.items.map((item, ii) => {
-                    const isPremiumItem = (item.type === 'doc' || item.type === 'target') && !user.is_premium;
+                    const isPremiumItem = (pathway.slug === 'web-pentest' || item.type === 'doc' || item.type === 'target') && !user.is_premium;
                     const locked = !isPremiumItem && (!phase.unlocked || isPremium || !item.unlocked);
                     const solved = item.isSolved;
                     const inProgress = !solved && item.progress > 0 && item.progress < 100;
@@ -6680,7 +6743,7 @@ const PathwayPage = ({ navigate, data }) => {
             <span className="font-mono text-xs text-[#ffd166] tracking-[0.2em] uppercase mb-2 block">👑 PREMİUM & VİP EĞİTİM YOLU</span>
             <h3 className="text-2xl font-disp font-bold text-[#eafff5] mb-4">Siber Kampüs Premium / VIP Gerekli</h3>
             <p className="text-[#9fc4b5] text-sm leading-relaxed mb-6">
-              Bu öğrenme yolunda yer alan premium teorik dökümanlar, ileri düzey sızma testi makaleleri ve gerçekçi canlı pentest laboratuvarları yalnızca <strong>VIP Üyelerimize</strong> açıktır.
+              Bu öğrenme yolunda yer alan premium dökümanlar, sızma testi makaleleri ve canlı hedef pentest laboratuvarları yalnızca <strong>VIP Üyelerimize</strong> açıktır.
             </p>
             
             {/* VIP Features card */}
