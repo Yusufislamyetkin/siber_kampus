@@ -6,7 +6,7 @@
       "destination": "/api"
     },
     {
-      "source": "/((?!api/).*)",
+      "source": "/((?!api(?:/|$)|robots\\.txt|sitemap\\.xml|googlee75b9d0f2bce7b3d\\.html|favicon\\.png|.*\\.js$|.*\\.css$|.*\\.png$|.*\\.jpg$|.*\\.ico$).*)",
       "destination": "/"
     }
   ],

@@ -2,8 +2,10 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Siber Güvenlik Uzmanı Ol | siberkampus — CTF & Hacking Laboratuvarları</title>
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="shortcut icon" href="/favicon.png" type="image/png" />
   <meta name="description" content="siberkampus, CTF görevleri ve gerçek hacking laboratuvarlarıyla sıfırdan siber güvenlik uzmanı olmanı sağlayan uygulamalı eğitim kampüsüdür. Hemen ücretsiz başla." />
   <meta name="keywords" content="siber güvenlik, ctf, hacking laboratuvarı, siber ctf, ethical hacking, sızma testi, pentest, siber eğitim" />
   <meta name="author" content="siberkampus" />
@@ -25,25 +27,25 @@
   <meta property="twitter:description" content="siberkampus, CTF görevleri ve gerçek hacking laboratuvarlarıyla sıfırdan siber güvenlik uzmanı olmanı sağlayan uygulamalı eğitim kampüsüdür." />
   <meta property="twitter:image" content="https://siberkampus.com/ogretici.jpg" />
 
-  <!-- Google Analytics (gtag.js) - GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6M979Y8C4"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QFXKTX2HD3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    // G-E6M979Y8C4 is a placeholder GA4 Measurement ID. Replace in production.
-    gtag('config', 'G-E6M979Y8C4', { send_page_view: false });
+
+    gtag('config', 'G-QFXKTX2HD3');
   </script>
 
   <!-- Preload critical React and ReactDOM libraries -->
   <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" />
   <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" />
   <!-- Preload compiled application JS assets -->
-  <link rel="preload" href="/sk-data.js?v=1.0.20" as="script" />
-  <link rel="preload" href="/sk-articles.js?v=1.0.20" as="script" />
-  <link rel="preload" href="/app.js?v=1.0.20" as="script" />
-  <link rel="preload" href="/app-auth.js?v=1.0.20" as="script" />
-  <link rel="preload" href="/app-pages.js?v=1.0.20" as="script" />
+  <link rel="preload" href="/sk-data.js?v=1.0.24" as="script" />
+  <link rel="preload" href="/sk-articles.js?v=1.0.24" as="script" />
+  <link rel="preload" href="/app.js?v=1.0.24" as="script" />
+  <link rel="preload" href="/app-auth.js?v=1.0.24" as="script" />
+  <link rel="preload" href="/app-pages.js?v=1.0.24" as="script" />
   <link rel="preload" href="https://cdn.tailwindcss.com" as="script" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -69,7 +71,6 @@
       --text:#cdeede; --muted:#74998a; --dim:#5c8a74; --glow:rgba(0,255,136,.55);
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
     body{
       background:var(--bg); color:var(--text);
       font-family:"JetBrains Mono",ui-monospace,monospace;
@@ -124,6 +125,35 @@
     @media(prefers-reduced-motion:reduce){
       .grid-floor,.glitch::before,.glitch::after{animation:none}
     }
+
+    /* Blog content styles */
+    .blog-content h2{font-family:"Chakra Petch",system-ui,sans-serif;font-size:1.6rem;font-weight:700;color:#eafff5;margin:2.2rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid #103a26}
+    .blog-content h3{font-family:"Chakra Petch",system-ui,sans-serif;font-size:1.25rem;font-weight:700;color:#cdeede;margin:1.8rem 0 .8rem}
+    .blog-content p{margin:1rem 0;line-height:1.85}
+    .blog-content ul,.blog-content ol{margin:1rem 0;padding-left:1.5rem}
+    .blog-content ul{list-style:disc}
+    .blog-content ol{list-style:decimal}
+    .blog-content li{margin:.5rem 0;line-height:1.7}
+    .blog-content code{background:#0a1d13;border:1px solid #103a26;color:#5cffba;padding:2px 6px;border-radius:4px;font-size:.9em}
+    .blog-content pre{background:#04100a;border:1px solid #103a26;border-radius:8px;padding:1.2rem;overflow-x:auto;margin:1.2rem 0;font-size:.85rem;line-height:1.6}
+    .blog-content pre code{background:none;border:none;padding:0;color:#5cffba}
+    .blog-content blockquote{border-left:3px solid #00ff88;padding:.8rem 1.2rem;margin:1.2rem 0;background:rgba(0,255,136,.03);color:#74998a;font-style:italic}
+    .blog-content strong{color:#cdeede;font-weight:600}
+    .blog-content a{color:#00ff88;text-decoration:underline;text-underline-offset:3px}
+    .blog-content a:hover{color:#5cffba}
+    .blog-content table{width:100%;border-collapse:collapse;margin:1.2rem 0}
+    .blog-content th,.blog-content td{border:1px solid #103a26;padding:.6rem .8rem;text-align:left;font-size:.9rem}
+    .blog-content th{background:#07150e;color:#5cffba;font-weight:600}
+    .blog-content img{max-width:100%;border-radius:8px;margin:1rem 0}
+
+    /* Prevent mobile auto-zoom on input focus */
+    @media (max-width: 767px) {
+      input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+      select,
+      textarea {
+        font-size: 16px !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -132,10 +162,10 @@
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" defer></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" defer></script>
 
-  <script src="/sk-data.js?v=1.0.20" defer></script>
-  <script src="/sk-articles.js?v=1.0.20" defer></script>
-  <script src="/app.js?v=1.0.20" defer></script>
-  <script src="/app-auth.js?v=1.0.20" defer></script>
-  <script src="/app-pages.js?v=1.0.20" defer></script>
+  <script src="/sk-data.js?v=1.0.24" defer></script>
+  <script src="/sk-articles.js?v=1.0.24" defer></script>
+  <script src="/app.js?v=1.0.24" defer></script>
+  <script src="/app-auth.js?v=1.0.24" defer></script>
+  <script src="/app-pages.js?v=1.0.24" defer></script>
 </body>
 </html>

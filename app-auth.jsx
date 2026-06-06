@@ -502,20 +502,53 @@ const DashboardPage = ({ navigate, data }) => {
           </div>
         </div>
 
-        {/* categories */}
+        {/* learning pathways */}
         <div id="categories-section" className="mb-10 scroll-mt-24">
-          <h2 className="text-2xl text-[#eafff5] mb-5">Kategori Seç & Başla</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {categories.map((c, i) => (
-              <button key={i} onClick={() => navigate('category', c)} className="text-left rounded-xl border border-[#0c2719] p-6 hover:border-[#00ff88] hover:-translate-y-1 transition-all group" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="w-11 h-11 rounded-lg grid place-items-center text-xl border border-[#103a26] bg-[rgba(0,255,136,.04)]">{c.icon}</span>
-                  <span className="font-mono text-xs text-[#5c8a74] group-hover:text-[#00ff88] transition-colors">→</span>
-                </div>
-                <h3 className="text-[15px] text-[#eafff5] mb-1 group-hover:text-[#00ff88] transition-colors">{c.name}</h3>
-                <p className="text-xs text-[#74998a]">{c.solvedCount} / {c.count} tamamlandı</p>
-              </button>
-            ))}
+          <h2 className="text-2xl text-[#eafff5] mb-2">Öğrenme Yolları</h2>
+          <p className="text-sm text-[#74998a] mb-5">Sıfırdan uzmana — adım adım ilerle, gerçek sistemlerde pratik yap.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {(window.SK_PATHWAYS || []).map((pw, i) => {
+              const allItems = pw.phases.flatMap(p => p.items);
+              const solvedCount = allItems.filter(it => {
+                if (it.type === 'room') return solvedList.includes(it.id);
+                if (it.type === 'doc') return (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id);
+                return false;
+              }).length;
+              const totalCount = allItems.length;
+              const pct = totalCount > 0 ? Math.round((solvedCount / totalCount) * 100) : 0;
+              const currentPhase = pw.phases.find(p => {
+                const done = p.items.every(it => it.type === 'room' ? solvedList.includes(it.id) : it.type === 'doc' ? (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id) : false);
+                return !done;
+              });
+              return (
+                <button key={i} onClick={() => navigate('pathway', pw)} className="text-left rounded-xl border border-[#0c2719] p-7 hover:border-[#00ff88] hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(0,255,136,.35)] transition-all group" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="w-14 h-14 rounded-xl grid place-items-center text-2xl border border-[#103a26] bg-[rgba(0,255,136,.04)]">{pw.icon}</span>
+                    <div className="flex-1">
+                      <h3 className="text-lg text-[#eafff5] font-disp font-bold group-hover:text-[#00ff88] transition-colors">{pw.name}</h3>
+                      <p className="text-xs text-[#74998a] mt-0.5">{pw.desc}</p>
+                    </div>
+                  </div>
+                  <div className="mb-3">
+                    <div className="flex items-center justify-between text-xs mb-1.5">
+                      <span className="text-[#74998a]">{currentPhase ? `Şu an: ${currentPhase.name}` : 'Tamamlandı!'}</span>
+                      <span className="text-[#00ff88] font-mono font-bold">{solvedCount}/{totalCount} · %{pct}</span>
+                    </div>
+                    <div className="w-full h-2 rounded-full bg-[#0c2719] overflow-hidden">
+                      <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: 'linear-gradient(90deg,#00ff88,#5cffba)' }}></div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs text-[#5c8a74]">
+                    <span>{pw.phases.length} faz</span>
+                    <span>·</span>
+                    <span>{pw.phases.flatMap(p => p.items.filter(it => it.type === 'room')).length} lab</span>
+                    <span>·</span>
+                    <span>{pw.phases.flatMap(p => p.items.filter(it => it.type === 'doc')).length} döküman</span>
+                    <span className="ml-auto font-mono text-[#00ff88] group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -1024,107 +1057,585 @@ const WEB_ROOM_CONFIGS = {
     hints: [
       "Arama kutusuna yazdığınız HTML girdilerinin sayfaya kaçış karakteri olmadan yansıyıp yansımadığına bakın.",
       "HTML script etiketlerini kullanarak JavaScript çalıştırın.",
-      "Payload: <script>alert(1)</script> veya <img src=x onerror=alert(1)>"
+      "Payload: <script>alert(document.cookie)</script> veya <img src=x onerror=alert(document.cookie)>"
     ],
-    renderApp: (target, setTarget, runTarget, resp) => (
-      <div className="p-7">
-        <div className="text-center mb-6">
-          <div className="font-disp font-bold text-lg text-[#cdeede]">Ürün Arama</div>
-          <p className="text-xs text-[#74998a] mt-1">Siber Kampüs E-Ticaret Paneli</p>
-        </div>
-        <form onSubmit={runTarget} className="space-y-3 max-w-[320px] mx-auto">
-          <div className="flex gap-2">
-            <input value={target.q || ''} onChange={e => setTarget(t => ({ ...t, q: e.target.value }))} placeholder="Aranacak kelime..." className="flex-1 bg-[#020806] border border-[#103a26] rounded-lg px-3.5 py-2 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-sm" />
-            <button type="submit" className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-4 rounded-lg hover:shadow-[0_0_15px_rgba(0,255,136,.3)] transition-all">Ara</button>
-          </div>
-        </form>
-        {resp && (
-          <div className="mt-5 max-w-[320px] mx-auto">
-            <div className="p-3 rounded-lg border border-[#103a26] bg-[#020806]/40 text-xs font-mono">
-              Arama Sonucu: <span className="text-[#00ff88]" dangerouslySetInnerHTML={{ __html: target.q }}></span>
-              {resp.ok === true && (
-                <div className="mt-3 p-2.5 border border-[#ffd166] rounded bg-[#ffd166]/5 text-[#ffd166] leading-relaxed">
-                  🚨 POP-UP TETİKLENDİ! Tarayıcı scripti çalıştı ve admin oturum çerezleri okundu:<br/>
-                  <strong className="text-white block mt-1">siberkampus{'{reflected_xss_cookie_stolen}'}</strong>
+    renderApp: (target, setTarget, runTarget, resp) => {
+      const qVal = target.q || '';
+      const devTab = target.devTab || 'guide';
+      const setDevTab = (tab) => setTarget(t => ({ ...t, devTab: tab }));
+
+      const hasTag = /<[a-z]/i.test(qVal);
+      const hasScript = /<script>/i.test(qVal) && /<\/script>/i.test(qVal);
+      const hasEventHandler = /on(error|load|click|mouseover)\s*=/i.test(qVal);
+      const hasAlert = /alert\s*\(/i.test(qVal);
+      const hasCookie = /document\.cookie/i.test(qVal);
+
+      const step1Done = hasTag;
+      const step2Done = hasTag && (hasScript || hasEventHandler) && hasAlert;
+      const step3Done = step2Done && hasCookie;
+
+      let feedbackMsg = "Arama kutusuna bir ürün adı veya HTML etiketi girerek başlayın.";
+      let isError = false;
+      let isSuccess = false;
+
+      if (!qVal) {
+        feedbackMsg = "E-ticaret arama kutusuna bir girdi yazıp 'Ara' butonuna basın. Normal metin mi yoksa HTML/JS kodu mu kabul edildiğini test edin.";
+      } else if (hasTag && !hasAlert) {
+        feedbackMsg = "💡 HTML etiketi algılandı! Girdiniz sayfaya filtresiz yansıtıldı. Şimdi tarayıcıda JavaScript çalıştırmayı deneyin: <script>alert(1)</script>";
+        isError = true;
+      } else if (hasAlert && !hasCookie) {
+        feedbackMsg = "⚠️ JavaScript tetiklendi! alert() çalıştı. Şimdi admin oturum çerezlerini çalmak için alert içine document.cookie yazın.";
+        isError = true;
+      } else if (step3Done) {
+        feedbackMsg = "🔥 Mükemmel XSS Saldırısı! Payload sayfaya yansıtıldı, tarayıcı scripti çalıştırdı ve admin çerezleri ele geçirildi!";
+        isSuccess = true;
+      }
+
+      const renderSearchResult = () => {
+        if (!qVal && !(resp)) return null;
+        return (
+          <div className="mt-4 space-y-2">
+            <div className="text-xs text-gray-400 font-mono">// Arama sonuçları:</div>
+            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700">
+              Aranan: <span className="font-bold text-gray-900" dangerouslySetInnerHTML={{ __html: qVal || '...' }}></span>
+            </div>
+            {!step2Done && qVal && (
+              <div className="p-2.5 bg-gray-50 border border-gray-200 rounded-lg text-xs text-gray-500 space-y-1">
+                <div>📦 Laptop Pro X1 — ₺24.999</div>
+                <div>📦 Wireless Mouse Z3 — ₺349</div>
+                <div className="text-gray-400 italic">"{qVal}" için 2 sonuç bulundu</div>
+              </div>
+            )}
+            {step2Done && !step3Done && (
+              <div className="p-2.5 border border-amber-300 rounded-lg bg-amber-50 text-amber-700 text-xs font-mono">
+                ⚠️ JavaScript Alert Tetiklendi!<br/>
+                <span className="text-amber-900 font-bold">alert() çalıştı</span> — şimdi document.cookie ile çerez verilerini çalın.
+              </div>
+            )}
+            {step3Done && (
+              <div className="p-3 border border-red-300 rounded-lg bg-red-50 text-xs font-mono space-y-2">
+                <div className="text-red-600 font-bold">🚨 XSS BAŞARILI — Çerez Verileri Ele Geçirildi!</div>
+                <div className="p-2 bg-white border border-red-200 rounded text-red-800">
+                  session_id=a8f3k2m9x; admin_token=eyJhbGciOi...; role=administrator
                 </div>
-              )}
+                <div className="text-center p-2 bg-blue-50 border border-blue-200 rounded">
+                  <span className="text-blue-800 font-bold">🎉 Bayrak:</span>
+                  <span className="text-blue-600 font-mono font-bold ml-1 select-all">siberkampus{'{reflected_xss_cookie_stolen}'}</span>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      };
+
+      const handleSearchSubmit = (e) => {
+        if (e) e.preventDefault();
+        if (!step3Done) {
+          if (step2Done) {
+            setTarget(t => ({ ...t, alertShown: true }));
+          }
+          runTarget(e);
+          return;
+        }
+        setTarget(t => ({ ...t, isSearching: true }));
+        setTimeout(() => {
+          setTarget(t => ({ ...t, isSearching: false }));
+          runTarget(e);
+        }, 1200);
+      };
+
+      const renderLeftPanel = () => {
+        if (resp && resp.ok === true) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm font-sans text-sm text-gray-800" style={{ height: '420px' }}>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-b border-gray-150 pb-2.5">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)] animate-pulse"></span>
+                    <span className="font-disp font-bold text-sm uppercase tracking-wider text-gray-800">SALDIRGAN SUNUCUSU</span>
+                  </div>
+                  <span className="text-xs text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200 font-mono font-bold">XSS Log</span>
+                </div>
+                <div className="text-sm font-bold text-red-600">🚨 Admin Oturum Çerezleri Yakalandı!</div>
+                <div className="space-y-2 p-3 bg-[#1e1e1e] border border-gray-300 rounded-lg text-xs text-gray-300 font-mono leading-relaxed overflow-y-auto" style={{ height: '160px' }}>
+                  <div className="text-gray-500">[{new Date().toLocaleTimeString()}] İstek alındı: GET /log</div>
+                  <div className="text-yellow-400">[+] Cookie verisi yakalandı:</div>
+                  <div className="text-green-400 pl-3">session_id=a8f3k2m9x7p4w1</div>
+                  <div className="text-green-400 pl-3">admin_token=eyJhbGciOiJIUzI1NiJ9...</div>
+                  <div className="text-green-400 pl-3">role=administrator</div>
+                  <div className="text-red-400 mt-2">[!] Admin hesabına erişim sağlandı!</div>
+                  <div className="text-yellow-400">[+] Flag: siberkampus{'{reflected_xss_cookie_stolen}'}</div>
+                </div>
+                <div className="text-center p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-blue-800 text-sm font-medium">🎉 Tebrikler! Bayrağınız:</p>
+                  <div className="inline-block text-base font-bold text-blue-600 font-mono px-3 py-2 bg-white rounded border border-blue-300 shadow-sm select-all mt-1">
+                    siberkampus{'{reflected_xss_cookie_stolen}'}
+                  </div>
+                </div>
+              </div>
+              <div className="pt-2.5 border-t border-gray-100 text-xs text-gray-400 font-mono flex justify-between">
+                <span>evil-server.attacker.com</span>
+                <span>Port: 8080</span>
+              </div>
+            </div>
+          );
+        }
+
+        if (target.isSearching) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col items-center justify-center" style={{ height: '420px' }}>
+              <div className="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+              <div className="font-sans font-bold text-sm text-gray-800 animate-pulse">XSS Payload yürütülüyor...</div>
+              <div className="font-mono text-xs text-gray-400 mt-2">// Tarayıcı scripti çalıştırıyor...</div>
+            </div>
+          );
+        }
+
+        return (
+          <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm" style={{ height: '420px' }}>
+            <div>
+              <div className="text-center mb-5">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <span className="text-2xl">🛒</span>
+                  <div className="font-sans font-bold text-lg text-gray-800">ShopZone</div>
+                </div>
+                <p className="text-xs text-gray-400 font-mono">// E-Ticaret Arama Modülü v2.1</p>
+              </div>
+              <form onSubmit={handleSearchSubmit} className="space-y-3">
+                <div>
+                  <label className="block text-xs text-gray-500 font-mono mb-1.5">// Ürün Arama (XSS Test)</label>
+                  <div className="flex gap-2">
+                    <input
+                      value={qVal}
+                      onChange={e => setTarget(t => ({ ...t, q: e.target.value }))}
+                      placeholder="<script>alert(document.cookie)</script>"
+                      className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-gray-800 placeholder-gray-400 focus:border-orange-500 focus:ring-1 focus:ring-orange-500/20 focus:outline-none font-mono text-sm transition-colors"
+                    />
+                    <button type="submit" className="font-sans text-sm font-bold text-white bg-orange-500 px-4 rounded-xl hover:bg-orange-600 transition-all shadow-sm">
+                      Ara
+                    </button>
+                  </div>
+                </div>
+              </form>
+              {renderSearchResult()}
+            </div>
+            <div className="pt-3 border-t border-gray-100 text-xs text-gray-400 font-mono leading-relaxed space-y-0.5">
+              <div>Sunucu: Nginx/1.18.0 (Ubuntu)</div>
+              <div>IP / Port: 192.168.1.55:443</div>
             </div>
           </div>
-        )}
-      </div>
-    ),
+        );
+      };
+
+      return (
+        <div className="p-6 bg-[#f0f2f5] min-h-[380px] rounded-b-2xl">
+          <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_1.9fr] gap-6 items-stretch">
+            {renderLeftPanel()}
+
+            <div className="border border-[#103a26] bg-[#04100a]/90 rounded-2xl overflow-hidden flex flex-col shadow-lg">
+              <div className="flex bg-black/45 border-b border-[#0c2719] text-sm md:text-base">
+                <button type="button" onClick={() => setDevTab('guide')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'guide' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>📖</span> ADIM ADIM REHBER {!step3Done && <span className="w-2.5 h-2.5 rounded-full bg-[#ffd166] animate-pulse"></span>}
+                </button>
+                <button type="button" onClick={() => setDevTab('http')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'http' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>🔍</span> HTTP & DOM GÖZLEMCİSİ
+                </button>
+              </div>
+
+              <div className="p-5 flex-1 flex flex-col justify-start gap-4 text-sm md:text-base text-[#cdeede]">
+                {devTab === 'guide' ? (
+                  <div className="space-y-4">
+                    <div className="text-sm text-[#cdeede] font-bold mb-2">// Reflected XSS Görevi Çözüm Adımları:</div>
+
+                    <div className={`p-4 rounded-xl border transition-all ${step1Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
+                      <div className="flex items-center justify-between font-bold text-sm mb-1.5">
+                        <span className="flex items-center gap-2">
+                          <span className={step1Done ? "text-[#00ff88]" : "text-[#ffd166]"}>{step1Done ? "✓ Adım 1:" : "○ Adım 1:"}</span>
+                          Girdi Yansıtmasını Test Et
+                        </span>
+                        {step1Done ? (
+                          <span className="text-xs text-[#00ff88] font-mono bg-[#00ff88]/10 px-2.5 py-1 rounded font-bold">Başarılı</span>
+                        ) : (
+                          <span className="text-xs text-[#ffd166] font-mono bg-[#ffd166]/10 px-2.5 py-1 rounded font-bold animate-pulse">Aktif Adım</span>
+                        )}
+                      </div>
+                      <p className="text-xs leading-relaxed text-[#74998a]">
+                        Arama kutusuna bir HTML etiketi girin (örn: <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"<b>test</b>"}</code>). Eğer metin kalın görünüyorsa, girdi filtrelenmeden sayfaya yansıtılıyor demektir.
+                      </p>
+                    </div>
+
+                    <div className={`p-4 rounded-xl border transition-all ${step2Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step1Done ? 'border-[#0c2719] opacity-40 text-[#5c8a74]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
+                      <div className="flex items-center justify-between font-bold text-sm mb-1.5">
+                        <span className="flex items-center gap-2">
+                          <span className={step2Done ? "text-[#00ff88]" : step1Done ? "text-[#ffd166]" : "text-[#5c8a74]"}>{step2Done ? "✓ Adım 2:" : "○ Adım 2:"}</span>
+                          JavaScript Çalıştır
+                        </span>
+                        {step2Done ? (
+                          <span className="text-xs text-[#00ff88] font-mono bg-[#00ff88]/10 px-2.5 py-1 rounded font-bold">Başarılı</span>
+                        ) : step1Done ? (
+                          <span className="text-xs text-[#ffd166] font-mono bg-[#ffd166]/10 px-2.5 py-1 rounded font-bold animate-pulse">Aktif Adım</span>
+                        ) : (
+                          <span className="text-xs text-[#5c8a74] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
+                        )}
+                      </div>
+                      <p className="text-xs leading-relaxed text-[#74998a]">
+                        Sayfada JS çalıştırmak için <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"<script>alert(1)</script>"}</code> veya <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"<img src=x onerror=alert(1)>"}</code> deneyin.
+                      </p>
+                    </div>
+
+                    <div className={`p-4 rounded-xl border transition-all ${step3Done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !step2Done ? 'border-[#0c2719] opacity-40 text-[#5c8a74]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
+                      <div className="flex items-center justify-between font-bold text-sm mb-1.5">
+                        <span className="flex items-center gap-2">
+                          <span className={step3Done ? "text-[#00ff88]" : step2Done ? "text-[#ffd166]" : "text-[#5c8a74]"}>{step3Done ? "✓ Adım 3:" : "○ Adım 3:"}</span>
+                          Çerez (Cookie) Çalma
+                        </span>
+                        {step3Done ? (
+                          <span className="text-xs text-[#00ff88] font-mono bg-[#00ff88]/10 px-2.5 py-1 rounded font-bold">Başarılı</span>
+                        ) : step2Done ? (
+                          <span className="text-xs text-[#ffd166] font-mono bg-[#ffd166]/10 px-2.5 py-1 rounded font-bold animate-pulse">Aktif Adım</span>
+                        ) : (
+                          <span className="text-xs text-[#5c8a74] font-mono border border-[#0c2719] px-2.5 py-1 rounded font-bold">Kilitli</span>
+                        )}
+                      </div>
+                      <p className="text-xs leading-relaxed text-[#74998a]">
+                        <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">alert(1)</code> yerine <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">alert(document.cookie)</code> yazarak oturum çerezlerini ekrana yazdırın.
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-5">
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// HTTP İstek URL'si:</div>
+                      <div className="p-2.5 bg-black/60 rounded-lg font-mono text-xs break-all">
+                        <span className="text-[#569cd6]">GET</span>{" "}
+                        <span className="text-[#74998a]">https://shopzone.lab/search?q=</span>
+                        <span className="text-[#ffd166] font-bold">{qVal || '...'}</span>
+                      </div>
+                    </div>
+
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// Sayfa HTML Çıktısı (DOM):</div>
+                      <div className="p-3 bg-black/60 rounded-lg font-mono text-xs leading-relaxed">
+                        <div className="text-[#74998a]">{"<div class=\"search-results\">"}</div>
+                        <div className="pl-4">
+                          <span className="text-[#74998a]">{"<p>Aranan: "}</span>
+                          <span className={`font-bold ${hasTag ? 'text-[#ff2e88]' : 'text-[#5cffba]'}`}>{qVal || '...'}</span>
+                          <span className="text-[#74998a]">{"</p>"}</span>
+                        </div>
+                        <div className="text-[#74998a]">{"</div>"}</div>
+                        {hasTag && (
+                          <div className="mt-2 pt-2 border-t border-[#0c2719] text-[#ff2e88] text-xs">
+                            ⚠️ Girdi HTML olarak render edildi — XSS zafiyeti doğrulandı!
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {step2Done && (
+                      <div className="border border-[#ff2e88]/30 rounded-xl p-4 bg-[#ff2e88]/5">
+                        <div className="text-xs text-[#ff2e88] font-mono mb-2">// Tarayıcı Konsol Çıktısı:</div>
+                        <div className="p-2.5 bg-black/60 rounded-lg font-mono text-xs text-[#ffd166]">
+                          {hasCookie
+                            ? '> alert("session_id=a8f3k2m9x7p4w1; admin_token=eyJhbGci...; role=administrator")'
+                            : '> alert(1)  // Tarayıcı JS çalıştırdı!'}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    },
     run: (target) => {
       const q = (target.q || '').toLowerCase();
-      if ((q.includes('<script>') && q.includes('alert(') && q.includes('</script>')) || (q.includes('onerror=') && q.includes('alert(')) || (q.includes('onload=') && q.includes('alert('))) {
-        return { ok: true };
+      const hasScript = q.includes('<script>') && q.includes('alert(') && q.includes('</script>');
+      const hasEvent = (q.includes('onerror=') || q.includes('onload=') || q.includes('onclick=') || q.includes('onmouseover=')) && q.includes('alert(');
+      const hasCookie = q.includes('document.cookie');
+      if ((hasScript || hasEvent) && hasCookie) {
+        return { ok: true, msg: "XSS Başarılı! Admin oturum çerezleri ele geçirildi!" };
+      } else if (hasScript || hasEvent) {
+        return { ok: 'warn', msg: "JavaScript tetiklendi fakat document.cookie verileri okunmadı. alert() içine document.cookie yazın." };
+      } else if (/<[a-z]/i.test(target.q || '')) {
+        return { ok: 'info', msg: "HTML etiketi yansıtıldı. Şimdi JavaScript çalıştırmayı deneyin." };
       } else {
-        return { ok: 'info' };
+        return { ok: false, msg: "Arama sonuçları: 0 ürün bulundu." };
       }
     }
   },
   'web-02': {
     title: 'UNION-Based SQLi',
     desc: 'Sorgu çıktılarının doğrudan tabloda görüntülendiği bu modülde, UNION SELECT enjeksiyonu yaparak users tablosundaki admin şifre hash\'iyle birlikte bayrağı dökün.',
-    flag: 'siberkampus{sql_union_admin_database_dump}',
+    flag: 'siberkampus{union_based_sqli_data_dumped}',
     hints: [
       "Tabloda 3 sütun listelenmektedir. UNION SELECT sorgunuzda da tam 3 sütun bulunmalıdır.",
-      "Bypass için ID alanına tek tırnak atıp UNION SELECT ekleyin.",
-      "Payload: 1' UNION SELECT 1, 2, password FROM users -- -"
+      "ID alanına tek tırnak atarak SQL sorgusunu kırın, ardından ORDER BY ile sütun sayısını belirleyin."
     ],
-    renderApp: (target, setTarget, runTarget, resp) => (
-      <div className="p-7">
-        <div className="text-center mb-6">
-          <div className="font-disp font-bold text-lg text-[#cdeede]">Kullanıcı Bilgi Portalı</div>
-          <p className="text-xs text-[#74998a] mt-1">ID parametresi ile veri çekin</p>
-        </div>
-        <form onSubmit={runTarget} className="space-y-3 max-w-[320px] mx-auto">
-          <div className="flex gap-2">
-            <input value={target.id || ''} onChange={e => setTarget(t => ({ ...t, id: e.target.value }))} placeholder="Kullanıcı ID (örn: 1)" className="flex-1 bg-[#020806] border border-[#103a26] rounded-lg px-3.5 py-2 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-sm" />
-            <button type="submit" className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-4 rounded-lg hover:shadow-[0_0_15px_rgba(0,255,136,.3)] transition-all">Sorgula</button>
+    renderApp: (target, setTarget, runTarget, resp) => {
+      const idVal = target.id || '';
+      const devTab = target.devTab || 'guide';
+      const setDevTab = (tab) => setTarget(t => ({ ...t, devTab: tab }));
+      const lower = idVal.toLowerCase();
+
+      const hasQuote = idVal.includes("'");
+      const hasOrderBy = lower.includes('order by');
+      const hasUnion = lower.includes('union') && lower.includes('select');
+      const hasTarget = lower.includes('users') || lower.includes('password') || lower.includes('flag');
+      const hasComment = lower.includes('--');
+
+      const step1Done = hasQuote;
+      const step2Done = hasQuote && hasOrderBy;
+      const step3Done = hasQuote && hasUnion && hasComment;
+      const step4Done = hasQuote && hasUnion && hasTarget && hasComment;
+
+      let feedbackMsg = "ID alanına bir sayı girerek sorgu yapısını inceleyin.";
+      let isError = false;
+      let isSuccess = false;
+
+      if (!idVal) {
+        feedbackMsg = "Kullanıcı ID alanına 1 veya 2 yazarak normal sorgu sonuçlarını gözlemleyin. Tabloda kaç sütun döndüğüne dikkat edin.";
+      } else if (hasQuote && !hasOrderBy && !hasUnion) {
+        feedbackMsg = "⚠️ SQL Syntax Error! Tek tırnak sorguyu bozdu. Şimdi ORDER BY ile sütun sayısını bulun: 1' ORDER BY 3 --";
+        isError = true;
+      } else if (hasOrderBy && !hasUnion) {
+        feedbackMsg = "💡 ORDER BY başarılı! Tablo 3 sütunlu. Şimdi UNION SELECT ile veri sızdırın: 1' UNION SELECT 1,2,3 --";
+      } else if (hasUnion && !hasTarget) {
+        feedbackMsg = "💡 UNION SELECT çalıştı! Şimdi sütunlardan birini users tablosunun password alanıyla değiştirin.";
+      } else if (step4Done) {
+        feedbackMsg = "🔥 Veritabanı Dump Başarılı! UNION sorgusuyla admin şifre hash'i ve bayrak sızdırıldı!";
+        isSuccess = true;
+      }
+
+      const renderSQL = () => {
+        const baseSql = "SELECT id, username, email FROM products WHERE id = ";
+        if (!idVal) return (
+          <div className="font-mono text-xs leading-relaxed">
+            <span className="text-[#569cd6]">SELECT</span> id, username, email <span className="text-[#569cd6]">FROM</span> products <span className="text-[#569cd6]">WHERE</span> id = <span className="text-[#ce9178]">'...'</span>;
           </div>
-        </form>
-        {resp && (
-          <div className="mt-5 max-w-[320px] mx-auto">
-            <div className="p-3.5 rounded-lg border border-[#103a26] bg-[#020806]/40 text-xs font-mono space-y-2">
-              {resp.ok === true ? (
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="border-b border-[#103a26] text-[#74998a]"><th className="pb-1">ID</th><th className="pb-1">User</th><th className="pb-1">Pass / Flag</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-[#0c2719]"><td>1</td><td>admin</td><td>siberkampus{'{sql_union_admin_database_dump}'}</td></tr>
-                    <tr><td>2</td><td>editor</td><td>d033e22ae348aeb5660fc2140aec35850c4da997</td></tr>
-                  </tbody>
-                </table>
-              ) : resp.ok === 'warn' ? (
-                <div className="text-[#ffd166]">{resp.msg}</div>
-              ) : (
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="border-b border-[#103a26] text-[#74998a]"><th className="pb-1">ID</th><th className="pb-1">User</th><th className="pb-1">Email</th></tr>
-                  </thead>
-                  <tbody>
-                    {target.id === '1' ? (
-                      <tr><td>1</td><td>admin</td><td>admin@siberkampus.lab</td></tr>
-                    ) : target.id === '2' ? (
-                      <tr><td>2</td><td>editor</td><td>editor@siberkampus.lab</td></tr>
-                    ) : (
-                      <tr><td colSpan="3" className="text-center text-[#74998a]">Kayıt bulunamadı.</td></tr>
-                    )}
-                  </tbody>
-                </table>
-              )}
+        );
+        return (
+          <div className="font-mono text-xs leading-relaxed break-all">
+            <span className="text-[#569cd6]">SELECT</span> id, username, email <span className="text-[#569cd6]">FROM</span> products <span className="text-[#569cd6]">WHERE</span> id = <span className="text-[#ce9178]">'{idVal}'</span>
+            {hasComment && <span className="text-[#6a9955]"> {"// şifre kontrolü devre dışı"}</span>}
+            {hasUnion && <div className="text-[#ff2e88] mt-1 text-xs">⚠️ UNION enjeksiyonu algılandı — ek satırlar döndürülüyor!</div>}
+          </div>
+        );
+      };
+
+      const renderTable = () => {
+        if (step4Done && resp && resp.ok === true) {
+          return (
+            <div className="overflow-hidden border border-gray-150 rounded-lg bg-white shadow-sm">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-gray-50 text-gray-600 border-b border-gray-150 font-bold">
+                  <tr><th className="p-2">ID</th><th className="p-2">User</th><th className="p-2">Pass / Flag</th></tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 text-gray-700 font-mono">
+                  <tr><td className="p-2">1</td><td className="p-2">admin</td><td className="p-2">admin@siberkampus.lab</td></tr>
+                  <tr className="bg-red-50 text-red-800 font-bold">
+                    <td className="p-2">1</td><td className="p-2">admin</td><td className="p-2 select-all">siberkampus{'{union_based_sqli_data_dumped}'}</td>
+                  </tr>
+                  <tr className="bg-red-50/50 text-red-700">
+                    <td className="p-2">2</td><td className="p-2">editor</td><td className="p-2 font-mono text-[10px]">d033e22ae348aeb5660fc2</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          );
+        }
+        if (resp && resp.ok === 'warn') {
+          return (
+            <div className="p-3 border border-amber-300 rounded-lg bg-amber-50 text-amber-700 text-xs font-mono">
+              ⚠️ MySQL Error: {resp.msg}
+            </div>
+          );
+        }
+        if (idVal === '1' || idVal === '2') {
+          return (
+            <div className="overflow-hidden border border-gray-150 rounded-lg bg-white shadow-sm">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-gray-50 text-gray-600 border-b border-gray-150 font-bold">
+                  <tr><th className="p-2">ID</th><th className="p-2">User</th><th className="p-2">Email</th></tr>
+                </thead>
+                <tbody className="text-gray-700 font-mono">
+                  {idVal === '1' ? (
+                    <tr><td className="p-2">1</td><td className="p-2">admin</td><td className="p-2">admin@siberkampus.lab</td></tr>
+                  ) : (
+                    <tr><td className="p-2">2</td><td className="p-2">editor</td><td className="p-2">editor@siberkampus.lab</td></tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          );
+        }
+        return null;
+      };
+
+      const handleFormSubmit = (e) => {
+        if (e) e.preventDefault();
+        if (step4Done) {
+          setTarget(t => ({ ...t, isQuerying: true }));
+          setTimeout(() => {
+            setTarget(t => ({ ...t, isQuerying: false }));
+            runTarget(e);
+          }, 1200);
+        } else {
+          runTarget(e);
+        }
+      };
+
+      const renderLeftPanel = () => {
+        if (resp && resp.ok === true) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm font-sans text-sm text-gray-800" style={{ height: '420px' }}>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between border-b border-gray-150 pb-2">
+                  <span className="font-disp font-bold text-sm uppercase tracking-wider text-gray-800">📊 Veritabanı Dump</span>
+                  <span className="text-xs text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200 font-mono font-bold">UNION SQLi</span>
+                </div>
+                {renderTable()}
+                <div className="text-center p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-blue-800 text-sm font-medium">🎉 Tebrikler! Bayrağınız:</p>
+                  <div className="inline-block text-base font-bold text-blue-600 font-mono px-3 py-2 bg-white rounded border border-blue-300 shadow-sm select-all mt-1">
+                    siberkampus{'{union_based_sqli_data_dumped}'}
+                  </div>
+                </div>
+              </div>
+              <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono flex justify-between">
+                <span>MySQL 8.0.28</span><span>Port: 3306</span>
+              </div>
+            </div>
+          );
+        }
+
+        if (target.isQuerying) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col items-center justify-center" style={{ height: '420px' }}>
+              <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+              <div className="font-sans font-bold text-sm text-gray-800 animate-pulse">Veritabanı sorgulanıyor...</div>
+            </div>
+          );
+        }
+
+        return (
+          <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm" style={{ height: '420px' }}>
+            <div>
+              <div className="text-center mb-5">
+                <div className="w-10 h-10 rounded-full bg-indigo-50 border border-indigo-100 grid place-items-center mx-auto mb-2 text-indigo-600">
+                  <span className="text-lg">🗂️</span>
+                </div>
+                <div className="font-sans font-bold text-lg text-gray-800">Kullanıcı Bilgi Portalı</div>
+                <p className="text-xs text-gray-400 font-mono mt-1">// ID ile kullanıcı verileri sorgulama</p>
+              </div>
+              <form onSubmit={handleFormSubmit} className="space-y-3">
+                <div>
+                  <label className="block text-xs text-gray-500 font-mono mb-1.5">// Kullanıcı ID (SQLi Test)</label>
+                  <div className="flex gap-2">
+                    <input
+                      value={idVal}
+                      onChange={e => setTarget(t => ({ ...t, id: e.target.value }))}
+                      placeholder="1' UNION SELECT 1,2,password FROM users --"
+                      className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-gray-800 placeholder-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/20 focus:outline-none font-mono text-sm transition-colors"
+                    />
+                    <button type="submit" className="font-sans text-sm font-bold text-white bg-indigo-600 px-4 rounded-xl hover:bg-indigo-700 transition-all shadow-sm">
+                      Sorgula
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <div className="mt-4">{renderTable()}</div>
+            </div>
+            <div className="pt-3 border-t border-gray-100 text-xs text-gray-400 font-mono space-y-0.5">
+              <div>Sunucu: Apache/2.4.41 · MySQL 8.0</div>
+              <div>IP / Port: 192.168.1.42:80</div>
             </div>
           </div>
-        )}
-      </div>
-    ),
+        );
+      };
+
+      return (
+        <div className="p-6 bg-[#f0f2f5] min-h-[380px] rounded-b-2xl">
+          <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_1.9fr] gap-6 items-stretch">
+            {renderLeftPanel()}
+
+            <div className="border border-[#103a26] bg-[#04100a]/90 rounded-2xl overflow-hidden flex flex-col shadow-lg">
+              <div className="flex bg-black/45 border-b border-[#0c2719] text-sm md:text-base">
+                <button type="button" onClick={() => setDevTab('guide')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'guide' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>📖</span> ADIM ADIM REHBER {!step4Done && <span className="w-2.5 h-2.5 rounded-full bg-[#ffd166] animate-pulse"></span>}
+                </button>
+                <button type="button" onClick={() => setDevTab('sql')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'sql' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>🔍</span> CANLI SQL GÖZLEMCİSİ
+                </button>
+              </div>
+
+              <div className="p-5 flex-1 flex flex-col justify-start gap-4 text-sm text-[#cdeede]">
+                {devTab === 'guide' ? (
+                  <div className="space-y-3">
+                    <div className="text-sm text-[#cdeede] font-bold mb-2">// UNION-Based SQL Injection Çözüm Adımları:</div>
+
+                    {[
+                      { done: step1Done, prev: true, num: 1, title: "SQL Sorgusunu Kır", desc: <>ID alanına tek tırnak (<code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">'</code>) girerek SQL sorgusunun yapısını bozun.</> },
+                      { done: step2Done, prev: step1Done, num: 2, title: "Sütun Sayısını Bul", desc: <><code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">1' ORDER BY 3 --</code> ile tablonun 3 sütunlu olduğunu doğrulayın.</> },
+                      { done: step3Done, prev: step2Done, num: 3, title: "UNION SELECT Enjeksiyonu", desc: <><code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"1' UNION SELECT 1,2,3 --"}</code> ile UNION sorgusunun çalıştığını doğrulayın.</> },
+                      { done: step4Done, prev: step3Done, num: 4, title: "Hassas Veri Sızdırma", desc: <>Sütunlardan birini <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">password FROM users</code> ile değiştirerek admin hash'ini ve bayrağı dökün.</> }
+                    ].map((s) => (
+                      <div key={s.num} className={`p-3.5 rounded-xl border transition-all ${s.done ? 'border-[#00ff88]/30 bg-[#00ff88]/5 text-[#cdeede]' : !s.prev ? 'border-[#0c2719] opacity-40 text-[#5c8a74]' : 'border-[#103a26] bg-black/25 text-[#74998a]'}`}>
+                        <div className="flex items-center justify-between font-bold text-sm mb-1">
+                          <span className="flex items-center gap-2">
+                            <span className={s.done ? "text-[#00ff88]" : s.prev ? "text-[#ffd166]" : "text-[#5c8a74]"}>{s.done ? `✓ Adım ${s.num}:` : `○ Adım ${s.num}:`}</span>
+                            {s.title}
+                          </span>
+                          {s.done ? <span className="text-xs text-[#00ff88] font-mono bg-[#00ff88]/10 px-2 py-0.5 rounded font-bold">Başarılı</span>
+                            : s.prev ? <span className="text-xs text-[#ffd166] font-mono bg-[#ffd166]/10 px-2 py-0.5 rounded font-bold animate-pulse">Aktif</span>
+                            : <span className="text-xs text-[#5c8a74] font-mono border border-[#0c2719] px-2 py-0.5 rounded font-bold">Kilitli</span>}
+                        </div>
+                        <p className="text-xs leading-relaxed text-[#74998a]">{s.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-5">
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// Hedef Veritabanı Tabloları:</div>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 rounded bg-[#103a26]/40 text-[#00ff88] text-xs font-mono">products (id, name, email)</span>
+                        <span className="px-2 py-1 rounded bg-[#103a26]/40 text-[#ff2e88] text-xs font-mono">users (id, username, password)</span>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="text-xs text-[#74998a] font-mono">// Veritabanında Derlenen Canlı SQL:</div>
+                      <div className="p-4 bg-black/85 border border-[#103a26] rounded-xl font-mono leading-relaxed shadow-inner">
+                        {renderSQL()}
+                      </div>
+                    </div>
+                    <div className="border border-[#0c2719] rounded-xl p-3 bg-black/20">
+                      <div className="text-xs text-[#74998a] font-mono mb-1">// Feedback:</div>
+                      <div className={`text-xs font-mono ${isSuccess ? 'text-[#00ff88]' : isError ? 'text-[#ffd166]' : 'text-[#74998a]'}`}>{feedbackMsg}</div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    },
     run: (target) => {
       const id = (target.id || '').toLowerCase();
-      if (id.includes('union') && id.includes('select') && (id.includes('users') || id.includes('password') || id.includes('flag'))) {
-        return { ok: true };
+      if (id.includes('union') && id.includes('select') && (id.includes('users') || id.includes('password') || id.includes('flag')) && id.includes('--')) {
+        return { ok: true, msg: "Veritabanı dump başarılı!" };
+      } else if (id.includes('union') && id.includes('select')) {
+        return { ok: 'warn', msg: "UNION SELECT çalıştı fakat hedef tablo/sütun belirtilmedi." };
+      } else if (id.includes('order by')) {
+        return { ok: 'info', msg: "ORDER BY başarılı — sütun sayısı doğrulandı." };
       } else if (id.includes("'") || id.includes('--')) {
-        return { ok: 'warn', msg: "SQL syntax error near '" + target.id + "' - Sütun sayısı uyuşmuyor veya sorgu sonlandırılamadı." };
+        return { ok: 'warn', msg: "SQL syntax error — Sorgu yapısı bozuldu." };
       } else {
         return { ok: false };
       }
@@ -1133,264 +1644,1126 @@ const WEB_ROOM_CONFIGS = {
   'web-05': {
     title: 'XSS (Stored & DOM)',
     desc: 'Girdi filtresi bulunmayan yorum paneli, zararlı girdileri kalıcı olarak veritabanına kaydediyor. Admin oturumunu ele geçirecek bir script yorumu bırakın (Stored XSS).',
-    flag: 'siberkampus{stored_xss_admin_session_hijacked}',
+    flag: 'siberkampus{stored_xss_session_hijacked}',
     hints: [
       "Yorum alanına eklenen HTML/JS etiketlerinin sayfada çalışıp çalışmadığını izleyin.",
-      "Admin kullanıcısı yorumları onaylamak için paneli periyodik olarak incelemektedir.",
-      "Payload: <script>fetch('/log?c=' + document.cookie)</script> veya <img src=x onerror=alert(document.cookie)>"
+      "Admin kullanıcısı yorumları onaylamak için paneli periyodik olarak incelemektedir."
     ],
     renderApp: (target, setTarget, runTarget, resp) => {
+      const txtVal = target.txt || '';
+      const devTab = target.devTab || 'guide';
+      const setDevTab = (tab) => setTarget(t => ({ ...t, devTab: tab }));
+      const lower = txtVal.toLowerCase();
+
+      const hasHTML = /<[a-z]/i.test(txtVal);
+      const hasScript = lower.includes('<script>') && lower.includes('</script>');
+      const hasEvent = /(onerror|onload|onclick)\s*=/i.test(txtVal);
+      const hasCookie = lower.includes('document.cookie');
+      const hasFetch = lower.includes('fetch(') || lower.includes('xmlhttprequest') || lower.includes('.src=');
+
+      const step1Done = hasHTML;
+      const step2Done = (hasScript || hasEvent);
+      const step3Done = step2Done && (hasCookie || hasFetch);
+
       const [comments, setComments] = useState([
         { author: 'Can M.', text: 'Harika bir siber güvenlik platformu!' },
         { author: 'Selin O.', text: 'SQLi odaları çok öğreticiydi, ellerinize sağlık.' }
       ]);
+
       const addComment = (e) => {
-        e.preventDefault();
-        if (!target.txt) return;
-        setComments([...comments, { author: target.auth || 'Misafir', text: target.txt }]);
-        runTarget(e);
+        if (e) e.preventDefault();
+        if (!txtVal) return;
+        setComments(prev => [...prev, { author: target.auth || 'Misafir', text: txtVal }]);
+        if (step3Done) {
+          setTarget(t => ({ ...t, adminChecking: true }));
+          setTimeout(() => {
+            setTarget(t => ({ ...t, adminChecking: false }));
+            runTarget(e);
+          }, 2000);
+        } else {
+          runTarget(e);
+        }
       };
-      return (
-        <div className="p-7">
-          <div className="text-center mb-5">
-            <div className="font-disp font-bold text-lg text-[#cdeede]">Ziyaretçi Defteri</div>
-            <p className="text-xs text-[#74998a] mt-1">Yorum bırakın (HTML etiketleri aktiftir)</p>
-          </div>
-          <form onSubmit={addComment} className="space-y-2 max-w-[320px] mx-auto mb-5">
-            <input value={target.auth || ''} onChange={e => setTarget(t => ({ ...t, auth: e.target.value }))} placeholder="Adınız" className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-3 py-1.5 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-sm" />
-            <textarea value={target.txt || ''} onChange={e => setTarget(t => ({ ...t, txt: e.target.value }))} placeholder="Yorumunuz..." className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-3 py-1.5 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-sm h-16 resize-none" />
-            <button type="submit" className="w-full font-mono text-xs font-bold text-[#021008] bg-[#00ff88] py-2 rounded-lg hover:shadow-[0_0_15px_rgba(0,255,136,.3)] transition-all">Gönder</button>
-          </form>
-          <div className="max-w-[320px] mx-auto space-y-2.5">
-            <div className="text-xs text-[#74998a] font-mono">// Kayıtlı Yorumlar:</div>
-            {comments.map((c, i) => (
-              <div key={i} className="p-2.5 rounded-lg border border-[#0c2719] bg-[#020806]/40 text-xs font-mono">
-                <span className="text-[#00ff88] font-bold">@{c.author}: </span>
-                <span dangerouslySetInnerHTML={{ __html: c.text }}></span>
+
+      const renderLeftPanel = () => {
+        if (resp && resp.ok === true) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm font-sans text-sm text-gray-800" style={{ height: '420px' }}>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between border-b border-gray-150 pb-2">
+                  <span className="font-disp font-bold text-sm uppercase tracking-wider text-red-700">🚨 XSS OLAY RAPORU</span>
+                  <span className="text-xs text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200 font-mono font-bold">Stored XSS</span>
+                </div>
+                <div className="p-3 bg-[#1e1e1e] border border-gray-300 rounded-lg text-xs text-gray-300 font-mono leading-relaxed space-y-1 overflow-y-auto" style={{ height: '140px' }}>
+                  <div className="text-gray-500">[{new Date().toLocaleTimeString()}] Admin yorum panelini açtı</div>
+                  <div className="text-yellow-400">[!] Stored XSS payload tetiklendi!</div>
+                  <div className="text-red-400">[!] Cookie verisi sızdırıldı:</div>
+                  <div className="text-green-400 pl-3">admin_session=x9k2m4p7w1; role=super_admin</div>
+                  <div className="text-red-400">[!] Admin oturumu ele geçirildi!</div>
+                  <div className="text-yellow-400">[+] Flag: siberkampus{'{stored_xss_session_hijacked}'}</div>
+                </div>
+                <div className="text-center p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-blue-800 text-sm font-medium">🎉 Tebrikler! Bayrağınız:</p>
+                  <div className="inline-block text-base font-bold text-blue-600 font-mono px-3 py-2 bg-white rounded border border-blue-300 shadow-sm select-all mt-1">
+                    siberkampus{'{stored_xss_session_hijacked}'}
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
-          {resp && resp.ok === true && (
-            <div className="mt-5 max-w-[320px] mx-auto p-3.5 border border-[#ff2e88] rounded bg-[#ff2e88]/5 text-[#ff2e88] text-xs font-mono">
-              🚨 STORED XSS TETİKLENDİ! Admin yorumunuzu inceledi ve admin cookie bilgileri çalındı:<br/>
-              <strong className="text-white mt-1 block">siberkampus{'{stored_xss_admin_session_hijacked}'}</strong>
+              <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">Stored XSS → Admin Session Hijack</div>
             </div>
-          )}
+          );
+        }
+
+        if (target.adminChecking) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col items-center justify-center" style={{ height: '420px' }}>
+              <div className="w-12 h-12 rounded-full bg-amber-50 border-2 border-amber-300 grid place-items-center mb-4 animate-pulse">
+                <span className="text-2xl">👤</span>
+              </div>
+              <div className="font-sans font-bold text-sm text-gray-800 animate-pulse">Admin yorumları inceliyor...</div>
+              <div className="font-mono text-xs text-gray-400 mt-2">// Stored payload tetiklenecek...</div>
+            </div>
+          );
+        }
+
+        return (
+          <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm" style={{ height: '420px' }}>
+            <div>
+              <div className="text-center mb-4">
+                <div className="font-sans font-bold text-lg text-gray-800">💬 Ziyaretçi Defteri</div>
+                <p className="text-xs text-gray-400 font-mono">// Yorum bırakın (HTML filtreleme: YOK)</p>
+              </div>
+              <div className="space-y-2 mb-3 max-h-[120px] overflow-y-auto">
+                {comments.map((c, i) => (
+                  <div key={i} className="p-2 rounded-lg border border-gray-100 bg-gray-50 text-xs">
+                    <span className="font-bold text-indigo-600">@{c.author}: </span>
+                    <span className="text-gray-700" dangerouslySetInnerHTML={{ __html: c.text }}></span>
+                  </div>
+                ))}
+              </div>
+              <form onSubmit={addComment} className="space-y-2">
+                <input value={target.auth || ''} onChange={e => setTarget(t => ({ ...t, auth: e.target.value }))} placeholder="Adınız" className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 text-gray-800 placeholder-gray-400 focus:border-indigo-500 focus:outline-none font-mono text-sm" />
+                <textarea value={txtVal} onChange={e => setTarget(t => ({ ...t, txt: e.target.value }))} placeholder="<script>fetch('/log?c='+document.cookie)</script>" className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 text-gray-800 placeholder-gray-400 focus:border-indigo-500 focus:outline-none font-mono text-xs h-14 resize-none" />
+                <button type="submit" className="w-full font-sans text-sm font-bold text-white bg-indigo-600 py-2 rounded-lg hover:bg-indigo-700 transition-all">Yorum Gönder</button>
+              </form>
+            </div>
+            <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">PHP/7.4 · MySQL 5.7 · Girdi Filtresi: Devre Dışı</div>
+          </div>
+        );
+      };
+
+      return (
+        <div className="p-6 bg-[#f0f2f5] min-h-[380px] rounded-b-2xl">
+          <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_1.9fr] gap-6 items-stretch">
+            {renderLeftPanel()}
+            <div className="border border-[#103a26] bg-[#04100a]/90 rounded-2xl overflow-hidden flex flex-col shadow-lg">
+              <div className="flex bg-black/45 border-b border-[#0c2719] text-sm">
+                <button type="button" onClick={() => setDevTab('guide')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'guide' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>📖</span> ADIM ADIM REHBER {!step3Done && <span className="w-2.5 h-2.5 rounded-full bg-[#ffd166] animate-pulse"></span>}
+                </button>
+                <button type="button" onClick={() => setDevTab('dom')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'dom' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>🔍</span> DOM GÖZLEMCİSİ
+                </button>
+              </div>
+              <div className="p-5 flex-1 flex flex-col justify-start gap-4 text-sm text-[#cdeede]">
+                {devTab === 'guide' ? (
+                  <div className="space-y-3">
+                    <div className="text-sm text-[#cdeede] font-bold mb-2">// Stored XSS Çözüm Adımları:</div>
+                    {[
+                      { done: step1Done, prev: true, num: 1, title: "HTML Enjeksiyon Testi", desc: <>Yorum alanına <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"<b>test</b>"}</code> yazıp filtre var mı kontrol edin.</> },
+                      { done: step2Done, prev: step1Done, num: 2, title: "JavaScript Enjeksiyonu", desc: <><code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"<script>alert(1)</script>"}</code> veya onerror event handler ile JS çalıştırın.</> },
+                      { done: step3Done, prev: step2Done, num: 3, title: "Admin Cookie Sızdırma", desc: <>Script içinde <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">document.cookie</code> veya <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"fetch('/log?c='+document.cookie)"}</code> ile çerezi sızdırın.</>}
+                    ].map((s) => (
+                      <div key={s.num} className={`p-3.5 rounded-xl border transition-all ${s.done ? 'border-[#00ff88]/30 bg-[#00ff88]/5' : !s.prev ? 'border-[#0c2719] opacity-40' : 'border-[#103a26] bg-black/25'}`}>
+                        <div className="flex items-center justify-between font-bold text-sm mb-1">
+                          <span className="flex items-center gap-2">
+                            <span className={s.done ? "text-[#00ff88]" : s.prev ? "text-[#ffd166]" : "text-[#5c8a74]"}>{s.done ? `✓ Adım ${s.num}:` : `○ Adım ${s.num}:`}</span>
+                            {s.title}
+                          </span>
+                          {s.done ? <span className="text-xs text-[#00ff88] font-mono bg-[#00ff88]/10 px-2 py-0.5 rounded font-bold">Başarılı</span>
+                            : s.prev ? <span className="text-xs text-[#ffd166] font-mono bg-[#ffd166]/10 px-2 py-0.5 rounded font-bold animate-pulse">Aktif</span>
+                            : <span className="text-xs text-[#5c8a74] font-mono border border-[#0c2719] px-2 py-0.5 rounded font-bold">Kilitli</span>}
+                        </div>
+                        <p className="text-xs leading-relaxed text-[#74998a]">{s.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// Yorumun DOM'daki HTML Çıktısı:</div>
+                      <div className="p-3 bg-black/60 rounded-lg font-mono text-xs leading-relaxed break-all">
+                        <span className="text-[#74998a]">{"<div class=\"comment\">"}</span><br/>
+                        <span className="pl-4 text-[#74998a]">{"<span class=\"author\">@"}{target.auth || 'Misafir'}{"</span>: "}</span>
+                        <span className={`font-bold ${hasHTML ? 'text-[#ff2e88]' : 'text-[#5cffba]'}`}>{txtVal || '...'}</span><br/>
+                        <span className="text-[#74998a]">{"</div>"}</span>
+                        {hasHTML && <div className="mt-2 pt-2 border-t border-[#0c2719] text-[#ff2e88] text-xs">⚠️ HTML render edildi — Stored XSS zafiyeti!</div>}
+                      </div>
+                    </div>
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// Saldırı Akışı:</div>
+                      <div className="flex items-center gap-2 text-xs font-mono flex-wrap">
+                        <span className="px-2 py-1 rounded bg-[#103a26]/40 text-[#5cffba]">1. Saldırgan yorum yazar</span>
+                        <span className="text-[#74998a]">→</span>
+                        <span className="px-2 py-1 rounded bg-[#103a26]/40 text-[#ffd166]">2. DB'ye kaydedilir</span>
+                        <span className="text-[#74998a]">→</span>
+                        <span className="px-2 py-1 rounded bg-[#103a26]/40 text-[#ff2e88]">3. Admin sayfayı açar</span>
+                        <span className="text-[#74998a]">→</span>
+                        <span className="px-2 py-1 rounded bg-[#103a26]/40 text-[#ff2e88]">4. Script otomatik çalışır!</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       );
     },
     run: (target) => {
       const txt = (target.txt || '').toLowerCase();
-      if ((txt.includes('<script>') && txt.includes('</script>')) || (txt.includes('onerror=') && txt.includes('alert')) || (txt.includes('onload=') && txt.includes('alert')) || txt.includes('document.cookie')) {
+      const hasScript = (txt.includes('<script>') && txt.includes('</script>'));
+      const hasEvent = (txt.includes('onerror=') || txt.includes('onload=')) && txt.includes('alert');
+      const hasCookie = txt.includes('document.cookie') || txt.includes('fetch(');
+      if ((hasScript || hasEvent) && hasCookie) {
         return { ok: true };
+      } else if (hasScript || hasEvent) {
+        return { ok: 'warn', msg: "JS çalıştı fakat çerez sızdırılmadı. document.cookie veya fetch() kullanın." };
+      } else if (/<[a-z]/i.test(target.txt || '')) {
+        return { ok: 'info', msg: "HTML yansıtıldı. Şimdi script enjekte edin." };
       } else {
-        return { ok: 'info' };
+        return { ok: false };
       }
     }
   },
   'web-06': {
     title: 'CSRF Saldırıları',
     desc: 'Şifre değiştirme fonksiyonu hiçbir CSRF Token veya kimlik denetimi içermiyor. Kurban kullanıcının şifresini değiştiren sahte bir HTML exploit tasarlayıp gönderin.',
-    flag: 'siberkampus{csrf_token_missing_state_compromised}',
+    flag: 'siberkampus{csrf_admin_password_changed}',
     hints: [
       "Kurban tarayıcısının şifre güncelleme endpoint'ine (/change-password) istek atmasını sağlayın.",
-      "Kullanıcının haberi olmadan çalışan iframe, img veya otomatik form yapısı kurgulayın.",
-      "Payload: <iframe src='/change-password?new=admin123'> veya JS submit scripti."
+      "Kullanıcının haberi olmadan çalışan iframe, img veya otomatik form yapısı kurgulayın."
     ],
-    renderApp: (target, setTarget, runTarget, resp) => (
-      <div className="p-7">
-        <div className="text-center mb-5">
-          <div className="font-disp font-bold text-lg text-[#cdeede]">CSRF Gönderim Paneli</div>
-          <p className="text-xs text-[#74998a] mt-1">Admin tarayıcısına exploit kodunuzu gönderin</p>
-        </div>
-        <form onSubmit={runTarget} className="space-y-3 max-w-[320px] mx-auto">
-          <textarea value={target.exploit || ''} onChange={e => setTarget(t => ({ ...t, exploit: e.target.value }))} placeholder="HTML / JS Exploit Kodunuz (örn: <img src='/change-password...'>)" className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-3.5 py-2.5 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-sm h-28 resize-none" />
-          <button type="submit" className="w-full font-mono text-sm font-bold text-[#021008] bg-[#00ff88] py-2.5 rounded-lg hover:shadow-[0_0_15px_rgba(0,255,136,.3)] transition-all">Exploit'i Gönder</button>
-        </form>
-        {resp && (
-          <div className={"mt-5 max-w-[320px] mx-auto p-3.5 rounded-lg border font-mono text-xs leading-relaxed break-all " + (resp.ok === true ? 'border-[#103a26] bg-[rgba(0,255,136,.05)] text-[#00ff88]' : 'border-[#ff2e88]/40 bg-[rgba(255,46,136,.05)] text-[#ff2e88]')}>
-            {resp.msg}
+    renderApp: (target, setTarget, runTarget, resp) => {
+      const expVal = target.exploit || '';
+      const devTab = target.devTab || 'guide';
+      const setDevTab = (tab) => setTarget(t => ({ ...t, devTab: tab }));
+      const lower = expVal.toLowerCase();
+
+      const hasEndpoint = lower.includes('change-password');
+      const hasParam = lower.includes('new=') || lower.includes('password=');
+      const hasDelivery = lower.includes('iframe') || lower.includes('img') || lower.includes('form') || lower.includes('fetch') || lower.includes('xmlhttprequest');
+
+      const step1Done = hasEndpoint;
+      const step2Done = hasEndpoint && hasDelivery;
+      const step3Done = hasEndpoint && hasParam && hasDelivery;
+
+      const handleSubmit = (e) => {
+        if (e) e.preventDefault();
+        if (step3Done) {
+          setTarget(t => ({ ...t, sending: true }));
+          setTimeout(() => {
+            setTarget(t => ({ ...t, sending: false }));
+            runTarget(e);
+          }, 2000);
+        } else {
+          runTarget(e);
+        }
+      };
+
+      const renderLeftPanel = () => {
+        if (resp && resp.ok === true) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm font-sans text-sm text-gray-800" style={{ height: '420px' }}>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between border-b border-gray-150 pb-2">
+                  <span className="font-disp font-bold text-sm uppercase tracking-wider text-red-700">🚨 CSRF BAŞARILI</span>
+                </div>
+                <div className="p-3 bg-[#1e1e1e] border border-gray-300 rounded-lg text-xs text-gray-300 font-mono leading-relaxed space-y-1" style={{ height: '130px' }}>
+                  <div className="text-green-400">[+] Exploit kurbana iletildi</div>
+                  <div className="text-yellow-400">[+] Kurban tarayıcısında form otomatik tetiklendi</div>
+                  <div className="text-green-400">[+] POST /change-password → 200 OK</div>
+                  <div className="text-red-400">[!] Admin şifresi değiştirildi: admin123</div>
+                  <div className="text-yellow-400">[+] Flag: siberkampus{'{csrf_admin_password_changed}'}</div>
+                </div>
+                <div className="text-center p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-blue-800 text-sm font-medium">🎉 Tebrikler! Bayrağınız:</p>
+                  <div className="inline-block text-base font-bold text-blue-600 font-mono px-3 py-2 bg-white rounded border border-blue-300 shadow-sm select-all mt-1">
+                    siberkampus{'{csrf_admin_password_changed}'}
+                  </div>
+                </div>
+              </div>
+              <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">CSRF Token: YOK · SameSite: None</div>
+            </div>
+          );
+        }
+
+        if (target.sending) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col items-center justify-center" style={{ height: '420px' }}>
+              <div className="w-10 h-10 border-4 border-red-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+              <div className="font-sans font-bold text-sm text-gray-800 animate-pulse">Exploit kurbana gönderiliyor...</div>
+              <div className="font-mono text-xs text-gray-400 mt-2">// Admin tarayıcısında form tetikleniyor...</div>
+            </div>
+          );
+        }
+
+        return (
+          <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm" style={{ height: '420px' }}>
+            <div>
+              <div className="text-center mb-4">
+                <div className="font-sans font-bold text-lg text-gray-800">⚔️ Exploit Editörü</div>
+                <p className="text-xs text-gray-400 font-mono">// Admin tarayıcısına gönderilecek HTML exploit</p>
+              </div>
+              <div className="p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-700 mb-3">
+                <strong>Hedef:</strong> /change-password endpoint'i · CSRF Token: Yok · Method: POST/GET
+              </div>
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <textarea value={expVal} onChange={e => setTarget(t => ({ ...t, exploit: e.target.value }))} placeholder={"<form action='/change-password' method='POST'>\n  <input name='new' value='hacked123'/>\n</form>\n<script>document.forms[0].submit()</script>"} className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-gray-800 placeholder-gray-400 focus:border-red-500 focus:outline-none font-mono text-xs h-32 resize-none" />
+                <button type="submit" className={`w-full font-sans text-sm font-bold py-2.5 rounded-xl transition-all ${step3Done ? 'text-white bg-red-600 hover:bg-red-700 shadow-sm' : 'text-gray-400 bg-gray-100 border border-gray-200 cursor-not-allowed'}`}>
+                  {step3Done ? '🚀 Exploit Gönder' : 'Exploit Hazırla'}
+                </button>
+              </form>
+            </div>
+            <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">Kurban: admin@siberkampus.lab</div>
           </div>
-        )}
-      </div>
-    ),
+        );
+      };
+
+      return (
+        <div className="p-6 bg-[#f0f2f5] min-h-[380px] rounded-b-2xl">
+          <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_1.9fr] gap-6 items-stretch">
+            {renderLeftPanel()}
+            <div className="border border-[#103a26] bg-[#04100a]/90 rounded-2xl overflow-hidden flex flex-col shadow-lg">
+              <div className="flex bg-black/45 border-b border-[#0c2719] text-sm">
+                <button type="button" onClick={() => setDevTab('guide')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'guide' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>📖</span> ADIM ADIM REHBER {!step3Done && <span className="w-2.5 h-2.5 rounded-full bg-[#ffd166] animate-pulse"></span>}
+                </button>
+                <button type="button" onClick={() => setDevTab('http')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'http' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>🔍</span> HTTP AKIŞ GÖZLEMCİSİ
+                </button>
+              </div>
+              <div className="p-5 flex-1 flex flex-col justify-start gap-4 text-sm text-[#cdeede]">
+                {devTab === 'guide' ? (
+                  <div className="space-y-3">
+                    <div className="text-sm text-[#cdeede] font-bold mb-2">// CSRF Saldırı Çözüm Adımları:</div>
+                    {[
+                      { done: step1Done, prev: true, num: 1, title: "Hedef Endpoint'i Belirle", desc: <>Exploit'te şifre değiştirme endpoint'ini (<code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">/change-password</code>) hedefleyin.</> },
+                      { done: step2Done, prev: step1Done, num: 2, title: "Tetikleme Mekanizması Ekle", desc: <>Kurbana farkettirmeden istek göndermek için <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"<form>"}</code>, <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"<iframe>"}</code> veya <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">fetch()</code> kullanın.</> },
+                      { done: step3Done, prev: step2Done, num: 3, title: "Yeni Şifre Parametresi", desc: <>İsteğe yeni şifreyi içeren parametreyi ekleyin: <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">new=hacked123</code> veya <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">password=admin123</code></> }
+                    ].map((s) => (
+                      <div key={s.num} className={`p-3.5 rounded-xl border transition-all ${s.done ? 'border-[#00ff88]/30 bg-[#00ff88]/5' : !s.prev ? 'border-[#0c2719] opacity-40' : 'border-[#103a26] bg-black/25'}`}>
+                        <div className="flex items-center justify-between font-bold text-sm mb-1">
+                          <span className="flex items-center gap-2">
+                            <span className={s.done ? "text-[#00ff88]" : s.prev ? "text-[#ffd166]" : "text-[#5c8a74]"}>{s.done ? `✓ Adım ${s.num}:` : `○ Adım ${s.num}:`}</span>
+                            {s.title}
+                          </span>
+                          {s.done ? <span className="text-xs text-[#00ff88] font-mono bg-[#00ff88]/10 px-2 py-0.5 rounded font-bold">Başarılı</span>
+                            : s.prev ? <span className="text-xs text-[#ffd166] font-mono bg-[#ffd166]/10 px-2 py-0.5 rounded font-bold animate-pulse">Aktif</span>
+                            : <span className="text-xs text-[#5c8a74] font-mono border border-[#0c2719] px-2 py-0.5 rounded font-bold">Kilitli</span>}
+                        </div>
+                        <p className="text-xs leading-relaxed text-[#74998a]">{s.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// CSRF Saldırı Akışı:</div>
+                      <div className="space-y-2 text-xs font-mono">
+                        <div className="flex items-center gap-2"><span className="text-[#5cffba]">1.</span> <span className="text-[#cdeede]">Saldırgan → Exploit sayfası hazırlar</span></div>
+                        <div className="flex items-center gap-2"><span className="text-[#ffd166]">2.</span> <span className="text-[#cdeede]">Kurban → Exploit linkini açar</span></div>
+                        <div className="flex items-center gap-2"><span className="text-[#ff2e88]">3.</span> <span className="text-[#cdeede]">Tarayıcı → /change-password otomatik istek</span></div>
+                        <div className="flex items-center gap-2"><span className="text-[#ff2e88]">4.</span> <span className="text-[#cdeede]">Sunucu → Şifre değişir (CSRF token YOK!)</span></div>
+                      </div>
+                    </div>
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// Exploit Kodunuzun Analizi:</div>
+                      <div className="p-3 bg-black/60 rounded-lg font-mono text-xs leading-relaxed break-all">
+                        {expVal ? (
+                          <span className={hasEndpoint && hasParam && hasDelivery ? 'text-[#00ff88]' : 'text-[#ffd166]'}>{expVal}</span>
+                        ) : (
+                          <span className="text-[#5c8a74]">// Henüz exploit kodu girilmedi...</span>
+                        )}
+                      </div>
+                      <div className="mt-2 flex flex-wrap gap-2 text-[10px] font-mono">
+                        <span className={`px-2 py-0.5 rounded ${hasEndpoint ? 'bg-[#00ff88]/10 text-[#00ff88]' : 'bg-[#0c2719] text-[#5c8a74]'}`}>Endpoint {hasEndpoint ? '✓' : '✗'}</span>
+                        <span className={`px-2 py-0.5 rounded ${hasDelivery ? 'bg-[#00ff88]/10 text-[#00ff88]' : 'bg-[#0c2719] text-[#5c8a74]'}`}>Tetikleyici {hasDelivery ? '✓' : '✗'}</span>
+                        <span className={`px-2 py-0.5 rounded ${hasParam ? 'bg-[#00ff88]/10 text-[#00ff88]' : 'bg-[#0c2719] text-[#5c8a74]'}`}>Şifre Param {hasParam ? '✓' : '✗'}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    },
     run: (target) => {
       const exp = (target.exploit || '').toLowerCase();
       if (exp.includes('change-password') && (exp.includes('new=') || exp.includes('password=')) && (exp.includes('iframe') || exp.includes('img') || exp.includes('form') || exp.includes('fetch') || exp.includes('xmlhttprequest'))) {
-        return { ok: true, msg: "Tebrikler! Admin exploit sayfanızı görüntüledi ve şifresi değiştirildi! Bayrak: siberkampus{csrf_token_missing_state_compromised}" };
+        return { ok: true, msg: "Admin şifresi değiştirildi!" };
+      } else if (exp.includes('change-password')) {
+        return { ok: 'warn', msg: "Endpoint doğru fakat tetikleme mekanizması veya şifre parametresi eksik." };
       } else {
-        return { ok: false, msg: "Exploit gönderildi fakat şifre değiştirme isteği tetiklenemedi. Parametreleri ve etiketleri kontrol edin." };
+        return { ok: false, msg: "Exploit gönderildi fakat şifre değiştirme isteği tetiklenemedi." };
       }
     }
   },
   'web-03': {
     title: 'Blind SQL Injection',
     desc: 'Sorgular doğrudan veri döndürmüyor, sadece kullanıcının varlığını True/False olarak belirtiyor. SQL koşulları oluşturarak admin bayrağının ilk karakterini test edin.',
-    flag: 'siberkampus{blind_sqli_boolean_extraction}',
+    flag: 'siberkampus{blind_sqli_db_hash_extracted}',
     hints: [
       "Sorgularınızın sonucunun doğruluğuna göre dönen True/False durum mesajlarını analiz edin.",
-      "ASCII kodları ve SUBSTRING metodunu birleştirerek harf kontrolü yapın.",
-      "Payload: 1' AND SUBSTRING((SELECT flag FROM flags), 1, 1) = 's' -- -"
+      "ASCII kodları ve SUBSTRING metodunu birleştirerek harf kontrolü yapın."
     ],
-    renderApp: (target, setTarget, runTarget, resp) => (
-      <div className="p-7">
-        <div className="text-center mb-6">
-          <div className="font-disp font-bold text-lg text-[#cdeede]">Blind SQLi Arama</div>
-          <p className="text-xs text-[#74998a] mt-1">Yalnızca veritabanı kullanıcı varlığı kontrol edilebilir</p>
-        </div>
-        <form onSubmit={runTarget} className="space-y-3 max-w-[320px] mx-auto">
-          <div className="flex gap-2">
-            <input value={target.q || ''} onChange={e => setTarget(t => ({ ...t, q: e.target.value }))} placeholder="Kullanıcı adı veya ID sorgusu..." className="flex-1 bg-[#020806] border border-[#103a26] rounded-lg px-3.5 py-2 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-sm" />
-            <button type="submit" className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-4 rounded-lg hover:shadow-[0_0_15px_rgba(0,255,136,.3)] transition-all">Sorgula</button>
+    renderApp: (target, setTarget, runTarget, resp) => {
+      const qVal = target.q || '';
+      const devTab = target.devTab || 'guide';
+      const setDevTab = (tab) => setTarget(t => ({ ...t, devTab: tab }));
+      const lower = qVal.toLowerCase();
+
+      const hasQuote = qVal.includes("'");
+      const hasBoolLogic = hasQuote && (lower.includes(' and ') || lower.includes(' or '));
+      const hasSubstring = lower.includes('substring') || lower.includes('substr');
+      const hasFlag = lower.includes('flag') || lower.includes('secret');
+      const hasFullPayload = hasSubstring && hasFlag && lower.includes('=');
+
+      const step1Done = hasQuote;
+      const step2Done = hasBoolLogic;
+      const step3Done = hasSubstring && hasFlag;
+      const step4Done = hasFullPayload && (lower.includes("'s'") || lower.includes("= 's") || lower.includes("='s"));
+
+      const [queryLog, setQueryLog] = useState([]);
+
+      const handleQuery = (e) => {
+        if (e) e.preventDefault();
+        let result = 'FALSE';
+        if (hasFullPayload && lower.includes("'s'")) result = 'TRUE';
+        else if (hasBoolLogic && (lower.includes('1=1') || lower.includes("'a'='a"))) result = 'TRUE';
+        setQueryLog(prev => [...prev.slice(-6), { q: qVal, r: result, t: new Date().toLocaleTimeString() }]);
+        runTarget(e);
+      };
+
+      const renderLeftPanel = () => {
+        if (resp && resp.ok === true && step4Done) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm font-sans text-sm text-gray-800" style={{ height: '420px' }}>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between border-b border-gray-150 pb-2">
+                  <span className="font-disp font-bold text-sm uppercase tracking-wider text-green-700">Blind SQLi Başarılı</span>
+                  <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-200 font-mono font-bold">Extracted</span>
+                </div>
+                <div className="p-3 bg-[#1e1e1e] border border-gray-300 rounded-lg text-xs text-gray-300 font-mono leading-relaxed space-y-1 overflow-y-auto" style={{ height: '140px' }}>
+                  <div className="text-gray-500">// Blind SQLi ile karakter çıkarma tamamlandı</div>
+                  <div className="text-green-400">[+] Pozisyon 1: 's' → TRUE</div>
+                  <div className="text-green-400">[+] Pozisyon 2: 'i' → TRUE</div>
+                  <div className="text-green-400">[+] Pozisyon 3: 'b' → TRUE</div>
+                  <div className="text-yellow-400">[...] 30+ karakter çıkartıldı</div>
+                  <div className="text-green-400">[+] Tam bayrak: siberkampus{'{blind_sqli_db_hash_extracted}'}</div>
+                </div>
+                <div className="text-center p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-blue-800 text-sm font-medium">Tebrikler! Bayrağınız:</p>
+                  <div className="inline-block text-base font-bold text-blue-600 font-mono px-3 py-2 bg-white rounded border border-blue-300 shadow-sm select-all mt-1">
+                    siberkampus{'{blind_sqli_db_hash_extracted}'}
+                  </div>
+                </div>
+              </div>
+              <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">Blind Boolean-based SQLi · MySQL 5.7</div>
+            </div>
+          );
+        }
+
+        return (
+          <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm" style={{ height: '420px' }}>
+            <div>
+              <div className="text-center mb-3">
+                <div className="font-sans font-bold text-lg text-gray-800">🔍 Kullanıcı Sorgulama</div>
+                <p className="text-xs text-gray-400 font-mono">// API: /api/user?id=</p>
+              </div>
+              <form onSubmit={handleQuery} className="space-y-2 mb-3">
+                <input value={qVal} onChange={e => setTarget(t => ({ ...t, q: e.target.value }))} placeholder="1' AND SUBSTRING(...)='s' -- -" className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-gray-800 placeholder-gray-400 focus:border-blue-500 focus:outline-none font-mono text-xs" />
+                <button type="submit" className="w-full font-sans text-sm font-bold text-white bg-blue-600 py-2 rounded-lg hover:bg-blue-700 transition-all">Sorgula</button>
+              </form>
+              {resp && (
+                <div className={`p-3 rounded-lg border text-center text-sm font-bold font-mono ${
+                  resp.ok === true ? 'border-green-200 bg-green-50 text-green-700' : resp.ok === 'warn' ? 'border-amber-200 bg-amber-50 text-amber-700' : 'border-red-200 bg-red-50 text-red-700'
+                }`}>
+                  {resp.ok === true || (resp.msg && resp.msg.includes('TRUE')) ? '✓ TRUE — Kullanıcı mevcut' : '✗ FALSE — Kullanıcı mevcut değil'}
+                </div>
+              )}
+              <div className="mt-3 space-y-1 max-h-[90px] overflow-y-auto">
+                {queryLog.map((l, i) => (
+                  <div key={i} className="flex items-center justify-between text-[10px] font-mono text-gray-500 p-1 bg-gray-50 rounded">
+                    <span className="truncate max-w-[60%]">{l.q}</span>
+                    <span className={l.r === 'TRUE' ? 'text-green-600 font-bold' : 'text-red-500 font-bold'}>{l.r}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">MySQL 5.7 · Boolean-based · Verbose: OFF</div>
           </div>
-        </form>
-        {resp && (
-          <div className="mt-5 max-w-[320px] mx-auto">
-            <div className={"p-3.5 rounded-lg border font-mono text-xs leading-relaxed break-all " + (resp.ok === true ? 'border-[#103a26] bg-[rgba(0,255,136,.05)] text-[#00ff88]' : 'border-[#ff2e88]/40 bg-[rgba(255,46,136,.05)] text-[#ff2e88]')}>
-              {resp.msg}
+        );
+      };
+
+      return (
+        <div className="p-6 bg-[#f0f2f5] min-h-[380px] rounded-b-2xl">
+          <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_1.9fr] gap-6 items-stretch">
+            {renderLeftPanel()}
+            <div className="border border-[#103a26] bg-[#04100a]/90 rounded-2xl overflow-hidden flex flex-col shadow-lg">
+              <div className="flex bg-black/45 border-b border-[#0c2719] text-sm">
+                <button type="button" onClick={() => setDevTab('guide')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'guide' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>📖</span> ADIM ADIM REHBER {!step4Done && <span className="w-2.5 h-2.5 rounded-full bg-[#ffd166] animate-pulse"></span>}
+                </button>
+                <button type="button" onClick={() => setDevTab('sql')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'sql' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>🔍</span> SQL GÖZLEMCİSİ
+                </button>
+              </div>
+              <div className="p-5 flex-1 flex flex-col justify-start gap-4 text-sm text-[#cdeede]">
+                {devTab === 'guide' ? (
+                  <div className="space-y-3">
+                    <div className="text-sm text-[#cdeede] font-bold mb-2">// Blind SQLi Çözüm Adımları:</div>
+                    {[
+                      { done: step1Done, prev: true, num: 1, title: "SQL Enjeksiyon Noktası", desc: <>Girdinin SQL'e dahil edildiğini doğrulamak için tek tırnak <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">'</code> ekleyin ve yanıt farkını gözlemleyin.</> },
+                      { done: step2Done, prev: step1Done, num: 2, title: "Boolean Mantığı Testi", desc: <><code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">1' AND 1=1 -- -</code> (TRUE) ve <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">1' AND 1=2 -- -</code> (FALSE) karşılaştırın.</> },
+                      { done: step3Done, prev: step2Done, num: 3, title: "SUBSTRING ile Veri Çıkarma", desc: <><code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">SUBSTRING((SELECT flag FROM flags),1,1)</code> ile hedef tablo ve sütunu tespit edin.</> },
+                      { done: step4Done, prev: step3Done, num: 4, title: "Karakter Eşleştirme", desc: <>İlk karakteri <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">='s'</code> ile test edin. TRUE dönmesi bayrağın çıkartıldığını kanıtlar.</> }
+                    ].map((s) => (
+                      <div key={s.num} className={`p-3.5 rounded-xl border transition-all ${s.done ? 'border-[#00ff88]/30 bg-[#00ff88]/5' : !s.prev ? 'border-[#0c2719] opacity-40' : 'border-[#103a26] bg-black/25'}`}>
+                        <div className="flex items-center justify-between font-bold text-sm mb-1">
+                          <span className="flex items-center gap-2">
+                            <span className={s.done ? "text-[#00ff88]" : s.prev ? "text-[#ffd166]" : "text-[#5c8a74]"}>{s.done ? `✓ Adım ${s.num}:` : `○ Adım ${s.num}:`}</span>
+                            {s.title}
+                          </span>
+                          {s.done ? <span className="text-xs text-[#00ff88] font-mono bg-[#00ff88]/10 px-2 py-0.5 rounded font-bold">Başarılı</span>
+                            : s.prev ? <span className="text-xs text-[#ffd166] font-mono bg-[#ffd166]/10 px-2 py-0.5 rounded font-bold animate-pulse">Aktif</span>
+                            : <span className="text-xs text-[#5c8a74] font-mono border border-[#0c2719] px-2 py-0.5 rounded font-bold">Kilitli</span>}
+                        </div>
+                        <p className="text-xs leading-relaxed text-[#74998a]">{s.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// Sunucudaki SQL Sorgusu:</div>
+                      <div className="p-3 bg-black/60 rounded-lg font-mono text-xs leading-relaxed break-all">
+                        <span className="text-[#74998a]">SELECT * FROM users WHERE id = '</span>
+                        <span className={`font-bold ${hasQuote ? 'text-[#ff2e88]' : 'text-[#5cffba]'}`}>{qVal || '...'}</span>
+                        <span className="text-[#74998a]">'</span>
+                        {hasBoolLogic && <div className="mt-2 pt-2 border-t border-[#0c2719] text-[#ffd166] text-xs">⚠️ SQL koşulu enjekte edildi!</div>}
+                      </div>
+                    </div>
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// Veritabanı Şeması:</div>
+                      <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+                        <div className="p-2 bg-black/40 rounded-lg">
+                          <div className="text-[#00ff88] font-bold mb-1">users</div>
+                          <div className="text-[#74998a]">id, username, email</div>
+                        </div>
+                        <div className="p-2 bg-black/40 rounded-lg border border-[#ffd166]/30">
+                          <div className="text-[#ffd166] font-bold mb-1">flags 🎯</div>
+                          <div className="text-[#74998a]">id, flag, room_id</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// Blind SQLi Tekniği:</div>
+                      <div className="flex items-center gap-2 text-xs font-mono flex-wrap">
+                        <span className="px-2 py-1 rounded bg-[#103a26]/40 text-[#5cffba]">Sorgu gönder</span>
+                        <span className="text-[#74998a]">→</span>
+                        <span className="px-2 py-1 rounded bg-[#103a26]/40 text-[#ffd166]">TRUE / FALSE</span>
+                        <span className="text-[#74998a]">→</span>
+                        <span className="px-2 py-1 rounded bg-[#103a26]/40 text-[#ff2e88]">Karakter çıkar</span>
+                        <span className="text-[#74998a]">→</span>
+                        <span className="px-2 py-1 rounded bg-[#103a26]/40 text-[#00ff88]">Tekrarla!</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        )}
-      </div>
-    ),
+        </div>
+      );
+    },
     run: (target) => {
       const q = (target.q || '').toLowerCase();
-      if (q.includes('substring') && q.includes('flags') && q.includes('s')) {
-        return { ok: true, msg: "True (Doğru): Kullanıcı veritabanında mevcut! Bayrağın ilk harfinin 's' olduğunu doğruladınız. Bayrak: siberkampus{blind_sqli_boolean_extraction}" };
-      } else if (q.includes("'") && (q.includes('and') || q.includes('or')) && q.includes('=')) {
-        if (q.includes('1=1') || q.includes('true')) {
-          return { ok: true, msg: "True (Doğru): Kullanıcı veritabanında mevcut!" };
-        } else {
-          return { ok: false, msg: "False (Yanlış): Kullanıcı mevcut değil." };
+      const hasSubstring = q.includes('substring') || q.includes('substr');
+      const hasFlag = q.includes('flag') || q.includes('secret');
+      if (hasSubstring && hasFlag && (q.includes("'s'") || q.includes("= 's") || q.includes("='s"))) {
+        return { ok: true, msg: "TRUE" };
+      } else if (hasSubstring && hasFlag) {
+        return { ok: 'warn', msg: "SUBSTRING doğru tabloya yöneldi ama karakter eşleşmedi. İlk karakter 's' olmalı." };
+      } else if (q.includes("'") && (q.includes(' and ') || q.includes(' or '))) {
+        if (q.includes('1=1') || q.includes("'a'='a") || q.includes('true')) {
+          return { ok: 'info', msg: "TRUE — Boolean mantığı çalışıyor. Şimdi SUBSTRING ile veri çıkarın." };
         }
+        return { ok: false, msg: "FALSE — Koşul yanlış." };
       } else {
-        return { ok: false, msg: "False (Yanlış): Kullanıcı mevcut değil." };
+        return { ok: false, msg: "FALSE — Kullanıcı mevcut değil." };
       }
     }
   },
   'web-07': {
     title: 'File Upload Bypass',
     desc: 'Profil resmi yükleme alanı dosya uzantısını client-side kontrol ediyor. Çift uzantı, MIME manipülasyonu veya phtml bypass yöntemleriyle sunucuya bir PHP shell yükleyin.',
-    flag: 'siberkampus{rce_via_file_upload_bypass_achieved}',
+    flag: 'siberkampus{file_upload_bypass_webshell}',
     hints: [
       "Client-side kontrolleri aşmak için dosya ismini shell.php.png veya shell.phtml yapmayı deneyin.",
-      "Sunucu PHP kodlarını derleyebilir, ancak .php uzantısını filtreleyebilir. .phtml veya .php5 uzantısını deneyin.",
       "Content-Type değerini image/png olarak değiştirmeyi deneyin."
     ],
     renderApp: (target, setTarget, runTarget, resp) => {
-      const fileInputRef = useRef(null);
-      const [fileName, setFileName] = useState('');
-      const handleFileChange = (e) => {
-        if (e.target.files[0]) setFileName(e.target.files[0].name);
+      const fnVal = target.fname || '';
+      const ctVal = target.ctype || 'image/png';
+      const devTab = target.devTab || 'guide';
+      const setDevTab = (tab) => setTarget(t => ({ ...t, devTab: tab }));
+      const lower = fnVal.toLowerCase();
+
+      const hasPhpExt = lower.includes('.php') || lower.includes('.phtml') || lower.includes('.php5');
+      const hasImgExt = lower.endsWith('.png') || lower.endsWith('.jpg') || lower.endsWith('.jpeg');
+      const isDoubleExt = hasPhpExt && hasImgExt;
+      const isAltExt = lower.endsWith('.phtml') || lower.endsWith('.php5');
+      const hasMIME = ctVal.includes('image/');
+
+      const step1Done = fnVal.length > 0;
+      const step2Done = hasPhpExt;
+      const step3Done = (isDoubleExt && hasMIME) || isAltExt;
+
+      const handleUpload = (e) => {
+        if (e) e.preventDefault();
+        if (step3Done) {
+          setTarget(t => ({ ...t, uploading: true }));
+          setTimeout(() => {
+            setTarget(t => ({ ...t, uploading: false }));
+            runTarget(e, fnVal);
+          }, 1800);
+        } else {
+          runTarget(e, fnVal);
+        }
       };
-      return (
-        <div className="p-7">
-          <div className="text-center mb-5">
-            <div className="font-disp font-bold text-lg text-[#cdeede]">Resim Yükleme Paneli</div>
-            <p className="text-xs text-[#74998a] mt-1">Sadece resim formatlarına izin verilir (.png, .jpg)</p>
+
+      const renderLeftPanel = () => {
+        if (resp && resp.ok === true) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm font-sans text-sm text-gray-800" style={{ height: '420px' }}>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between border-b border-gray-150 pb-2">
+                  <span className="font-disp font-bold text-sm uppercase tracking-wider text-red-700">Web Shell Aktif!</span>
+                </div>
+                <div className="p-3 bg-[#1e1e1e] border border-gray-300 rounded-lg text-xs text-gray-300 font-mono leading-relaxed space-y-1" style={{ height: '140px' }}>
+                  <div className="text-green-400">[+] Dosya yüklendi: /uploads/{fnVal}</div>
+                  <div className="text-green-400">[+] PHP motoru dosyayı işledi</div>
+                  <div className="text-yellow-400">[+] Web shell aktif: /uploads/{fnVal}?cmd=id</div>
+                  <div className="text-green-400">uid=33(www-data) gid=33(www-data)</div>
+                  <div className="text-red-400">[!] Sunucu ele geçirildi!</div>
+                </div>
+                <div className="text-center p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-blue-800 text-sm font-medium">Tebrikler! Bayrağınız:</p>
+                  <div className="inline-block text-base font-bold text-blue-600 font-mono px-3 py-2 bg-white rounded border border-blue-300 shadow-sm select-all mt-1">
+                    siberkampus{'{file_upload_bypass_webshell}'}
+                  </div>
+                </div>
+              </div>
+              <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">Apache/2.4 · PHP/7.4 · mod_php</div>
+            </div>
+          );
+        }
+
+        if (target.uploading) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col items-center justify-center" style={{ height: '420px' }}>
+              <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+              <div className="font-sans font-bold text-sm text-gray-800 animate-pulse">Dosya yükleniyor...</div>
+              <div className="font-mono text-xs text-gray-400 mt-2">// WAF bypass deneniyor...</div>
+            </div>
+          );
+        }
+
+        return (
+          <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm" style={{ height: '420px' }}>
+            <div>
+              <div className="text-center mb-3">
+                <div className="font-sans font-bold text-lg text-gray-800">📁 Profil Resmi Yükle</div>
+                <p className="text-xs text-gray-400 font-mono">// İzin verilen: .png, .jpg, .jpeg</p>
+              </div>
+              <div className="p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-700 mb-3">
+                <strong>Filtre:</strong> Client-side JS uzantı kontrolü · Server-side: MIME check
+              </div>
+              <form onSubmit={handleUpload} className="space-y-3">
+                <div>
+                  <label className="text-xs text-gray-500 font-mono block mb-1">Dosya Adı:</label>
+                  <input value={fnVal} onChange={e => setTarget(t => ({ ...t, fname: e.target.value }))} placeholder="shell.php.png" className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-gray-800 placeholder-gray-400 focus:border-blue-500 focus:outline-none font-mono text-xs" />
+                </div>
+                <div>
+                  <label className="text-xs text-gray-500 font-mono block mb-1">Content-Type:</label>
+                  <select value={ctVal} onChange={e => setTarget(t => ({ ...t, ctype: e.target.value }))} className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-gray-800 focus:border-blue-500 focus:outline-none font-mono text-xs">
+                    <option value="image/png">image/png</option>
+                    <option value="image/jpeg">image/jpeg</option>
+                    <option value="application/x-php">application/x-php</option>
+                    <option value="text/plain">text/plain</option>
+                  </select>
+                </div>
+                <button type="submit" className="w-full font-sans text-sm font-bold text-white bg-blue-600 py-2.5 rounded-xl hover:bg-blue-700 transition-all">Yükle</button>
+              </form>
+            </div>
+            <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">Apache/2.4 · upload_max: 2MB</div>
           </div>
-          <form onSubmit={(e) => { e.preventDefault(); runTarget(e, fileName); }} className="space-y-3 max-w-[320px] mx-auto text-center">
-            <div className="border-2 border-dashed border-[#103a26] rounded-xl p-5 hover:border-[#00ff88] transition-colors cursor-pointer" onClick={() => fileInputRef.current && fileInputRef.current.click()}>
-              <span className="text-3xl block mb-2">📁</span>
-              <span className="text-xs text-[#74998a] block truncate">{fileName || "Dosya Seçin"}</span>
-              <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" />
+        );
+      };
+
+      return (
+        <div className="p-6 bg-[#f0f2f5] min-h-[380px] rounded-b-2xl">
+          <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_1.9fr] gap-6 items-stretch">
+            {renderLeftPanel()}
+            <div className="border border-[#103a26] bg-[#04100a]/90 rounded-2xl overflow-hidden flex flex-col shadow-lg">
+              <div className="flex bg-black/45 border-b border-[#0c2719] text-sm">
+                <button type="button" onClick={() => setDevTab('guide')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'guide' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>📖</span> ADIM ADIM REHBER {!step3Done && <span className="w-2.5 h-2.5 rounded-full bg-[#ffd166] animate-pulse"></span>}
+                </button>
+                <button type="button" onClick={() => setDevTab('http')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'http' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>🔍</span> HTTP GÖZLEMCİSİ
+                </button>
+              </div>
+              <div className="p-5 flex-1 flex flex-col justify-start gap-4 text-sm text-[#cdeede]">
+                {devTab === 'guide' ? (
+                  <div className="space-y-3">
+                    <div className="text-sm text-[#cdeede] font-bold mb-2">// File Upload Bypass Adımları:</div>
+                    {[
+                      { done: step1Done, prev: true, num: 1, title: "Dosya Adı Belirleme", desc: <>Yüklenecek dosyanın adını girin. PHP kodu çalıştırmak için <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">.php</code> uzantısı gerekir.</> },
+                      { done: step2Done, prev: step1Done, num: 2, title: "PHP Uzantısı Ekleme", desc: <>Dosya adına <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">.php</code>, <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">.phtml</code> veya <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">.php5</code> ekleyin.</> },
+                      { done: step3Done, prev: step2Done, num: 3, title: "Filtreyi Aşma", desc: <>Çift uzantı (<code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">shell.php.png</code>) ile WAF'ı atlatın veya alternatif uzantı (<code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">.phtml</code>) kullanın.</> }
+                    ].map((s) => (
+                      <div key={s.num} className={`p-3.5 rounded-xl border transition-all ${s.done ? 'border-[#00ff88]/30 bg-[#00ff88]/5' : !s.prev ? 'border-[#0c2719] opacity-40' : 'border-[#103a26] bg-black/25'}`}>
+                        <div className="flex items-center justify-between font-bold text-sm mb-1">
+                          <span className="flex items-center gap-2">
+                            <span className={s.done ? "text-[#00ff88]" : s.prev ? "text-[#ffd166]" : "text-[#5c8a74]"}>{s.done ? `✓ Adım ${s.num}:` : `○ Adım ${s.num}:`}</span>
+                            {s.title}
+                          </span>
+                          {s.done ? <span className="text-xs text-[#00ff88] font-mono bg-[#00ff88]/10 px-2 py-0.5 rounded font-bold">Başarılı</span>
+                            : s.prev ? <span className="text-xs text-[#ffd166] font-mono bg-[#ffd166]/10 px-2 py-0.5 rounded font-bold animate-pulse">Aktif</span>
+                            : <span className="text-xs text-[#5c8a74] font-mono border border-[#0c2719] px-2 py-0.5 rounded font-bold">Kilitli</span>}
+                        </div>
+                        <p className="text-xs leading-relaxed text-[#74998a]">{s.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// HTTP Upload İsteği:</div>
+                      <div className="p-3 bg-black/60 rounded-lg font-mono text-xs leading-relaxed break-all space-y-1">
+                        <div className="text-[#5cffba]">POST /upload HTTP/1.1</div>
+                        <div className="text-[#74998a]">Content-Type: multipart/form-data</div>
+                        <div className="text-[#74998a]">---</div>
+                        <div>filename: <span className={`font-bold ${hasPhpExt ? 'text-[#ff2e88]' : 'text-[#5cffba]'}`}>{fnVal || '...'}</span></div>
+                        <div>content-type: <span className={`font-bold ${hasMIME ? 'text-[#5cffba]' : 'text-[#ff2e88]'}`}>{ctVal}</span></div>
+                      </div>
+                    </div>
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// Sunucu Filtre Analizi:</div>
+                      <div className="space-y-2 text-xs font-mono">
+                        <div className="flex items-center justify-between p-2 bg-black/40 rounded">
+                          <span className="text-[#74998a]">JS uzantı kontrolü (.png/.jpg)</span>
+                          <span className={isDoubleExt || isAltExt ? 'text-[#00ff88]' : hasPhpExt ? 'text-[#ff2e88]' : 'text-[#74998a]'}>{isDoubleExt ? 'BYPASS ✓' : isAltExt ? 'BYPASS ✓' : hasPhpExt ? 'ENGELLENDİ' : 'BEKLENİYOR'}</span>
+                        </div>
+                        <div className="flex items-center justify-between p-2 bg-black/40 rounded">
+                          <span className="text-[#74998a]">MIME type kontrolü</span>
+                          <span className={hasMIME ? 'text-[#00ff88]' : 'text-[#ff2e88]'}>{hasMIME ? 'GEÇER ✓' : 'REDDEDİLİR'}</span>
+                        </div>
+                        <div className="flex items-center justify-between p-2 bg-black/40 rounded">
+                          <span className="text-[#74998a]">Apache PHP modülü</span>
+                          <span className={hasPhpExt ? 'text-[#00ff88]' : 'text-[#74998a]'}>{hasPhpExt ? 'ÇALIŞTIRIR ✓' : 'BEKLENİYOR'}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-            <button type="submit" className="w-full font-mono text-sm font-bold text-[#021008] bg-[#00ff88] py-2.5 rounded-lg hover:shadow-[0_0_15px_rgba(0,255,136,.3)] transition-all">Sunucuya Yükle</button>
-          </form>
-          {resp && (
-            <div className={"mt-5 max-w-[320px] mx-auto p-3.5 rounded-lg border font-mono text-xs leading-relaxed break-all " + (resp.ok === true ? 'border-[#103a26] bg-[rgba(0,255,136,.05)] text-[#00ff88]' : 'border-[#ff2e88]/40 bg-[rgba(255,46,136,.05)] text-[#ff2e88]')}>
-              {resp.msg}
-            </div>
-          )}
+          </div>
         </div>
       );
     },
     run: (target, customArg) => {
       const fname = (customArg || '').toLowerCase();
-      if (!fname) return { ok: false, msg: "Hata: Dosya seçilmedi!" };
-      if (fname.endsWith('.png') || fname.endsWith('.jpg') || fname.endsWith('.jpeg')) {
-        if (fname.includes('.php.png') || fname.includes('.php.jpg')) {
-          return { ok: true, msg: "Bypass Başarılı! Çift uzantı filtresi aşıldı ve PHP shell /uploads/" + fname + " adresinde çalıştırıldı. Bayrak: siberkampus{rce_via_file_upload_bypass_achieved}" };
-        }
-        return { ok: false, msg: "Dosya başarıyla yüklendi: /uploads/" + fname + ". Ancak bu dosya çalıştırılabilir PHP kodları barındırmıyor." };
-      } else if (fname.endsWith('.phtml') || fname.endsWith('.php5') || fname.endsWith('.php.phtml')) {
-        return { ok: true, msg: "Bypass Başarılı! .php uzantı engeli alternatif uzantı ile aşıldı. Web shell aktif! Bayrak: siberkampus{rce_via_file_upload_bypass_achieved}" };
-      } else {
-        return { ok: false, msg: "Hata: Güvenlik duvarı (WAF) uzantıyı engelledi! Sadece .png veya .jpg izin verilmektedir." };
+      if (!fname) return { ok: false, msg: "Dosya adı girilmedi!" };
+      if (fname.endsWith('.phtml') || fname.endsWith('.php5')) {
+        return { ok: true };
       }
+      if ((fname.endsWith('.png') || fname.endsWith('.jpg') || fname.endsWith('.jpeg')) && (fname.includes('.php.') || fname.includes('.phtml.'))) {
+        return { ok: true };
+      }
+      if (fname.endsWith('.php')) {
+        return { ok: 'warn', msg: "WAF .php uzantısını engelledi! Çift uzantı (.php.png) veya alternatif (.phtml) deneyin." };
+      }
+      return { ok: false, msg: "Dosya yüklendi ama PHP kodu çalıştırılamadı." };
     }
   },
   'web-08': {
     title: 'SSRF & XXE',
     desc: 'Sunucu, gönderilen XML girdilerini analiz ediyor ve dış entity\'leri işliyor. Sunucunun dahili dosyalarını (`file:///etc/passwd`) okumak için zararlı bir XML Entity (XXE) payload\'u gönderin.',
-    flag: 'siberkampus{ssrf_xxe_internal_recon_success}',
+    flag: 'siberkampus{ssrf_internal_metadata_exposed}',
     hints: [
       "XML dökümanlarının en üstünde SYSTEM entity tanımlayarak sunucu yerel sistem dosyalarını okumayı hedefleyin.",
-      "Payload XML formatında bir entity ve bunu çağıran bir etiket içermelidir.",
-      "Payload: <!DOCTYPE foo [ <!ENTITY xxe SYSTEM \"file:///etc/passwd\"> ]><foo>&xxe;</foo>"
+      "Payload XML formatında bir entity ve bunu çağıran bir etiket içermelidir."
     ],
-    renderApp: (target, setTarget, runTarget, resp) => (
-      <div className="p-7">
-        <div className="text-center mb-5">
-          <div className="font-disp font-bold text-lg text-[#cdeede]">XML Veri Ayrıştırıcı API</div>
-          <p className="text-xs text-[#74998a] mt-1">Sisteme göndermek istediğiniz XML girdisini yazın</p>
-        </div>
-        <form onSubmit={runTarget} className="space-y-3 max-w-[320px] mx-auto">
-          <textarea value={target.xml || ''} onChange={e => setTarget(t => ({ ...t, xml: e.target.value }))} placeholder="XML Payload'ınız..." className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-3.5 py-2.5 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-sm h-28 resize-none" />
-          <button type="submit" className="w-full font-mono text-sm font-bold text-[#021008] bg-[#00ff88] py-2.5 rounded-lg hover:shadow-[0_0_15px_rgba(0,255,136,.3)] transition-all">XML Gönder</button>
-        </form>
-        {resp && (
-          <div className="mt-5 max-w-[320px] mx-auto">
-            <div className="text-xs text-[#74998a] mb-2 font-mono">// API Yanıtı:</div>
-            <div className={"p-3.5 rounded-lg border font-mono text-xs leading-relaxed break-all " + (resp.ok === true ? 'border-[#103a26] bg-[rgba(0,255,136,.05)] text-[#00ff88]' : 'border-[#ff2e88]/40 bg-[rgba(255,46,136,.05)] text-[#ff2e88]')}>
-              {resp.msg}
+    renderApp: (target, setTarget, runTarget, resp) => {
+      const xmlVal = target.xml || '';
+      const devTab = target.devTab || 'guide';
+      const setDevTab = (tab) => setTarget(t => ({ ...t, devTab: tab }));
+      const lower = xmlVal.toLowerCase();
+
+      const hasDoctype = lower.includes('<!doctype') || lower.includes('<!DOCTYPE');
+      const hasEntity = lower.includes('!entity');
+      const hasSystem = lower.includes('system');
+      const hasFile = lower.includes('file:///') || lower.includes('passwd') || lower.includes('/etc/');
+      const hasRef = xmlVal.includes('&') && xmlVal.includes(';');
+
+      const step1Done = hasDoctype || hasEntity;
+      const step2Done = hasEntity && hasSystem;
+      const step3Done = hasEntity && hasSystem && hasFile;
+      const step4Done = step3Done && hasRef;
+
+      const handleSubmit = (e) => {
+        if (e) e.preventDefault();
+        if (step4Done) {
+          setTarget(t => ({ ...t, parsing: true }));
+          setTimeout(() => {
+            setTarget(t => ({ ...t, parsing: false }));
+            runTarget(e);
+          }, 2000);
+        } else {
+          runTarget(e);
+        }
+      };
+
+      const renderLeftPanel = () => {
+        if (resp && resp.ok === true) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm font-sans text-sm text-gray-800" style={{ height: '420px' }}>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between border-b border-gray-150 pb-2">
+                  <span className="font-disp font-bold text-sm uppercase tracking-wider text-red-700">XXE Başarılı!</span>
+                  <span className="text-xs text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200 font-mono font-bold">LFI</span>
+                </div>
+                <div className="p-3 bg-[#1e1e1e] border border-gray-300 rounded-lg text-xs text-gray-300 font-mono leading-relaxed space-y-1 overflow-y-auto" style={{ height: '150px' }}>
+                  <div className="text-gray-500">// /etc/passwd içeriği:</div>
+                  <div className="text-green-400">root:x:0:0:root:/root:/bin/bash</div>
+                  <div className="text-green-400">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</div>
+                  <div className="text-green-400">www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin</div>
+                  <div className="text-yellow-400">flag_user:x:1001:1001::/home/flag:/bin/bash</div>
+                  <div className="text-red-400"># FLAG: siberkampus{'{ssrf_internal_metadata_exposed}'}</div>
+                </div>
+                <div className="text-center p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-blue-800 text-sm font-medium">Tebrikler! Bayrağınız:</p>
+                  <div className="inline-block text-base font-bold text-blue-600 font-mono px-3 py-2 bg-white rounded border border-blue-300 shadow-sm select-all mt-1">
+                    siberkampus{'{ssrf_internal_metadata_exposed}'}
+                  </div>
+                </div>
+              </div>
+              <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">libxml2 · External Entities: ENABLED</div>
+            </div>
+          );
+        }
+
+        if (target.parsing) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col items-center justify-center" style={{ height: '420px' }}>
+              <div className="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+              <div className="font-sans font-bold text-sm text-gray-800 animate-pulse">XML parse ediliyor...</div>
+              <div className="font-mono text-xs text-gray-400 mt-2">// External entity çözümleniyor...</div>
+            </div>
+          );
+        }
+
+        return (
+          <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm" style={{ height: '420px' }}>
+            <div>
+              <div className="text-center mb-3">
+                <div className="font-sans font-bold text-lg text-gray-800">📄 XML Veri API'si</div>
+                <p className="text-xs text-gray-400 font-mono">// POST /api/parse-xml</p>
+              </div>
+              <div className="p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-700 mb-3">
+                <strong>API:</strong> XML verisini parse eder ve sonucu döndürür. External entities aktif!
+              </div>
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <textarea value={xmlVal} onChange={e => setTarget(t => ({ ...t, xml: e.target.value }))} placeholder={"<?xml version=\"1.0\"?>\n<!DOCTYPE foo [\n  <!ENTITY xxe SYSTEM \"file:///etc/passwd\">\n]>\n<data>&xxe;</data>"} className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-gray-800 placeholder-gray-400 focus:border-orange-500 focus:outline-none font-mono text-xs h-36 resize-none" />
+                <button type="submit" className="w-full font-sans text-sm font-bold text-white bg-orange-600 py-2.5 rounded-xl hover:bg-orange-700 transition-all">XML Gönder</button>
+              </form>
+            </div>
+            <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">Java/SAX Parser · DTD: enabled</div>
+          </div>
+        );
+      };
+
+      return (
+        <div className="p-6 bg-[#f0f2f5] min-h-[380px] rounded-b-2xl">
+          <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_1.9fr] gap-6 items-stretch">
+            {renderLeftPanel()}
+            <div className="border border-[#103a26] bg-[#04100a]/90 rounded-2xl overflow-hidden flex flex-col shadow-lg">
+              <div className="flex bg-black/45 border-b border-[#0c2719] text-sm">
+                <button type="button" onClick={() => setDevTab('guide')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'guide' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>📖</span> ADIM ADIM REHBER {!step4Done && <span className="w-2.5 h-2.5 rounded-full bg-[#ffd166] animate-pulse"></span>}
+                </button>
+                <button type="button" onClick={() => setDevTab('xml')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'xml' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>🔍</span> XML GÖZLEMCİSİ
+                </button>
+              </div>
+              <div className="p-5 flex-1 flex flex-col justify-start gap-4 text-sm text-[#cdeede]">
+                {devTab === 'guide' ? (
+                  <div className="space-y-3">
+                    <div className="text-sm text-[#cdeede] font-bold mb-2">// XXE Saldırı Adımları:</div>
+                    {[
+                      { done: step1Done, prev: true, num: 1, title: "DOCTYPE Tanımı", desc: <>XML'in başına <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"<!DOCTYPE foo [...]>"}</code> ekleyerek DTD tanımı oluşturun.</> },
+                      { done: step2Done, prev: step1Done, num: 2, title: "SYSTEM Entity Tanımla", desc: <>DTD içinde <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"<!ENTITY xxe SYSTEM \"...\">"}</code> ile harici kaynak tanımlayın.</> },
+                      { done: step3Done, prev: step2Done, num: 3, title: "Dosya Yolu Belirle", desc: <>SYSTEM değerini <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">file:///etc/passwd</code> yaparak sunucu dosyasını hedefleyin.</> },
+                      { done: step4Done, prev: step3Done, num: 4, title: "Entity Referansı Çağır", desc: <>XML gövdesinde <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{"&xxe;"}</code> referansıyla entity'yi tetikleyin.</> }
+                    ].map((s) => (
+                      <div key={s.num} className={`p-3.5 rounded-xl border transition-all ${s.done ? 'border-[#00ff88]/30 bg-[#00ff88]/5' : !s.prev ? 'border-[#0c2719] opacity-40' : 'border-[#103a26] bg-black/25'}`}>
+                        <div className="flex items-center justify-between font-bold text-sm mb-1">
+                          <span className="flex items-center gap-2">
+                            <span className={s.done ? "text-[#00ff88]" : s.prev ? "text-[#ffd166]" : "text-[#5c8a74]"}>{s.done ? `✓ Adım ${s.num}:` : `○ Adım ${s.num}:`}</span>
+                            {s.title}
+                          </span>
+                          {s.done ? <span className="text-xs text-[#00ff88] font-mono bg-[#00ff88]/10 px-2 py-0.5 rounded font-bold">Başarılı</span>
+                            : s.prev ? <span className="text-xs text-[#ffd166] font-mono bg-[#ffd166]/10 px-2 py-0.5 rounded font-bold animate-pulse">Aktif</span>
+                            : <span className="text-xs text-[#5c8a74] font-mono border border-[#0c2719] px-2 py-0.5 rounded font-bold">Kilitli</span>}
+                        </div>
+                        <p className="text-xs leading-relaxed text-[#74998a]">{s.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// XML Parse Süreci:</div>
+                      <div className="p-3 bg-black/60 rounded-lg font-mono text-xs leading-relaxed break-all">
+                        <span className="text-[#74998a]">Input XML → </span>
+                        <span className={hasDoctype || hasEntity ? 'text-[#ffd166]' : 'text-[#5c8a74]'}>DTD Parse{hasDoctype || hasEntity ? ' ✓' : ''}</span>
+                        <span className="text-[#74998a]"> → </span>
+                        <span className={hasSystem ? 'text-[#ffd166]' : 'text-[#5c8a74]'}>Entity Resolve{hasSystem ? ' ✓' : ''}</span>
+                        <span className="text-[#74998a]"> → </span>
+                        <span className={hasFile ? 'text-[#ff2e88]' : 'text-[#5c8a74]'}>File Read{hasFile ? ' ⚠️' : ''}</span>
+                        <span className="text-[#74998a]"> → </span>
+                        <span className={hasRef ? 'text-[#00ff88]' : 'text-[#5c8a74]'}>Output{hasRef ? ' ✓' : ''}</span>
+                      </div>
+                    </div>
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// Hedef Sunucu Dosya Sistemi:</div>
+                      <div className="space-y-1 text-xs font-mono">
+                        <div className="text-[#5cffba]">/etc/passwd <span className="text-[#74998a]">→ Kullanıcı listesi</span></div>
+                        <div className="text-[#5cffba]">/etc/shadow <span className="text-[#74998a]">→ Şifre hash'leri (root gerekir)</span></div>
+                        <div className="text-[#ffd166]">/var/www/html/config.php <span className="text-[#74998a]">→ DB bilgileri</span></div>
+                        <div className="text-[#ff2e88]">/home/flag/flag.txt <span className="text-[#74998a]">→ CTF Bayrağı</span></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        )}
-      </div>
-    ),
+        </div>
+      );
+    },
     run: (target) => {
       const xml = (target.xml || '').toLowerCase();
-      if (xml.includes('!entity') && xml.includes('system') && (xml.includes('passwd') || xml.includes('etc') || xml.includes('file:///'))) {
-        return { ok: true, msg: "XXE Başarılı! Sunucu /etc/passwd içeriğini okudu:\n\nroot:x:0:0:root:/root:/bin/bash\nflag: siberkampus{ssrf_xxe_internal_recon_success}" };
+      const hasEntity = xml.includes('!entity');
+      const hasSystem = xml.includes('system');
+      const hasFile = xml.includes('passwd') || xml.includes('etc') || xml.includes('file:///');
+      const hasRef = (target.xml || '').includes('&') && (target.xml || '').includes(';');
+      if (hasEntity && hasSystem && hasFile && hasRef) {
+        return { ok: true };
+      } else if (hasEntity && hasSystem && hasFile) {
+        return { ok: 'warn', msg: "Entity tanımlı fakat referans (&xxe;) çağrılmadı! XML gövdesine &xxe; ekleyin." };
+      } else if (hasEntity && hasSystem) {
+        return { ok: 'info', msg: "Entity tanımlı fakat dosya yolu eksik. SYSTEM değerini file:///etc/passwd yapın." };
       } else {
-        return { ok: false, msg: "Hata: XML girdisi parse edildi fakat harici dosya entitesi (External Entity) çağrısı algılanamadı." };
+        return { ok: false, msg: "XML parse edildi fakat External Entity tanımı bulunamadı." };
       }
     }
   },
   'web-09': {
     title: 'JWT Token Exploitation',
     desc: 'JWT imza doğrulaması kütüphanesinde kritik bir zafiyet var. Header içindeki algoritmik korumayı `None` yaparak imza kontrolünü atlatın ve admin yetkisi kazanın.',
-    flag: 'siberkampus{jwt_none_algorithm_signature_bypass}',
+    flag: 'siberkampus{jwt_none_alg_bypass}',
     hints: [
       "JWT token'larının üç bölümden (Header, Payload, Signature) oluştuğunu ve noktalarla ayrıldığını unutmayın.",
-      "Token header'ını base64'ten çözüp 'alg': 'none' yapın ve geri kodlayın.",
-      "Payload'da user rolünü admin yapın, token sonundaki imza alanını silip sunucuya gönderin."
+      "Token header'ını base64'ten çözüp 'alg': 'none' yapın ve geri kodlayın."
     ],
     renderApp: (target, setTarget, runTarget, resp) => {
       const defaultToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSGFja2VyIiwicm9sZSI6InVzZXIifQ.signature_here";
+      const tokenVal = target.token || '';
+      const devTab = target.devTab || 'guide';
+      const setDevTab = (tab) => setTarget(t => ({ ...t, devTab: tab }));
+
+      const safeAtob = (str) => { try { let b = str.replace(/-/g,'+').replace(/_/g,'/'); while(b.length%4) b+='='; return atob(b); } catch(e){ return ''; } };
+
+      let headerObj = null, payloadObj = null, parseError = false;
+      const parts = tokenVal.split('.');
+      if (parts.length >= 2) {
+        try { headerObj = JSON.parse(safeAtob(parts[0])); } catch(e){ parseError = true; }
+        try { payloadObj = JSON.parse(safeAtob(parts[1])); } catch(e){ parseError = true; }
+      }
+
+      const hasNoneAlg = headerObj && (headerObj.alg === 'none' || headerObj.alg === 'NONE' || headerObj.alg === 'None');
+      const hasAdminRole = payloadObj && (payloadObj.role === 'admin' || payloadObj.role === 'ADMIN');
+      const noSignature = parts.length >= 3 && parts[2] === '' || parts.length === 2;
+
+      const step1Done = parts.length >= 2 && headerObj !== null;
+      const step2Done = hasNoneAlg;
+      const step3Done = hasNoneAlg && hasAdminRole;
+
+      const handleSubmit = (e) => {
+        if (e) e.preventDefault();
+        if (step3Done) {
+          setTarget(t => ({ ...t, verifying: true }));
+          setTimeout(() => {
+            setTarget(t => ({ ...t, verifying: false }));
+            runTarget(e);
+          }, 1500);
+        } else {
+          runTarget(e);
+        }
+      };
+
+      const renderLeftPanel = () => {
+        if (resp && resp.ok === true) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm font-sans text-sm text-gray-800" style={{ height: '420px' }}>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between border-b border-gray-150 pb-2">
+                  <span className="font-disp font-bold text-sm uppercase tracking-wider text-red-700">Admin Yetkisi Kazanıldı!</span>
+                </div>
+                <div className="p-3 bg-[#1e1e1e] border border-gray-300 rounded-lg text-xs text-gray-300 font-mono leading-relaxed space-y-1" style={{ height: '130px' }}>
+                  <div className="text-green-400">[+] JWT Token kabul edildi</div>
+                  <div className="text-yellow-400">[!] Algorithm: none → İmza kontrolü atlandı!</div>
+                  <div className="text-green-400">[+] Role: admin → Yetki yükseltme başarılı</div>
+                  <div className="text-red-400">[!] Admin paneline erişim sağlandı</div>
+                  <div className="text-green-400">[+] Flag: siberkampus{'{jwt_none_alg_bypass}'}</div>
+                </div>
+                <div className="text-center p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-blue-800 text-sm font-medium">Tebrikler! Bayrağınız:</p>
+                  <div className="inline-block text-base font-bold text-blue-600 font-mono px-3 py-2 bg-white rounded border border-blue-300 shadow-sm select-all mt-1">
+                    siberkampus{'{jwt_none_alg_bypass}'}
+                  </div>
+                </div>
+              </div>
+              <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">JWT None Algorithm Bypass · CVE-2015-9235</div>
+            </div>
+          );
+        }
+
+        if (target.verifying) {
+          return (
+            <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col items-center justify-center" style={{ height: '420px' }}>
+              <div className="w-10 h-10 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+              <div className="font-sans font-bold text-sm text-gray-800 animate-pulse">Token doğrulanıyor...</div>
+              <div className="font-mono text-xs text-gray-400 mt-2">// İmza kontrolü: alg=none...</div>
+            </div>
+          );
+        }
+
+        return (
+          <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-between shadow-sm" style={{ height: '420px' }}>
+            <div>
+              <div className="text-center mb-3">
+                <div className="font-sans font-bold text-lg text-gray-800">🔐 Admin Paneli</div>
+                <p className="text-xs text-gray-400 font-mono">// Kimlik doğrulama: JWT Bearer Token</p>
+              </div>
+              <div className="mb-3">
+                <label className="text-xs text-gray-500 font-mono block mb-1">Mevcut Token (user yetkili):</label>
+                <div className="p-2 bg-gray-50 border border-gray-200 rounded-lg text-[9px] font-mono text-gray-500 break-all select-all">{defaultToken}</div>
+              </div>
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <div>
+                  <label className="text-xs text-gray-500 font-mono block mb-1">Modifiye Token:</label>
+                  <textarea value={tokenVal} onChange={e => setTarget(t => ({ ...t, token: e.target.value }))} placeholder="Düzenlenmiş JWT token'ınız..." className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:outline-none font-mono text-[10px] h-16 resize-none" />
+                </div>
+                <button type="submit" className="w-full font-sans text-sm font-bold text-white bg-purple-600 py-2.5 rounded-xl hover:bg-purple-700 transition-all">Token Gönder</button>
+              </form>
+            </div>
+            <div className="pt-2 border-t border-gray-100 text-xs text-gray-400 font-mono">jsonwebtoken@8.5.1 · HS256</div>
+          </div>
+        );
+      };
+
       return (
-        <div className="p-7">
-          <div className="text-center mb-5">
-            <div className="font-disp font-bold text-lg text-[#cdeede]">Admin Kontrol Paneli</div>
-            <p className="text-xs text-[#74998a] mt-1">Kimlik doğrulaması için JWT token gönderin</p>
-          </div>
-          <div className="max-w-[320px] mx-auto space-y-3 text-left">
-            <div className="text-[10px] text-[#74998a] font-mono">// Varsayılan Token'ınız (Kullanıcı yetkili):</div>
-            <textarea value={defaultToken} readOnly className="w-full bg-[#020806]/40 border border-[#0c2719] rounded-lg px-2.5 py-2 text-[#74998a] font-mono text-[10px] h-14 resize-none focus:outline-none" />
-            
-            <form onSubmit={runTarget} className="space-y-3">
-              <textarea value={target.token || ''} onChange={e => setTarget(t => ({ ...t, token: e.target.value }))} placeholder="Modifiye edilmiş JWT Token'ınız..." className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-3 py-2 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-[11px] h-20 resize-none" />
-              <button type="submit" className="w-full font-mono text-sm font-bold text-[#021008] bg-[#00ff88] py-2.5 rounded-lg hover:shadow-[0_0_15px_rgba(0,255,136,.3)] transition-all">Token Gönder</button>
-            </form>
-          </div>
-          {resp && (
-            <div className="mt-5 max-w-[320px] mx-auto">
-              <div className={"p-3.5 rounded-lg border font-mono text-xs leading-relaxed break-all " + (resp.ok === true ? 'border-[#103a26] bg-[rgba(0,255,136,.05)] text-[#00ff88]' : 'border-[#ff2e88]/40 bg-[rgba(255,46,136,.05)] text-[#ff2e88]')}>
-                {resp.msg}
+        <div className="p-6 bg-[#f0f2f5] min-h-[380px] rounded-b-2xl">
+          <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_1.9fr] gap-6 items-stretch">
+            {renderLeftPanel()}
+            <div className="border border-[#103a26] bg-[#04100a]/90 rounded-2xl overflow-hidden flex flex-col shadow-lg">
+              <div className="flex bg-black/45 border-b border-[#0c2719] text-sm">
+                <button type="button" onClick={() => setDevTab('guide')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'guide' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>📖</span> ADIM ADIM REHBER {!step3Done && <span className="w-2.5 h-2.5 rounded-full bg-[#ffd166] animate-pulse"></span>}
+                </button>
+                <button type="button" onClick={() => setDevTab('jwt')}
+                  className={`flex-1 py-3.5 text-center font-disp font-bold tracking-wider transition-colors flex items-center justify-center gap-1.5 border-b-2 ${devTab === 'jwt' ? 'border-[#00ff88] text-[#00ff88] bg-[#00ff88]/5' : 'border-transparent text-[#74998a] hover:text-[#cdeede]'}`}>
+                  <span>🔍</span> JWT DECODER
+                </button>
+              </div>
+              <div className="p-5 flex-1 flex flex-col justify-start gap-4 text-sm text-[#cdeede]">
+                {devTab === 'guide' ? (
+                  <div className="space-y-3">
+                    <div className="text-sm text-[#cdeede] font-bold mb-2">// JWT Bypass Adımları:</div>
+                    {[
+                      { done: step1Done, prev: true, num: 1, title: "Token Yapısını Anla", desc: <>JWT = <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">Header.Payload.Signature</code> (Base64URL encoded). Mevcut token'ı decode edin.</> },
+                      { done: step2Done, prev: step1Done, num: 2, title: "Algorithm'i None Yap", desc: <>Header'daki <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{'"alg":"HS256"'}</code> değerini <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{'"alg":"none"'}</code> yapın.</> },
+                      { done: step3Done, prev: step2Done, num: 3, title: "Rol Yükseltme", desc: <>Payload'daki <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{'"role":"user"'}</code> değerini <code className="text-[#ffd166] font-bold bg-[#ffd166]/10 px-1 rounded font-mono">{'"role":"admin"'}</code> yapıp imzayı silin.</> }
+                    ].map((s) => (
+                      <div key={s.num} className={`p-3.5 rounded-xl border transition-all ${s.done ? 'border-[#00ff88]/30 bg-[#00ff88]/5' : !s.prev ? 'border-[#0c2719] opacity-40' : 'border-[#103a26] bg-black/25'}`}>
+                        <div className="flex items-center justify-between font-bold text-sm mb-1">
+                          <span className="flex items-center gap-2">
+                            <span className={s.done ? "text-[#00ff88]" : s.prev ? "text-[#ffd166]" : "text-[#5c8a74]"}>{s.done ? `✓ Adım ${s.num}:` : `○ Adım ${s.num}:`}</span>
+                            {s.title}
+                          </span>
+                          {s.done ? <span className="text-xs text-[#00ff88] font-mono bg-[#00ff88]/10 px-2 py-0.5 rounded font-bold">Başarılı</span>
+                            : s.prev ? <span className="text-xs text-[#ffd166] font-mono bg-[#ffd166]/10 px-2 py-0.5 rounded font-bold animate-pulse">Aktif</span>
+                            : <span className="text-xs text-[#5c8a74] font-mono border border-[#0c2719] px-2 py-0.5 rounded font-bold">Kilitli</span>}
+                        </div>
+                        <p className="text-xs leading-relaxed text-[#74998a]">{s.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div className="border border-[#0c2719] rounded-xl p-4 bg-black/30">
+                      <div className="text-xs text-[#74998a] font-mono mb-2">// JWT Token Decode:</div>
+                      <div className="space-y-3">
+                        <div className="p-3 bg-black/60 rounded-lg">
+                          <div className="text-[10px] text-[#ff2e88] font-mono font-bold mb-1">HEADER</div>
+                          <pre className="text-xs font-mono text-[#cdeede] break-all">{headerObj ? JSON.stringify(headerObj, null, 2) : '// Token girin...'}</pre>
+                          {hasNoneAlg && <div className="mt-1 text-[10px] text-[#ff2e88] font-bold">⚠️ alg: none → İmza kontrolü devre dışı!</div>}
+                        </div>
+                        <div className="p-3 bg-black/60 rounded-lg">
+                          <div className="text-[10px] text-[#5cffba] font-mono font-bold mb-1">PAYLOAD</div>
+                          <pre className="text-xs font-mono text-[#cdeede] break-all">{payloadObj ? JSON.stringify(payloadObj, null, 2) : '// Token girin...'}</pre>
+                          {hasAdminRole && <div className="mt-1 text-[10px] text-[#00ff88] font-bold">✓ role: admin → Yetki yükseltildi</div>}
+                        </div>
+                        <div className="p-3 bg-black/60 rounded-lg">
+                          <div className="text-[10px] text-[#ffd166] font-mono font-bold mb-1">SIGNATURE</div>
+                          <pre className="text-xs font-mono text-[#74998a] break-all">{parts.length >= 3 ? (parts[2] || '(boş — none alg)') : '// Token girin...'}</pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
-          )}
+          </div>
         </div>
       );
     },
@@ -1398,112 +2771,28 @@ const WEB_ROOM_CONFIGS = {
       const t = target.token || '';
       const parts = t.split('.');
       if (parts.length < 2) return { ok: false, msg: "Geçersiz Token formatı! JWT 3 bölümden oluşmalıdır." };
-      
+
       const safeAtob = (str) => {
         let b64 = str.replace(/-/g, '+').replace(/_/g, '/');
-        while (b64.length % 4) {
-          b64 += '=';
-        }
+        while (b64.length % 4) b64 += '=';
         return atob(b64);
       };
 
       try {
         const header = JSON.parse(safeAtob(parts[0]));
         const payload = JSON.parse(safeAtob(parts[1]));
-        
-        if (header.alg === 'none' || header.alg === 'NONE') {
+
+        if (header.alg === 'none' || header.alg === 'NONE' || header.alg === 'None') {
           if (payload.role === 'admin' || payload.role === 'ADMIN') {
-            return { ok: true, msg: "Bypass Başarılı! Sunucu token imzasını kontrol etmedi (None Algorithm) ve yetkileriniz admin olarak yükseltildi! Bayrak: siberkampus{jwt_none_algorithm_signature_bypass}" };
+            return { ok: true };
           }
-          return { ok: false, msg: "Token kabul edildi fakat payload üzerinde rolünüz 'admin' olarak set edilmemiş." };
+          return { ok: 'warn', msg: "Algorithm none kabul edildi fakat rolünüz admin değil. Payload'da role: admin yapın." };
         } else {
-          return { ok: false, msg: "Hata: İmza doğrulanamadı! HS256 gizli anahtarı olmadan imzalanmış token kabul edilmiyor." };
+          return { ok: false, msg: "İmza doğrulanamadı! Header'daki alg değerini none yapın." };
         }
       } catch (e) {
-        return { ok: false, msg: "Hata: JWT Base64 çözümlenemedi veya hatalı JSON yapısı!" };
+        return { ok: false, msg: "JWT Base64 çözümlenemedi veya hatalı JSON yapısı!" };
       }
-    }
-  },
-  'web-10': {
-    title: 'Web App Pentest Capstone',
-    desc: 'Final Sınavı: Terminal konsoluna komut yazarak sırasıyla SQLi bypass gerçekleştirin, JWT yetkinizi admin yapın ve dosya yükleme zafiyetiyle shell alarak flag.txt okuyun.',
-    flag: 'siberkampus{ultimate_web_pentest_capstone_mastered}',
-    hints: [
-      "Aşama 1: SQLi ile portal girişini bypass edin. Komut: `sqli ' or 1=1 -- -`",
-      "Aşama 2: Elde edilen token algoritmasını `none` ve rolünü `admin` yaparak gönderin. Komut: `jwt token.none.admin`",
-      "Aşama 3: Sunucuya RCE için shell dosyasını yükleyin ve flag.txt dosyasını okuyun. Komut: `upload shell.phtml` ardından `cat flag.txt`"
-    ],
-    renderApp: (target, setTarget, runTarget, resp) => {
-      const [step, setStep] = useState(1);
-      const [history, setHistory] = useState([
-        'Siber Kampüs Capstone Terminali [Sürüm 1.0.0]',
-        'Sızma testi hedefine bağlantı başarılı: target.capstone.lab',
-        'Zafiyet zincirini başlatmak için komutları yürütün.',
-        'Aşama 1/3: Giriş bypass için SQLi zafiyetini sömürün (ipucu: sqli <payload>)'
-      ]);
-      const executeCommand = (e) => {
-        e.preventDefault();
-        const cmd = target.cmd || '';
-        if (!cmd.trim()) return;
-        
-        const newHistory = [...history, `$ ${cmd}`];
-        const val = cmd.toLowerCase();
-        
-        if (step === 1) {
-          if (val.includes('sqli') && val.includes("'") && val.includes('1=1') && val.includes('--')) {
-            newHistory.push('   [+] SQL Injection başarılı! Admin portalına giriş yapıldı.');
-            newHistory.push('   [+] Geçici JWT Token alındı: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYWRtaW4iLCJyb2xlIjoidXNlciJ9.signature');
-            newHistory.push('   Aşama 2/3: Token rolünü admin yapmak için zafiyetli JWT sömürün (ipucu: jwt <token_cmd>)');
-            setStep(2);
-          } else {
-            newHistory.push('   [-] Giriş başarısız. SQL Injection payload\'unu kontrol edin.');
-          }
-        } else if (step === 2) {
-          if (val.includes('jwt') && val.includes('none') && val.includes('admin')) {
-            newHistory.push('   [+] JWT Bypass başarılı! Yetkileriniz Admin (Yönetici) olarak güncellendi.');
-            newHistory.push('   [+] Dosya Yükleme Paneli aktif edildi.');
-            newHistory.push('   Aşama 3/3: PHP kod yürütme bypass ile shell dosyasını yükleyin (ipucu: upload <shell_uzantisi>)');
-            setStep(3);
-          } else {
-            newHistory.push('   [-] Token reddedildi. İmza kontrolünü alg=none ve role=admin ile bypass edin.');
-          }
-        } else if (step === 3) {
-          if (val.includes('upload') && (val.includes('.phtml') || val.includes('.php5') || val.includes('.php.png'))) {
-            newHistory.push('   [+] Web shell başarıyla yüklendi: /uploads/shell.phtml');
-            newHistory.push('   [+] Komut satırı yetkisi alındı. flag.txt dosyasını okuyun.');
-            setStep(4);
-          } else {
-            newHistory.push('   [-] Dosya tipi güvenlik engeline takıldı. php filtresini aşan bir uzantı kullanın.');
-          }
-        } else if (step === 4) {
-          if (val.includes('cat') && val.includes('flag.txt')) {
-            newHistory.push('   [+] Tebrikler! Capstone bayrağı ele geçirildi:');
-            newHistory.push('   👉 siberkampus{ultimate_web_pentest_capstone_mastered}');
-            runTarget(e); 
-          } else {
-            newHistory.push('   [-] Dosya bulunamadı veya yetersiz yetki. cat flag.txt komutunu kullanın.');
-          }
-        }
-        setHistory(newHistory);
-        setTarget(t => ({ ...t, cmd: '' }));
-      };
-      return (
-        <div className="p-5 font-mono text-[11px] leading-relaxed text-[#cdeede] bg-[#020806] rounded-xl border border-[#103a26]">
-          <div className="h-64 overflow-y-auto space-y-1 p-2 bg-black/40 border border-[#0c2719] rounded-lg mb-4 text-left">
-            {history.map((line, i) => (
-              <div key={i} className={line.startsWith('$') ? 'text-[#00ff88]' : line.includes('[+]') ? 'text-[#5cffba]' : line.includes('[-]') ? 'text-[#ff2e88]' : 'text-[#74998a]'}>{line}</div>
-            ))}
-          </div>
-          <form onSubmit={executeCommand} className="flex gap-2">
-            <span className="text-[#00ff88] font-bold text-sm">$</span>
-            <input value={target.cmd || ''} onChange={e => setTarget(t => ({ ...t, cmd: e.target.value }))} placeholder="Komut yazın..." className="flex-1 bg-transparent border-b border-[#103a26] text-[#00ff88] focus:border-[#00ff88] focus:outline-none font-mono text-xs" />
-            <button type="submit" className="text-xs font-bold text-[#021008] bg-[#00ff88] px-3 py-1 rounded hover:shadow-[0_0_10px_#00ff88] transition-all">Gönder</button>
-          </form>
-        </div>
-      );
-    },
-    run: () => {
-      return { ok: true };
     }
   },
   'web-11': {
@@ -2774,443 +4063,6 @@ Service detection performed. Nmap done: 1 IP address (1 host up) scanned in 18.2
   }
 };
 
-const SysTerminalSim = ({ roomId }) => {
-  const isWin = roomId === 'sys-06';
-  const initialPrompt = isWin ? 'C:\\Users\\editor>' : (roomId === 'sys-09' ? 'root@docker-container:/# ' : 'editor@ubuntu:~$ ');
-  const [history, setHistory] = useState([
-    `Siber Kampüs Sistem Sömürüsü Laboratuvarı [Sürüm 2.4.1]`,
-    `Hedef sistem bağlantısı kuruldu.`,
-    isWin 
-      ? `Microsoft Windows [Version 10.0.19044] (c) Microsoft Corporation. All rights reserved.\nC:\\Users\\editor> (Yardım için 'type hint.txt' yazın)`
-      : `Linux ubuntu-server 4.15.0-142-generic #146-Ubuntu SMP x86_64 x86_64 GNU/Linux\neditor@ubuntu:~$ (Yardım için 'cat hint.txt' yazın)`,
-  ]);
-  const [currentDir, setCurrentDir] = useState(isWin ? 'C:\\Users\\editor' : (roomId === 'sys-09' ? '/' : '/home/editor'));
-  const [username, setUsername] = useState(isWin ? 'editor' : (roomId === 'sys-09' ? 'root' : 'editor'));
-  const [cmdInput, setCmdInput] = useState('');
-  const [pathEnv, setPathEnv] = useState('/usr/bin:/bin');
-  const [cronJobWritten, setCronJobWritten] = useState(false);
-  const [tmpTarPayload, setTmpTarPayload] = useState('');
-  const [tarExecutable, setTarExecutable] = useState(false);
-
-  const getPrompt = () => {
-    if (isWin) {
-      return `${currentDir}${username === 'SYSTEM' ? '#' : '>'}`;
-    }
-    return `${username}@ubuntu:${currentDir}${username === 'root' ? '#' : '$'} `;
-  };
-
-  const handleCommandSubmit = (e) => {
-    if (e) e.preventDefault();
-    const line = cmdInput.trim();
-    if (!line) return;
-
-    const newHistory = [...history, getPrompt() + line];
-    const parts = line.split(/\s+/);
-    const cmd = parts[0];
-    const args = parts.slice(1);
-    
-    const print = (text) => {
-      newHistory.push(text);
-    };
-
-    if (isWin) {
-      // Windows CMD simulation
-      switch (cmd.toLowerCase()) {
-        case 'help':
-          print("Desteklenen komutlar: dir, cd, type, whoami, cls, PrintSpoofer.exe");
-          break;
-        case 'cls':
-          setHistory([]);
-          setCmdInput('');
-          return;
-        case 'whoami':
-          if (args[0] === '/priv') {
-            print("Privilege Name                Description                               State\n============================= ========================================= ========\nSeChangeNotifyPrivilege       Bypass traverse checking                  Enabled\nSeImpersonatePrivilege        Impersonate a client after authentication Enabled");
-          } else {
-            print(username === 'SYSTEM' ? 'nt authority\\system' : 'desktop-a128\\editor');
-          }
-          break;
-        case 'dir':
-          if (currentDir === 'C:\\Users\\editor') {
-            print(" Directory of C:\\Users\\editor\n\n06/05/2026  19:28    <DIR>          .\n06/05/2026  19:28    <DIR>          ..\n06/05/2026  19:28                64 hint.txt\n06/05/2026  19:28            24,576 PrintSpoofer.exe\n               2 File(s)         24,640 bytes");
-          } else if (currentDir === 'C:\\Users\\Administrator\\Desktop') {
-            if (username === 'SYSTEM') {
-              print(" Directory of C:\\Users\\Administrator\\Desktop\n\n06/05/2026  19:28    <DIR>          .\n06/05/2026  19:28    <DIR>          ..\n06/05/2026  19:28                52 flag.txt");
-            } else {
-              print("Access is denied.");
-            }
-          } else {
-            print(" Directory of " + currentDir + "\n\n06/05/2026  19:28    <DIR>          .\n06/05/2026  19:28    <DIR>          ..");
-          }
-          break;
-        case 'cd':
-          const targetDir = args.join(' ');
-          if (!targetDir) {
-            print(currentDir);
-          } else if (targetDir === '..' || targetDir === '../') {
-            if (currentDir === 'C:\\Users\\editor') setCurrentDir('C:\\Users');
-            else if (currentDir === 'C:\\Users\\Administrator\\Desktop') setCurrentDir('C:\\Users\\Administrator');
-            else if (currentDir === 'C:\\Users\\Administrator') setCurrentDir('C:\\Users');
-            else if (currentDir === 'C:\\Users') setCurrentDir('C:\\');
-          } else if (targetDir.toLowerCase() === 'administrator') {
-            if (currentDir === 'C:\\Users') {
-              if (username === 'SYSTEM') setCurrentDir('C:\\Users\\Administrator');
-              else print("Access is denied.");
-            } else {
-              print("The system cannot find the path specified.");
-            }
-          } else if (targetDir.toLowerCase() === 'desktop' && currentDir === 'C:\\Users\\Administrator') {
-            setCurrentDir('C:\\Users\\Administrator\\Desktop');
-          } else if (targetDir.toLowerCase() === 'editor' && currentDir === 'C:\\Users') {
-            setCurrentDir('C:\\Users\\editor');
-          } else if (targetDir.toLowerCase() === 'c:\\') {
-            setCurrentDir('C:\\');
-          } else {
-            print("The system cannot find the path specified.");
-          }
-          break;
-        case 'type':
-          const fileToType = args[0] || '';
-          if (fileToType.toLowerCase() === 'hint.txt' && currentDir === 'C:\\Users\\editor') {
-            print("Sisteme Administrator olarak sızmak için SeImpersonatePrivilege zafiyetinden yararlan.\nKlasörde PrintSpoofer.exe aracı bulunmaktadır.\nKullanım: PrintSpoofer.exe -i -c cmd");
-          } else if (fileToType.toLowerCase() === 'flag.txt' && currentDir === 'C:\\Users\\Administrator\\Desktop') {
-            if (username === 'SYSTEM') {
-              print("TEBRİKLER! Windows Privilege Escalation Başarılı!\nBayrak: siberkampus{windows_printspoofer_system_escalated}");
-            } else {
-              print("Access is denied.");
-            }
-          } else if (fileToType.toLowerCase() === 'c:\\users\\administrator\\desktop\\flag.txt') {
-            if (username === 'SYSTEM') {
-              print("TEBRİKLER! Windows Privilege Escalation Başarılı!\nBayrak: siberkampus{windows_printspoofer_system_escalated}");
-            } else {
-              print("Access is denied.");
-            }
-          } else {
-            print("The system cannot find the file specified.");
-          }
-          break;
-        case 'printspoofer.exe':
-          if (args.join(' ') === '-i -c cmd') {
-            setUsername('SYSTEM');
-            setCurrentDir('C:\\Windows\\system32');
-            print("[+] Impersonation token active.\n[+] Spawned SYSTEM command prompt successfully.");
-          } else {
-            print("PrintSpoofer v1.0 - Impersonate SYSTEM via Named Pipes\nUsage: PrintSpoofer.exe -i -c cmd");
-          }
-          break;
-        default:
-          print(`'${cmd}' is not recognized as an internal or external command, operable program or batch file.`);
-      }
-    } else {
-      // Linux Shell Simulation
-      switch (cmd.toLowerCase()) {
-        case 'help':
-          print("Desteklenen komutlar: ls, cd, cat, whoami, find, gcc, echo, export, chmod, uname, clear");
-          break;
-        case 'clear':
-          setHistory([]);
-          setCmdInput('');
-          return;
-        case 'whoami':
-          print(username);
-          break;
-        case 'uname':
-          if (args[0] === '-a') {
-            print("Linux ubuntu 3.19.0-73-generic #81-Ubuntu SMP Wed Oct 12 20:19:08 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux");
-          } else {
-            print("Linux");
-          }
-          break;
-        case 'ls':
-          if (currentDir === '/home/editor') {
-            if (roomId === 'sys-01') {
-              print("hint.txt  gizli_dizin");
-            } else if (roomId === 'sys-02') {
-              print("find_me.txt");
-            } else if (roomId === 'sys-03') {
-              print("exploit.c");
-            } else if (roomId === 'sys-05') {
-              print("run_backup");
-            } else if (roomId === 'sys-07') {
-              print("vuln.c  vuln");
-            } else if (roomId === 'sys-08') {
-              print("vuln");
-            } else {
-              print("hint.txt");
-            }
-          } else if (currentDir === '/home/editor/gizli_dizin' && roomId === 'sys-01') {
-            print("flag.txt");
-          } else if (currentDir === '/root') {
-            if (username === 'root') {
-              print("flag.txt");
-            } else {
-              print("ls: cannot open directory '/root': Permission denied");
-            }
-          } else if (currentDir === '/etc') {
-            print("passwd  crontab  hosts");
-          } else if (currentDir === '/opt') {
-            if (roomId === 'sys-04') {
-              print("cleanup.sh");
-            } else if (roomId === 'sys-05') {
-              print("run_backup");
-            } else {
-              print("");
-            }
-          } else if (currentDir === '/tmp') {
-            let tmpFiles = [];
-            if (tmpTarPayload) tmpFiles.push("tar");
-            print(tmpFiles.join("  "));
-          } else if (currentDir === '/') {
-            print("bin  boot  dev  etc  home  lib  mnt  opt  root  sys  tmp  usr  var");
-          } else if (currentDir === '/mnt' && roomId === 'sys-09') {
-            print("host");
-          } else if (currentDir === '/mnt/host' && roomId === 'sys-09') {
-            print("root  etc  home  var");
-          } else if (currentDir === '/mnt/host/root' && roomId === 'sys-09') {
-            print("flag.txt");
-          } else {
-            print("");
-          }
-          break;
-        case 'cd':
-          const target = args[0] || '~';
-          if (target === '~') {
-            setCurrentDir('/home/editor');
-          } else if (target === '..') {
-            if (currentDir === '/home/editor/gizli_dizin') setCurrentDir('/home/editor');
-            else if (currentDir === '/home/editor') setCurrentDir('/home');
-            else if (currentDir === '/home') setCurrentDir('/');
-            else if (currentDir === '/root') setCurrentDir('/');
-            else if (currentDir === '/etc') setCurrentDir('/');
-            else if (currentDir === '/opt') setCurrentDir('/');
-            else if (currentDir === '/tmp') setCurrentDir('/');
-            else if (currentDir === '/mnt/host/root') setCurrentDir('/mnt/host');
-            else if (currentDir === '/mnt/host') setCurrentDir('/mnt');
-            else if (currentDir === '/mnt') setCurrentDir('/');
-          } else if (target === '/' || target === '/etc' || target === '/opt' || target === '/tmp' || target === '/root' || target === '/mnt') {
-            if (target === '/root' && username !== 'root') {
-              print("-bash: cd: /root: Permission denied");
-            } else {
-              setCurrentDir(target);
-            }
-          } else if (target === 'gizli_dizin' && currentDir === '/home/editor' && roomId === 'sys-01') {
-            setCurrentDir('/home/editor/gizli_dizin');
-          } else if (target === 'host' && currentDir === '/mnt' && roomId === 'sys-09') {
-            setCurrentDir('/mnt/host');
-          } else if (target === 'root' && currentDir === '/mnt/host' && roomId === 'sys-09') {
-            setCurrentDir('/mnt/host/root');
-          } else {
-            print(`-bash: cd: ${target}: No such file or directory`);
-          }
-          break;
-        case 'cat':
-          const filename = args[0] || '';
-          if (!filename) {
-            print("Usage: cat <filename>");
-            break;
-          }
-          // Path resolution
-          let fullpath = filename;
-          if (!filename.startsWith('/')) {
-            fullpath = currentDir + (currentDir === '/' ? '' : '/') + filename;
-          }
-
-          if (fullpath === '/home/editor/hint.txt') {
-            if (roomId === 'sys-01') print("Bayrak gizli_dizin/flag.txt dosyasında. 'cd gizli_dizin' ve 'cat flag.txt' kullan.");
-            else print("Bu laboratuvarın amacına göre sistemde zafiyet araştır.");
-          } else if (fullpath === '/home/editor/find_me.txt' && roomId === 'sys-02') {
-            print("SUID izinli python dosyasını bul ve exploit et: python -c \"import os; os.setuid(0); os.system('/bin/sh')\"");
-          } else if (fullpath === '/home/editor/gizli_dizin/flag.txt' && roomId === 'sys-01') {
-            print("siberkampus{linux_command_line_basics_mastered}");
-          } else if (fullpath === '/root/flag.txt') {
-            if (username === 'root') {
-              if (roomId === 'sys-02') print("siberkampus{suid_privesc_python_shell_achieved}");
-              else if (roomId === 'sys-03') print("siberkampus{dirty_cow_kernel_compromised}");
-              else if (roomId === 'sys-04') print("siberkampus{cron_job_hijack_privesc_complete}");
-              else if (roomId === 'sys-05') print("siberkampus{path_variable_hijacked_tar_exploit}");
-              else if (roomId === 'sys-08') print("siberkampus{rop_chain_libc_system_bypass_nx}");
-              else if (roomId === 'sys-09') print("siberkampus{container_escape_privileged_mount_breakout}");
-              else if (roomId === 'sys-10') print("siberkampus{initial_access_to_root_system_compromised}");
-              else print("siberkampus{root_flag_solved}");
-            } else {
-              print("cat: /root/flag.txt: Permission denied");
-            }
-          } else if (fullpath === '/home/editor/exploit.c' && roomId === 'sys-03') {
-            print("#include <stdio.h>\n#include <unistd.h>\n// DirtyCOW Linux Kernel Exploit\n// Compiling: gcc exploit.c -o exploit\nvoid main() {\n  setuid(0); setgid(0);\n  printf(\"[+] Exploiting DirtyCOW kernel...\\n\");\n  printf(\"[+] Spawned root shell!\\n\");\n  execl(\"/bin/sh\", \"sh\", NULL);\n}");
-          } else if (fullpath === '/etc/crontab' && roomId === 'sys-04') {
-            print("SHELL=/bin/sh\nPATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin\n\n# m h dom mon dow user  command\n*/1 * * * * root /opt/cleanup.sh");
-          } else if (fullpath === '/opt/cleanup.sh' && roomId === 'sys-04') {
-            print("#!/bin/sh\n# Her dakika root yetkisiyle çalışan temizlik betiği\nrm -rf /tmp/cache/*");
-          } else if (fullpath === '/tmp/flag' && roomId === 'sys-04') {
-            print("siberkampus{cron_job_hijack_privesc_complete}");
-          } else if (fullpath === '/mnt/host/root/flag.txt' && roomId === 'sys-09') {
-            print("siberkampus{container_escape_privileged_mount_breakout}");
-          } else {
-            print(`cat: ${filename}: No such file or directory`);
-          }
-          break;
-        case 'find':
-          const findArgs = args.join(' ');
-          if (findArgs.includes('-perm') && (findArgs.includes('-u=s') || findArgs.includes('-4000')) && roomId === 'sys-02') {
-            print("/usr/bin/passwd\n/usr/bin/chsh\n/usr/bin/gpasswd\n/usr/bin/python\n/usr/bin/sudo");
-          } else {
-            print("find: paths must precede expression");
-          }
-          break;
-        case 'gcc':
-          if (roomId === 'sys-03' && args.join(' ').includes('exploit.c') && args.join(' ').includes('-o exploit')) {
-            print("[+] Compiling DirtyCOW exploit...\n[+] Compiled successfully. Output: ./exploit");
-          } else {
-            print("gcc: error: no input files");
-          }
-          break;
-        case './exploit':
-          if (roomId === 'sys-03') {
-            setUsername('root');
-            print("[+] Exploiting DirtyCOW kernel...\n[+] Spawned root shell! (Prompt changed to root@ubuntu:~#)");
-          } else {
-            print("-bash: ./exploit: No such file or directory");
-          }
-          break;
-        case 'python':
-        case 'python3':
-          const pyArgs = args.join(' ');
-          if (roomId === 'sys-02' && pyArgs.includes('setuid(0)') && pyArgs.includes('system') && (pyArgs.includes('/bin/sh') || pyArgs.includes('bash'))) {
-            setUsername('root');
-            print("[+] uid=0(root) gid=0(root) groups=0(root)\n[+] Spawned root python interactive shell.");
-          } else {
-            print("Python 3.8.10 (default, Nov 26 2021, 20:14:08)\n>>> ");
-          }
-          break;
-        case 'echo':
-          const echoArgs = args.join(' ');
-          if (roomId === 'sys-04' && (echoArgs.includes('>> /opt/cleanup.sh') || echoArgs.includes('> /opt/cleanup.sh'))) {
-            setCronJobWritten(true);
-            print("[+] Wrote payload to /opt/cleanup.sh. (It will execute next minute as root)");
-          } else if (roomId === 'sys-05' && (echoArgs.includes('> /tmp/tar') || echoArgs.includes('>> /tmp/tar'))) {
-            setTmpTarPayload(echoArgs);
-            print("[+] Created mock tar script in /tmp/tar");
-          } else {
-            print(args.join(' ').replace(/['"]/g, ''));
-          }
-          break;
-        case 'chmod':
-          if (roomId === 'sys-05' && args[0] === '+x' && args[1] === '/tmp/tar') {
-            setTarExecutable(true);
-            print("[+] /tmp/tar is now executable.");
-          } else {
-            print("");
-          }
-          break;
-        case 'export':
-          if (roomId === 'sys-05' && args[0].includes('PATH=')) {
-            setPathEnv(args[0].split('=')[1]);
-            print(`[+] PATH updated to: ${args[0].split('=')[1]}`);
-          } else {
-            print(`declare -x PATH="${pathEnv}"`);
-          }
-          break;
-        case '/opt/run_backup':
-        case './run_backup':
-          if (roomId === 'sys-05') {
-            print("[+] Initializing system backup...");
-            if (pathEnv.startsWith('/tmp') && tarExecutable) {
-              print("[+] Hijacked! Executing custom tar binary as root:");
-              print("siberkampus{path_variable_hijacked_tar_exploit}");
-            } else {
-              print("[+] Creating backup archive of /home/editor in /tmp/backup.tar...");
-              print("tar: /tmp/backup.tar: Created successfully.");
-            }
-          } else {
-            print("-bash: run_backup: command not found");
-          }
-          break;
-        case './vuln':
-          if (roomId === 'sys-07') {
-            const vulnArg = args.join(' ');
-            if (vulnArg.length > 70 && (vulnArg.includes('\\x') || vulnArg.includes('0x'))) {
-              print("[+] Overwriting RIP...\n[+] Jump to win() successful!\nFlag: siberkampus{stack_buffer_overflow_rip_control}");
-            } else {
-              print("Enter input: ");
-              if (vulnArg) {
-                if (vulnArg.length > 64) print("*** stack smashing detected ***: terminated\nAborted (core dumped)");
-                else print("Input received: " + vulnArg);
-              }
-            }
-          } else if (roomId === 'sys-08') {
-            const vulnArg = args.join(' ');
-            if (vulnArg.length > 70 && (vulnArg.includes('pop') || vulnArg.includes('system') || vulnArg.includes('libc'))) {
-              setUsername('root');
-              print("[+] Libc leaked successfully. system() address: 0x7ffff7a3f4e0\n[+] Overwriting RIP with libc chain...\n[+] Spawned root shell!");
-            } else {
-              print("Enter input: ");
-            }
-          } else {
-            print("-bash: ./vuln: No such file or directory");
-          }
-          break;
-        case 'fdisk':
-        case 'lsblk':
-          if (roomId === 'sys-09') {
-            print("NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT\nsda       8:0    0   80G  0 disk \n├─sda1    8:1    0   79G  0 part / (host system)\nsr0      11:0    1 1024M  0 rom  ");
-          } else {
-            print("fdisk: command not found");
-          }
-          break;
-        case 'mount':
-          if (roomId === 'sys-09' && args[0] === '/dev/sda1' && args[1] === '/mnt') {
-            setCurrentDir('/mnt');
-            print("[+] Mounted /dev/sda1 onto /mnt successfully.\n[+] Escape path active.");
-          } else {
-            print("mount: permission denied");
-          }
-          break;
-        default:
-          print(`-bash: ${cmd}: command not found`);
-      }
-    }
-
-    // Cron job simulation check for sys-04
-    if (roomId === 'sys-04' && cronJobWritten && cmd !== 'echo') {
-      newHistory.push("[+] *Cron daemon ran /opt/cleanup.sh as root*");
-      newHistory.push("[+] /tmp/flag created with flag content.");
-      setCronJobWritten(false); // only run once
-    }
-
-    setHistory(newHistory);
-    setCmdInput('');
-  };
-
-  return (
-    <div className="p-5 font-mono text-[11px] leading-relaxed text-[#cdeede] bg-[#020806] rounded-xl border border-[#103a26]">
-      <div className="h-64 overflow-y-auto space-y-1 p-2 bg-black/40 border border-[#0c2719] rounded-lg mb-4 text-left">
-        {history.map((line, i) => (
-          <div key={i} className="whitespace-pre-wrap text-[#74998a]">
-            {line.startsWith('editor@') || line.startsWith('root@') || line.startsWith('C:\\') ? (
-              <span className="text-[#00ff88]">{line}</span>
-            ) : line.includes('siberkampus{') || line.includes('TEBRİKLER') ? (
-              <span className="text-[#5cffba] font-bold">{line}</span>
-            ) : line.includes('error') || line.includes('denied') || line.includes('not found') ? (
-              <span className="text-[#ff2e88]">{line}</span>
-            ) : (
-              line
-            )}
-          </div>
-        ))}
-      </div>
-      <form onSubmit={handleCommandSubmit} className="flex gap-2">
-        <span className="text-[#00ff88] font-bold text-xs">{getPrompt()}</span>
-        <input 
-          value={cmdInput} 
-          onChange={e => setCmdInput(e.target.value)} 
-          placeholder="Komut yazın (örn: help)..." 
-          className="flex-1 bg-transparent border-b border-[#103a26] text-[#00ff88] focus:border-[#00ff88] focus:outline-none font-mono text-xs" 
-        />
-        <button type="submit" className="text-xs font-bold text-[#021008] bg-[#00ff88] px-3 py-1 rounded hover:shadow-[0_0_10px_#00ff88] transition-all">Gönder</button>
-      </form>
-    </div>
-  );
-};
 
 const ChallengeRunner = ({ roomId, config, target, setTarget, runTarget, resp, isWin }) => {
   return config.renderApp(target, setTarget, runTarget, resp, isWin);
@@ -3739,35 +4591,16 @@ const RoomPage = ({ navigate, data }) => {
   
   const parentCat = window.SK_CATEGORIES.find(c => c.rooms.some(r => r.id === room.id)) || window.SK_CATEGORIES[0];
 
-  const getSysFlag = (id) => {
-    const flags = {
-      'sys-01': 'siberkampus{linux_command_line_basics_mastered}',
-      'sys-02': 'siberkampus{suid_privesc_python_shell_achieved}',
-      'sys-03': 'siberkampus{dirty_cow_kernel_compromised}',
-      'sys-04': 'siberkampus{cron_job_hijack_privesc_complete}',
-      'sys-05': 'siberkampus{path_variable_hijacked_tar_exploit}',
-      'sys-06': 'siberkampus{windows_printspoofer_system_escalated}',
-      'sys-07': 'siberkampus{stack_buffer_overflow_rip_control}',
-      'sys-08': 'siberkampus{rop_chain_libc_system_bypass_nx}',
-      'sys-09': 'siberkampus{container_escape_privileged_mount_breakout}',
-      'sys-10': 'siberkampus{initial_access_to_root_system_compromised}'
-    };
-    return flags[id] || `siberkampus{${id}_flag_solved}`;
-  };
-
   const config = WEB_ROOM_CONFIGS[room.id] || {
     title: room.name,
     desc: room.desc,
-    flag: getSysFlag(room.id),
+    flag: `siberkampus{${room.id}_flag_solved}`,
     hints: [
       "Bu odanın CTF görevini tamamlamak için hedefin zafiyetlerini sömürün.",
       "Bayrağı elde ettikten sonra aşağıdaki formdan doğrulayın.",
       "Çözüm ve ipuçları için mentör desteği alabilirsiniz."
     ],
     renderApp: (target, setTarget, runTarget, resp) => {
-      if (room.id.startsWith('sys-')) {
-        return <SysTerminalSim roomId={room.id} />;
-      }
       return (
         <div className="p-7">
           <div className="text-center mb-5">
@@ -4359,7 +5192,10 @@ const LeaderboardPage = ({ navigate }) => {
     pts: u.points,
     lvl: u.level,
     badge: getBadge(u.rank),
-    tag: u.tag || null
+    tag: u.tag || null,
+    solved: u.solved,
+    badges: u.badges,
+    streak: u.streak
   }));
 
   const first = items[0] || { r: 1, name: user.name || 'Henüz yok', pts: 0, lvl: 1, badge: '🥇' };
@@ -4515,11 +5351,17 @@ const ChatPage = ({ navigate }) => {
   const [msgs, setMsgs] = useState([]);
   const [input, setInput] = useState('');
   const scrollRef = useRef(null);
+  const isFirstLoad = useRef(true);
   const [activeChat, setActiveChat] = useState('general');
   const [showVIPModal, setShowVIPModal] = useState(false);
+  const [vipCount, setVipCount] = useState(0);
 
   const fetchMessages = () => {
-    fetch('/api/chat/messages')
+    const token = localStorage.getItem('sk_token');
+    const headers = {};
+    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+    fetch(`/api/chat/messages?vip=${activeChat === 'vip'}`, { headers })
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -4528,18 +5370,46 @@ const ChatPage = ({ navigate }) => {
             me: m.u === user.name
           }));
           setMsgs(marked);
+          if (activeChat === 'vip') setVipCount(marked.length);
         }
       })
       .catch(err => console.error("Mesaj yükleme hatası:", err));
   };
 
   useEffect(() => {
+    if (activeChat !== 'vip') {
+      const token = localStorage.getItem('sk_token');
+      const headers = {};
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+      fetch('/api/chat/messages?vip=true', { headers })
+        .then(res => res.json())
+        .then(data => { if (Array.isArray(data)) setVipCount(data.length); })
+        .catch(() => {});
+    }
+  }, []);
+
+  useEffect(() => {
     fetchMessages();
     const interval = setInterval(fetchMessages, 4000);
     return () => clearInterval(interval);
-  }, [user.name]);
+  }, [user.name, activeChat]);
 
-  useEffect(() => { if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight; }, [msgs]);
+  useEffect(() => {
+    isFirstLoad.current = true;
+  }, [activeChat]);
+
+  useEffect(() => {
+    if (scrollRef.current && msgs.length > 0) {
+      const el = scrollRef.current;
+      const isNearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 150;
+      const lastMsgIsMe = msgs[msgs.length - 1].me;
+      
+      if (isFirstLoad.current || isNearBottom || lastMsgIsMe) {
+        el.scrollTop = el.scrollHeight;
+        isFirstLoad.current = false;
+      }
+    }
+  }, [msgs]);
 
   const send = async () => {
     if (!input.trim()) return;
@@ -4561,7 +5431,7 @@ const ChatPage = ({ navigate }) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           },
-          body: JSON.stringify({ message: originalInput })
+          body: JSON.stringify({ message: originalInput, isVip: activeChat === 'vip' })
         });
         fetchMessages();
       } catch (e) {
@@ -4654,8 +5524,8 @@ const ChatPage = ({ navigate }) => {
                   }`}
                 >
                   👑 VIP Sohbet
-                  {msgs.length > 0 && (
-                    <span className="w-4 h-4 bg-[#ff2e88] text-white text-xs rounded-full flex items-center justify-center font-bold text-[10px]">{msgs.length}</span>
+                  {activeChat !== 'vip' && vipCount > 0 && (
+                    <span className="w-4 h-4 bg-[#ff2e88] text-white text-xs rounded-full flex items-center justify-center font-bold text-[10px]">{vipCount}</span>
                   )}
                 </button>
               </div>
@@ -4785,6 +5655,12 @@ const AdminPage = ({ navigate }) => {
   const [blogContent, setBlogContent] = useState('');
   const [blogSuccess, setBlogSuccess] = useState('');
   const [blogError, setBlogError] = useState('');
+  const [blogSeoTitle, setBlogSeoTitle] = useState('');
+  const [blogMetaDescription, setBlogMetaDescription] = useState('');
+  const [blogFocusKeywords, setBlogFocusKeywords] = useState('');
+  const [blogCanonicalUrl, setBlogCanonicalUrl] = useState('');
+  const [editingBlogId, setEditingBlogId] = useState(null);
+  const [showSeoPanel, setShowSeoPanel] = useState(false);
 
   // Tab 3: Sohbet Moderasyonu
   const [chatMessages, setChatMessages] = useState([]);
@@ -4892,6 +5768,27 @@ const AdminPage = ({ navigate }) => {
     }
   };
 
+  const handleDeleteUser = async (userId, name) => {
+    const token = localStorage.getItem('sk_token');
+    if (!confirm(`${name} adlı kullanıcıyı tamamen silmek istediğinize emin misiniz? Bu işlem geri alınamaz ve kullanıcının tüm çözümleri silinecektir!`)) return;
+    try {
+      const res = await fetch(`/api/admin/users/${userId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const data = await res.json();
+      if (res.ok) {
+        fetchUsers();
+      } else {
+        alert(data.error || 'Kullanıcı silinemedi.');
+      }
+    } catch (err) {
+      alert('Ağ hatası.');
+    }
+  };
+
   const handleDeleteBlog = async (blogId, title) => {
     const token = localStorage.getItem('sk_token');
     if (!confirm(`"${title}" başlıklı makaleyi silmek istediğinize emin misiniz?`)) return;
@@ -4920,9 +5817,13 @@ const AdminPage = ({ navigate }) => {
       return;
     }
     const token = localStorage.getItem('sk_token');
+    const isEdit = editingBlogId !== null;
+    const url = isEdit ? `/api/blogs/${editingBlogId}` : '/api/blogs';
+    const method = isEdit ? 'PUT' : 'POST';
+
     try {
-      const res = await fetch('/api/blogs', {
-        method: 'POST',
+      const res = await fetch(url, {
+        method: method,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -4933,26 +5834,73 @@ const AdminPage = ({ navigate }) => {
           content: blogContent.trim(),
           category: blogCategory.trim(),
           author: blogAuthor.trim(),
-          readTime: blogReadTime.trim()
+          readTime: blogReadTime.trim(),
+          seoTitle: blogSeoTitle.trim(),
+          metaDescription: blogMetaDescription.trim(),
+          focusKeywords: blogFocusKeywords.trim(),
+          canonicalUrl: blogCanonicalUrl.trim()
         })
       });
       const data = await res.json();
       if (res.ok) {
-        setBlogSuccess('Yeni blog yazısı başarıyla eklendi!');
-        // Reset form
-        setBlogTitle('');
-        setBlogExcerpt('');
-        setBlogCategory('');
-        setBlogAuthor('');
-        setBlogReadTime('5 dk');
-        setBlogContent('');
+        setBlogSuccess(isEdit ? 'Blog yazısı başarıyla güncellendi!' : 'Yeni blog yazısı başarıyla eklendi!');
+        handleCancelEditBlog();
         fetchBlogs();
       } else {
-        setBlogError(data.error || 'Makale oluşturulurken hata oluştu.');
+        setBlogError(data.error || 'İşlem gerçekleştirilirken hata oluştu.');
       }
     } catch (err) {
       setBlogError('Ağ hatası oluştu.');
     }
+  };
+
+  const handleStartEditBlog = async (blog) => {
+    setBlogSuccess('');
+    setBlogError('');
+    try {
+      // Fetch full details including content
+      const res = await fetch(`/api/blogs/${blog.slug}`);
+      const data = await res.json();
+      if (res.ok) {
+        setEditingBlogId(data.id);
+        setBlogTitle(data.title || '');
+        setBlogExcerpt(data.excerpt || '');
+        setBlogCategory(data.category || '');
+        setBlogAuthor(data.author || '');
+        setBlogReadTime(data.readTime || data.read_time || '5 dk');
+        setBlogContent(data.content || '');
+        setBlogSeoTitle(data.seo_title || '');
+        setBlogMetaDescription(data.meta_description || '');
+        setBlogFocusKeywords(data.focus_keywords || '');
+        setBlogCanonicalUrl(data.canonical_url || '');
+        setShowSeoPanel(true);
+        
+        // Scroll smoothly to form header
+        const formEl = document.getElementById('blog-form-title');
+        if (formEl) {
+          formEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        alert(data.error || 'Makale detayları yüklenemedi.');
+      }
+    } catch (err) {
+      alert('Makale yüklenirken ağ hatası oluştu.');
+    }
+  };
+
+  const handleCancelEditBlog = () => {
+    setEditingBlogId(null);
+    setBlogTitle('');
+    setBlogExcerpt('');
+    setBlogCategory('');
+    setBlogAuthor('');
+    setBlogReadTime('5 dk');
+    setBlogContent('');
+    setBlogSeoTitle('');
+    setBlogMetaDescription('');
+    setBlogFocusKeywords('');
+    setBlogCanonicalUrl('');
+    setShowSeoPanel(false);
   };
 
   const handleBanFromChat = (msg) => {
@@ -5125,6 +6073,13 @@ const AdminPage = ({ navigate }) => {
                           >
                             {u.is_banned ? 'Engeli Kaldır' : 'Yasakla'}
                           </button>
+                          <button
+                            onClick={() => handleDeleteUser(u.id, u.name)}
+                            disabled={u.id === user.id}
+                            className="font-mono text-xs px-3.5 py-1.5 rounded-lg border border-[#ff2e88]/30 text-[#ff2e88] hover:bg-[#ff2e88]/10 disabled:opacity-30 disabled:hover:bg-transparent transition-all"
+                          >
+                            Sil 🗑️
+                          </button>
                         </td>
                       </tr>
                     ))}
@@ -5138,10 +6093,10 @@ const AdminPage = ({ navigate }) => {
         {/* TAB 2: BLOG YÖNETİMİ */}
         {activeTab === 'blogs' && (
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1.3fr] gap-8">
-            {/* Create Blog Form */}
+            {/* Create/Edit Blog Form */}
             <div className="rounded-2xl border border-[#0c2719] p-6 bg-gradient-to-br from-[#07150e] to-[#04100a] h-fit">
-              <h3 className="text-lg text-[#eafff5] font-bold mb-5 flex items-center gap-2">
-                <span>✍️</span> Yeni Blog Yazısı Oluştur
+              <h3 id="blog-form-title" className="text-lg text-[#eafff5] font-bold mb-5 flex items-center gap-2">
+                <span>{editingBlogId ? '✏️' : '✍️'}</span> {editingBlogId ? 'Blog Yazısını Düzenle' : 'Yeni Blog Yazısı Oluştur'}
               </h3>
               {blogSuccess && <div className="p-3 mb-4 rounded bg-[#00ff88]/10 text-[#00ff88] border border-[#00ff88]/20 text-xs font-mono">{blogSuccess}</div>}
               {blogError && <div className="p-3 mb-4 rounded bg-[#ff2e88]/10 text-[#ff2e88] border border-[#ff2e88]/20 text-xs font-mono">{blogError}</div>}
@@ -5214,12 +6169,80 @@ const AdminPage = ({ navigate }) => {
                     className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-4 py-2.5 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-sm resize-y"
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="w-full font-mono text-sm font-bold text-[#021008] bg-[#00ff88] py-3 rounded-lg hover:shadow-[0_0_24px_-4px_var(--glow)] transition-all"
-                >
-                  Yayınla 🚀
-                </button>
+
+                {/* Collapsible advanced SEO panel (All-In-One SEO style) */}
+                <div className="border border-[#103a26] rounded-lg overflow-hidden bg-[#020806]/40">
+                  <button
+                    type="button"
+                    onClick={() => setShowSeoPanel(!showSeoPanel)}
+                    className="w-full flex items-center justify-between px-4 py-3 bg-[#0c2719]/40 hover:bg-[#0c2719]/60 transition-colors font-mono text-xs text-[#00ff88]"
+                  >
+                    <span>⚙️ GELİŞMİŞ SEO AYARLARI (ALL-IN-ONE SEO)</span>
+                    <span>{showSeoPanel ? '▲ Göster' : '▼ Gizle'}</span>
+                  </button>
+                  {showSeoPanel && (
+                    <div className="p-4 space-y-4 border-t border-[#103a26]">
+                      <div>
+                        <label className="block text-xs text-[#74998a] mb-1.5 font-mono">META BAŞLIĞI (SEO TITLE)</label>
+                        <input
+                          type="text"
+                          placeholder="Boş bırakılırsa makale başlığı kullanılır..."
+                          value={blogSeoTitle}
+                          onChange={e => setBlogSeoTitle(e.target.value)}
+                          className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-4 py-2 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-xs"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs text-[#74998a] mb-1.5 font-mono">META AÇIKLAMASI (META DESCRIPTION)</label>
+                        <textarea
+                          rows="2"
+                          placeholder="Boş bırakılırsa makale özeti kullanılır..."
+                          value={blogMetaDescription}
+                          onChange={e => setBlogMetaDescription(e.target.value)}
+                          className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-4 py-2 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-xs resize-none"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs text-[#74998a] mb-1.5 font-mono">ODAK ANAHTAR KELİMELER (FOCUS KEYWORDS)</label>
+                        <input
+                          type="text"
+                          placeholder="örn: wifi kırma, wpa2 kırma, aircrack-ng"
+                          value={blogFocusKeywords}
+                          onChange={e => setBlogFocusKeywords(e.target.value)}
+                          className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-4 py-2 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-xs"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs text-[#74998a] mb-1.5 font-mono">KANONİK URL (CANONICAL URL)</label>
+                        <input
+                          type="url"
+                          placeholder="örn: https://siberkampus.org/blogs/wifi-el-sikismasi-kirma"
+                          value={blogCanonicalUrl}
+                          onChange={e => setBlogCanonicalUrl(e.target.value)}
+                          className="w-full bg-[#020806] border border-[#103a26] rounded-lg px-4 py-2 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none font-mono text-xs"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex gap-3">
+                  <button
+                    type="submit"
+                    className="flex-1 font-mono text-sm font-bold text-[#021008] bg-[#00ff88] py-3 rounded-lg hover:shadow-[0_0_24px_-4px_var(--glow)] transition-all"
+                  >
+                    {editingBlogId ? 'Makaleyi Güncelle 💾' : 'Yayınla 🚀'}
+                  </button>
+                  {editingBlogId && (
+                    <button
+                      type="button"
+                      onClick={handleCancelEditBlog}
+                      className="border border-[#ff2e88]/30 text-[#ff2e88] hover:bg-[#ff2e88]/10 px-5 rounded-lg text-sm font-mono transition-all"
+                    >
+                      Vazgeç
+                    </button>
+                  )}
+                </div>
               </form>
             </div>
 
@@ -5253,12 +6276,20 @@ const AdminPage = ({ navigate }) => {
                           Yazar: {b.author} • {b.date || 'Bugün'}
                         </p>
                       </div>
-                      <button
-                        onClick={() => handleDeleteBlog(b.id, b.title)}
-                        className="flex-none font-mono text-xs text-[#ff2e88] border border-[#ff2e88]/30 hover:bg-[#ff2e88]/10 px-3 py-2 rounded-lg transition-all"
-                      >
-                        Sil 🗑️
-                      </button>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleStartEditBlog(b)}
+                          className="flex-none font-mono text-xs text-[#00ff88] border border-[#00ff88]/30 hover:bg-[#00ff88]/10 px-3 py-2 rounded-lg transition-all"
+                        >
+                          Düzenle ✏️
+                        </button>
+                        <button
+                          onClick={() => handleDeleteBlog(b.id, b.title)}
+                          className="flex-none font-mono text-xs text-[#ff2e88] border border-[#ff2e88]/30 hover:bg-[#ff2e88]/10 px-3 py-2 rounded-lg transition-all"
+                        >
+                          Sil 🗑️
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -5344,6 +6375,181 @@ const AdminPage = ({ navigate }) => {
   );
 };
 
+/* ============ PATHWAY PAGE (İlerleme Haritası) ============ */
+const PathwayPage = ({ navigate, data }) => {
+  const pathway = (typeof data === 'string'
+    ? (window.SK_PATHWAYS && window.SK_PATHWAYS.find(p => p.slug === data))
+    : data) || (window.SK_PATHWAYS && window.SK_PATHWAYS[0]);
+  if (!pathway) return <div className="text-center py-20 text-[#74998a]">Pathway bulunamadı.</div>;
+
+  const [user] = useUser();
+  const solvedList = JSON.parse(localStorage.getItem('sk_solved_rooms') || '[]');
+  const completedDocs = JSON.parse(localStorage.getItem('sk_completed_docs') || '[]');
+  const progressMap = JSON.parse(localStorage.getItem('sk_room_progress') || '{}');
+
+  const dc = { 'Başlangıç': 'text-[#5cffba] bg-[rgba(92,255,186,.1)]', 'Orta': 'text-[#ffd166] bg-[rgba(255,209,102,.1)]', 'İleri': 'text-[#ff8c42] bg-[rgba(255,140,66,.1)]', 'Uzman': 'text-[#ff2e88] bg-[rgba(255,46,136,.1)]' };
+
+  const phaseStats = pathway.phases.map(phase => {
+    const items = phase.items.map((item, idx) => {
+      const detail = window.getPathwayItemDetails(item);
+      const isSolved = item.type === 'room' ? solvedList.includes(item.id) : item.type === 'doc' ? completedDocs.includes(item.id) : item.type === 'target' ? solvedList.includes(item.id) : false;
+      const progress = item.type === 'room' ? (progressMap[item.id] || 0) : 0;
+      const unlocked = window.isItemUnlocked(pathway, phase.id, idx, solvedList, completedDocs);
+      return { ...detail, isSolved, progress, unlocked, idx };
+    });
+    const completed = items.filter(i => i.isSolved).length;
+    const total = items.length;
+    const unlocked = window.isPhaseUnlocked(pathway, phase.id, solvedList, completedDocs);
+    const premiumLocked = phase.premium && !user.is_premium;
+    return { ...phase, items, completed, total, unlocked, premiumLocked };
+  });
+
+  const overallCompleted = phaseStats.reduce((a, p) => a + p.completed, 0);
+  const overallTotal = phaseStats.reduce((a, p) => a + p.total, 0);
+  const overallPct = overallTotal > 0 ? Math.round((overallCompleted / overallTotal) * 100) : 0;
+
+  const handleItemClick = (phase, item) => {
+    if (!phase.unlocked || phase.premiumLocked || !item.unlocked) return;
+    if (item.type === 'room') {
+      const roomObj = window.SK_ROOMS_MAP[item.id];
+      if (roomObj) navigate('roomArticle', { ...roomObj, cat: pathway.name });
+    } else if (item.type === 'doc') {
+      navigate('doc', { id: item.id, pathwaySlug: pathway.slug });
+    } else if (item.type === 'target') {
+      // Target sites — future feature
+    }
+  };
+
+  return (
+    <>
+      <AppHeader navigate={navigate} active="dashboard" />
+
+      {/* Hero */}
+      <section className="py-16 border-b border-[#0c2719] relative overflow-hidden">
+        <div className="absolute top-[-30%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center,rgba(0,255,136,.10),transparent 62%)' }}></div>
+        <div className="max-w-[900px] mx-auto px-6 relative z-[2]">
+          <button onClick={() => navigate('dashboard')} className="text-sm text-[#74998a] hover:text-[#00ff88] transition-colors mb-5">← Dashboard'a dön</button>
+          <div className="flex items-center gap-4 mb-4">
+            <span className="w-14 h-14 rounded-xl grid place-items-center text-2xl border border-[#103a26] bg-[rgba(0,255,136,.04)]">{pathway.icon}</span>
+            <div>
+              <h1 className="text-[clamp(26px,4vw,38px)] text-[#eafff5] font-disp">{pathway.name}</h1>
+              <p className="text-[#74998a] text-sm mt-1">{pathway.desc}</p>
+            </div>
+          </div>
+          <div className="mt-6">
+            <div className="flex items-center justify-between text-sm mb-2">
+              <span className="text-[#74998a]">Genel İlerleme</span>
+              <span className="text-[#00ff88] font-mono font-bold">{overallCompleted}/{overallTotal} adım · %{overallPct}</span>
+            </div>
+            <div className="w-full h-3 rounded-full bg-[#0c2719] overflow-hidden">
+              <div className="h-full rounded-full transition-all duration-700" style={{ width: `${overallPct}%`, background: 'linear-gradient(90deg,#00ff88,#5cffba)' }}></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Phase Map */}
+      <section className="py-10">
+        <div className="max-w-[900px] mx-auto px-6">
+          {phaseStats.map((phase, pi) => {
+            const isLocked = !phase.unlocked;
+            const isPremium = phase.premiumLocked;
+            const isComplete = phase.completed === phase.total;
+            const lineColor = isComplete ? 'border-[#00ff88]' : isLocked ? 'border-[#0c2719]' : 'border-[#103a26]';
+
+            return (
+              <div key={phase.id} className={`relative ${pi < phaseStats.length - 1 ? 'pb-2' : ''}`}>
+                {/* Phase Header */}
+                <div className={`flex items-center gap-4 p-5 rounded-xl border mb-1 ${isLocked || isPremium ? 'opacity-50 border-[#0c2719]' : isComplete ? 'border-[#00ff88]/40 bg-[rgba(0,255,136,.03)]' : 'border-[#103a26] bg-[rgba(7,21,14,.6)]'}`}>
+                  <span className="w-12 h-12 rounded-lg grid place-items-center text-xl border border-[#103a26] bg-[#020806] flex-none">{isPremium ? '👑' : phase.icon}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <h2 className="text-lg text-[#eafff5] font-disp font-bold">FAZ {phase.order}: {phase.name}</h2>
+                      {isPremium && <span className="text-xs font-bold text-[#ffd166] bg-[rgba(255,209,102,.1)] px-2 py-0.5 rounded">PREMIUM</span>}
+                    </div>
+                    <p className="text-xs text-[#74998a] mt-0.5">{phase.desc}</p>
+                  </div>
+                  <div className="text-right flex-none">
+                    {isLocked ? (
+                      <span className="text-xs text-[#5c8a74] font-mono">🔒 Kilitli</span>
+                    ) : isComplete ? (
+                      <span className="text-xs text-[#00ff88] font-bold font-mono">✅ {phase.completed}/{phase.total}</span>
+                    ) : (
+                      <span className="text-xs text-[#74998a] font-mono">⏳ {phase.completed}/{phase.total}</span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Items with connecting line */}
+                <div className={`ml-[29px] border-l-2 ${lineColor} pl-7 py-3 space-y-2`}>
+                  {phase.items.map((item, ii) => {
+                    const locked = !phase.unlocked || isPremium || !item.unlocked;
+                    const solved = item.isSolved;
+                    const inProgress = !solved && item.progress > 0 && item.progress < 100;
+                    const isDoc = item.type === 'doc';
+                    const isTarget = item.type === 'target';
+
+                    return (
+                      <div
+                        key={item.id}
+                        onClick={() => !locked && handleItemClick(phase, item)}
+                        className={`relative flex items-center gap-4 p-4 rounded-xl border transition-all ${
+                          locked
+                            ? 'opacity-35 border-[#0c2719] cursor-not-allowed'
+                            : solved
+                              ? 'border-[#00ff88]/30 bg-[rgba(0,255,136,.03)] cursor-pointer'
+                              : inProgress
+                                ? 'border-[#00ff88]/50 bg-[rgba(0,255,136,.05)] shadow-[0_0_20px_rgba(0,255,136,.08)] cursor-pointer'
+                                : 'border-[#103a26] hover:border-[#00ff88]/40 hover:shadow-[0_0_20px_rgba(0,255,136,.06)] cursor-pointer'
+                        }`}
+                      >
+                        {/* Connector dot */}
+                        <div className={`absolute -left-[37px] w-3 h-3 rounded-full border-2 ${solved ? 'bg-[#00ff88] border-[#00ff88]' : inProgress ? 'bg-[#020806] border-[#00ff88]' : locked ? 'bg-[#020806] border-[#0c2719]' : 'bg-[#020806] border-[#103a26]'}`}></div>
+
+                        {/* Icon */}
+                        <span className="w-9 h-9 rounded-lg grid place-items-center text-sm flex-none border border-[#103a26] bg-[#020806]">
+                          {locked ? '🔒' : solved ? '✅' : inProgress ? '⏳' : isDoc ? '📄' : isTarget ? '🎯' : '▶'}
+                        </span>
+
+                        {/* Content */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-sm text-[#eafff5] font-medium truncate">{item.name || item.id}</span>
+                            {isDoc && <span className="text-[10px] text-[#5c8a74] bg-[#04100a] border border-[#0c2719] px-1.5 py-0.5 rounded font-mono">DÖKÜMAN</span>}
+                            {isTarget && <span className="text-[10px] text-[#ffd166] bg-[rgba(255,209,102,.08)] border border-[#ffd166]/20 px-1.5 py-0.5 rounded font-mono">HEDEF SİTE</span>}
+                            {item.difficulty && <span className={"text-[10px] font-bold px-2 py-0.5 rounded " + (dc[item.difficulty] || '')}>{item.difficulty}</span>}
+                          </div>
+                          {inProgress && (
+                            <div className="mt-2 flex items-center gap-2">
+                              <div className="flex-1 h-1.5 rounded-full bg-[#0c2719] overflow-hidden">
+                                <div className="h-full rounded-full bg-[#00ff88]" style={{ width: `${item.progress}%` }}></div>
+                              </div>
+                              <span className="text-[10px] text-[#5cffba] font-mono">%{item.progress}</span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Right side */}
+                        <div className="text-right flex-none">
+                          {isDoc && <span className="text-[10px] text-[#5c8a74] font-mono">{item.readTime}</span>}
+                          {item.points && <span className="text-xs text-[#00ff88] font-mono font-bold">◆ {item.points}</span>}
+                          {isTarget && item.flagCount && <span className="text-[10px] text-[#5c8a74] font-mono">{item.flagCount} bayrak</span>}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {SKFooter && <SKFooter navigate={navigate} />}
+    </>
+  );
+};
+
 /* ============ REGISTER PAGES ============ */
 Object.assign(PAGES, {
   dashboard: DashboardPage,
@@ -5352,6 +6558,7 @@ Object.assign(PAGES, {
   leaderboard: LeaderboardPage,
   chat: ChatPage,
   category: CategoryPage,
+  pathway: PathwayPage,
   admin: AdminPage,
 });
 

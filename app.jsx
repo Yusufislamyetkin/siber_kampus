@@ -616,9 +616,7 @@ const BlogDetailPage = ({ blog, navigate }) => {
             {loading ? (
               <div className="py-10 text-center text-[#74998a]">İçerik yükleniyor...</div>
             ) : displayBlog.content ? (
-              <div className="text-[#74998a] leading-relaxed whitespace-pre-line text-[16px] space-y-4">
-                {displayBlog.content}
-              </div>
+              <div className="blog-content text-[#b8d5c8] leading-relaxed text-[16px]" dangerouslySetInnerHTML={{ __html: displayBlog.content }}></div>
             ) : (
               <p className="text-[#74998a] leading-relaxed">Bu makalenin detay içeriği bulunmamaktadır.</p>
             )}
@@ -793,12 +791,6 @@ const LoginPage = ({ navigate }) => {
           <h1 className="text-4xl text-[#eafff5] mb-2">Giriş Yap</h1>
           <p className="text-[#74998a] text-sm">siberkampus hesabına erişim sağla</p>
         </div>
-        <div className="mb-5 rounded-lg border border-[#103a26] bg-[rgba(0,255,136,.04)] p-3.5 flex items-center justify-between gap-3">
-          <p className="text-xs text-[#74998a] leading-relaxed"><span className="text-[#00ff88]">⚡ Demo modu:</span> Herhangi bir e-posta/şifre ile gir ya da tek tıkla dene.</p>
-          <button type="button" onClick={() => handleLogin('demo@siberkampus.com', 'demo123456')} disabled={loading} className="flex-none font-mono text-xs font-bold text-[#021008] bg-[#00ff88] px-3.5 py-2 rounded-lg hover:shadow-[0_0_20px_-4px_var(--glow)] transition-all whitespace-nowrap disabled:opacity-50">
-            {loading ? 'Giriş Yapılıyor...' : 'Demo Giriş →'}
-          </button>
-        </div>
         <form onSubmit={submit} className="space-y-5">
           {err && <div className="bg-[rgba(255,46,136,.08)] border border-[#ff2e88]/50 rounded-lg p-3.5"><p className="text-sm text-[#ff2e88]">{err}</p></div>}
           <Field label="E-posta Adresi" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="seni@example.com" disabled={loading} />
@@ -930,23 +922,41 @@ const LiveChat = () => {
   const quick = ['Nasıl başlarım?', 'Ücretsiz mi?', 'Sertifika veriyor musunuz?', 'Bir lab açılmıyor'];
   const replyFor = (q) => {
     const s = q.toLowerCase();
+    if (s.includes('kurucu') || s.includes('yusuf') || s.includes('yetkin')) return 'Siber Kampüs\'ün kurucusu Yusuf İslam Yetkin\'dir. Kendisi uzun yıllar finans ve enterprise sistemlerde çalışmış deneyimli bir yazılım mimarıdır. 💻';
+    if (s.includes('fiyat') || s.includes('ücret') || s.includes('para') || s.includes('kaç tl') || s.includes('satın al') || s.includes('öde')) return 'Siber Kampüs\'te temel laboratuvar odaları tamamen ücretsizdir! Pentest web sitemizle ilgili uzman eğitim paketimiz ise 1200 TL\'dir. 💚';
     if (s.includes('başla') || s.includes('nasıl')) return 'Çok kolay! Ücretsiz bir hesap aç, ardından "Laboratuvarlar" sayfasından başlangıç seviyesi bir görev seç ve "Başlat" de. Kurulum gerekmez, her şey tarayıcıda çalışır. 🚀';
-    if (s.includes('ücret') || s.includes('para') || s.includes('fiyat')) return 'Birçok laboratuvar tamamen ücretsiz! İleri seviye içerikler ve takım özellikleri için planlarımız var. Önce ücretsiz görevlerle başlamanı öneririm. 💚';
+    if (s.includes('oda') || s.includes('laboratuvar') || s.includes('makine') || s.includes('lab')) return 'Oda sistemimiz; Web, Linux ve Ağ kategorilerinde interaktif hacking laboratuvarlarından oluşur. Her odanın kendine ait siberkampus{...} şeklinde flag\'i (bayrağı) bulunur. 🔍';
     if (s.includes('sertifika')) return 'Evet! Bir öğrenme yolunu tamamladığında doğrulanabilir bir sertifika kazanırsın — CV ve LinkedIn\'ine ekleyebilirsin. "Sertifikalarım" sayfasından takip edebilirsin. 🎖️';
     if (s.includes('açılm') || s.includes('hata') || s.includes('sorun') || s.includes('çalışm')) return 'Bunu duyduğuma üzüldüm! Önce laboratuvarı sıfırlamayı dene. Sorun sürerse görev adını yazar mısın, hemen ekibe iletip kontrol ettireyim. 🛠️';
-    return 'Anladım! Bu konuda sana en doğru bilgiyi vermek için not aldım. İstersen Destek sayfamızdaki SSS\'e de göz atabilirsin — çoğu cevap orada. Başka bir şey var mı? 🙂';
+    return 'Anladım! Ben canlı destek botu Eylül. Siber Kampüs, kurucumuz Yusuf İslam Yetkin, ücretsiz odalarımız veya 1200 TL değerindeki Pentest eğitimimiz hakkında sorularınızı yanıtlayabilirim. 🙂';
   };
 
-  const push = (text) => {
+  const push = async (text) => {
     if (!text.trim()) return;
-    setMsgs((m) => [...m, { me: true, t: text }]);
+    const userMsg = { me: true, t: text };
+    setMsgs((m) => [...m, userMsg]);
     setInput('');
     setTyping(true);
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/support/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          history: [...msgs, userMsg]
+        })
+      });
+      if (!res.ok) throw new Error('API status: ' + res.status);
+      const data = await res.json();
+      setTyping(false);
+      setMsgs((m) => [...m, { me: false, t: data.reply }]);
+      if (!open) setUnread((u) => u + 1);
+    } catch (err) {
+      console.warn('Chatbot API error, using client fallback:', err);
       setTyping(false);
       setMsgs((m) => [...m, { me: false, t: replyFor(text) }]);
       if (!open) setUnread((u) => u + 1);
-    }, 1100);
+    }
   };
 
   const toggle = () => {setOpen((o) => !o);setUnread(0);};
@@ -1040,8 +1050,11 @@ const updateSEOMeta = (p, d) => {
     title = "Blog | siberkampus — Güncel Siber Güvenlik Makaleleri";
     desc = "Güncel siber güvenlik açıkları, web güvenliği, network güvenliği ve hacking rehberlerine dair teknik blog yazıları.";
   } else if (p === 'blog-detail' && d && d.title) {
-    title = `${d.title} | siberkampus`;
-    desc = `${d.excerpt || d.title + ' hakkında detaylı siber güvenlik makalesi.'}`;
+    title = d.seo_title ? d.seo_title : `${d.title} | siberkampus`;
+    desc = d.meta_description ? d.meta_description : `${d.excerpt || d.title + ' hakkında detaylı siber güvenlik makalesi.'}`;
+    if (d.focus_keywords) {
+      keys = d.focus_keywords;
+    }
   } else if (p === 'category' && d) {
     const catName = typeof d === 'string' ? d : d.name || '';
     title = `${catName} | siberkampus`;
@@ -1112,7 +1125,8 @@ const updateSEOMeta = (p, d) => {
     document.head.appendChild(canonicalLink);
   }
   const currentPath = getPagePath(p, d);
-  canonicalLink.setAttribute('href', `https://siberkampus.com${currentPath}`);
+  const canonicalUrl = (p === 'blog-detail' && d && d.canonical_url) ? d.canonical_url : `https://siberkampus.com${currentPath}`;
+  canonicalLink.setAttribute('href', canonicalUrl);
 
   let ldJsonScript = document.getElementById('seo-structured-data');
   if (ldJsonScript) ldJsonScript.remove();
@@ -1125,7 +1139,7 @@ const updateSEOMeta = (p, d) => {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": title,
-    "url": `https://siberkampus.com${currentPath}`,
+    "url": canonicalUrl,
     "description": desc,
     "applicationCategory": "SecurityApplication",
     "operatingSystem": "All",
@@ -1154,6 +1168,14 @@ const getPagePath = (p, d) => {
     const roomId = typeof d === 'string' ? d : d.id || '';
     return `/brief/${roomId}`;
   }
+  if (p === 'pathway' && d) {
+    const slug = typeof d === 'string' ? d : d.slug || '';
+    return `/pathway/${slug}`;
+  }
+  if (p === 'doc' && d) {
+    const docId = typeof d === 'string' ? d : d.id || '';
+    return `/docs/${docId}`;
+  }
   if (p === 'tools') {
     return d && d.slug ? `/tools/${d.slug}` : `/tools`;
   }
@@ -1175,6 +1197,14 @@ const parseLocation = () => {
   }
   if (path === '/tools') {
     return { page: 'tools', data: null };
+  }
+  if (path.startsWith('/pathway/')) {
+    const slug = path.substring(9);
+    return { page: 'pathway', data: slug };
+  }
+  if (path.startsWith('/docs/')) {
+    const docId = path.substring(6);
+    return { page: 'doc', data: { id: docId } };
   }
   if (path.startsWith('/category/')) {
     const catName = decodeURIComponent(path.substring(10));
@@ -1209,7 +1239,7 @@ const App = () => {
   const getInitialState = () => {
     const parsed = parseLocation();
     const token = localStorage.getItem('sk_token');
-    const protectedPages = ['dashboard', 'room', 'roomArticle', 'leaderboard', 'chat', 'category', 'admin', 'profile'];
+    const protectedPages = ['dashboard', 'room', 'leaderboard', 'chat', 'category', 'admin', 'profile'];
     let initialPage = parsed.page;
     let initialData = parsed.data;
     
@@ -1227,8 +1257,22 @@ const App = () => {
   const [page, setPage] = useState(initialState.page);
   const [data, setData] = useState(initialState.data);
 
+  // Scroll to top on page change to prevent clamping scroll to the footer on shorter pages
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    const t = setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 50);
+    return () => clearTimeout(t);
+  }, [page, data]);
+
   const navigate = (p, d = null, fromPopState = false) => {
-    if (p === 'roomArticle' && d && !d.forceNoPrompt && !fromPopState) {
+    const token = localStorage.getItem('sk_token');
+    if (p === 'roomArticle' && token && d && !d.forceNoPrompt && !fromPopState) {
       let roomObj = null;
       if (typeof d === 'string') {
         if (window.SK_CATEGORIES) {
@@ -1250,8 +1294,7 @@ const App = () => {
       p = 'tools';
     }
     // Auth guards
-    const token = localStorage.getItem('sk_token');
-    const protectedPages = ['dashboard', 'room', 'roomArticle', 'leaderboard', 'chat', 'category', 'admin', 'profile'];
+    const protectedPages = ['dashboard', 'room', 'leaderboard', 'chat', 'category', 'admin', 'profile'];
     
     if (protectedPages.includes(p) && !token) {
       p = 'login';

@@ -22,7 +22,6 @@ const SK_CATEGORIES = [
       { id: 'web-07', name: 'File Upload Bypass', difficulty: 'İleri', desc: 'Dosya yükleme filtrelerini atlatma ve shell alma.', users: 890, points: 100 },
       { id: 'web-08', name: 'SSRF & XXE', difficulty: 'İleri', desc: 'Server-Side Request Forgery ve XML Entity injection.', users: 650, points: 120 },
       { id: 'web-09', name: 'JWT Token Exploitation', difficulty: 'Uzman', desc: 'JWT zafiyetleri: none algorithm, key confusion.', users: 420, points: 150 },
-      { id: 'web-10', name: 'Web App Pentest Capstone', difficulty: 'Uzman', desc: 'Gerçekçi bir web uygulamasında tam sızma testi.', users: 310, points: 200 },
     ]
   },
   {
@@ -30,31 +29,6 @@ const SK_CATEGORIES = [
     desc: 'Ağ keşfi, port tarama, servis sömürüsü ve pivotlama — kurumsal ağlara sızma.',
     rooms: [
       { id: 'net-01', name: 'Nmap ile Ağ Keşfi', difficulty: 'Başlangıç', desc: 'Port tarama, servis tespiti ve OS fingerprinting.', users: 3100, points: 50 },
-      { id: 'net-04', name: 'SSH Brute Force & Key Attacks', difficulty: 'Başlangıç', desc: 'SSH şifre kırma ve anahtar tabanlı saldırılar.', users: 2340, points: 50 },
-      { id: 'net-02', name: 'ARP Spoofing & MITM', difficulty: 'Orta', desc: 'ARP zehirleme ve Man-in-the-Middle saldırıları.', users: 1890, points: 75 },
-      { id: 'net-03', name: 'SMB Exploitation', difficulty: 'Orta', desc: 'SMB paylaşım zafiyetleri ve EternalBlue.', users: 1560, points: 80 },
-      { id: 'net-05', name: 'DNS Zone Transfer', difficulty: 'Orta', desc: 'DNS zone transfer ve subdomain keşfi.', users: 1200, points: 70 },
-      { id: 'net-06', name: 'WiFi Hacking Simülasyonu', difficulty: 'İleri', desc: 'WPA2 handshake yakalama ve kırma.', users: 890, points: 100 },
-      { id: 'net-07', name: 'VLAN Hopping', difficulty: 'İleri', desc: 'VLAN atlama ve ağ segmentasyonu bypass.', users: 540, points: 110 },
-      { id: 'net-08', name: 'Pivotlama & Tunneling', difficulty: 'Uzman', desc: 'Çoklu ağ segmentleri arası pivotlama.', users: 430, points: 150 },
-      { id: 'net-09', name: 'Active Directory Recon', difficulty: 'Uzman', desc: 'AD ortamında keşif ve bilgi toplama.', users: 380, points: 160 },
-      { id: 'net-10', name: 'Full Network Pentest', difficulty: 'Uzman', desc: 'Tam bir kurumsal ağ sızma testi senaryosu.', users: 250, points: 200 },
-    ]
-  },
-  {
-    slug: 'system-exploitation', name: 'Sistem Sömürüsü', icon: '💻', color: '#ffd166',
-    desc: 'Linux ve Windows ayrıcalık yükseltme, exploit geliştirme ve post-exploitation.',
-    rooms: [
-      { id: 'sys-01', name: 'Linux Temel Komutlar', difficulty: 'Başlangıç', desc: 'Güvenlik odaklı Linux komut satırı temelleri.', users: 4200, points: 40 },
-      { id: 'sys-02', name: 'SUID/SGID Exploitation', difficulty: 'Başlangıç', desc: 'SUID bit zafiyetleriyle root olma.', users: 2890, points: 50 },
-      { id: 'sys-03', name: 'Linux Kernel Exploits', difficulty: 'Orta', desc: 'Dirty COW ve benzeri kernel zafiyetleri.', users: 1450, points: 80 },
-      { id: 'sys-04', name: 'Cron Job Exploitation', difficulty: 'Orta', desc: 'Zamanlanmış görev zafiyetleri.', users: 1670, points: 70 },
-      { id: 'sys-05', name: 'Path Hijacking', difficulty: 'Orta', desc: 'PATH değişkeni manipülasyonu ile root.', users: 1320, points: 75 },
-      { id: 'sys-06', name: 'Windows Privilege Escalation', difficulty: 'İleri', desc: 'Windows servis zafiyetleri ve UAC bypass.', users: 890, points: 100 },
-      { id: 'sys-07', name: 'Buffer Overflow Basics', difficulty: 'İleri', desc: 'Stack-based buffer overflow temelleri.', users: 650, points: 120 },
-      { id: 'sys-08', name: 'Shellcode & ROP Chains', difficulty: 'Uzman', desc: 'Custom shellcode yazma ve ROP teknikleri.', users: 340, points: 160 },
-      { id: 'sys-09', name: 'Container Escape', difficulty: 'Uzman', desc: 'Docker container escape senaryoları.', users: 280, points: 170 },
-      { id: 'sys-10', name: 'Full System Compromise', difficulty: 'Uzman', desc: 'Tam bir sistemin initial access → root zinciri.', users: 210, points: 200 },
     ]
   },
 ];
@@ -200,20 +174,6 @@ const MENTOR_LESSONS_INFO = {
       "`none` algoritması kullanarak imza doğrulamasını tamamen devre dışı bırakmayı başardın."
     ]
   },
-  'web-10': {
-    scenario: "Merhaba {name}. Bu senin son ve en büyük web sınavın. Karşında birden fazla zafiyeti (SQLi, File Upload, CSRF vb.) zincirleme kullanman gereken gerçekçi bir kurumsal web portalı var. Tüm adımları geçerek sistemde root bayrağını okumalısın.",
-    goals: [
-      "Zafiyet zinciri (Vulnerability Chaining) oluşturma",
-      "Keşiften sisteme sızmaya kadar tam sızma testi adımları",
-      "Gerçekçi bir sızma testi senaryosunun tamamlanması"
-    ],
-    realWorld: "Gerçek dünyada tek bir zafiyet bazen yetersizdir; ancak bir SQLi ile elde edilen parola, dosya yükleme alanıyla birleştiğinde tüm şirketi ele geçirmenizi sağlar. Bu yetenek üst düzey sızma testi uzmanlığının temelidir.",
-    learned: [
-      "Çoklu zafiyetleri birleştirerek (chaining) sistem üzerinde tam kontrol kurmayı öğrendin.",
-      "Bir web uygulamasında uçtan uca sızma testi metodolojisini uyguladın."
-    ]
-  },
-
   'web-11': {
     scenario: "Merhaba {name}. Şirketteki ağ router'ının yönetim paneline erişmemiz gerekiyor. Cihazın varsayılan fabrika ayarları hiç değiştirilmemiş. Varsayılan kimlik bilgilerini (admin/admin) kullanarak kontrol paneline giriş yap ve router bayrağını oku.",
     goals: [
@@ -297,257 +257,144 @@ const MENTOR_LESSONS_INFO = {
       "Açık portları ve servis versiyonlarını doğru analiz etmeyi öğrendin.",
       "İşletim sistemi analizi ve agresif tarama yöntemlerini kavradın."
     ]
-  },
-  'net-04': {
-    scenario: "Merhaba {name}. SSH servisinin açık olduğunu gördük. Sözlük saldırısı (brute force) veya sızdırılmış özel anahtar (private key) dosyalarını kullanarak SSH üzerinden sisteme sızmalısın.",
-    goals: [
-      "Hydra veya benzeri araçlarla brute force mantığı",
-      "SSH private key (id_rsa) izinleri ve kullanımı",
-      "Zayıf parola politikalarının tespiti"
-    ],
-    realWorld: "Gerçek dünyada zayıf parolalar veya yanlış yapılandırılmış SSH anahtarları, saldırganların sisteme doğrudan erişmesine yol açar. Parola politikaları sıkılaştırılmalı ve SSH anahtarları şifrelenmelidir.",
-    learned: [
-      "Sözlük saldırısı ile zayıf kimlik bilgilerini kırmayı öğrendin.",
-      "Özel anahtar dosyalarını kullanarak güvenli SSH oturumları başlatmayı başardın."
-    ]
-  },
-  'net-02': {
-    scenario: "Merhaba {name}. Aynı yerel ağda (LAN) bulunan bir kurban ve bir router var. ARP Spoofing yaparak kendini kurban ile router arasına konumlandırmalı, ağ trafiğini dinleyerek (MITM) şifreleri ele geçirmelisin.",
-    goals: [
-      "ARP protokolünün çalışması ve zafiyeti",
-      "Ettercap/Arpspoof ile trafik yönlendirme",
-      "Wireshark/Cain ile şifresiz HTTP verilerini koklama"
-    ],
-    realWorld: "Yerel ağ sızma testlerinde MITM saldırıları, şifrelenmemiş (HTTP, FTP, Telnet) protokollerdeki kimlik bilgilerini anında ele geçirmek için kullanılır. Korunmak için dinamik ARP denetimi (DAI) uygulanmalıdır.",
-    learned: [
-      "ARP tablolarını zehirleyerek trafiği kendi üzerine çekmeyi öğrendin.",
-      "Ortadaki Adam (MITM) pozisyonunda şifresiz ağ verilerini analiz etmeyi kavradın."
-    ]
-  },
-  'net-03': {
-    scenario: "Merhaba {name}. Hedef sistemde eski bir SMB (Server Message Block) servisi çalışıyor. Bu servisin zafiyetlerini (örneğin EternalBlue - MS17-010) sömürerek doğrudan en yüksek yetkili kullanıcı (SYSTEM/root) olarak sızmalısın.",
-    goals: [
-      "SMB paylaşım izinleri ve bilgi toplama (enum)",
-      "EternalBlue zafiyetinin sömürülmesi",
-      "Metasploit framework ve reverse shell bağlantısı"
-    ],
-    realWorld: "EternalBlue gibi SMB açıkları, WannaCry gibi fidye yazılımlarının ağlarda hızla yayılmasına neden olmuştur. Bu tür kritik açıklar tespit edildiğinde sistemler derhal yamalanmalıdır.",
-    learned: [
-      "SMB servislerindeki paylaşımları ve izinleri incelemeyi öğrendin.",
-      "EternalBlue zafiyetini sömürerek hedef makinede yetkili shell elde ettin."
-    ]
-  },
-  'net-05': {
-    scenario: "Merhaba {name}. Hedef kurumun DNS sunucusunda hatalı yapılandırma nedeniyle Zone Transfer işlemine izin verildiğini gördük. Tüm subdomain bilgilerini ve IP adreslerini tek bir sorgu ile çekmelisin.",
-    goals: [
-      "DNS protokolü ve kayıt türleri (A, NS, MX, TXT)",
-      "Dig ve nslookup ile zone transfer (`AXFR`) sorgusu",
-      "Kurumsal ağ haritalama"
-    ],
-    realWorld: "DNS Zone Transfer açığı, şirketin iç ağındaki tüm sunucuların, test ortamlarının ve gizli servislerin isimlerini ortaya döker. Bu durum saldırganın hedef listesini devasa ölçüde genişletir.",
-    learned: [
-      "DNS Zone Transfer zafiyetini tetiklemeyi öğrendin.",
-      "Şirketin tüm subdomain envanterini hızlıca haritalamayı başardın."
-    ]
-  },
-  'net-06': {
-    scenario: "Merhaba {name}. Hedef ofisin WPA2 korumalı kablosuz ağına sızmamız gerekiyor. Havaya yayılan paketleri dinleyip bir cihazın ağa bağlanma aşamasını (handshake) yakalamalı ve bu handshake dosyasını kırarak şifreyi bulmalısın.",
-    goals: [
-      "Aircrack-ng ailesi araçlarının kullanımı",
-      "WPA2 4-Way Handshake yakalama mantığı",
-      "Hashcat veya John ile parola kırma"
-    ],
-    realWorld: "WiFi şifrelerinin kırılması, saldırganın şirket içi kablolu/kablosuz ağa sızarak iç sistemleri doğrudan tehdit etmesini sağlar. Güçlü parolalar ve kurumsal WPA3/802.1X protokolleri kullanılmalıdır.",
-    learned: [
-      "Kablosuz ağ trafiğini dinlemeyi ve deauthentication paketleriyle handshake yakalamayı öğrendin.",
-      "Yakaladığın hash dosyasını sözlük saldırısıyla kırarak WiFi şifresine ulaştın."
-    ]
-  },
-  'net-07': {
-    scenario: "Merhaba {name}. Şirket içi ağda misafir VLAN'ındasın fakat yönetim (admin) VLAN'ına erişmek istiyorsun. VLAN Hopping (Double Tagging) yöntemiyle paketlerini diğer VLAN segmentine atlatmalısın.",
-    goals: [
-      "802.1Q VLAN etiketleme mantığı",
-      "Double Tagging (çift etiketleme) saldırısı",
-      "Switchport trunking modlarının analizi"
-    ],
-    realWorld: "VLAN segmentasyonu, kritik ağları izole etmek için kullanılır. VLAN Hopping, bu segmentasyonu aşarak saldırganın hassas sunucuların bulunduğu ağlara paket göndermesini sağlar.",
-    learned: [
-      "VLAN etiketlerinin switchler tarafından nasıl işlendiğini öğrendin.",
-      "Çift etiketli paketler göndererek ağ segmentasyonunu aşmayı başardın."
-    ]
-  },
-  'net-08': {
-    scenario: "Merhaba {name}. İlk ele geçirdiğimiz sunucu çift ağ kartına sahip: hem dış dünyaya hem de dışarıdan erişilemeyen iç ağa bağlı. Bu sunucuyu bir proxy (pivot) olarak kullanarak iç ağdaki gizli veritabanına erişmelisin.",
-    goals: [
-      "Chisel, SSH Dynamic Port Forwarding veya Proxychains kullanımı",
-      "İç ağa yönelik tünel (tunneling) oluşturma",
-      "Çoklu ağ segmentlerinde pivotlama"
-    ],
-    realWorld: "Gerçek sızma testlerinde iç ağa doğrudan erişim yoktur. Ele geçirilen ilk makine üzerinden tünel açarak (pivotlama) ağın derinliklerine sızılır. Bu yetenek sızma testi uzmanlarının en kritik becerilerindendir.",
-    learned: [
-      "Socks proxy tüneli oluşturarak trafiği ele geçirilen makine üzerinden yönlendirmeyi öğrendin.",
-      "İç ağda kapalı olan servislere dışarıdan erişim sağladın."
-    ]
-  },
-  'net-09': {
-    scenario: "Merhaba {name}. Bir Active Directory (AD) ağındayız. Etki alanı (Domain) içerisindeki kullanıcıları, grupları, bilgisayarları ve yetki ilişkilerini analiz ederek etki alanı yöneticisine (Domain Admin) giden yolu planlamalısın.",
-    goals: [
-      "LDAP sorguları ve BloodHound aracı mantığı",
-      "Kerberoasting ve AS-REP Roasting kavramları",
-      "AD kullanıcı ve yetki analizi"
-    ],
-    realWorld: "Kurumsal ağların %90'ı Active Directory kullanır. AD ortamında yapılan keşif, saldırganın en az yetkili kullanıcıdan tüm domain kontrolünü ele geçireceği yolu (attack path) çizmesini sağlar.",
-    learned: [
-      "AD ortamında LDAP üzerinden kullanıcı ve yetki envanteri çıkarmayı öğrendin.",
-      "BloodHound grafikleri ile Domain Admin yetkisine giden yolları analiz etmeyi kavradın."
-    ]
-  },
-  'net-10': {
-    scenario: "Merhaba {name}. Bu senin ağ kategorisindeki capstone sınavın. Dış ağ keşfinden başlayıp, bulduğun bir servisi sömürecek, ardından iç ağa sızıp pivotlama yaparak Active Directory etki alanını ele geçireceksin. Tüm adımları tamamla!",
-    goals: [
-      "Dış ağdan iç ağa sızma metodolojisi",
-      "Pivotlama ile çoklu ağ aşamalarını geçme",
-      "Active Directory ortamında tam yetki (Domain Admin) elde etme"
-    ],
-    realWorld: "Gerçek bir pentest projesi tam olarak bu senaryodan ibarettir. Şirketin dışarıya açık zayıf bir noktasından girilip, iç ağdaki tüm veritabanları ve domain controller sistemleri ele geçirilir.",
-    learned: [
-      "Dış ağ keşfinden başlayıp iç ağın derinliklerine uzanan tam bir sızma testi gerçekleştirdin.",
-      "Zincirleme ağ saldırıları ile hedef altyapının tamamını ele geçirmeyi öğrendin."
-    ]
-  },
-
-  // system exploitation
-  'sys-01': {
-    scenario: "Merhaba {name}. Terminale hoş geldin! Sistem sömürüsü ve yetki yükseltme işlemlerine başlamadan önce temel Linux dosya sistemi komutlarını (`ls`, `cd`, `cat`, `grep`, `find`) etkin kullanmayı öğrenmelisin.",
-    goals: [
-      "Linux dizin yapısı ve dosya izinleri",
-      "Temel arama ve filtreleme komutları",
-      "Gizli dosyaları ve sistem bilgilerini bulma"
-    ],
-    realWorld: "Bir sisteme sızdığınızda elinizde genellikle sadece sihirli siyah bir ekran (terminal) olur. Komut satırına hakim olmak, sistemdeki gizli yapılandırma dosyalarını hızlıca bulmanızı sağlar.",
-    learned: [
-      "Dosya sistemi navigasyonunu ve gizli dosyaları okumayı öğrendin.",
-      "`grep` ve `find` ile hassas verileri filtreleyip bulmayı başardın."
-    ]
-  },
-  'sys-02': {
-    scenario: "Merhaba {name}. Sistemde normal bir kullanıcısın. Ancak bazı çalıştırılabilir dosyaların üzerinde SUID (Set Owner User ID) biti set edilmiş. Bu dosyalardan (örneğin python veya find) yararlanarak root yetkisine yükselmelisin.",
-    goals: [
-      "SUID/SGID bitinin çalışma mantığı",
-      "GTFOBins kullanarak yetki yükseltme yöntemleri",
-      "Root sahipliğindeki izinli dosyaları sömürme"
-    ],
-    realWorld: "Sistem yöneticileri bazen normal kullanıcılara kolaylık olsun diye bazı araçlara SUID biti verir. Sızma testlerinde bu durum, sistemin saniyeler içinde tamamen ele geçirilmesiyle sonuçlanır.",
-    learned: [
-      "SUID biti ayarlanmış tehlikeli sistem dosyalarını tespit etmeyi öğrendin.",
-      "GTFOBins teknikleriyle SUID dosyalarını sömürüp root shell aldın."
-    ]
-  },
-  'sys-03': {
-    scenario: "Merhaba {name}. Sistemde çalışan Linux çekirdeğinin (kernel) eski ve bilinen bir zafiyeti (örneğin Dirty COW) var. Kernel exploit kodunu derleyip çalıştırarak doğrudan root yetkilerini almalısın.",
-    goals: [
-      "Kernel sürümü tespiti (`uname -a`)",
-      "Exploit-DB ve local exploit arama",
-      "C dilindeki exploit kodunu derleme (`gcc`) ve çalıştırma"
-    ],
-    realWorld: "Kernel güncellemelerinin yapılmadığı sunucular siber saldırganlar için en kolay hedeflerdir. Sistemlerin düzenli olarak güncellenmesi ve zafiyet taramalarının yapılması kritiktir.",
-    learned: [
-      "Sistem çekirdek sürümünü analiz edip uygun exploiti bulmayı öğrendin.",
-      "C kodunu derleyerek kernel düzeyinde yetki yükseltme gerçekleştirdin."
-    ]
-  },
-  'sys-04': {
-    scenario: "Merhaba {name}. Sistemde root yetkisiyle düzenli olarak çalışan zamanlanmış bir görev (cron job) var. Bu görevin çalıştırdığı script dosyasına yazma iznimiz olduğunu gördük. Script'i manipüle ederek kendine root reverse shell vermelisin.",
-    goals: [
-      "Cron tablosunu okuma (`/etc/crontab`)",
-      "Zamanlanmış görevlerin izin analizi",
-      "Script dosyasına payload yazma ve yetki yükseltme"
-    ],
-    realWorld: "Arka planda çalışan zamanlanmış script'lerin izinlerinin zayıf olması (world-writable), sistemde arka kapı (backdoor) oluşturmak veya yetki yükseltmek için en yaygın kullanılan hatalardan biridir.",
-    learned: [
-      "Root yetkisiyle çalışan zamanlanmış görevleri listelemeyi öğrendin.",
-      "Script dosyalarını manipüle ederek arka planda yetkili komut çalıştırmayı başardın."
-    ]
-  },
-  'sys-05': {
-    scenario: "Merhaba {name}. SUID yetkisine sahip bir program, çalışırken sistemdeki başka bir komutu (örneğin `tar` veya `ls`) mutlak yol (absolute path) vermeden çağırıyor. PATH değişkenini manipüle ederek programın kendi yazdığın sahte komutu çalıştırmasını sağlamalısın.",
-    goals: [
-      "PATH çevre değişkeninin çalışma mantığı",
-      "Mutlak yol (Absolute Path) verilmeden çağrılan ikili dosyalar",
-      "Sahte komut yazarak yetki yükseltme"
-    ],
-    realWorld: "Yazılım geliştiriciler sistem komutlarını çağırırken tam yol (örn: `/usr/bin/tar`) belirtmediklerinde, saldırganlar çevre değişkenlerini ezerek sisteme kendi zararlı kodlarını çalıştırtabilir.",
-    learned: [
-      "Çevre değişkenlerinin çalışma ve arama sırası mantığını öğrendin.",
-      "PATH değişkenini manipüle ederek SUID uygulamasının sahte komutu çalıştırmasını sağladın."
-    ]
-  },
-  'sys-06': {
-    scenario: "Merhaba {name}. Windows işletim sisteminde sıradan bir kullanıcısın. PrintSpoofer veya benzeri bir lokal zafiyet kullanarak sistemdeki en yüksek yetkili hesap olan `NT AUTHORITY\\SYSTEM` seviyesine yükselmelisin.",
-    goals: [
-      "Windows servis hesapları ve token yapısı",
-      "Printspoofer veya JuicyPotato gibi patates ailesi exploitleri",
-      "Windows terminal komutları (`whoami /priv`)"
-    ],
-    realWorld: "Windows sistemlerinde servis hesaplarının token'larının sızdırılması (Token Impersonation), yerel ağlarda sistem yöneticisi yetkilerine ulaşmak için en kritik yollardan biridir.",
-    learned: [
-      "Windows üzerindeki kullanıcı yetkilerini (`SeImpersonatePrivilege` vb.) listelemeyi öğrendin.",
-      "Token Impersonation saldırısıyla NT AUTHORITY\\SYSTEM yetkilerine ulaştın."
-    ]
-  },
-  'sys-07': {
-    scenario: "Merhaba {name}. C dilinde yazılmış bir uygulamanın bellek sınır kontrolü yapmadığını gördük. Girdi alanına kapasitesinin üzerinde veri göndererek bellek yığınını (stack) taşırmalı ve programın akışını değiştirerek bayrağı okumalısın.",
-    goals: [
-      "Buffer Overflow (Yığın Taşması) kavramı",
-      "Bellek adres yapısı, EIP/RIP ve ESP kayıtçıları",
-      "Girdi uzunluğu ile bellek taşırma analizi"
-    ],
-    realWorld: "Yığın taşması, yazılımların çökmesine veya saldırganların bellek üzerinde doğrudan makine kodu (shellcode) çalıştırmasına yol açar. Güvenli kod yazımında `strcpy` yerine `strncpy` gibi sınır kontrollü fonksiyonlar tercih edilmelidir.",
-    learned: [
-      "Bellek sınır kontrollerinin yapılmamasının yol açtığı taşmaları öğrendin.",
-      "EIP yazmacını kontrol ederek programın akışını manipüle etmeyi başardın."
-    ]
-  },
-  'sys-08': {
-    scenario: "Merhaba {name}. Güvenlik önlemleri (NX/DEP gibi) nedeniyle bellek üzerinde doğrudan kod çalıştırmak engellenmiş. ROP (Return Oriented Programming) zincirleri kurarak, libc içindeki sistem fonksiyonlarını çağırıp bu korumayı aşmalı ve shell almalısın.",
-    goals: [
-      "DEP (Data Execution Prevention) / NX (No-Execute) korumaları",
-      "ROP gadget bulma ve zincir oluşturma",
-      "Libc tabanlı saldırılar ve `system('/bin/sh')` çağrısı"
-    ],
-    realWorld: "Modern işletim sistemleri bellek korumalarıyla doludur. ROP, bu korumayı sunucunun kendi kütüphanesindeki (libc) meşru kod parçalarını ardışık çalıştırarak aşmayı sağlar.",
-    learned: [
-      "Modern bellek koruma mekanizmalarının çalışma mantığını öğrendin.",
-      "ROP gadget'ları birleştirerek bellek korumalarını bypass etmeyi kavradın."
-    ]
-  },
-  'sys-09': {
-    scenario: "Merhaba {name}. Bir Docker konteynerinin (container) içindesin. Ancak bu konteyner `--privileged` yetkisiyle veya zayıf sınırlandırmalarla başlatılmış. Ana işletim sisteminin diskini içeriye mount ederek konteynerden ana sisteme kaçmalısın (escape).",
-    goals: [
-      "Docker yetkilendirmeleri ve izole ortam sınırları",
-      "Privileged mount yöntemiyle ana disk erişimi",
-      "Konteynerden ana işletim sistemine sızma"
-    ],
-    realWorld: "Bulut sistemlerde ve mikroservis mimarilerinde konteyner izolasyonu hayati önem taşır. Yanlış yapılandırılmış ayrıcalıklı konteynerler, tek bir container ele geçirildiğinde tüm fiziksel sunucunun kaybedilmesine neden olur.",
-    learned: [
-      "Ayrıcalıklı (privileged) konteynerlerin yarattığı güvenlik risklerini öğrendin.",
-      "Konteyner içinden ana sunucunun diskine erişerek izole ortamdan kaçmayı başardın."
-    ]
-  },
-  'sys-10': {
-    scenario: "Merhaba {name}. Sistem sömürüsü kategorisindeki capstone sınavındasın. Karşındaki Linux makinesinde önce kısıtlı bir terminal elde edecek, ardından sistem içi keşif yapıp zayıf yapılandırmaları bulacak ve root yetkisine ulaşacaksın. Tüm zinciri tamamla!",
-    goals: [
-      "Initial access sonrası sistem keşfi (enumeration)",
-      "Çok adımlı yerel yetki yükseltme (Privilege Escalation)",
-      "Root yetkisinin kalıcı hale getirilmesi (Persistence)"
-    ],
-    realWorld: "Gerçek dünyadaki sistem sızma testleri (red team operasyonları) tam olarak bu aşamalardan oluşur. Saldırgan sisteme girer, içeride yerel tarama yapar, ayrıcalıkları yükseltir ve sistemin sahibi olur.",
-    learned: [
-      "Kısıtlı bir kullanıcıdan başlayıp aşamalı olarak root yetkisine yükselmeyi öğrendin.",
-      "Sistem üzerinde kalıcılık sağlama ve izleri temizleme adımlarını tamamladın."
-    ]
   }
 };
 
-Object.assign(window, { SK_CATEGORIES, SK_ALL_ROOMS, SK_ALL_BADGES, MENTOR_LESSONS_INFO });
+// ======== LEARNING PATHWAYS (İlerleme Haritası) ========
+
+const SK_PATHWAYS = [
+  {
+    slug: 'web-pentest',
+    name: 'Web Pentest Uzmanı Yolu',
+    icon: '🌐',
+    color: '#00ff88',
+    desc: 'Sıfırdan web sızma testi uzmanına — teori, pratik ve gerçek hedef sitelerde pentest.',
+    phases: [
+      {
+        id: 'phase-1',
+        name: 'Teori & Ortam Kurulumu',
+        desc: 'Araçlarını kur, temel kavramları öğren.',
+        icon: '📚',
+        order: 1,
+        type: 'theory',
+        items: [
+          { type: 'doc', id: 'doc-kali-setup', name: 'Kali Linux & Burp Suite Kurulumu', readTime: '15 dk', required: true },
+          { type: 'doc', id: 'doc-http-basics', name: 'HTTP Protokolü & Web Mimarisi', readTime: '12 dk', required: true },
+          { type: 'doc', id: 'doc-devtools', name: 'Tarayıcı DevTools Kullanımı', readTime: '8 dk', required: true },
+        ]
+      },
+      {
+        id: 'phase-2',
+        name: 'Temel Zafiyetler',
+        desc: 'Başlangıç seviyesi web zafiyetlerini keşfet ve sömür.',
+        icon: '🔓',
+        order: 2,
+        type: 'practice',
+        requires: ['phase-1'],
+        items: [
+          { type: 'room', id: 'web-13' },
+          { type: 'room', id: 'web-11' },
+          { type: 'room', id: 'web-15' },
+          { type: 'room', id: 'web-01' },
+          { type: 'room', id: 'web-04' },
+          { type: 'room', id: 'web-14' },
+          { type: 'room', id: 'web-12' },
+        ]
+      },
+      {
+        id: 'phase-3',
+        name: 'Orta Seviye Saldırılar',
+        desc: 'Daha karmaşık zafiyet zincirleri ve istek manipülasyonu.',
+        icon: '⚡',
+        order: 3,
+        type: 'practice',
+        requires: ['phase-2'],
+        items: [
+          { type: 'doc', id: 'doc-burp-proxy', name: 'Burp Suite Proxy ile İstek Manipülasyonu', readTime: '10 dk', required: true },
+          { type: 'room', id: 'web-02' },
+          { type: 'room', id: 'web-05' },
+          { type: 'room', id: 'web-06' },
+        ]
+      },
+      {
+        id: 'phase-4',
+        name: 'İleri Seviye Saldırılar',
+        desc: 'Shell alma, dosya yükleme bypass, SSRF ve JWT sömürüsü.',
+        icon: '🔥',
+        order: 4,
+        type: 'practice',
+        requires: ['phase-3'],
+        items: [
+          { type: 'doc', id: 'doc-shells', name: 'Web Shell & Reverse Shell Temelleri', readTime: '10 dk', required: true },
+          { type: 'room', id: 'web-03' },
+          { type: 'room', id: 'web-07' },
+          { type: 'room', id: 'web-08' },
+          { type: 'room', id: 'web-09' },
+        ]
+      },
+      {
+        id: 'phase-5',
+        name: 'Gerçek Pentest Operasyonu',
+        desc: 'Canlı hedef sitelerde tam sızma testi gerçekleştir.',
+        icon: '💀',
+        order: 5,
+        type: 'pentest',
+        requires: ['phase-4'],
+        premium: true,
+        items: [
+          { type: 'doc', id: 'doc-pentest-methodology', name: 'Pentest Metodolojisi & Raporlama', readTime: '15 dk', required: true },
+          { type: 'target', id: 'target-01', name: 'Hedef Site 1: Keşif & Temel Zafiyetler', targetUrl: 'https://target1.siberkampus.org', flagCount: 5 },
+          { type: 'target', id: 'target-02', name: 'Hedef Site 2: Orta Seviye Sömürü', targetUrl: 'https://target2.siberkampus.org', flagCount: 4 },
+          { type: 'target', id: 'target-03', name: 'Hedef Site 3: İleri Seviye & Shell', targetUrl: 'https://target3.siberkampus.org', flagCount: 3 },
+          { type: 'target', id: 'target-04', name: 'Hedef Site 4: Tam Pentest Operasyonu', targetUrl: 'https://target4.siberkampus.org', flagCount: 6 },
+        ]
+      }
+    ]
+  }
+];
+
+// Resolve room details from SK_CATEGORIES into pathway items
+const SK_ROOMS_MAP = {};
+SK_ALL_ROOMS.forEach(r => { SK_ROOMS_MAP[r.id] = r; });
+
+function getPathwayItemDetails(item) {
+  if (item.type === 'room') {
+    const r = SK_ROOMS_MAP[item.id];
+    return r ? { ...item, name: r.name, difficulty: r.difficulty, points: r.points, users: r.users, desc: r.desc } : item;
+  }
+  return item;
+}
+
+function isPhaseComplete(pathway, phaseId, solvedRooms, completedDocs) {
+  const phase = pathway.phases.find(p => p.id === phaseId);
+  if (!phase) return false;
+  return phase.items.every(item => {
+    if (item.type === 'room') return solvedRooms.includes(item.id);
+    if (item.type === 'doc' && item.required) return completedDocs.includes(item.id);
+    if (item.type === 'target') return solvedRooms.includes(item.id);
+    return true;
+  });
+}
+
+function isPhaseUnlocked(pathway, phaseId, solvedRooms, completedDocs) {
+  const phase = pathway.phases.find(p => p.id === phaseId);
+  if (!phase || !phase.requires) return true;
+  return phase.requires.every(reqId => isPhaseComplete(pathway, reqId, solvedRooms, completedDocs));
+}
+
+function isItemUnlocked(pathway, phaseId, itemIndex, solvedRooms, completedDocs) {
+  if (!isPhaseUnlocked(pathway, phaseId, solvedRooms, completedDocs)) return false;
+  const phase = pathway.phases.find(p => p.id === phaseId);
+  if (!phase || itemIndex <= 0) return true;
+  const prev = phase.items[itemIndex - 1];
+  if (prev.type === 'room') return solvedRooms.includes(prev.id);
+  if (prev.type === 'doc') return completedDocs.includes(prev.id);
+  if (prev.type === 'target') return solvedRooms.includes(prev.id);
+  return true;
+}
+
+Object.assign(window, {
+  SK_CATEGORIES, SK_ALL_ROOMS, SK_ALL_BADGES, MENTOR_LESSONS_INFO,
+  SK_PATHWAYS, SK_ROOMS_MAP, getPathwayItemDetails, isPhaseComplete, isPhaseUnlocked, isItemUnlocked
+});
 

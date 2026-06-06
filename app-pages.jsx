@@ -318,18 +318,43 @@ const NotFoundPage = ({ navigate }) => (
 /* ============ PROFİL (herkese açık) ============ */
 const ProfilePage = ({ navigate, data }) => {
   const [user] = useUser();
-  // data may be a leaderboard user {r,name,pts,lvl,...} or null (own profile)
   const own = !data;
-  const u = data || { name: user.name, pts: user.points, r: user.rank, lvl: user.level };
+  const u = data || { 
+    name: user.name, 
+    pts: user.points, 
+    r: user.rank, 
+    lvl: user.level, 
+    solved: user.solved_count, 
+    badges: user.badges, 
+    streak: user.streak 
+  };
   const initials = u.name.split(' ').map(s => s[0]).join('').slice(0, 2).toUpperCase();
-  const solvedList = own ? JSON.parse(localStorage.getItem('sk_solved_rooms') || '[]') : [];
+  const solvedList = own 
+    ? JSON.parse(localStorage.getItem('sk_solved_rooms') || '[]') 
+    : (window.SK_ALL_ROOMS.slice(0, Math.min(window.SK_ALL_ROOMS.length, u.solved || 0)).map(r => r.id));
   const solved = solvedList.map(id => {
     const room = window.SK_ALL_ROOMS.find(r => r.id === id);
     return room ? { n: room.name, cat: room.cat, pts: room.points, d: room.difficulty } : null;
   }).filter(Boolean);
-  const badgeUser = own ? { points: user.points, level: user.level, rank: user.rank, streak: user.streak } : { points: u.pts || 0, level: u.lvl || 1, rank: u.r || 1000, streak: 0 };
+  const badgeUser = own 
+    ? { points: user.points, level: user.level, rank: user.rank, streak: user.streak } 
+    : { points: u.pts || 0, level: u.lvl || 1, rank: u.r || 1000, streak: u.streak || 0 };
   const dynamicBadges = window.getDynamicBadges ? window.getDynamicBadges(badgeUser, solvedList) : [];
-  const badges = dynamicBadges.filter(b => b.done).map(b => b.icon);
+  let badges = dynamicBadges.filter(b => b.done).map(b => b.icon);
+  
+  if (!own) {
+    const targetCount = u.badges || 0;
+    if (badges.length > targetCount) {
+      badges = badges.slice(0, targetCount);
+    } else if (badges.length < targetCount) {
+      const remainingIcons = dynamicBadges
+        .filter(b => !badges.includes(b.icon))
+        .map(b => b.icon);
+      const needed = targetCount - badges.length;
+      badges = [...badges, ...remainingIcons.slice(0, needed)];
+    }
+  }
+
   return (
     <>
       <AppHeader navigate={navigate} active="" />
