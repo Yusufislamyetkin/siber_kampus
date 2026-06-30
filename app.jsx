@@ -344,7 +344,7 @@ const HomePage = ({ navigate }) => {
               Türkiye'nin Tamamen Birebir Siber Güvenlik Eğitimi
             </span>
             <h1 className="text-[clamp(40px,6vw,78px)] text-[#eafff5] mb-[18px] tracking-[-.025em]">
-              <span className="glitch" data-text="Siber Güvenlik">Siber Güvenlik</span><br /><span className="text-[clamp(20px,3vw,38px)] text-[#00ff88]">Özel Ders & Birebir Mentorluk</span>
+              <span className="glitch" data-text="Siber Güvenlik Özel Ders">Siber Güvenlik Özel Ders</span>
             </h1>
             <div className="text-[15.5px] text-[#74998a] max-w-[560px] mb-8 leading-[1.8] space-y-[13px]">
               <div className="text-[#cdeede] text-[16px]">Videolar arasında kaybolmayın. Sektör profesyonelleri eşliğinde, tamamen size özel hazırlanan müfredatla canlı ve uygulamalı öğrenin.</div>
