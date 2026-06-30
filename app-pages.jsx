@@ -40,7 +40,7 @@ const AboutPage = ({ navigate }) => {
     { av: 'YY', name: 'Yusuf İslam Yetkin', role: 'Kurucu', tag: 'Software Arch.' },
     { av: 'ZY', name: 'Zeynep Yıldız', role: 'Eğitim Direktörü', tag: 'CISSP' },
     { av: 'EÇ', name: 'Emre Çelik', role: 'Lab Mimarı', tag: 'Red Team' },
-    { av: 'MT', name: 'Melis Taş', role: 'Topluluk Lideri', tag: 'CTF Player' },
+    { av: 'MT', name: 'Melis Taş', role: 'Eğitim Koçu', tag: 'Web Security' },
   ];
   return (
     <>
@@ -49,8 +49,8 @@ const AboutPage = ({ navigate }) => {
         <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[820px] h-[440px] z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center,rgba(0,255,136,.13),transparent 62%)' }}></div>
         <div className="max-w-[860px] mx-auto px-8 relative z-[2] text-center py-24">
           <Label>Hakkımızda</Label>
-          <h1 className="text-[clamp(34px,5vw,58px)] text-[#eafff5] mb-5">Hacker'ları <span className="text-[#00ff88]">Klavyede</span> Yetiştiriyoruz</h1>
-          <p className="text-[#74998a] text-lg leading-relaxed max-w-[640px] mx-auto">siberkampus, siber güvenliği izlenecek bir ders değil, oynanacak bir oyun haline getirmek için kuruldu. Amacımız net: Türkiye'de yeni nesil siber güvenlik uzmanlarını, gerçek sistemleri ele geçirerek öğrenebilecekleri bir kampüste yetiştirmek.</p>
+          <h1 className="text-[clamp(34px,5vw,58px)] text-[#eafff5] mb-5">Güvenlik Uzmanlarını <span className="text-[#00ff88]">Klavyede</span> Yetiştiriyoruz</h1>
+          <p className="text-[#74998a] text-lg leading-relaxed max-w-[640px] mx-auto">Siber Kampüs Akademi, siber güvenliği izlenecek bir ders değil, oynanacak bir oyun haline getirmek için kuruldu. Amacımız net: Türkiye'de yeni nesil siber güvenlik uzmanlarını, gerçek sistemleri ele geçirerek öğrenebilecekleri bir kampüste yetiştirmek.</p>
         </div>
       </section>
 
@@ -61,13 +61,13 @@ const AboutPage = ({ navigate }) => {
             <Label>Hikayemiz</Label>
             <h2 className="text-[clamp(26px,3.5vw,38px)] text-[#eafff5] mb-5">Bir Terminal, Bir Merak</h2>
             <div className="space-y-4 text-[#74998a] leading-relaxed">
-              <p>siberkampus, "siber güvenliğe nereden başlasam?" sorusuna takılıp kalmış öğrencilerin hayal kırıklığından doğdu. Dağınık videolar, kurması saatler süren sanal makineler ve gerçek pratikten kopuk teori... Biz bunu kırmak istedik.</p>
-              <p>Bugün, kurulum gerektirmeyen tarayıcı tabanlı laboratuvarlarımızda binlerce öğrenci gerçek zafiyetleri sömürerek öğreniyor. İlk bayrağını yakalayan herkesin gözündeki o kıvılcım, bizi her gün daha fazlasını üretmeye itiyor.</p>
-              <p>siberkampus, kurucumuz <strong className="text-[#cdeede]">Yusuf İslam Yetkin</strong>'in vizyonuyla şekillendi — uzun yıllar finans ve enterprise sistemlerde çalışmış, ölçeklenen güvenli sistemler kurmuş deneyimli bir yazılım mühendisi. Sahada öğrendiği bir gerçeği bu platforma taşıdı: güvenlik, kodu kıranı anlamadan kurulamaz.</p>
+              <p>Siber Kampüs Akademi, "siber güvenliğe nereden başlasam?" sorusuna takılıp kalmış öğrencilerin hayal kırıklığından doğdu. Dağınık videolar, kurması saatler süren sanal makineler ve gerçek pratikten kopuk teori... Biz bunu kırmak istedik.</p>
+              <p>Bugün, birebir canlı eğitimlerimizde yüzlerce öğrenci gerçek saldırı senaryolarını bir eğitmenle adım adım uygulayarak öğreniyor. İlk kez bir sistemi kendi elleriyle analiz eden herkesin gözündeki o kıvılcım, bizi her gün daha fazlasını üretmeye itiyor.</p>
+              <p>Siber Kampüs Akademi, kurucumuz <strong className="text-[#cdeede]">Yusuf İslam Yetkin</strong>'in vizyonuyla şekillendi — uzun yıllar finans ve enterprise sistemlerde çalışmış, ölçeklenen güvenli sistemler kurmuş deneyimli bir yazılım mühendisi. Sahada öğrendiği bir gerçeği bu platforma taşıdı: güvenlik, kodu kıranı anlamadan kurulamaz.</p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            {[[totalUsers.toLocaleString('tr-TR') + '+', 'Aktif Öğrenci'], [(window.SK_ALL_ROOMS ? window.SK_ALL_ROOMS.length : 15) + '+', 'Hacking Laboratuvarı'], ['90+', 'CTF Görevi'], ['2026', 'Kuruluş']].map(([n, l], i) => (
+            {[['1.227+', 'Eğitim Alan Öğrenci'], ['10.000+', 'Saat Canlı Eğitim'], ['98+', 'Saldırı Senaryosu'], ['2022', 'Kuruluş']].map(([n, l], i) => (
               <div key={i} className="rounded-2xl border border-[#0c2719] p-7 text-center" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                 <div className="font-disp font-bold text-3xl text-[#00ff88] drop-shadow-[0_0_22px_rgba(0,255,136,.3)]">{n}</div>
                 <div className="text-xs text-[#74998a] mt-2 tracking-wide">{l}</div>
@@ -120,9 +120,9 @@ const AboutPage = ({ navigate }) => {
 const ContactPage = ({ navigate }) => {
   const [sent, setSent] = useState(false);
   const channels = [
-    { icon: '✉️', t: 'E-posta', v: 'destek@siberkampus.com' },
-    { icon: '💬', t: 'Canlı Sohbet', v: 'Topluluk kanalı · 7/24' },
-    { icon: '🐦', t: 'Sosyal Medya', v: '@siberkampus' },
+    { icon: '✉️', t: 'E-posta', v: 'destek@siberkampus.org', href: 'mailto:destek@siberkampus.org' },
+    { icon: '📞', t: 'Telefon', v: '0538 935 11 89', href: 'tel:+905389351189' },
+    { icon: '💬', t: 'WhatsApp', v: '0538 935 11 89', href: 'https://wa.me/905389351189' },
   ];
   return (
     <>
@@ -138,10 +138,10 @@ const ContactPage = ({ navigate }) => {
         <div className="max-w-[1080px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-10">
           <div className="space-y-4">
             {channels.map((c, i) => (
-              <div key={i} className="flex items-center gap-4 rounded-xl border border-[#0c2719] p-5" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
+              <a key={i} href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined} className="flex items-center gap-4 rounded-xl border border-[#0c2719] p-5 hover:border-[#103a26] transition-colors" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                 <span className="w-11 h-11 flex-none rounded-lg grid place-items-center text-lg border border-[#103a26] bg-[rgba(0,255,136,.04)]">{c.icon}</span>
                 <div><div className="text-xs text-[#74998a]">{c.t}</div><div className="text-sm text-[#eafff5] font-mono mt-0.5">{c.v}</div></div>
-              </div>
+              </a>
             ))}
             <div className="rounded-xl border border-[#103a26] p-5 bg-[rgba(0,255,136,.03)]">
               <p className="text-sm text-[#74998a] leading-relaxed"><span className="text-[#00ff88]">⚡ Hızlı yanıt:</span> Teknik sorular için <button onClick={() => navigate('support')} className="text-[#00ff88] hover:text-[#5cffba] underline">Destek</button> sayfasındaki SSS'e göz at — çoğu cevap orada.</p>
@@ -178,18 +178,18 @@ const ContactPage = ({ navigate }) => {
 const SupportPage = ({ navigate }) => {
   const [open, setOpen] = useState(0);
   const faqs = [
-    { q: 'Laboratuvarları çözmek için bir şey kurmam gerekiyor mu?', a: 'Hayır. Tüm laboratuvarlar tarayıcı tabanlıdır. Sanal makine, dual boot ya da yapılandırma gerekmez — "Başlat" demen yeterli.' },
-    { q: 'Hiç deneyimim yok, başlayabilir miyim?', a: 'Kesinlikle. Başlangıç seviyesi laboratuvarlar temel Linux ve ağ bilgisinden başlar. Yol haritası seni elinden tutarak ileri seviyeye taşır.' },
-    { q: 'İpucu almak puanımı düşürür mü?', a: 'İlk ipucu genelde ücretsizdir; sonraki her ipucu görev puanından küçük bir düşüş yapar. Böylece kendin çözmeye teşvik edilirsin.' },
-    { q: 'Rozet ve sertifikalar geçerli mi?', a: 'Her sertifika doğrulanabilir bir koda sahiptir ve CV ya da LinkedIn profiline eklenebilir. Tamamladığın yolları işverenlere kanıtlarsın.' },
-    { q: 'Ücretsiz mi, ücretli mi?', a: 'Çok sayıda laboratuvar ücretsizdir. İleri seviye içerikler ve takım özellikleri için planlarımız mevcuttur.' },
-    { q: 'Bir laboratuvar bozulursa ne yaparım?', a: 'Laboratuvarı sıfırlayabilir ya da Destek üzerinden talep açabilirsin. İzole ortamlar olduğu için sıfırlama saniyeler sürer.' },
+    { q: 'Eğitimler nasıl işleniyor?', a: 'Tüm eğitimlerimiz birebir canlı olarak, ekran paylaşımıyla işlenir. Eğitmeninizle gerçek saldırı senaryolarını adım adım uygular, anında geri bildirim alırsınız.' },
+    { q: 'Hiç deneyimim yok, başlayabilir miyim?', a: 'Kesinlikle. Eğitim programı sizin seviyenize göre şekillenir. Temel ağ ve Linux bilgisinden başlayıp ileri seviyeye birlikte ilerleriz.' },
+    { q: 'Ders saatlerini nasıl belirliyoruz?', a: 'Ders saatleri eğitmeninizle birlikte, size uygun şekilde planlanır. Esnek bir program ile çalışma/okul hayatınıza uyum sağlar.' },
+    { q: 'Sertifika geçerli mi?', a: 'Eğitimi tamamladığınızda Siber Kampüs Akademi onaylı bir başarı sertifikası ve iş başvurularında fark yaratacak mentör referans mektubu alırsınız.' },
+    { q: 'VIP kaynaklara nasıl erişirim?', a: 'Bir eğitim paketi satın aldığınızda, e-postanıza gelen bağlantı ile şifrenizi belirleyip VIP panele giriş yaparsınız. VIP kaynak arşivi ve VIP sohbet burada sizi bekler.' },
+    { q: 'Ödeme nasıl yapılıyor?', a: 'Ödemeler PayTR güvenli altyapısı üzerinden, kredi/banka kartı ile tek seferde yapılır. Kart bilgileriniz sunucularımızda saklanmaz.' },
   ];
   const cats = [
-    { icon: '🚀', t: 'Başlangıç Rehberi', d: 'İlk laboratuvarını çözme adımları' },
-    { icon: '🧩', t: 'Görev & CTF', d: 'Bayrak formatı, ipuçları, puanlama' },
-    { icon: '👤', t: 'Hesap & Profil', d: 'Şifre, ayarlar, rozetler' },
-    { icon: '💳', t: 'Plan & Ödeme', d: 'Abonelik ve faturalandırma' },
+    { icon: '🚀', t: 'Başlangıç Rehberi', d: 'Eğitime nasıl başlanır' },
+    { icon: '🎯', t: 'Eğitim & Mentörlük', d: 'Birebir ders akışı ve içerik' },
+    { icon: '👑', t: 'VIP Erişim', d: 'VIP panel, sohbet ve kaynaklar' },
+    { icon: '💳', t: 'Plan & Ödeme', d: 'Paketler ve faturalandırma' },
   ];
   return (
     <>
@@ -277,24 +277,53 @@ const LegalLayout = ({ navigate, kicker, title, updated, sections }) => (
 );
 
 const TermsPage = ({ navigate }) => (
-  <LegalLayout navigate={navigate} kicker="Yasal" title="Kullanım Şartları" updated="5 Haziran 2026" sections={[
-    { h: 'Hizmetin Tanımı', p: ['siberkampus, eğitim amaçlı siber güvenlik laboratuvarları ve CTF görevleri sunan bir öğrenme platformudur. Tüm içerik yalnızca yasal, etik öğrenme amacıyla sağlanır.'] },
+  <LegalLayout navigate={navigate} kicker="Yasal" title="Kullanım Şartları & Mesafeli Satış Sözleşmesi" updated="11 Haziran 2026" sections={[
+    { h: 'Satıcı Bilgileri', p: ['Ünvan: Siber Kampüs Akademi', 'Adres: Evliya Çelebi Mah. Şener Sok. No:11 Tuzla/İstanbul', 'Telefon: 0538 935 11 89', 'E-posta: destek@siberkampus.org', 'Web: www.siberkampus.org'] },
+    { h: 'Hizmetin Tanımı', p: ['Siber Kampüs Akademi, birebir canlı siber güvenlik eğitimi, eğitmenle özel danışma (VIP sohbet) ve VIP teknik kaynak arşivi sunan bir dijital öğrenme platformudur. Tüm içerik yalnızca yasal, etik öğrenme amacıyla sağlanır.', 'Satın alınan eğitim paketlerinin içeriği, özellikleri ve ücreti sipariş sayfasında (siberkampus.org/pricing) belirtilmiştir.'] },
+    { h: 'Sözleşmenin Konusu', p: ['İşbu sözleşmenin konusu, ALICI\'nın SATICI\'ya ait internet sitesinden elektronik ortamda sipariş verdiği dijital eğitim hizmetinin satışı ve teslimi ile ilgili olarak 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği gereğince tarafların hak ve yükümlülüklerinin belirlenmesidir.'] },
+    { h: 'Ödeme ve Fiyatlandırma', p: ['Tüm fiyatlar Türk Lirası (TL) cinsinden ve KDV dahil olarak belirtilmiştir. Ödeme, kredi kartı veya banka kartı ile tek çekim olarak alınmaktadır. Ödeme işlemleri PayTR güvenli ödeme altyapısı üzerinden PCI-DSS standartlarına uygun şekilde gerçekleştirilir. Kart bilgileriniz sunucularımızda saklanmaz.'] },
+    { h: 'Teslimat', p: ['Dijital eğitim içerikleri, ödemenin onaylanmasının ardından kullanıcının e-posta adresine gönderilen şifre belirleme bağlantısı aracılığıyla hesabına tanımlanır. Hesap aktifleştirme işlemi tamamlandıktan sonra eğitim içeriklerine anında erişim sağlanır.', '1\'e 1 Canlı Eğitim paketlerinde ödeme sonrası 7 iş günü içinde ders programı oluşturularak eğitim başlatılır.'] },
     { h: 'Hesap Sorumluluğu', p: ['Hesabınızın güvenliğinden ve hesabınız altında gerçekleştirilen tüm etkinliklerden siz sorumlusunuz. Şifrenizi gizli tutmayı ve şüpheli bir durumda bizi bilgilendirmeyi kabul edersiniz.'] },
-    { h: 'Kabul Edilebilir Kullanım', p: ['Platformda öğrendiğiniz teknikleri yalnızca size ait ya da açıkça izin verilmiş sistemlerde kullanabilirsiniz. İzinsiz sistemlere yönelik saldırılar yasa dışıdır ve kesinlikle yasaktır.', 'Laboratuvar ortamlarını platform dışına taşımaya, diğer kullanıcılara zarar vermeye ya da altyapımızı kötüye kullanmaya çalışmak hesabınızın askıya alınmasına yol açar.'] },
-    { h: 'Fikri Mülkiyet', p: ['Laboratuvarlar, görevler, içerikler ve marka unsurları siberkampus\'a aittir. Yazılı izin olmadan çoğaltılamaz ya da yeniden dağıtılamaz.'] },
-    { h: 'Sorumluluğun Sınırı', p: ['Hizmet "olduğu gibi" sunulur. Platformun kesintisiz ya da hatasız olacağını garanti etmeyiz. Öğrenilen bilgilerin kötüye kullanımından doğan sorumluluk tamamen kullanıcıya aittir.'] },
+    { h: 'Kabul Edilebilir Kullanım', p: ['Eğitimlerde öğrendiğiniz teknikleri yalnızca size ait ya da açıkça izin verilmiş sistemlerde kullanabilirsiniz. İzinsiz sistemlere yönelik saldırılar yasa dışıdır ve kesinlikle yasaktır.', 'Eğitim içeriklerini ve VIP kaynakları izinsiz çoğaltmaya, platform dışına taşımaya, diğer kullanıcılara zarar vermeye ya da altyapımızı kötüye kullanmaya çalışmak hesabınızın askıya alınmasına yol açar.'] },
+    { h: 'Cayma Hakkı', p: ['6502 sayılı Kanun\'un 48. maddesi ve Mesafeli Sözleşmeler Yönetmeliği uyarınca tüketici, dijital içeriğin ifasına başlanmadan önce 14 gün içinde herhangi bir gerekçe göstermeksizin cayma hakkını kullanabilir.', 'Dijital içeriğin ifasına (eğitim içeriklerine erişim) başlandıktan sonra cayma hakkı kullanılamaz. 1\'e 1 canlı eğitimlerde ise cayma hakkı ilk dersin yapılmasından önce geçerlidir.'] },
+    { h: 'Fikri Mülkiyet', p: ['Eğitim içerikleri, VIP teknik kaynaklar, ders materyalleri ve marka unsurları Siber Kampüs Akademi\'ye aittir. Yazılı izin olmadan çoğaltılamaz, dağıtılamaz veya ticari amaçla kullanılamaz.'] },
+    { h: 'Uyuşmazlık Çözümü', p: ['İşbu sözleşmeden doğan uyuşmazlıklarda Türkiye Cumhuriyeti yasaları uygulanır. İstanbul Anadolu Mahkemeleri ve İcra Daireleri yetkilidir.'] },
     { h: 'Değişiklikler', p: ['Bu şartları zaman zaman güncelleyebiliriz. Önemli değişiklikler platform üzerinden duyurulur. Hizmeti kullanmaya devam etmeniz güncel şartları kabul ettiğiniz anlamına gelir.'] },
   ]} />
 );
 
 const PrivacyPage = ({ navigate }) => (
-  <LegalLayout navigate={navigate} kicker="Yasal" title="Gizlilik Politikası" updated="5 Haziran 2026" sections={[
-    { h: 'Topladığımız Veriler', p: ['Hesap oluştururken ad, e-posta ve şifre gibi temel bilgileri topluyoruz. Platform kullanımınız sırasında çözdüğünüz görevler, puanlar ve ilerleme verileriniz kaydedilir.'] },
-    { h: 'Verileri Nasıl Kullanırız', p: ['Verileriniz; ilerlemenizi takip etmek, liderlik tablosunu oluşturmak, sertifikalarınızı doğrulamak ve deneyiminizi iyileştirmek için kullanılır. Pazarlama amaçlı kullanım yalnızca açık onayınızla yapılır.'] },
+  <LegalLayout navigate={navigate} kicker="Yasal" title="Gizlilik Politikası & KVKK Aydınlatma Metni" updated="11 Haziran 2026" sections={[
+    { h: 'Veri Sorumlusu', p: ['Siber Kampüs Akademi', 'Adres: Evliya Çelebi Mah. Şener Sok. No:11 Tuzla/İstanbul', 'Telefon: 0538 935 11 89', 'E-posta: destek@siberkampus.org', '6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında veri sorumlusu sıfatıyla aşağıdaki aydınlatma metnini bilginize sunarız.'] },
+    { h: 'Topladığımız Veriler', p: ['Hesap oluştururken ad, e-posta adresi ve şifre (hashlenmiş) gibi temel bilgileri topluyoruz. Eğitim sürecinde ders programınız, VIP sohbet mesajlarınız ve ödeme işlem bilgileri kaydedilir.', 'Ödeme sırasında kart bilgileriniz PayTR güvenli altyapısı üzerinden işlenir ve sunucularımızda saklanmaz.'] },
+    { h: 'Verilerin İşlenme Amacı', p: ['Kişisel verileriniz; üyelik işlemlerinin gerçekleştirilmesi, birebir eğitim hizmetinin sunulması, ders programının planlanması, sertifikalarınızın düzenlenmesi, ödeme işlemlerinin yürütülmesi ve yasal yükümlülüklerin yerine getirilmesi amacıyla işlenmektedir.'] },
+    { h: 'Verilerin Aktarılması', p: ['Kişisel verilerinizi üçüncü taraflara satmıyoruz. Ödeme işlemleri için PayTR ödeme altyapısına, e-posta bildirimleri için Brevo (Sendinblue) hizmetine gerekli veriler aktarılmaktadır. Bunun dışında yasal zorunluluklar haricinde veri paylaşımı yapılmaz.'] },
     { h: 'Çerezler', p: ['Oturumunuzu açık tutmak ve tercihlerinizi hatırlamak için çerezler kullanırız. Tarayıcı ayarlarınızdan çerezleri yönetebilirsiniz; ancak bazı özellikler çerezler olmadan çalışmayabilir.'] },
-    { h: 'Veri Paylaşımı', p: ['Kişisel verilerinizi üçüncü taraflara satmıyoruz. Liderlik tablosunda yalnızca kullanıcı adınız ve puanınız herkese görünürdür. Yasal zorunluluklar dışında veri paylaşımı yapılmaz.'] },
-    { h: 'Güvenlik', p: ['Verileriniz şifrelenerek saklanır ve erişim sıkı şekilde sınırlandırılır. Bir siber güvenlik platformu olarak kendi güvenliğimizi en üst düzeyde tutmayı taahhüt ederiz.'] },
-    { h: 'Haklarınız', p: ['Verilerinize erişme, düzeltme ya da silinmesini talep etme hakkına sahipsiniz. Bu talepler için İletişim sayfasından bize ulaşabilirsiniz.'] },
+    { h: 'Veri Güvenliği', p: ['Verileriniz şifrelenerek saklanır ve erişim sıkı şekilde sınırlandırılır. Şifreler bcrypt algoritması ile hashlenmiş olarak tutulur. SSL/TLS şifreleme ile veri iletimi güvence altındadır.'] },
+    { h: 'KVKK Kapsamındaki Haklarınız', p: ['6698 sayılı KVKK\'nın 11. maddesi uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmiş ise buna ilişkin bilgi talep etme, verilerin işlenme amacını öğrenme, yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme, verilerin silinmesini veya yok edilmesini isteme ve işlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme haklarına sahipsiniz.', 'Taleplerinizi destek@siberkampus.org adresine iletebilirsiniz. Başvurularınız en geç 30 gün içinde sonuçlandırılacaktır.'] },
+    { h: 'Veri Saklama Süresi', p: ['Kişisel verileriniz, işlenme amaçları için gerekli olan süre boyunca ve yasal yükümlülükler çerçevesinde saklanır. Hesabınızı silmeniz halinde verileriniz yasal saklama süreleri dışında 30 gün içinde imha edilir.'] },
+  ]} />
+);
+
+const RefundPolicyPage = ({ navigate }) => (
+  <LegalLayout navigate={navigate} kicker="Yasal" title="İade ve İptal Koşulları" updated="11 Haziran 2026" sections={[
+    { h: 'Genel', p: ['Bu politika, siberkampus.org üzerinden satın alınan dijital eğitim hizmetlerinin iade ve iptal koşullarını düzenlemektedir.', 'Siber Kampüs Akademi — Evliya Çelebi Mah. Şener Sok. No:11 Tuzla/İstanbul'] },
+    { h: 'Dijital İçerik İadesi', p: ['Dijital eğitim içeriklerinin iadesi, içeriğe henüz erişim sağlanmamış (hesap aktifleştirilmemiş) olması halinde, satın alma tarihinden itibaren 14 gün içinde yapılabilir.', 'Eğitim içeriklerine erişim sağlandıktan (şifre belirlenerek hesap aktifleştirildikten) sonra, 6502 sayılı Kanun\'un 53/ı maddesi uyarınca cayma hakkı kullanılamaz.'] },
+    { h: '1\'e 1 Canlı Eğitim İptali', p: ['Canlı eğitim programı başlamadan (ilk ders yapılmadan) en az 7 gün önce iptal talebi yapılması halinde, ödenen bedelin tamamı iade edilir.', 'İlk ders yapıldıktan sonra iptal talebi yapılması halinde, kalan ders sayısı üzerinden orantılı iade hesaplanır.', 'Eğitimin yarısından fazlası tamamlandıktan sonra iade yapılmaz.'] },
+    { h: 'İade Süreci', p: ['İade talepleri destek@siberkampus.org adresine e-posta ile iletilmelidir. E-postada sipariş numarası, kayıtlı e-posta adresi ve iade gerekçesi belirtilmelidir.', 'İade bedeli, talebin onaylanmasından itibaren 14 iş günü içinde ödeme yapılan kredi kartına/banka kartına iade edilir. İade işlemi bankanıza bağlı olarak hesabınıza 2-3 iş günü içinde yansıyabilir.'] },
+    { h: 'İptal İşlemi', p: ['Eğitim paketi iptalleri destek@siberkampus.org adresine e-posta gönderilerek gerçekleştirilir. İptal talebiniz en geç 3 iş günü içinde değerlendirilir.'] },
+    { h: 'İstisna Durumlar', p: ['Teknik bir sorun nedeniyle eğitim içeriklerine erişim sağlanamaması halinde, sorunun 48 saat içinde çözülememesi durumunda tam iade yapılır.', 'Promosyon veya indirimli kampanya kapsamında satın alınan eğitimlerde iade koşulları, kampanya şartlarında aksi belirtilmedikçe bu politikaya tabidir.'] },
+  ]} />
+);
+
+const DeliveryPolicyPage = ({ navigate }) => (
+  <LegalLayout navigate={navigate} kicker="Yasal" title="Teslimat Koşulları" updated="11 Haziran 2026" sections={[
+    { h: 'Hizmet Türü', p: ['Siber Kampüs Akademi tarafından sunulan tüm eğitim hizmetleri dijital içerik niteliğindedir. Fiziksel ürün satışı veya kargo ile teslimat yapılmamaktadır.'] },
+    { h: 'Dijital İçerik Teslimatı', p: ['Ödemenin başarıyla tamamlanmasının ardından, kayıt sırasında belirtilen e-posta adresine şifre belirleme bağlantısı gönderilir.', 'Kullanıcı şifresini belirledikten sonra eğitim içeriklerine anında erişim sağlar. Teslimat süresi, ödeme onayından itibaren ortalama 5 dakika içinde gerçekleşir.'] },
+    { h: '1\'e 1 Canlı Eğitim Teslimatı', p: ['1\'e 1 Canlı Siber Güvenlik Eğitimi paketinde ödeme onayının ardından 7 iş günü içinde eğitim programı ve ders takvimi oluşturulur.', 'Ders programı, kullanıcının kayıtlı e-posta adresine gönderilir. Dersler online video konferans aracılığıyla gerçekleştirilir.'] },
+    { h: 'Erişim Süresi', p: ['Dijital eğitim içerikleri satın alındıktan sonra ömür boyu erişime açıktır (platform aktif olduğu sürece).', '1\'e 1 Canlı Eğitim ders materyallerine de ömür boyu erişim sağlanır.'] },
+    { h: 'Teknik Gereksinimler', p: ['Eğitim içeriklerine erişim için internet bağlantısı ve güncel bir web tarayıcısı (Chrome, Firefox, Safari, Edge) yeterlidir. Özel bir yazılım veya donanım gerekmemektedir.'] },
+    { h: 'İletişim', p: ['Teslimat ile ilgili sorunlarınız için destek@siberkampus.org adresine e-posta gönderebilir veya İletişim sayfamız üzerinden bize ulaşabilirsiniz.'] },
   ]} />
 );
 
@@ -320,7 +349,7 @@ const NotFoundPage = ({ navigate }) => (
         </div>
         <div className="flex gap-3 justify-center mt-7 flex-wrap">
           <button onClick={() => navigate('home')} className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-6 py-3.5 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] transition-all">Anasayfaya Dön →</button>
-          <button onClick={() => navigate('rooms')} className="font-mono text-sm text-[#cdeede] px-6 py-3.5 border border-[#103a26] hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">Laboratuvarlara Git</button>
+          <button onClick={() => navigate('pricing')} className="font-mono text-sm text-[#cdeede] px-6 py-3.5 border border-[#103a26] hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">Eğitim Programı</button>
         </div>
       </div>
     </section>
@@ -381,7 +410,7 @@ const ProfilePage = ({ navigate, data }) => {
               <h1 className="text-3xl text-[#eafff5] whitespace-nowrap" style={{ lineHeight: 1.2 }}>{u.name}</h1>
               {own && <span className="font-mono text-[10px] text-[#00ff88] border border-[#103a26] px-2 py-1 rounded-full bg-[rgba(0,255,136,.04)]">Bu sensin</span>}
             </div>
-            <p className="text-sm text-[#74998a] mt-1.5 font-mono">@{u.name.toLowerCase().replace(/\s+/g, '')} · {u.lvl ? 'Level ' + u.lvl : 'Hacker'}</p>
+            <p className="text-sm text-[#74998a] mt-1.5 font-mono">@{u.name.toLowerCase().replace(/\s+/g, '')} · {u.lvl ? 'Level ' + u.lvl : 'Güvenlik Uzmanı'}</p>
             <div className="flex items-center justify-center sm:justify-start gap-6 mt-5">
               {[['Sıra', '#' + u.r], ['Puan', (u.pts || 0).toLocaleString('tr-TR')], ['Rozet', badges.length], ['Çözülen', solved.length]].map(([l, v], i) => (
                 <div key={i} className="text-center"><div className="font-disp font-bold text-2xl text-[#00ff88]">{v}</div><div className="text-[11px] text-[#74998a] tracking-wide">{l}</div></div>
@@ -488,47 +517,39 @@ const CertificatesPage = ({ navigate }) => {
   const netSolvedCount = solvedList.filter(id => id.startsWith('net-')).length;
   const totalSolved = solvedList.length;
 
+  const lessonsProgress = (() => {
+    try {
+      const saved = localStorage.getItem('sk_lessons_progress');
+      return saved ? JSON.parse(saved) : { 'ag-guvenligi': 0, 'uyg-guvenligi': 0 };
+    } catch (e) {
+      return { 'ag-guvenligi': 0, 'uyg-guvenligi': 0 };
+    }
+  })();
+
+  const agProgress = lessonsProgress['ag-guvenligi'] || 0;
+  const uygProgress = lessonsProgress['uyg-guvenligi'] || 0;
+
   const certs = [
     {
-      title: 'Web Exploitation Temelleri',
-      code: webSolvedCount >= 10 ? `SK-WEB-2026-${(user.name || '').slice(0,3).toUpperCase()}-${1000 + (user.points || 0)}` : null,
-      date: webSolvedCount >= 10 ? '05 Haz 2026' : null,
-      done: webSolvedCount >= 10,
-      tasksDone: webSolvedCount,
-      tasksRequired: 10,
-      prog: Math.min(99, Math.round((webSolvedCount / 10) * 100)),
-      desc: 'Bu sertifika sahibi, siberkampus bünyesindeki uygulamalı Web Güvenliği eğitimini başarıyla tamamlamıştır. Eğitim sürecinde SQL Injection, Cross-Site Scripting (XSS), CSRF ve Dosya Yükleme Açıklıkları (File Upload Bypass) gibi kritik zafiyetlerin tespiti, sömürülmesi ve kapatılması konularında pratik yetkinlik kazanarak, ilgili tüm hacking laboratuvarlarını ve CTF görevlerini çözmüştür.'
+      title: 'Ağ Güvenliği Uzmanlığı',
+      code: agProgress >= 30 ? `SK-NET-2026-${(user.name || '').slice(0,3).toUpperCase()}-${1000 + (user.points || 0)}` : null,
+      date: agProgress >= 30 ? '30 Haz 2026' : null,
+      done: agProgress >= 30,
+      tasksDone: Math.min(agProgress, 30),
+      tasksRequired: 30,
+      prog: Math.min(100, Math.round((agProgress / 30) * 100)),
+      desc: 'Bu sertifika sahibi, Siber Kampüs Akademi bünyesindeki 30 derslik Ağ Güvenliği eğitimini ve tüm değerlendirme testlerini başarıyla tamamlamıştır. Eğitim sürecinde TCP/IP ve OSI modelleri, ağ tarama ve keşif metodolojileri, Wireshark ile paket analizi, ARP zehirlenmesi, DHCP starvation ve kablosuz ağ güvenliği konularında üstün başarı göstererek uzmanlık yetkinliği kazanmıştır.'
     },
     {
-      title: 'Linux Sistem Güvenliği',
-      code: sysSolvedCount >= 10 ? `SK-LIN-2026-${(user.name || '').slice(0,3).toUpperCase()}-${1000 + (user.points || 0)}` : null,
-      date: sysSolvedCount >= 10 ? '05 Haz 2026' : null,
-      done: sysSolvedCount >= 10,
-      tasksDone: sysSolvedCount,
-      tasksRequired: 10,
-      prog: Math.min(99, Math.round((sysSolvedCount / 10) * 100)),
-      desc: 'Bu sertifika sahibi, siberkampus bünyesindeki Linux Sistem Güvenliği ve Ayrıcalık Yükseltme eğitimini başarıyla tamamlamıştır. Eğitim sürecinde SUID/SGID haklarının kötüye kullanımı, Cron Job zafiyetleri, PATH suistimalleri, Linux Kernel Exploitleri ve sistem sıkılaştırma (Hardening) konularında pratik yetkinlik kazanarak, ilgili tüm hacking laboratuvarlarını ve CTF görevlerini çözmüştür.'
-    },
-    {
-      title: 'Ağ Sızma Testi',
-      code: netSolvedCount >= 10 ? `SK-NET-2026-${(user.name || '').slice(0,3).toUpperCase()}-${1000 + (user.points || 0)}` : null,
-      date: netSolvedCount >= 10 ? '05 Haz 2026' : null,
-      done: netSolvedCount >= 10,
-      tasksDone: netSolvedCount,
-      tasksRequired: 10,
-      prog: Math.min(99, Math.round((netSolvedCount / 10) * 100)),
-      desc: 'Bu sertifika sahibi, siberkampus bünyesindeki kurumsal Ağ Sızma Testleri eğitimini başarıyla tamamlamıştır. Eğitim sürecinde Nmap ile gelişmiş keşif, ARP Zehirlemesi, SMB zafiyetleri ve Active Directory ortamlarında bilgi toplama ve sömürü faaliyetleri yürüterek pratik yetkinlik kazanmış, ilgili tüm hacking laboratuvarlarını ve CTF görevlerini çözmüştür.'
-    },
-    {
-      title: 'İleri CTF & Red Team',
-      code: totalSolved >= 20 ? `SK-RED-2026-${(user.name || '').slice(0,3).toUpperCase()}-${1000 + (user.points || 0)}` : null,
-      date: totalSolved >= 20 ? '05 Haz 2026' : null,
-      done: totalSolved >= 20,
-      tasksDone: totalSolved,
-      tasksRequired: 20,
-      prog: Math.min(99, Math.round((totalSolved / 20) * 100)),
-      desc: 'Bu sertifika sahibi, siberkampus bünyesindeki İleri CTF ve Red Team Metodolojileri eğitimini başarıyla tamamlamıştır. Eğitim sürecinde çok adımlı sızma senaryoları, ağlar arası pivotlama ve tünelleme, custom backdoor yazımı ve anti-debug korumalarını atlatma konularında pratik yetkinlik kazanarak, ilgili tüm hacking laboratuvarlarını ve CTF görevlerini çözmüştür.'
-    },
+      title: 'Uygulama Güvenliği Uzmanlığı',
+      code: uygProgress >= 30 ? `SK-APP-2026-${(user.name || '').slice(0,3).toUpperCase()}-${1000 + (user.points || 0)}` : null,
+      date: uygProgress >= 30 ? '30 Haz 2026' : null,
+      done: uygProgress >= 30,
+      tasksDone: Math.min(uygProgress, 30),
+      tasksRequired: 30,
+      prog: Math.min(100, Math.round((uygProgress / 30) * 100)),
+      desc: 'Bu sertifika sahibi, Siber Kampüs Akademi bünyesindeki 30 derslik Uygulama Güvenliği eğitimini ve tüm değerlendirme testlerini başarıyla tamamlamıştır. Eğitim sürecinde OWASP Top 10 standartları, SQL Injection (SQLi), Cross-Site Scripting (XSS), CSRF, LFI/RFI, XXE, SSRF, JWT manipülasyonu, CORS zafiyetleri, güvenli kod analizi (SAST/DAST) ve DevSecOps prensipleri konularında üstün başarı göstererek uzmanlık yetkinliği kazanmıştır.'
+    }
   ];
 
   const CertVisual = ({ cert, forDownload }) => {
@@ -729,27 +750,7 @@ const CertificatesPage = ({ navigate }) => {
         <button onClick={() => navigate('dashboard')} className="text-sm text-[#74998a] hover:text-[#00ff88] transition-colors mb-6">← Dashboard'a dön</button>
         <div className="mb-8"><SectionLabel>Doğrulanabilir</SectionLabel><h1 className="text-[clamp(28px,4vw,42px)] text-[#eafff5]">Sertifikalarım</h1><p className="text-[#74998a] mt-2">Tamamladığın yollar için kazandığın sertifikalar. Her biri doğrulanabilir bir koda sahiptir.</p></div>
 
-        {!user.nameChanged ? (
-          <div className="rounded-2xl border border-[#ff8c42]/30 p-6 mb-8 bg-[#ff8c42]/5 space-y-4">
-            <h3 className="text-[#ffd166] font-disp font-bold flex items-center gap-2">⚠️ Sertifika İsmi Belirleme</h3>
-            <p className="text-sm text-[#74998a] leading-relaxed">
-              Sertifikalarınızda görünmesini istediğiniz resmi adınızı ve soyadınızı yazın.
-              <strong className="text-[#ffd166] block mt-1">⚠️ ÖNEMLİ UYARI: Buraya yazacağınız isim daha sonra kesinlikle değiştirilemez!</strong>
-            </p>
-            <div className="flex items-center gap-3 flex-wrap">
-              <input value={newName} onChange={e => setNewName(e.target.value)} placeholder="Adınız Soyadınız" className="bg-[#020806] border border-[#103a26] rounded-lg px-4 py-2.5 text-[#cdeede] focus:border-[#00ff88] focus:outline-none font-mono text-sm w-64" />
-              <button onClick={saveName} className="font-mono text-sm font-bold text-[#021008] bg-[#ffd166] px-5 py-2.5 rounded-lg hover:shadow-[0_0_20px_-4px_rgba(255,209,102,.5)] transition-all">İsmi Kaydet ve Kilitle</button>
-            </div>
-          </div>
-        ) : (
-          <div className="rounded-2xl border border-[#103a26] p-5 mb-8 bg-[rgba(0,255,136,.02)] flex items-center justify-between gap-4 flex-wrap">
-            <div className="flex items-center gap-2.5">
-              <span className="text-[#00ff88]">🔒</span>
-              <p className="text-sm text-[#74998a]">Sertifika İsminiz Kilitlendi: <strong className="text-[#eafff5] font-mono">{user.name}</strong></p>
-            </div>
-            <span className="text-xs text-[#5c8a74] font-mono">// Değiştirilemez</span>
-          </div>
-        )}
+
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {certs.map((c, i) => (
@@ -801,11 +802,7 @@ const CertificatesPage = ({ navigate }) => {
           </div>
         )}
 
-        <div className="mt-10 rounded-2xl border border-[#103a26] p-8 text-center" style={{ background: 'linear-gradient(90deg,#07150e,#04100a)' }}>
-          <h3 className="text-xl text-[#eafff5] mb-2">Yeni bir sertifika kazan</h3>
-          <p className="text-[#74998a] text-sm mb-6">Bir öğrenme yolunu tamamla ve doğrulanabilir sertifikanı al.</p>
-          <button onClick={() => navigate('rooms')} className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-7 py-3 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] transition-all">Laboratuvarları Gör →</button>
-        </div>
+
       </main>
       <Footer navigate={navigate} />
     </>
@@ -2603,42 +2600,173 @@ const PricingPage = ({ navigate }) => {
   const FooterCmp = window.SKFooter || (() => null);
   const useUser = window.SKuseUser || (() => [null]);
   const [user] = useUser();
-  
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const isLoggedIn = !!localStorage.getItem('sk_token');
 
-  const handleSubscribeSimulate = async () => {
-    if (!user) {
-      navigate('login');
+  const [showCheckout, setShowCheckout] = useState(null);
+  const [checkoutStep, setCheckoutStep] = useState(1); // 1=bilgi, 2=ödeme(iframe), 3=sonuç
+  const [showLegal, setShowLegal] = useState(null);
+  const [agreed, setAgreed] = useState({ mesafeli: false, onbilgi: false, iade: false });
+  const [checkoutEmail, setCheckoutEmail] = useState('');
+  const [checkoutName, setCheckoutName] = useState('');
+  const [checkoutPhone, setCheckoutPhone] = useState('');
+  const [checkoutAddress, setCheckoutAddress] = useState('');
+  const [paytrToken, setPaytrToken] = useState(null);
+  const [merchantOid, setMerchantOid] = useState(null);
+  const [demoMode, setDemoMode] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState('');
+
+  const plans = [
+    {
+      id: 'level-test',
+      name: 'Ücretsiz Seviye Testi',
+      tag: 'ÜCRETSİZ',
+      price: 0,
+      oldPrice: null,
+      period: null,
+      img: '/freeeducationiamge-fiyatlandırma.jpg',
+      features: [
+        'Teknik Seviye Tespiti (6 Soru)',
+        'Başlangıç / Orta / İleri Sonucu',
+        'Sana Özel Eğitim Önerisi',
+        'E-posta ile Detaylı Sonuç Raporu'
+      ],
+      cta: 'Ücretsiz Testi Başlat →',
+      popular: false,
+      accent: '#74998a'
+    },
+    {
+      id: 'one-on-one',
+      name: "1'e 1 VIP Mentorluk & Özel Ders",
+      tag: '🔥 %50 İNDİRİM',
+      price: 9900,
+      oldPrice: 19800,
+      period: 'Aylık Program',
+      img: '/mentoregitimi-fiyatlandırma.jpg',
+      features: [
+        '**Bire Bir Özel Ders & Canlı Mentorluk**',
+        'Aylık Eğitim (Toplam 8 Saat)',
+        'Siber Kampüs VIP Eğitim Materyallerine Sınırsız Erişim',
+        'Ağ ve Uygulama Güvenliği Başarı Sertifikaları',
+        'Kişiye Özel Çalışma ve İlerleme Planı',
+        'CV Hazırlama & Mülakat Desteği'
+      ],
+      cta: 'İletişime Geç',
+      popular: true,
+      accent: '#00ff88'
+    }
+  ];
+
+  const handlePlanClick = (plan) => {
+    if (plan.id === 'level-test') {
+      navigate('level-test');
       return;
     }
+    if (plan.id === 'one-on-one') {
+      const phone = '905389351189';
+      const msg = encodeURIComponent('Merhaba, birebir siber güvenlik uzmanlığı eğitimi almak istiyorum.');
+      window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+      return;
+    }
+    openCheckoutModal(plan);
+  };
+
+  const openCheckoutModal = (plan) => {
+    setShowCheckout(plan);
+    setCheckoutStep(1);
+    setCheckoutError('');
+    setDemoMode(false);
+    setPaytrToken(null);
+    setMerchantOid(null);
+    setAgreed({ mesafeli: false, onbilgi: false, iade: false });
+    // Kullanıcı giriş yapmışsa bilgileri önceden doldur
+    const u = window.__SK_USER;
+    if (isLoggedIn && u && u.name !== 'Misafir') {
+      setCheckoutName(u.name || '');
+      const storedEmail = localStorage.getItem('sk_user_email') || '';
+      setCheckoutEmail(storedEmail);
+    } else {
+      setCheckoutName('');
+      setCheckoutEmail('');
+    }
+  };
+
+  const handleStartPayment = async () => {
+    if (!agreed.mesafeli || !agreed.onbilgi || !agreed.iade) {
+      setCheckoutError('Lütfen tüm sözleşmeleri onaylayın.');
+      return;
+    }
+    if (!checkoutEmail || !checkoutName) {
+      setCheckoutError('E-posta ve ad soyad zorunludur.');
+      return;
+    }
+    if (!checkoutPhone || checkoutPhone.length < 10) {
+      setCheckoutError('Geçerli bir telefon numarası girin (5XX XXX XX XX).');
+      return;
+    }
+    if (!checkoutAddress || checkoutAddress.trim().length < 10) {
+      setCheckoutError('Lütfen adresinizi girin.');
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(checkoutEmail)) {
+      setCheckoutError('Geçerli bir e-posta adresi girin.');
+      return;
+    }
+    setCheckoutError('');
     setLoading(true);
-    // Simulate payment process delay
-    setTimeout(async () => {
-      try {
-        const token = localStorage.getItem('sk_token');
-        const res = await fetch(`/api/admin/users/${user.id}/premium`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          }
-        });
-        if (res.ok) {
-          // Re-fetch profile or update localstorage
-          localStorage.setItem('sk_user_is_vip', 'true');
-          window.__SK_USER_FETCHED = false; // force refresh
-          window.dispatchEvent(new Event('sk_user_update'));
-          setSuccess(true);
-        } else {
-          alert('Ödeme simülasyonu başarısız oldu.');
-        }
-      } catch (err) {
-        alert('Ağ hatası.');
-      } finally {
-        setLoading(false);
+
+    try {
+      const res = await fetch('/api/checkout/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: checkoutEmail, name: checkoutName, phone: checkoutPhone, address: checkoutAddress, plan_id: showCheckout.id })
+      });
+      const data = await res.json();
+      if (data.status === 'success' && data.token) {
+        setPaytrToken(data.token);
+        setMerchantOid(data.merchant_oid);
+        setDemoMode(!!data.demo);
+        setCheckoutStep(2);
+      } else {
+        setCheckoutError((data.error || 'Ödeme başlatılamadı.') + (data.reason ? ' (' + data.reason + ')' : ''));
       }
-    }, 1500);
+    } catch (err) {
+      setCheckoutError('Bağlantı hatası. Lütfen internet bağlantınızı kontrol edin.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // PayTR iframe açıldığında iFrameResize çalıştır
+  useEffect(() => {
+    if (checkoutStep === 2 && paytrToken && window.iFrameResize) {
+      setTimeout(() => {
+        try { window.iFrameResize({}, '#paytriframe'); } catch(e) {}
+      }, 500);
+    }
+  }, [checkoutStep, paytrToken]);
+
+  // URL'den ödeme sonucunu kontrol et
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const payment = params.get('payment');
+    if (payment === 'success') {
+      setCheckoutStep(3);
+      setShowCheckout({ id: 'result', name: 'Ödeme Tamamlandı' });
+      window.history.replaceState({}, '', window.location.pathname);
+    } else if (payment === 'fail') {
+      setCheckoutStep(3);
+      setCheckoutError('Ödeme işlemi başarısız oldu. Lütfen tekrar deneyin.');
+      setShowCheckout({ id: 'result', name: 'Ödeme Başarısız' });
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, []);
+
+  const legalContents = {
+    mesafeli: { title: 'Mesafeli Satış Sözleşmesi', content: 'Bu sözleşme, 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği uyarınca düzenlenmiştir.\n\n1. SATICI BİLGİLERİ\nÜnvan: Siber Kampüs Akademi\nAdres: Evliya Çelebi Mah. Şener Sok. No:11 Tuzla/İstanbul\nTelefon: 0538 935 11 89\nE-posta: destek@siberkampus.org\n\n2. KONU\nİşbu sözleşmenin konusu, ALICI\'nın SATICI\'ya ait internet sitesinden elektronik ortamda sipariş verdiği eğitim hizmetinin satışı ve teslimi ile ilgili olarak 6502 sayılı Kanun gereğince tarafların hak ve yükümlülüklerinin saptanmasıdır.\n\n3. ÜRÜN/HİZMET BİLGİLERİ\nSatın alınan eğitim paketinin içeriği, özellikleri ve ücreti sipariş sayfasında belirtilmiştir.\n\n4. TESLİMAT\nVIP üyelik erişimi, ödemenin onaylanmasının ardından e-postanıza gönderilen şifre belirleme bağlantısı ile hesabınıza tanımlanır.\n\n5. CAYMA HAKKI\nTüketici, dijital içeriğin ifasına başlanmadan önce 14 gün içinde cayma hakkını kullanabilir. Dijital içeriğin ifasına başlandıktan sonra cayma hakkı kullanılamaz.' },
+    onbilgi: { title: 'Ön Bilgilendirme Formu', content: 'Mesafeli Sözleşmelere Dair Yönetmelik uyarınca, tüketiciye sözleşme kurulmadan önce aşağıdaki bilgiler verilmektedir:\n\n1. SATICI BİLGİLERİ\nÜnvan: Siber Kampüs Akademi\nAdres: Evliya Çelebi Mah. Şener Sok. No:11 Tuzla/İstanbul\nTelefon: 0538 935 11 89\nE-posta: destek@siberkampus.org\n\n2. HİZMETİN TEMEL NİTELİKLERİ\nBirebir canlı siber güvenlik eğitimi sunulmaktadır. Hizmet; eğitmenle özel danışma (VIP sohbet), VIP teknik kaynak arşivi ve sertifika programını kapsamaktadır.\n\n3. HİZMET BEDELİ\nTüm vergiler dahil toplam bedel, ödeme sayfasında gösterilmektedir.\n\n4. ÖDEME ŞEKLİ\nKredi kartı ile tek çekim olarak ödeme yapılmaktadır.\n\n5. CAYMA HAKKI\nTüketici, 14 gün içinde herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin sözleşmeden cayabilir.' },
+    iade: { title: 'İade ve İptal Koşulları', content: 'SİBER KAMPÜS AKADEMİ İADE VE İPTAL KOŞULLARI\n\n1. DİJİTAL İÇERİK İADESİ\nDijital eğitim içeriklerinin iadesi, içeriğin henüz erişime açılmamış olması halinde, satın alma tarihinden itibaren 14 gün içinde yapılabilir.\n\n2. 1\'E 1 CANLI EĞİTİM İPTALİ\nCanlı eğitim programı başlamadan en az 7 gün önce iptal talebi yapılması halinde, ödenen bedelin tamamı iade edilir. Eğitim başladıktan sonra, kalan ders sayısı üzerinden orantılı iade yapılır.\n\n3. İADE SÜRECİ\nİade talepleri destek@siberkampus.org adresine e-posta ile iletilmelidir. İade bedeli, talebin onaylanmasından itibaren 14 iş günü içinde ödeme yapılan araca iade edilir.\n\n4. İPTAL İŞLEMİ\nAbonelik veya eğitim paketi iptalleri, kullanıcı panelinden veya destek ekibine başvurarak gerçekleştirilebilir.' }
   };
 
   return (
@@ -2649,110 +2777,833 @@ const PricingPage = ({ navigate }) => {
       <section className="py-20 border-b border-[#0c2719] relative overflow-hidden">
         <div className="absolute top-[-30%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center,rgba(0,255,136,.08),transparent 62%)' }}></div>
         <div className="max-w-[1280px] mx-auto px-8 text-center relative z-[2]">
-          <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> ÜYELİK PLANLARI</span>
-          <h1 className="text-[clamp(36px,5vw,56px)] text-[#eafff5] my-5 font-disp">Siber Kampüs Premium</h1>
-          <p className="text-[#74998a] max-w-[640px] mx-auto text-base">Sıfırdan başlayarak gerçek dünyadaki sızma testi (pentest) süreçlerini uygulamalı olarak öğrenebileceğiniz premium eğitim ve hacking laboratuvarları planı.</p>
+          <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> EĞİTİM PAKETLERİ</span>
+          <h1 className="text-[clamp(36px,5vw,56px)] text-[#eafff5] my-5 font-disp">Eğitim Paketleri & Fiyatlandırma</h1>
+          <p className="text-[#74998a] max-w-[640px] mx-auto text-base">Seviyenize uygun eğitim paketini seçin ve siber güvenlik kariyerinize hemen başlayın.</p>
+          <div className="mt-6 inline-flex items-center gap-3 bg-[rgba(0,255,136,.06)] border border-[#00ff88]/30 rounded-full px-6 py-3">
+            <span className="text-[#00ff88] text-2xl">🔥</span>
+            <span className="text-[#00ff88] font-bold text-lg font-mono">%50 İNDİRİM</span>
+            <span className="text-[#9fc4b5] text-sm">Sınırlı süre.</span>
+          </div>
         </div>
       </section>
 
-      {/* Plans comparison */}
-      <section className="py-20 max-w-[1100px] mx-auto px-6">
-        {success ? (
-          <div className="rounded-2xl border border-[#00ff88] bg-[rgba(0,255,136,.03)] p-12 text-center max-w-lg mx-auto shadow-[0_0_50px_rgba(0,255,136,.15)]" style={{ animation: 'artCardIn .6s ease both' }}>
-            <span className="text-5xl block mb-6">👑</span>
-            <h2 className="text-3xl text-[#eafff5] font-disp font-bold mb-4">Tebrikler, Artık Premium Üyesiniz!</h2>
-            <p className="text-[#9fc4b5] text-sm leading-relaxed mb-8">
-              Ödeme simülasyonu başarıyla tamamlandı. Siber Kampüs Premium ayrıcalıklarınız hesabınıza anında tanımlandı. Artık "Gerçek Pentest Operasyonları" (Faz 5) ve tüm hedef siteler kullanımınıza açık!
-            </p>
-            <button onClick={() => navigate('dashboard')} className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-8 py-3.5 rounded-xl hover:shadow-[0_0_24px_var(--glow)] transition-all uppercase tracking-wider">
-              Kontrol Paneline Git →
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
-            {/* Free Plan */}
-            <div className="rounded-2xl border border-[#0c2719] p-8 flex flex-col justify-between bg-gradient-to-br from-[#07150e]/50 to-transparent hover:border-[#103a26] transition-all">
-              <div>
-                <div className="text-sm font-mono text-[#74998a] uppercase mb-1">Başlangıç Planı</div>
-                <h2 className="text-2xl text-[#eafff5] font-disp font-bold mb-2">Ücretsiz (Free)</h2>
-                <div className="text-3xl font-bold text-[#eafff5] font-mono mt-4 mb-6">0 TL <span className="text-xs text-[#74998a] font-normal">/ sonsuza kadar</span></div>
+      {/* Plans Grid */}
+      <section className="py-20 max-w-[1280px] mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch max-w-[840px] mx-auto">
+          {plans.map((plan, idx) => (
+            <div key={plan.id} className={`rounded-2xl border p-8 flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:-translate-y-1 ${plan.popular ? 'border-[#00ff88]/50 shadow-[0_0_50px_rgba(0,255,136,0.08)]' : 'border-[#0c2719] hover:border-[#103a26]'}`} style={{ background: plan.popular ? 'linear-gradient(165deg,#091f15,#04100a)' : 'linear-gradient(165deg,#07150e,#04100a)' }}>
+              {/* Badge */}
+              {plan.tag && (
+                <div className={`absolute top-4 right-4 text-[10px] font-bold px-3 py-1 rounded-full font-mono ${plan.popular ? 'bg-[#00ff88] border border-[#00ff88] text-[#021008]' : plan.price > 0 ? 'bg-[#ffd166] border border-[#ffd166] text-[#021008]' : 'bg-[#74998a] border border-[#74998a] text-[#020806]'}`}>{plan.tag}</div>
+              )}
+              
+              {/* Image */}
+              <div className="rounded-xl overflow-hidden mb-6 border border-[#0c2719]">
+                <img src={plan.img} alt={plan.name} className="w-full h-44 object-cover" />
+              </div>
+              
+              <div className="flex-1">
+                <h2 className="text-lg text-[#eafff5] font-disp font-bold mb-3 pr-16">{plan.name}</h2>
                 
-                <hr className="border-[#0c2719] my-6" />
+                {/* Price */}
+                <div className="mb-6">
+                  {plan.oldPrice && (
+                    <span className="text-[#5c8a74] text-lg line-through font-mono mr-2">{plan.oldPrice.toLocaleString('tr-TR')} TL</span>
+                  )}
+                  <span className="text-3xl font-bold text-[#eafff5] font-mono">{plan.price === 0 ? 'Ücretsiz' : plan.price.toLocaleString('tr-TR') + ' TL'}</span>
+                  {plan.period && <span className="text-xs text-[#74998a] ml-2">/ {plan.period}</span>}
+                </div>
                 
-                <ul className="space-y-3.5 text-sm text-[#9fc4b5] font-mono">
-                  <li className="flex items-center gap-2.5">
-                    <span className="text-[#00ff88] text-xs">✔</span> 15+ Temel Hacking Odası
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="text-[#00ff88] text-xs">✔</span> Temel Zafiyet Eğitimleri (SQLi, XSS)
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="text-[#00ff88] text-xs">✔</span> Genel Sohbet Kanalına Erişim
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="text-[#00ff88] text-xs">✔</span> Profil ve Rozet Kazanımı
-                  </li>
-                  <li className="flex items-center gap-2.5 text-[#5c8a74]/60 line-through">
-                    <span className="text-red-500/50 text-xs">✗</span> Faz 5: Gerçek Hedef Sitelerde Pentest
-                  </li>
-                  <li className="flex items-center gap-2.5 text-[#5c8a74]/60 line-through">
-                    <span className="text-red-500/50 text-xs">✗</span> Doğrulanabilir Uzmanlık Sertifikası
-                  </li>
+                <hr className="border-[#0c2719] my-5" />
+                
+                <ul className="space-y-3 text-sm font-mono">
+                  {plan.features.map((f, fi) => {
+                    const isBold = f.startsWith('**') && f.endsWith('**');
+                    const cleanText = isBold ? f.slice(2, -2) : f;
+                    return (
+                      <li key={fi} className="flex items-start gap-2.5 text-[#9fc4b5]">
+                        <span className="text-[#00ff88] text-xs mt-0.5">✔</span>
+                        <span className={isBold ? 'text-[#00ff88] font-bold' : ''}>{cleanText}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               
+              {/* CTA */}
+              {plan.id === 'one-on-one' && (
+                <style>{`
+                  @keyframes pulseGlow {
+                    0% {
+                      box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+                    }
+                    70% {
+                      box-shadow: 0 0 0 15px rgba(0, 255, 136, 0);
+                    }
+                    100% {
+                      box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+                    }
+                  }
+                  .pulse-btn {
+                    animation: pulseGlow 1.8s infinite;
+                  }
+                `}</style>
+              )}
               <button 
-                onClick={() => navigate(user ? 'dashboard' : 'register')} 
-                className="w-full mt-10 border border-[#103a26] text-[#74998a] hover:text-[#00ff88] hover:border-[#00ff88] py-3.5 rounded-xl font-mono text-sm transition-all text-center"
+                onClick={() => handlePlanClick(plan)}
+                className={`w-full mt-8 py-3.5 rounded-xl font-mono text-sm font-bold transition-all text-center ${plan.popular ? 'text-[#021008] bg-[#00ff88] hover:shadow-[0_0_30px_var(--glow)]' : plan.price > 0 ? 'text-[#021008] bg-[#ffd166] hover:shadow-[0_0_30px_rgba(255,209,102,.3)]' : 'border border-[#103a26] text-[#74998a] hover:text-[#00ff88] hover:border-[#00ff88]'} ${plan.id === 'one-on-one' ? 'pulse-btn' : ''}`}
               >
-                {user ? 'Zaten Kayıtlısınız' : 'Ücretsiz Kayıt Ol'}
+                {plan.cta}
               </button>
             </div>
+          ))}
+        </div>
 
-            {/* Premium Plan */}
-            <div className="rounded-2xl border border-[#00ff88]/50 p-8 flex flex-col justify-between bg-gradient-to-br from-[#07150e] to-[#04100a] shadow-[0_0_40px_rgba(0,255,136,0.06)] relative overflow-hidden hover:border-[#00ff88] transition-all">
-              <div className="absolute top-4 right-4 bg-[#ffd166]/10 border border-[#ffd166]/20 text-[#ffd166] text-[10px] font-bold px-2.5 py-0.5 rounded font-mono">EN POPÜLER</div>
-              <div>
-                <div className="text-sm font-mono text-[#00ff88] uppercase mb-1">Red Team Paket</div>
-                <h2 className="text-2xl text-[#eafff5] font-disp font-bold mb-2">Web Pentest Uzmanı</h2>
-                <div className="text-3xl font-bold text-[#eafff5] font-mono mt-4 mb-6">1200 TL <span className="text-xs text-[#74998a] font-normal">/ Tek Seferlik Ödeme</span></div>
-                
-                <hr className="border-[#103a26] my-6" />
-                
-                <ul className="space-y-3.5 text-sm text-[#eafff5] font-mono">
-                  <li className="flex items-center gap-2.5">
-                    <span className="text-[#00ff88] text-xs">✔</span> Bütün Ücretsiz Özellikler
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="text-[#00ff88] text-xs">✔</span> **Faz 5: 4 Gerçek Pentest Hedef Sitesi**
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="text-[#00ff88] text-xs">✔</span> **Doğrulanabilir Uzmanlık Sertifikası (jsPDF)**
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="text-[#00ff88] text-xs">✔</span> Gelişmiş Zafiyet Analiz Rehberleri
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="text-[#00ff88] text-xs">✔</span> VIP & Premium Profil Rozeti ve Chat Rengi
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="text-[#00ff88] text-xs">✔</span> Öncelikli Mentör Destek & Soru-Cevap
-                  </li>
-                </ul>
-              </div>
-              
-              <button 
-                onClick={handleSubscribeSimulate}
-                disabled={loading || (user && user.is_premium)}
-                className="w-full mt-10 py-3.5 font-mono font-bold text-[#021008] bg-[#00ff88] rounded-xl hover:shadow-[0_0_30px_var(--glow)] disabled:opacity-50 disabled:hover:shadow-none transition-all uppercase tracking-wider text-center"
-              >
-                {loading ? 'Simülasyon Çalışıyor...' : (user && user.is_premium) ? 'Zaten Premiumsunuz' : 'Premium Satın Al ⚡'}
-              </button>
-            </div>
-          </div>
-        )}
+        {/* Payment methods */}
+        <div className="mt-12 text-center">
+          <p className="text-[#5c8a74] text-sm mb-4">Güvenli ödeme altyapısı ile ödeme yapabilirsiniz</p>
+          <img src="/visa-mastercard-troypng.png" alt="Visa, Mastercard, Troy - Güvenli Ödeme" className="h-12 w-auto object-contain mx-auto opacity-80 hover:opacity-100 transition-opacity" />
+          <p className="text-[#5c8a74] text-xs mt-3">💳 PCI-DSS 256-Bit Güvenli Ödeme Altyapısı</p>
+        </div>
       </section>
 
+      {/* Checkout Modal */}
+      {showCheckout && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,.88)' }}>
+          <div className={`w-full ${checkoutStep === 2 && !demoMode ? 'max-w-2xl' : 'max-w-lg'} rounded-2xl border border-[#0c2719] overflow-hidden max-h-[92vh] overflow-y-auto transition-all duration-300`} style={{ background: 'linear-gradient(165deg,#0a1f15,#04100a)' }} onClick={e => e.stopPropagation()}>
+
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-7 pt-7 pb-4">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-8 border border-[#00ff88] rounded-lg grid place-items-center text-[#00ff88] font-mono text-sm font-bold">&gt;_</span>
+                <h2 className="text-lg text-[#eafff5] font-disp font-bold">Güvenli Ödeme</h2>
+              </div>
+              <button onClick={() => { if (!loading) { setShowCheckout(null); setCheckoutStep(1); } }} className="text-[#74998a] hover:text-[#eafff5] text-2xl transition-colors leading-none">&times;</button>
+            </div>
+
+            {/* Step Indicator */}
+            <div className="px-7 pb-5">
+              <div className="flex items-center gap-2">
+                {[{n:1,t:'Bilgiler'},{n:2,t:'Ödeme'},{n:3,t:'Tamamlandı'}].map((s,i) => (
+                  <React.Fragment key={s.n}>
+                    {i > 0 && <div className={`flex-1 h-px ${checkoutStep >= s.n ? 'bg-[#00ff88]' : 'bg-[#103a26]'}`}></div>}
+                    <div className={`flex items-center gap-1.5 ${checkoutStep >= s.n ? 'text-[#00ff88]' : 'text-[#5c8a74]'}`}>
+                      <span className={`w-6 h-6 rounded-full text-[11px] font-bold grid place-items-center border ${checkoutStep >= s.n ? 'border-[#00ff88] bg-[#00ff88]/10' : 'border-[#103a26]'}`}>{checkoutStep > s.n ? '✓' : s.n}</span>
+                      <span className="text-[11px] font-mono hidden sm:inline">{s.t}</span>
+                    </div>
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+
+            <div className="px-7 pb-7">
+
+              {/* ===== STEP 1: Bilgi Toplama ===== */}
+              {checkoutStep === 1 && showCheckout.price && (
+                <>
+                  {/* Order summary */}
+                  <div className="rounded-xl border border-[#0c2719] p-4 mb-6 bg-[rgba(0,255,136,.02)]">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-[11px] text-[#74998a] mb-1 font-mono uppercase tracking-wider">Seçilen Paket</div>
+                        <div className="text-[#eafff5] font-bold text-sm">{showCheckout.name}</div>
+                      </div>
+                      <div className="text-right">
+                        {showCheckout.oldPrice && <div className="text-[#5c8a74] line-through text-xs font-mono">{showCheckout.oldPrice.toLocaleString('tr-TR')} TL</div>}
+                        <div className="text-[#00ff88] font-bold text-xl font-mono">{showCheckout.price.toLocaleString('tr-TR')} TL</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Güvenli ödeme görseli */}
+                  <div className="flex items-center justify-center gap-4 mb-6 py-3 rounded-xl border border-[#0c2719] bg-[#04100a]/60">
+                    <img src="/visa-mastercard-troypng.png" alt="Visa, Mastercard, Troy" className="h-8 w-auto object-contain opacity-90" />
+                    <div className="h-6 w-px bg-[#103a26]"></div>
+                    <span className="text-[11px] text-[#74998a] font-mono flex items-center gap-1.5">🔒 PCI-DSS 256-Bit Güvenli</span>
+                  </div>
+
+                  {/* Form */}
+                  <div className="space-y-4 mb-6">
+                    <div>
+                      <label className="block text-xs text-[#74998a] mb-1.5 font-mono">Ad Soyad *</label>
+                      <input type="text" value={checkoutName} onChange={e => setCheckoutName(e.target.value)} placeholder="Ad Soyad" className="w-full bg-[#04100a] border border-[#103a26] rounded-lg px-4 py-3 text-[#eafff5] text-sm font-mono placeholder-[#5c8a74] focus:border-[#00ff88] outline-none transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-[#74998a] mb-1.5 font-mono">E-posta Adresi *</label>
+                      <input type="email" value={checkoutEmail} onChange={e => setCheckoutEmail(e.target.value)} placeholder="ornek@mail.com" className="w-full bg-[#04100a] border border-[#103a26] rounded-lg px-4 py-3 text-[#eafff5] text-sm font-mono placeholder-[#5c8a74] focus:border-[#00ff88] outline-none transition-colors" />
+                      <p className="text-[10px] text-[#5c8a74] mt-1.5">Ödeme sonrası şifre belirleme bağlantısı bu adrese gönderilecek.</p>
+                    </div>
+                    <div>
+                      <label className="block text-xs text-[#74998a] mb-1.5 font-mono">Telefon Numarası *</label>
+                      <div className="flex">
+                        <span className="bg-[#0c2719] border border-r-0 border-[#103a26] rounded-l-lg px-3 flex items-center text-[#74998a] font-mono text-sm select-none">+90</span>
+                        <input type="tel" value={checkoutPhone} onChange={e => setCheckoutPhone(e.target.value.replace(/\D/g, '').slice(0, 10))} placeholder="5XX XXX XX XX" className="flex-1 bg-[#04100a] border border-[#103a26] rounded-r-lg px-4 py-3 text-[#eafff5] text-sm font-mono placeholder-[#5c8a74] focus:border-[#00ff88] outline-none transition-colors" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs text-[#74998a] mb-1.5 font-mono">Adres *</label>
+                      <input type="text" value={checkoutAddress} onChange={e => setCheckoutAddress(e.target.value)} placeholder="Mahalle, ilçe, şehir" className="w-full bg-[#04100a] border border-[#103a26] rounded-lg px-4 py-3 text-[#eafff5] text-sm font-mono placeholder-[#5c8a74] focus:border-[#00ff88] outline-none transition-colors" />
+                    </div>
+                  </div>
+
+                  {/* Legal agreements */}
+                  <div className="space-y-3 mb-6">
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <input type="checkbox" checked={agreed.mesafeli} onChange={e => setAgreed({...agreed, mesafeli: e.target.checked})} className="mt-1 accent-[#00ff88]" />
+                      <span className="text-xs text-[#9fc4b5]">
+                        <button type="button" onClick={() => setShowLegal('mesafeli')} className="text-[#00ff88] underline hover:text-[#5cffba] transition-colors">Mesafeli Satış Sözleşmesi</button>'ni okudum ve kabul ediyorum.
+                      </span>
+                    </label>
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <input type="checkbox" checked={agreed.onbilgi} onChange={e => setAgreed({...agreed, onbilgi: e.target.checked})} className="mt-1 accent-[#00ff88]" />
+                      <span className="text-xs text-[#9fc4b5]">
+                        <button type="button" onClick={() => setShowLegal('onbilgi')} className="text-[#00ff88] underline hover:text-[#5cffba] transition-colors">Ön Bilgilendirme Formu</button>'nu okudum ve kabul ediyorum.
+                      </span>
+                    </label>
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <input type="checkbox" checked={agreed.iade} onChange={e => setAgreed({...agreed, iade: e.target.checked})} className="mt-1 accent-[#00ff88]" />
+                      <span className="text-xs text-[#9fc4b5]">
+                        <button type="button" onClick={() => setShowLegal('iade')} className="text-[#00ff88] underline hover:text-[#5cffba] transition-colors">İade ve İptal Koşulları</button>'nı okudum ve kabul ediyorum.
+                      </span>
+                    </label>
+                  </div>
+
+                  {/* Error */}
+                  {checkoutError && <div className="mb-4 p-3 rounded-lg border border-red-500/30 bg-red-500/5 text-red-400 text-xs font-mono">{checkoutError}</div>}
+
+                  {/* Submit */}
+                  <button
+                    onClick={handleStartPayment}
+                    disabled={loading || !agreed.mesafeli || !agreed.onbilgi || !agreed.iade}
+                    className="w-full py-4 font-mono font-bold text-[#021008] bg-[#00ff88] rounded-xl hover:shadow-[0_0_30px_var(--glow)] disabled:opacity-40 disabled:hover:shadow-none transition-all text-center text-sm"
+                  >
+                    {loading ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <span className="w-4 h-4 border-2 border-[#021008] border-t-transparent rounded-full animate-spin"></span>
+                        Hazırlanıyor...
+                      </span>
+                    ) : `Ödemeye Geç — ${showCheckout.price.toLocaleString('tr-TR')} TL`}
+                  </button>
+                </>
+              )}
+
+              {/* ===== STEP 2: PayTR iFrame veya Demo ===== */}
+              {checkoutStep === 2 && paytrToken && (
+                <>
+                  {demoMode ? (
+                    <>
+                      <div className="flex items-center justify-center gap-2 mb-4">
+                        <span className="bg-[#ffd166] text-[#021008] text-[10px] font-bold font-mono px-2.5 py-1 rounded-full">TEST MODU</span>
+                      </div>
+                      <div className="rounded-xl border border-[#103a26] p-6 bg-[#04100a]/80">
+                        <div className="text-center mb-5">
+                          <img src="/visa-mastercard-troypng.png" alt="Kart" className="h-8 mx-auto mb-3 opacity-80" />
+                          <p className="text-[#9fc4b5] text-sm">Ödeme altyapısı (PayTR) entegrasyon onayı bekleniyor.</p>
+                          <p className="text-[#5c8a74] text-xs mt-1">Aşağıdaki buton ile ödeme akışını test edebilirsiniz.</p>
+                        </div>
+                        <div className="rounded-lg border border-[#103a26] p-4 mb-5 bg-[#021008]/60">
+                          <div className="flex justify-between text-xs font-mono mb-2">
+                            <span className="text-[#74998a]">Paket</span>
+                            <span className="text-[#eafff5]">{showCheckout.name}</span>
+                          </div>
+                          <div className="flex justify-between text-xs font-mono mb-2">
+                            <span className="text-[#74998a]">Tutar</span>
+                            <span className="text-[#00ff88] font-bold">{showCheckout.price?.toLocaleString('tr-TR')} TL</span>
+                          </div>
+                          <div className="flex justify-between text-xs font-mono">
+                            <span className="text-[#74998a]">E-posta</span>
+                            <span className="text-[#eafff5]">{checkoutEmail}</span>
+                          </div>
+                        </div>
+                        {checkoutError && <div className="mb-4 p-3 rounded-lg border border-red-500/30 bg-red-500/5 text-red-400 text-xs font-mono">{checkoutError}</div>}
+                        <button
+                          onClick={async () => {
+                            setLoading(true);
+                            setCheckoutError('');
+                            try {
+                              const r = await fetch('/api/checkout/demo-complete', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ merchant_oid: merchantOid })
+                              });
+                              const d = await r.json();
+                              if (d.status === 'success' || d.status === 'already_paid') {
+                                setCheckoutStep(3);
+                              } else {
+                                setCheckoutError(d.error || 'Demo ödeme başarısız.');
+                              }
+                            } catch (e) {
+                              setCheckoutError('Bağlantı hatası.');
+                            } finally {
+                              setLoading(false);
+                            }
+                          }}
+                          disabled={loading}
+                          className="w-full py-3.5 font-mono font-bold text-[#021008] bg-[#00ff88] rounded-xl hover:shadow-[0_0_30px_var(--glow)] disabled:opacity-40 transition-all text-sm"
+                        >
+                          {loading ? (
+                            <span className="flex items-center justify-center gap-2">
+                              <span className="w-4 h-4 border-2 border-[#021008] border-t-transparent rounded-full animate-spin"></span>
+                              İşleniyor...
+                            </span>
+                          ) : 'Ödemeyi Simüle Et (Test)'}
+                        </button>
+                      </div>
+                      <p className="text-[10px] text-[#ffd166] text-center mt-3 font-mono">PayTR onayı sonrası bu ekran gerçek ödeme sayfasına dönüşecektir.</p>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex items-center justify-center gap-3 mb-4 text-[#74998a] text-xs font-mono">
+                        <span>🔒 Güvenli ödeme sayfası yüklendi</span>
+                      </div>
+                      <div className="rounded-xl border border-[#103a26] overflow-hidden bg-white">
+                        <iframe
+                          id="paytriframe"
+                          src={`https://www.paytr.com/odeme/guvenli/${paytrToken}`}
+                          frameBorder="0"
+                          scrolling="yes"
+                          style={{ width: '100%', minHeight: '500px', height: '65vh' }}
+                        ></iframe>
+                      </div>
+                      <p className="text-[10px] text-[#5c8a74] text-center mt-3">Kart bilgileriniz PayTR güvenli altyapısı tarafından işlenmektedir.</p>
+                    </>
+                  )}
+                </>
+              )}
+
+              {/* ===== STEP 3: Sonuç ===== */}
+              {checkoutStep === 3 && (
+                <div className="text-center py-8">
+                  {!checkoutError ? (
+                    <>
+                      <div className="w-16 h-16 rounded-full bg-[#00ff88]/10 border-2 border-[#00ff88] grid place-items-center mx-auto mb-5">
+                        <span className="text-[#00ff88] text-3xl">✓</span>
+                      </div>
+                      <h3 className="text-xl text-[#eafff5] font-disp font-bold mb-3">Ödemeniz Alındı!</h3>
+                      <p className="text-[#9fc4b5] text-sm leading-relaxed mb-6 max-w-sm mx-auto">
+                        E-posta adresinize şifre belirleme bağlantısı gönderildi. Lütfen e-postanızı kontrol edin ve şifrenizi belirleyerek hesabınıza erişin.
+                      </p>
+                      <div className="rounded-xl border border-[#0c2719] p-4 bg-[rgba(0,255,136,.03)] mb-6 text-left">
+                        <div className="text-[11px] text-[#74998a] mb-1 font-mono">Sonraki Adımlar</div>
+                        <ol className="text-xs text-[#9fc4b5] space-y-1.5 list-decimal pl-4">
+                          <li>E-postanızdaki bağlantıya tıklayın</li>
+                          <li>Şifrenizi belirleyin</li>
+                          <li>Eğitim platformuna giriş yapın</li>
+                        </ol>
+                      </div>
+                      <button onClick={() => { setShowCheckout(null); setCheckoutStep(1); }} className="border border-[#103a26] text-[#cdeede] px-6 py-2.5 text-sm rounded-xl hover:border-[#00ff88] hover:text-[#00ff88] transition-colors font-mono">Kapat</button>
+                    </>
+                  ) : (
+                    <>
+                      <div className="w-16 h-16 rounded-full bg-red-500/10 border-2 border-red-500/50 grid place-items-center mx-auto mb-5">
+                        <span className="text-red-400 text-3xl">✕</span>
+                      </div>
+                      <h3 className="text-xl text-[#eafff5] font-disp font-bold mb-3">Ödeme Başarısız</h3>
+                      <p className="text-[#9fc4b5] text-sm leading-relaxed mb-6">{checkoutError}</p>
+                      <button onClick={() => { setCheckoutStep(1); setCheckoutError(''); }} className="text-[#021008] bg-[#00ff88] px-6 py-2.5 text-sm rounded-xl font-mono font-bold hover:shadow-[0_0_20px_var(--glow)] transition-all">Tekrar Dene</button>
+                    </>
+                  )}
+                </div>
+              )}
+
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Legal Modal */}
+      {showLegal && (
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,.9)' }} onClick={() => setShowLegal(null)}>
+          <div className="w-full max-w-xl rounded-2xl border border-[#0c2719] p-8 max-h-[80vh] overflow-y-auto" style={{ background: 'linear-gradient(165deg,#0a1f15,#04100a)' }} onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-lg text-[#eafff5] font-disp font-bold">{legalContents[showLegal]?.title}</h3>
+              <button onClick={() => setShowLegal(null)} className="text-[#74998a] hover:text-[#eafff5] text-2xl transition-colors">&times;</button>
+            </div>
+            <div className="text-sm text-[#9fc4b5] leading-relaxed whitespace-pre-wrap font-mono">{legalContents[showLegal]?.content}</div>
+            <button onClick={() => { setAgreed(prev => ({...prev, [showLegal]: true})); setShowLegal(null); }} className="mt-6 w-full py-3 font-mono text-sm font-bold text-[#021008] bg-[#00ff88] rounded-xl hover:shadow-[0_0_20px_var(--glow)] transition-all">Okudum ve Kabul Ediyorum</button>
+          </div>
+        </div>
+      )}
+
+      <FooterCmp navigate={navigate} />
+    </>
+  );
+};
+
+/* ============ PRODUCT DETAIL PAGE ============ */
+const ProductDetailPage = ({ navigate, data }) => {
+  const HeaderCmp = window.SKHeader || (() => null);
+  const FooterCmp = window.SKFooter || (() => null);
+  const useUser = window.SKuseUser || (() => [null]);
+  const [user] = useUser();
+  const productId = data && data.id;
+
+  const products = {
+    'free-basic': {
+      name: 'Ücretsiz Tanışma Görüşmesi',
+      price: 0, oldPrice: null,
+      img: '/freeeducationiamge-fiyatlandırma.jpg',
+      desc: 'Siber güvenlik kariyerine başlamadan önce bizimle ücretsiz bir ön görüşme yapın. Mevcut seviyenizi birlikte değerlendirelim, hedeflerinize uygun bir eğitim yol haritası çizelim ve tüm sorularınızı yanıtlayalım.',
+      features: ['Birebir Online Ön Görüşme', 'Seviye Tespiti & Hedef Belirleme', 'Sana Özel Eğitim Yol Haritası', 'Tüm Sorularına Net Cevaplar'],
+      isFree: true
+    },
+    'one-on-one': {
+      name: "1'e 1 Canlı Siber Güvenlik Eğitimi",
+      price: 1500, oldPrice: 3000,
+      img: '/mentoregitimi-fiyatlandırma.jpg',
+      desc: 'Deneyimli bir siber güvenlik uzmanıyla birebir çalışarak kariyerinizi hızla ilerletin. Size özel esnek ders programında, gerçek saldırı senaryolarını canlı olarak uygulayarak öğrenir ve doğrudan mentörlük desteği alırsınız. Ders başına ücretlendirme ile ihtiyacınız kadar ders alırsınız.',
+      features: ['Birebir Canlı Online Ders (Saatlik)', 'Gerçek Saldırı Senaryolarıyla Pratik', 'Sana Özel Esnek Ders Programı', 'VIP Uzmanlık Kaynaklarına Erişim', 'Eğitmenle Özel VIP Sohbet', 'Siber Kampüs Onaylı Sertifika', 'CV Hazırlama & Mülakat Desteği'],
+      isFree: false
+    }
+  };
+
+  const product = products[productId];
+  if (!product) {
+    return (<><HeaderCmp navigate={navigate} /><div className="min-h-screen flex items-center justify-center"><div className="text-center"><h1 className="text-3xl text-[#eafff5] mb-4">Ürün Bulunamadı</h1><button onClick={() => navigate('pricing')} className="text-[#00ff88] hover:underline font-mono">← Fiyatlandırmaya Dön</button></div></div><FooterCmp navigate={navigate} /></>);
+  }
+
+  const handleAction = () => {
+    if (product.isFree) {
+      navigate('contact');
+    } else {
+      navigate('pricing');
+    }
+  };
+
+  return (
+    <>
+      <HeaderCmp navigate={navigate} />
+      <section className="py-20 border-b border-[#0c2719] relative overflow-hidden">
+        <div className="absolute top-[-30%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center,rgba(0,255,136,.08),transparent 62%)' }}></div>
+        <div className="max-w-[1080px] mx-auto px-8 relative z-[2]">
+          <button onClick={() => navigate('pricing')} className="text-[#74998a] hover:text-[#00ff88] text-sm font-mono mb-8 inline-flex items-center gap-2 transition-colors">← Fiyatlandırma</button>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="rounded-2xl overflow-hidden border border-[#0c2719]">
+              <img src={product.img} alt={product.name} className="w-full h-80 object-cover" />
+            </div>
+            <div>
+              {product.oldPrice && (
+                <span className="inline-flex items-center gap-2 bg-[#00ff88]/10 border border-[#00ff88]/30 rounded-full px-4 py-1.5 text-[#00ff88] text-xs font-bold font-mono mb-4">🔥 %50 İNDİRİM</span>
+              )}
+              <h1 className="text-[clamp(28px,4vw,42px)] text-[#eafff5] font-disp font-bold mb-4">{product.name}</h1>
+              <p className="text-[#74998a] text-base leading-relaxed mb-6">{product.desc}</p>
+              <div className="mb-6">
+                {product.oldPrice && <span className="text-[#5c8a74] text-xl line-through font-mono mr-3">{product.oldPrice.toLocaleString('tr-TR')} TL</span>}
+                <span className="text-4xl font-bold text-[#eafff5] font-mono">{product.price === 0 ? 'Ücretsiz' : product.price.toLocaleString('tr-TR') + ' TL'}</span>
+              </div>
+              <button onClick={handleAction} className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-8 py-4 rounded-xl hover:shadow-[0_0_30px_var(--glow)] transition-all">
+                {product.isFree ? (user ? 'Panele Git' : 'Eğitime Başla ⚡') : 'Satın Al ⚡'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="py-16 max-w-[1080px] mx-auto px-8">
+        <h2 className="text-2xl text-[#eafff5] font-disp font-bold mb-8">Bu Eğitimde Neler Var?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {product.features.map((f, i) => (
+            <div key={i} className="flex items-center gap-3 rounded-xl border border-[#0c2719] p-5" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
+              <span className="text-[#00ff88] text-lg">✔</span>
+              <span className="text-[#9fc4b5] text-sm font-mono">{f}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <FooterCmp navigate={navigate} />
+    </>
+  );
+};
+
+/* ============ SET PASSWORD PAGE (ödeme sonrası) ============ */
+const SetPasswordPage = ({ navigate, data }) => {
+  const HeaderCmp = window.SKHeader || (() => null);
+  const FooterCmp = window.SKFooter || (() => null);
+  const [pw, setPw] = useState('');
+  const [pw2, setPw2] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [done, setDone] = useState(false);
+  const token = data && data.token;
+
+  const handleSubmit = async () => {
+    setError('');
+    if (!pw || pw.length < 6) { setError('Şifre en az 6 karakter olmalıdır.'); return; }
+    if (pw !== pw2) { setError('Şifreler eşleşmiyor.'); return; }
+    setLoading(true);
+    try {
+      const res = await fetch('/api/auth/set-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, password: pw })
+      });
+      const d = await res.json();
+      if (res.ok && d.token) {
+        // Otomatik giriş
+        localStorage.setItem('sk_token', d.token);
+        if (d.user) {
+          localStorage.setItem('sk_user_name', d.user.name || '');
+          localStorage.setItem('sk_user_email', d.user.email || '');
+          localStorage.setItem('sk_user_points', d.user.points || 0);
+          localStorage.setItem('sk_user_solved', d.user.solved_count || 0);
+          localStorage.setItem('sk_user_level', d.user.level || 1);
+          localStorage.setItem('sk_user_rank', d.user.rank_val || 1000);
+          localStorage.setItem('sk_user_badges', d.user.badges || 0);
+          localStorage.setItem('sk_user_streak', d.user.streak || 1);
+          localStorage.setItem('sk_user_is_premium', d.user.is_premium ? 'true' : 'false');
+          localStorage.setItem('sk_user_is_vip', d.user.is_vip ? 'true' : 'false');
+          localStorage.setItem('sk_user_subscription', d.user.subscription || 'free');
+        }
+        window.__SK_USER_FETCHED = false;
+        window.dispatchEvent(new Event('sk_user_update'));
+        setDone(true);
+        setTimeout(() => navigate('dashboard'), 2500);
+      } else {
+        setError(d.error || 'Bir hata oluştu.');
+      }
+    } catch (err) {
+      setError('Bağlantı hatası. Lütfen tekrar deneyin.');
+    } finally { setLoading(false); }
+  };
+
+  if (!token) {
+    return (<><HeaderCmp navigate={navigate} /><div className="min-h-screen flex items-center justify-center"><div className="text-center"><h1 className="text-2xl text-[#eafff5] mb-4">Geçersiz Bağlantı</h1><p className="text-[#74998a] mb-6">Şifre belirleme bağlantısı geçersiz veya eksik.</p><button onClick={() => navigate('home')} className="text-[#00ff88] hover:underline font-mono">← Anasayfaya Dön</button></div></div><FooterCmp navigate={navigate} /></>);
+  }
+
+  return (
+    <>
+      <HeaderCmp navigate={navigate} />
+      <div className="min-h-screen flex items-center justify-center px-4 py-20">
+        <div className="w-full max-w-md rounded-2xl border border-[#0c2719] p-8" style={{ background: 'linear-gradient(165deg,#0a1f15,#04100a)' }}>
+          {done ? (
+            <div className="text-center py-6">
+              <div className="w-16 h-16 rounded-full bg-[#00ff88]/10 border-2 border-[#00ff88] grid place-items-center mx-auto mb-5">
+                <span className="text-[#00ff88] text-3xl">✓</span>
+              </div>
+              <h2 className="text-xl text-[#eafff5] font-disp font-bold mb-3">Şifreniz Belirlendi!</h2>
+              <p className="text-[#9fc4b5] text-sm mb-4">Kontrol panelinize yönlendiriliyorsunuz...</p>
+              <div className="w-6 h-6 border-2 border-[#00ff88] border-t-transparent rounded-full animate-spin mx-auto"></div>
+            </div>
+          ) : (
+            <>
+              <div className="text-center mb-8">
+                <span className="w-10 h-10 border border-[#00ff88] rounded-lg grid place-items-center text-[#00ff88] font-mono text-base font-bold mx-auto mb-4 inline-flex">&gt;_</span>
+                <h1 className="text-2xl text-[#eafff5] font-disp font-bold mb-2">Şifrenizi Belirleyin</h1>
+                <p className="text-[#74998a] text-sm">Hesabınıza erişmek için güçlü bir şifre oluşturun.</p>
+              </div>
+              <div className="space-y-4 mb-6">
+                <div>
+                  <label className="block text-xs text-[#74998a] mb-1.5 font-mono">Yeni Şifre *</label>
+                  <input type="password" value={pw} onChange={e => setPw(e.target.value)} placeholder="En az 6 karakter" className="w-full bg-[#04100a] border border-[#103a26] rounded-lg px-4 py-3 text-[#eafff5] text-sm font-mono placeholder-[#5c8a74] focus:border-[#00ff88] outline-none transition-colors" />
+                </div>
+                <div>
+                  <label className="block text-xs text-[#74998a] mb-1.5 font-mono">Şifre Tekrar *</label>
+                  <input type="password" value={pw2} onChange={e => setPw2(e.target.value)} placeholder="Şifrenizi tekrar girin" onKeyDown={e => e.key === 'Enter' && handleSubmit()} className="w-full bg-[#04100a] border border-[#103a26] rounded-lg px-4 py-3 text-[#eafff5] text-sm font-mono placeholder-[#5c8a74] focus:border-[#00ff88] outline-none transition-colors" />
+                </div>
+              </div>
+              {error && <div className="mb-4 p-3 rounded-lg border border-red-500/30 bg-red-500/5 text-red-400 text-xs font-mono">{error}</div>}
+              <button onClick={handleSubmit} disabled={loading} className="w-full py-3.5 font-mono font-bold text-[#021008] bg-[#00ff88] rounded-xl hover:shadow-[0_0_30px_var(--glow)] disabled:opacity-40 transition-all text-sm text-center">
+                {loading ? (<span className="flex items-center justify-center gap-2"><span className="w-4 h-4 border-2 border-[#021008] border-t-transparent rounded-full animate-spin"></span>İşleniyor...</span>) : 'Şifremi Belirle'}
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+      <FooterCmp navigate={navigate} />
+    </>
+  );
+};
+
+/* ============ LEVEL TEST PAGE ============ */
+const LevelTestPage = ({ navigate }) => {
+  const HeaderCmp = window.SKHeader || (() => null);
+  const FooterCmp = window.SKFooter || (() => null);
+  const [step, setStep] = useState('welcome');
+  const [current, setCurrent] = useState(0);
+  const [score, setScore] = useState(0);
+  const [selected, setSelected] = useState(-1);
+  const [email, setEmail] = useState('');
+
+  const questions = [
+    { text: 'Siber güvenlik alanında kendini nerede görüyorsun?', opts: [
+      { label: 'Hiç bilgim yok, sıfırdan başlıyorum', score: 0 },
+      { label: 'Teorik okudum ama pratik yapmadım', score: 1 },
+      { label: 'Biraz pratik deneyimim var', score: 2 },
+      { label: 'Aktif olarak öğreniyorum / çalışıyorum', score: 3 },
+    ]},
+    { text: 'Linux terminal kullanabiliyor musun?', opts: [
+      { label: 'Ne olduğunu bilmiyorum', score: 0 },
+      { label: 'Temel komutları biliyorum (ls, cd, mkdir)', score: 1 },
+      { label: 'Orta seviyede kullanabiliyorum', score: 2 },
+      { label: 'Dosya izinleri, servis yönetimi dahil biliyorum', score: 3 },
+    ]},
+    { text: 'HTTP nasıl çalışır biliyor musun?', opts: [
+      { label: 'Bilmiyorum', score: 0 },
+      { label: 'Duydum ama detay bilmiyorum', score: 1 },
+      { label: 'Request/response, header, status code biliyorum', score: 2 },
+      { label: 'Cookie, session, CORS gibi konuları anlıyorum', score: 3 },
+    ]},
+    { text: 'SQL nedir, biliyor musun?', opts: [
+      { label: 'Bilmiyorum', score: 0 },
+      { label: 'Veritabanı dili olduğunu biliyorum', score: 1 },
+      { label: 'Temel sorgu yazabiliyorum', score: 2 },
+      { label: 'SQL Injection mantığını da anlıyorum', score: 3 },
+    ]},
+    { text: 'Ağ kavramları (IP, DNS, port, TCP/UDP)?', opts: [
+      { label: 'Hiç bilmiyorum', score: 0 },
+      { label: 'Duydum, teorik olarak biliyorum', score: 1 },
+      { label: 'Anlıyorum, temel ağ kurabiliyorum', score: 2 },
+      { label: 'Protokol detaylarını ve analiz araçlarını biliyorum', score: 3 },
+    ]},
+    { text: 'Hangi alanda uzmanlaşmak istiyorsun?', opts: [
+      { label: 'Web uygulama güvenliği', score: 0 },
+      { label: 'Ağ sızma testi', score: 0 },
+      { label: 'Sosyal mühendislik & phishing', score: 0 },
+      { label: 'Henüz bilmiyorum, rehber ol', score: 0 },
+    ]},
+  ];
+
+  const getResult = () => {
+    if (score <= 4) return {
+      level: 'Başlangıç Seviyesi', color: '#ffd166', emoji: '🌱',
+      title: 'Sıfırdan başlıyoruz —\ntam doğru yer burası.',
+      desc: "Siber güvenlik temelleri sağlam kurulmadan ilerlenmez. Seninle Linux'tan başlayıp ~10-12 hafta içinde ilk gerçek sızma testini gerçekleştirir seviyeye getiririz.",
+      phases: [
+        { week: 'Hafta 1-3', title: 'Temel Altyapı', detail: 'Linux terminali, ağ kavramları (IP, DNS, TCP/UDP), HTTP protokolü' },
+        { week: 'Hafta 4-6', title: 'Web Güvenliği Girişi', detail: 'OWASP Top 10, form zafiyetleri, kimlik doğrulama açıkları' },
+        { week: 'Hafta 7-9', title: 'Araç Kullanımı', detail: 'Tarama araçları, trafik analizi, zafiyet keşfi senaryoları' },
+        { week: 'Hafta 10-12', title: 'İlk Sızma Testi', detail: 'Gerçek hedef sistemde tam senaryo, metodoloji ve raporlama' },
+      ],
+      outcomes: ['Linux terminalini rahat kullanırsın', 'Web uygulamalarındaki açıkları tanırsın', 'Ağ trafiğini okuyup analiz edersin', 'Eksiksiz bir sızma testi raporu yazarsın'],
+      duration: '~10-12 hafta',
+    };
+    if (score <= 10) return {
+      level: 'Orta Seviye', color: '#00ff88', emoji: '⚡',
+      title: 'Teorin var —\npratiğe dökme zamanı.',
+      desc: 'Kavramları biliyorsun ama henüz gerçek senaryolarda test etmedin. Birebir derslerle 6-8 hafta içinde somut, işe yarar yetkinlik kazanırsın.',
+      phases: [
+        { week: 'Hafta 1-2', title: 'Web Saldırı Teknikleri', detail: 'SQLi, XSS, IDOR, CSRF — gerçek uygulamalar üzerinde adım adım' },
+        { week: 'Hafta 3-4', title: 'Ağ Sızma Testi', detail: 'Port tarama, servis keşfi, kimlik bilgisi saldırıları, pivot' },
+        { week: 'Hafta 5-6', title: 'Gelişmiş Senaryolar', detail: 'Kimlik doğrulama bypass, mantık hataları, zincir saldırılar' },
+        { week: 'Hafta 7-8', title: 'Rapor & Portfolyo', detail: 'Profesyonel pentest raporu, bulgular, CVSS skorlama' },
+      ],
+      outcomes: ['SQLi ve XSS saldırılarını sıfırdan uygularsın', 'Gerçek sistemlerde zafiyet keşfi yaparsın', 'Ağ içinde hareket edersin (lateral movement)', 'İşe alım sürecinde sunabileceğin rapor hazırlarsın'],
+      duration: '~6-8 hafta',
+    };
+    return {
+      level: 'İleri Seviye', color: '#a78bfa', emoji: '🔥',
+      title: 'Teknik altyapın güçlü —\nsektöre geçiş odağı.',
+      desc: 'Bilgini var, sistematik yaklaşım ve sektör deneyimi eksik. 4 yoğun haftada gerçek iş dünyasına hazır hale gelirsin.',
+      phases: [
+        { week: 'Hafta 1', title: 'İleri Saldırı Zincirleri', detail: 'Çok aşamalı exploit zinciri, güvenlik araç bypass yöntemleri' },
+        { week: 'Hafta 2', title: 'Gerçek Dünya Hedefleri', detail: 'Bug bounty metodolojisi, scope analizi, raporlama standartları' },
+        { week: 'Hafta 3', title: 'Pentest Süreci Yönetimi', detail: 'Kapsam belirleme, müşteri iletişimi, bulgu önceliklendirme' },
+        { week: 'Hafta 4', title: 'Kariyer & İşe Giriş', detail: 'CV hazırlığı, GitHub portfolyo, teknik mülakat simülasyonu' },
+      ],
+      outcomes: ['Karmaşık saldırı zincirlerini bağımsız kurgularsın', 'Bug bounty programlarına başvuru yaparsın', 'Müşteriye sunum kalitesinde rapor yazarsın', 'Teknik mülakatları geçecek seviyede hazır olursun'],
+      duration: '~4 hafta yoğun',
+    };
+  };
+
+  const handleNext = () => {
+    if (selected < 0) return;
+    const ns = score + questions[current].opts[selected].score;
+    setScore(ns);
+    setSelected(-1);
+    if (current + 1 >= questions.length) { setStep('email'); }
+    else { setCurrent(c => c + 1); }
+  };
+
+  const handleEmailSubmit = async () => {
+    const r = getResult();
+    setStep('result');
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    try {
+      await fetch('/api/level-test/result', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, score, level: r.level, color: r.color, duration: r.duration, phases: r.phases, outcomes: r.outcomes })
+      });
+    } catch (_) {}
+  };
+
+  const progress = step === 'welcome' ? 0 : (step === 'email' || step === 'result') ? 100 : Math.round((current / questions.length) * 100);
+  const result = getResult();
+  const btnPrimary = "w-full font-mono text-[14px] sm:text-[15px] font-bold text-[#021008] bg-[#00ff88] py-[14px] rounded-xl hover:shadow-[0_0_28px_-4px_rgba(0,255,136,.6)] hover:-translate-y-px transition-all";
+  const btnGhost = "w-full font-mono text-[13px] text-[#5c8a74] py-[11px] rounded-xl border border-[#103a26] hover:border-[#1a4d2e] hover:text-[#74998a] transition-colors";
+
+  return (
+    <>
+      <HeaderCmp navigate={navigate} />
+      <div style={{ background: 'linear-gradient(180deg,#020806,#04100a)', minHeight: '100vh' }}>
+        <div className="max-w-[600px] mx-auto px-4 sm:px-8 py-14 sm:py-24">
+
+          <div className="text-center mb-8">
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-[12px] tracking-[.12em] uppercase text-[#5cffba] border border-[#103a26] bg-[rgba(0,255,136,.04)] px-3.5 py-[7px] rounded-full">
+              <span className="w-[6px] h-[6px] rounded-full bg-[#00ff88] sk-pulse"></span>
+              Ücretsiz Seviye Testi
+            </span>
+          </div>
+
+          <div className="rounded-2xl border border-[#103a26] overflow-hidden" style={{ background: 'linear-gradient(160deg,#06140d,#040d08)' }}>
+            {step !== 'welcome' && (
+              <div className="h-[3px] bg-[#0c2719]">
+                <div className="h-full bg-[#00ff88] transition-all duration-500" style={{ width: progress + '%' }}></div>
+              </div>
+            )}
+            <div className="p-6 sm:p-10">
+
+              {step === 'welcome' && (
+                <div>
+                  <h1 className="text-[clamp(24px,6vw,38px)] text-[#eafff5] mb-4 tracking-[-0.02em] leading-[1.2]">
+                    Seviyeni öğren,<br /><span className="text-[#00ff88]">doğru yerden başla.</span>
+                  </h1>
+                  <p className="text-[14px] sm:text-[15px] text-[#74998a] mb-7 leading-[1.8]">
+                    6 kısa soru — 2 dakika. Siber güvenlik bilgin analiz edilir, sana özel başlangıç noktası ve müfredat belirlenir.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {['Ücretsiz', '2 dakika', 'Kayıt gerekmez', 'Kişisel sonuç'].map((t, i) => (
+                      <span key={i} className="text-[11px] sm:text-[12px] text-[#5cffba] border border-[#103a26] px-3 py-1.5 rounded-full">{t}</span>
+                    ))}
+                  </div>
+                  <button onClick={() => setStep('quiz')} className={btnPrimary}>Testi Başlat →</button>
+                  <button onClick={() => navigate('pricing')} className={btnGhost + " mt-3"}>Direkt eğitim programına git</button>
+                </div>
+              )}
+
+              {step === 'quiz' && (
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="font-mono text-[11px] text-[#5c8a74] tracking-widest uppercase">Soru {current + 1} / {questions.length}</span>
+                    <button onClick={() => { setCurrent(0); setScore(0); setSelected(-1); setStep('welcome'); }} className="font-mono text-[11px] text-[#5c8a74] hover:text-[#74998a] transition-colors">← Başa dön</button>
+                  </div>
+                  <p className="text-[17px] sm:text-[20px] text-[#eafff5] mb-6 leading-[1.45]">{questions[current].text}</p>
+                  <div className="space-y-2.5">
+                    {questions[current].opts.map((opt, i) => (
+                      <button key={i} onClick={() => setSelected(i)}
+                        className={"w-full text-left px-4 py-3.5 rounded-xl border transition-all " + (selected === i ? 'border-[#00ff88] bg-[rgba(0,255,136,.06)]' : 'border-[#103a26] hover:border-[#1a4d2e]')}>
+                        <span className="flex items-center gap-3">
+                          <span className={"w-[18px] h-[18px] rounded-full border flex-shrink-0 flex items-center justify-center transition-all " + (selected === i ? 'border-[#00ff88] bg-[#00ff88]' : 'border-[#103a26]')}>
+                            {selected === i && <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#021008" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                          </span>
+                          <span className={"text-[13px] sm:text-[14px] leading-[1.5] " + (selected === i ? 'text-[#eafff5]' : 'text-[#c0ddd0]')}>{opt.label}</span>
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                  <button onClick={handleNext} disabled={selected < 0}
+                    className={"w-full mt-6 font-mono text-[14px] sm:text-[15px] font-bold py-[14px] rounded-xl transition-all " + (selected >= 0 ? 'text-[#021008] bg-[#00ff88] hover:shadow-[0_0_28px_-4px_rgba(0,255,136,.5)] hover:-translate-y-px' : 'text-[#3d564b] bg-[#0c2719] cursor-not-allowed')}>
+                    {current + 1 < questions.length ? 'Sonraki Soru →' : 'Sonucu Gör →'}
+                  </button>
+                </div>
+              )}
+
+              {step === 'email' && (
+                <div>
+                  <div className="w-12 h-12 rounded-xl border border-[#103a26] bg-[rgba(0,255,136,.06)] flex items-center justify-center text-[#00ff88] text-xl mb-6">✓</div>
+                  <h2 className="text-[20px] sm:text-[22px] text-[#eafff5] mb-3">Neredeyse bitti!</h2>
+                  <p className="text-[13px] sm:text-[14px] text-[#74998a] mb-6 leading-[1.75]">Sana özel yol haritasını e-postana almak için adresini gir. İstersen e-posta vermeden de sonuca geçebilirsin.</p>
+                  <label className="block font-mono text-[11px] tracking-widest uppercase text-[#5c8a74] mb-2">E-posta adresi</label>
+                  <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="ornek@email.com"
+                    className="w-full bg-[#07150e] border border-[#103a26] rounded-xl px-4 py-3 text-[#cdeede] placeholder-[#3d564b] focus:border-[#00ff88] focus:outline-none transition-colors font-mono text-[13px] sm:text-[14px] mb-2" />
+                  <p className="text-[11px] text-[#5c8a74] mb-6">Spam yok. Sadece sonuç ve önerilen müfredat.</p>
+                  <button onClick={handleEmailSubmit} className={btnPrimary}>Sonucu Gör →</button>
+                  <button onClick={() => setStep('result')} className={btnGhost + " mt-3"}>E-posta olmadan devam et</button>
+                </div>
+              )}
+
+              {step === 'result' && (
+                <div>
+                  {/* Level header + score */}
+                  <div className="flex items-start justify-between gap-4 mb-5">
+                    <div>
+                      <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase border px-3 py-1.5 rounded-full mb-3"
+                        style={{ color: result.color, borderColor: result.color + '50', background: result.color + '14' }}>
+                        <span>{result.emoji}</span> {result.level}
+                      </span>
+                      <h2 className="text-[clamp(18px,4vw,24px)] text-[#eafff5] leading-[1.3]" style={{ whiteSpace: 'pre-line' }}>{result.title}</h2>
+                    </div>
+                    <div className="flex-shrink-0 text-center">
+                      <div className="w-[58px] h-[58px] rounded-full border-2 flex flex-col items-center justify-center"
+                        style={{ borderColor: result.color, background: result.color + '18' }}>
+                        <span className="font-mono text-[17px] font-bold leading-none" style={{ color: result.color }}>{score}</span>
+                        <span className="font-mono text-[9px] text-[#5c8a74] leading-none mt-[2px]">/ 15</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Score bar */}
+                  <div className="mb-5">
+                    <div className="h-[5px] rounded-full bg-[#0c2719] overflow-hidden relative">
+                      <div className="h-full rounded-full transition-all duration-700" style={{ width: Math.round((score / 15) * 100) + '%', background: 'linear-gradient(90deg,' + result.color + '99,' + result.color + ')' }}></div>
+                      <div className="absolute top-0 h-full w-px bg-[#1a4d2e]" style={{ left: '27%' }}></div>
+                      <div className="absolute top-0 h-full w-px bg-[#1a4d2e]" style={{ left: '67%' }}></div>
+                    </div>
+                    <div className="flex justify-between font-mono text-[9px] text-[#3d564b] mt-1">
+                      <span>Başlangıç</span><span>Orta</span><span>İleri</span>
+                    </div>
+                  </div>
+
+                  <p className="text-[13px] sm:text-[14px] text-[#8fb8a4] mb-6 leading-[1.8]">{result.desc}</p>
+
+                  {/* Phase timeline */}
+                  <div className="border border-[#0c2719] rounded-xl overflow-hidden mb-4" style={{ background: 'rgba(0,0,0,.25)' }}>
+                    <div className="px-4 sm:px-5 py-3 border-b border-[#0c2719] flex items-center justify-between">
+                      <span className="font-mono text-[10px] tracking-widest uppercase text-[#5c8a74] flex items-center gap-1.5">
+                        <span style={{ color: result.color }}>▸</span> Önerilen Müfredat
+                      </span>
+                      <span className="font-mono text-[10px] font-bold" style={{ color: result.color }}>{result.duration}</span>
+                    </div>
+                    <div className="divide-y divide-[#0c2719]">
+                      {result.phases.map((ph, i) => (
+                        <div key={i} className="flex gap-3 sm:gap-4 px-4 sm:px-5 py-3.5">
+                          <div className="flex-shrink-0 pt-[2px]">
+                            <div className="w-[28px] h-[28px] rounded-lg flex items-center justify-center font-mono text-[10px] font-bold"
+                              style={{ background: result.color + '18', color: result.color, border: '1px solid ' + result.color + '30' }}>
+                              {String(i + 1).padStart(2, '0')}
+                            </div>
+                          </div>
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-2 mb-0.5">
+                              <span className="font-mono text-[9px] text-[#5c8a74] tracking-wider">{ph.week}</span>
+                            </div>
+                            <div className="text-[13px] text-[#cdeede] font-medium mb-0.5">{ph.title}</div>
+                            <div className="text-[11px] text-[#74998a] leading-[1.5]">{ph.detail}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Outcomes */}
+                  <div className="border border-[#0c2719] rounded-xl p-4 sm:p-5 mb-6" style={{ background: 'rgba(0,0,0,.15)' }}>
+                    <div className="font-mono text-[10px] tracking-widest uppercase text-[#5c8a74] mb-3 flex items-center gap-1.5">
+                      <span className="text-[#00ff88]">▸</span> Program sonunda yapabileceklerin
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {result.outcomes.map((o, i) => (
+                        <div key={i} className="flex items-start gap-2">
+                          <span className="text-[#00ff88] text-[12px] mt-[2px] flex-shrink-0">✓</span>
+                          <span className="text-[12px] text-[#8fb8a4] leading-[1.5]">{o}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <button onClick={() => navigate('pricing')} className={btnPrimary}>Bu Müfredatla Eğitime Başla →</button>
+                  <button onClick={() => { setCurrent(0); setScore(0); setSelected(-1); setEmail(''); setStep('welcome'); }}
+                    className={btnGhost + " mt-3"}>Testi yeniden başlat</button>
+                </div>
+              )}
+
+            </div>
+          </div>
+          <p className="text-center text-[11px] text-[#3d564b] mt-6 font-mono">siberkampus.org · Ücretsiz &amp; kayıt gerekmez</p>
+        </div>
+      </div>
       <FooterCmp navigate={navigate} />
     </>
   );
@@ -2765,10 +3616,13 @@ Object.assign(PAGES, {
   support: SupportPage,
   terms: TermsPage,
   privacy: PrivacyPage,
+  'refund-policy': RefundPolicyPage,
+  'delivery-policy': DeliveryPolicyPage,
   notfound: NotFoundPage,
-  profile: ProfilePage,
-  badges: BadgesPage,
-  certificates: CertificatesPage,
   tools: ToolsPage,
   pricing: PricingPage,
+  product: ProductDetailPage,
+  'set-password': SetPasswordPage,
+  'level-test': LevelTestPage,
+  certificates: CertificatesPage,
 });

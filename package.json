@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "compile": "esbuild sk-data.jsx --outfile=sk-data.js --minify --jsx=transform --format=iife && esbuild sk-articles.jsx --outfile=sk-articles.js --minify --jsx=transform --format=iife && esbuild sk-docs.jsx --outfile=sk-docs.js --minify --jsx=transform --format=iife && esbuild app.jsx --outfile=app.js --minify --jsx=transform --format=iife && esbuild app-auth.jsx --outfile=app-auth.js --minify --jsx=transform --format=iife && esbuild app-pages.jsx --outfile=app-pages.js --minify --jsx=transform --format=iife"
+    "compile": "esbuild sk-data.jsx --outfile=sk-data.js --minify --jsx=transform --format=iife && esbuild sk-articles.jsx --outfile=sk-articles.js --minify --jsx=transform --format=iife && esbuild sk-docs.jsx --outfile=sk-docs.js --minify --jsx=transform --format=iife && esbuild app.jsx --outfile=app.js --minify --jsx=transform --format=iife && esbuild app-auth.jsx --outfile=app-auth.js --minify --jsx=transform --format=iife && esbuild app-pages.jsx --outfile=app-pages.js --minify --jsx=transform --format=iife",
+    "build": "npm run compile"
   },
   "keywords": [
     "siberkampus",
@@ -22,6 +23,7 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
+    "nodemailer": "^9.0.2",
     "pg": "^8.21.0"
   },
   "devDependencies": {

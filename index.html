@@ -2,30 +2,28 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Siber Güvenlik Uzmanı Ol | siberkampus — CTF & Hacking Laboratuvarları</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siber Güvenlik Eğitimi Özel Ders & Mentorluk</title>
   <link rel="icon" href="/favicon.png" type="image/png" />
   <link rel="shortcut icon" href="/favicon.png" type="image/png" />
-  <meta name="description" content="siberkampus, CTF görevleri ve gerçek hacking laboratuvarlarıyla sıfırdan siber güvenlik uzmanı olmanı sağlayan uygulamalı eğitim kampüsüdür. Hemen ücretsiz başla." />
-  <meta name="keywords" content="siber güvenlik, ctf, hacking laboratuvarı, siber ctf, ethical hacking, sızma testi, pentest, siber eğitim" />
-  <meta name="author" content="siberkampus" />
-  
-  <!-- Google Search Console Verification -->
-  <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN_HERE" />
+  <meta name="description" content="Siber Kampüs Akademi ile birebir canlı özel ders ve siber güvenlik mentörlüğü. Sektör uzmanlarından uygulamalı hacking ve savunma eğitimleriyle kariyerinize başlayın." />
+  <meta name="keywords" content="siber güvenlik eğitimi, siber güvenlik özel ders, siber güvenlik mentörlük, ctf, sızma testi, pentest, ethical hacking, siber kampüs" />
+  <meta name="author" content="Siber Kampüs Akademi" />
+
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://siberkampus.com/" />
-  <meta property="og:title" content="Siber Güvenlik Uzmanı Ol | siberkampus — CTF & Hacking Laboratuvarları" />
-  <meta property="og:description" content="siberkampus, CTF görevleri ve gerçek hacking laboratuvarlarıyla sıfırdan siber güvenlik uzmanı olmanı sağlayan uygulamalı eğitim kampüsüdür." />
-  <meta property="og:image" content="https://siberkampus.com/ogretici.jpg" />
+  <meta property="og:url" content="https://www.siberkampus.org/" />
+  <meta property="og:title" content="Siber Güvenlik Eğitimi Özel Ders & Mentorluk" />
+  <meta property="og:description" content="Siber Kampüs Akademi ile birebir canlı özel ders ve siber güvenlik mentörlüğü. Sektör uzmanlarından uygulamalı hacking ve savunma eğitimleriyle kariyerinize başlayın." />
+  <meta property="og:image" content="https://www.siberkampus.org/ogretici.jpg" />
 
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://siberkampus.com/" />
-  <meta property="twitter:title" content="Siber Güvenlik Uzmanı Ol | siberkampus — CTF & Hacking Laboratuvarları" />
-  <meta property="twitter:description" content="siberkampus, CTF görevleri ve gerçek hacking laboratuvarlarıyla sıfırdan siber güvenlik uzmanı olmanı sağlayan uygulamalı eğitim kampüsüdür." />
-  <meta property="twitter:image" content="https://siberkampus.com/ogretici.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.siberkampus.org/" />
+  <meta name="twitter:title" content="Siber Güvenlik Eğitimi Özel Ders & Mentorluk" />
+  <meta name="twitter:description" content="Siber Kampüs Akademi ile birebir canlı özel ders ve siber güvenlik mentörlüğü. Sektör uzmanlarından uygulamalı hacking ve savunma eğitimleriyle kariyerinize başlayın." />
+  <meta name="twitter:image" content="https://www.siberkampus.org/ogretici.jpg" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QFXKTX2HD3"></script>
@@ -37,34 +35,25 @@
     gtag('config', 'G-QFXKTX2HD3');
   </script>
 
+  <meta name="robots" content="index, follow" />
+  <meta name="publisher" content="Siber Kampüs Akademi" />
+
   <!-- Preload critical React and ReactDOM libraries -->
   <link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" />
   <link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" />
   <!-- Preload compiled application JS assets -->
-  <link rel="preload" href="/sk-data.js?v=1.0.29" as="script" />
-  <link rel="preload" href="/sk-articles.js?v=1.0.29" as="script" />
-  <link rel="preload" href="/sk-docs.js?v=1.0.29" as="script" />
-  <link rel="preload" href="/app.js?v=1.0.29" as="script" />
-  <link rel="preload" href="/app-auth.js?v=1.0.29" as="script" />
-  <link rel="preload" href="/app-pages.js?v=1.0.29" as="script" />
-  <link rel="preload" href="https://cdn.tailwindcss.com" as="script" />
+  <link rel="preload" href="/sk-data.js?v=1.0.31" as="script" />
+  <link rel="preload" href="/sk-articles.js?v=1.0.31" as="script" />
+  <link rel="preload" href="/sk-docs.js?v=1.0.31" as="script" />
+  <link rel="preload" href="/app.js?v=1.0.31" as="script" />
+  <link rel="preload" href="/app-auth.js?v=1.0.31" as="script" />
+  <link rel="preload" href="/app-pages.js?v=1.0.31" as="script" />
+  <link rel="preload" href="/style.css?v=1.0.31" as="style" />
+  <link rel="stylesheet" href="/style.css?v=1.0.31" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-            disp: ['"Chakra Petch"', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
   <style>
     :root {
       --bg:#020806; --bg-2:#04100a; --surface:#07150e; --border:#103a26;
@@ -158,18 +147,135 @@
   </style>
   <!-- Vercel Speed Insights -->
   <script src="/_vercel/speed-insights/script.js" defer data-sdkn="@vercel/speed-insights" data-sdkv="2.0.0"></script>
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.siberkampus.org/#organization",
+        "name": "Siber Kampüs Akademi",
+        "url": "https://www.siberkampus.org/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://www.siberkampus.org/#logo",
+          "url": "https://www.siberkampus.org/favicon.png",
+          "caption": "Siber Kampüs Akademi Logo"
+        },
+        "image": {
+          "@id": "https://www.siberkampus.org/#logo"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.siberkampus.org/#website",
+        "url": "https://www.siberkampus.org/",
+        "name": "Siber Kampüs Akademi",
+        "description": "Siber Güvenlik Eğitimi",
+        "publisher": {
+          "@id": "https://www.siberkampus.org/#organization"
+        },
+        "inLanguage": "tr"
+      }
+    ]
+  }
+  </script>
+  <script src="https://www.paytr.com/js/iframeResizer.min.js"></script>
+
+  <!-- Tailwind CSS CDN for local dynamic parsing -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+            disp: ['"Chakra Petch"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
 </head>
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <!-- SEO Fallback Content for Crawlers and Non-JS Users -->
+    <header style="padding: 20px; text-align: center; border-bottom: 1px solid #103a26; background: #04100a;">
+      <nav style="font-family: monospace;">
+        <a href="/" style="color: #00ff88; text-decoration: none; margin: 0 15px;">Anasayfa</a> | 
+        <a href="/hakkimizda" style="color: #cdeede; text-decoration: none; margin: 0 15px;">Hakkımızda</a> | 
+        <a href="/iletisim" style="color: #cdeede; text-decoration: none; margin: 0 15px;">İletişim</a> | 
+        <a href="/blog" style="color: #cdeede; text-decoration: none; margin: 0 15px;">Blog Makaleleri</a> |
+        <a href="/rooms" style="color: #cdeede; text-decoration: none; margin: 0 15px;">Laboratuvarlar (CTF)</a> |
+        <a href="/tools" style="color: #cdeede; text-decoration: none; margin: 0 15px;">Siber Güvenlik Araçları</a>
+      </nav>
+    </header>
+    
+    <main style="max-w: 800px; margin: 40px auto; padding: 0 20px; font-family: sans-serif; line-height: 1.8;">
+      <h1 style="font-size: 3rem; color: #00ff88; margin-bottom: 10px;">Siber Kampüs Akademi</h1>
+      <h2 style="font-size: 1.8rem; color: #eafff5; margin-bottom: 30px;">Siber Güvenlik Eğitimi</h2>
+      
+      <p style="font-size: 1.1rem; color: #cdeede;">
+        Siber Kampüs Akademi, sıfırdan siber güvenlik öğrenmek isteyen meraklılar ve uzman adayları için kurulmuş, tarayıcı tabanlı tamamen uygulamalı bir siber güvenlik eğitim platformudur. Sıkıcı teorik slaytlar yerine, tüm zafiyetleri ve ağ araçlarını gerçek senaryolar üzerinden, doğrudan tarayıcınızın içindeki sanal laboratuvar ortamlarında deneyimlersiniz.
+      </p>
+
+      <hr style="border: 0; border-top: 1px solid #103a26; margin: 40px 0;" />
+
+      <section>
+        <h3 style="font-size: 1.5rem; color: #5cffba;">Eğitim Metodolojimiz ve Güvenilirlik</h3>
+        <p style="color: #74998a;">
+          Eğitimlerimiz uluslararası <strong>OWASP Top 10</strong> standartlarına ve sızma testi metodolojilerine (PTES) göre kurgulanmıştır. Platform, siber güvenlik alanında uzun yıllar çalışmış deneyimli sızma testi uzmanları ve akademisyenler tarafından tasarlanan müfredatlarla desteklenir. Teorik bilgi toplama, zafiyet keşfi, exploit geliştirme ve yetki yükseltme aşamalarını adım adım işleriz.
+        </p>
+      </section>
+
+      <section style="margin-top: 30px;">
+        <h3 style="font-size: 1.5rem; color: #5cffba;">Popüler Siber Güvenlik Laboratuvarı Odaları (CTF)</h3>
+        <p style="color: #74998a;">
+          Aşağıdaki laboratuvarları hiçbir ek kurulum yapmadan, kendi tarayıcınız üzerinden pratik yaparak çözebilirsiniz:
+        </p>
+        <ul style="color: #cdeede; padding-left: 20px;">
+          <li style="margin-bottom: 8px;"><strong>SQL Injection:</strong> Mantıksal sorgu manipülasyonu ve bypass teknikleri.</li>
+          <li style="margin-bottom: 8px;"><strong>Reflected XSS:</strong> JavaScript enjeksiyonu ile oturum çerezi çalma senaryosu.</li>
+          <li style="margin-bottom: 8px;"><strong>Command Injection (RCE):</strong> Sistem komutlarını sızdırarak sunucu kontrolünü ele geçirme.</li>
+          <li style="margin-bottom: 8px;"><strong>API BOLA:</strong> Yetkisiz nesne erişimi ve API güvenlik açıkları.</li>
+          <li style="margin-bottom: 8px;"><strong>NoSQL Injection:</strong> MongoDB filtrelerini mantıksal operatör enjeksiyonu ile atlatma.</li>
+        </ul>
+      </section>
+
+      <section style="margin-top: 30px;">
+        <h3 style="font-size: 1.5rem; color: #5cffba;">Online Siber Güvenlik Araç Kiti</h3>
+        <p style="color: #74998a;">
+          Günlük sızma testlerinizde veya derslerinizde kullanabileceğiniz, client-side (istemci tarafında) çalışan siber güvenlik hesaplayıcıları:
+        </p>
+        <ul style="color: #cdeede; padding-left: 20px;">
+          <li style="margin-bottom: 8px;"><strong>Online Reverse Shell Oluşturucu:</strong> Bash, Python, PowerShell ve Netcat jeneratörü.</li>
+          <li style="margin-bottom: 8px;"><strong>CIDR & Subnet Hesaplayıcı:</strong> IP alt ağ maskesi ve kullanılabilir host aralığı hesaplama.</li>
+          <li style="margin-bottom: 8px;"><strong>Cyber Encoder/Decoder:</strong> Base64, Hex, URL, Binary dönüştürücü.</li>
+          <li style="margin-bottom: 8px;"><strong>Parola Entropi Analizörü:</strong> Şifre kırma süresi ve brute-force dayanıklılık testi.</li>
+        </ul>
+      </section>
+
+      <section style="margin-top: 40px; padding: 15px; border-left: 3px solid #00ff88; background: rgba(0,255,136,0.03);">
+        <p style="font-size: 0.9rem; color: #74998a; margin: 0;">
+          <strong>Yasal Uyarı:</strong> Siber Kampüs Akademi üzerinde öğretilen tüm teknikler ve simülasyonlar tamamen eğitim ve siber savunma bilincini artırma amaçlıdır. Platform dışındaki yetkisiz sistemlerde bu yöntemlerin kullanılması yasal sorumluluk doğurur.
+        </p>
+      </section>
+    </main>
+
+    <footer style="text-align: center; padding: 30px; border-top: 1px solid #103a26; color: #5c8a74; font-size: 0.9rem;">
+      <p>© 2026 Siber Kampüs Akademi — Tüm hakları saklıdır.</p>
+    </footer>
+  </div>
 
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" defer></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" defer></script>
 
-  <script src="/sk-data.js?v=1.0.29" defer></script>
-  <script src="/sk-articles.js?v=1.0.29" defer></script>
-  <script src="/sk-docs.js?v=1.0.29" defer></script>
-  <script src="/app.js?v=1.0.29" defer></script>
-  <script src="/app-auth.js?v=1.0.29" defer></script>
-  <script src="/app-pages.js?v=1.0.29" defer></script>
+  <script src="/sk-data.js?v=1.0.31" defer></script>
+  <script src="/sk-articles.js?v=1.0.31" defer></script>
+  <script src="/sk-docs.js?v=1.0.31" defer></script>
+  <script src="/app.js?v=1.0.31" defer></script>
+  <script src="/app-auth.js?v=1.0.31" defer></script>
+  <script src="/app-pages.js?v=1.0.31" defer></script>
 </body>
 </html>

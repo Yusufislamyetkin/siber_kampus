@@ -242,7 +242,7 @@ const AppHeader = ({ navigate, active }) => {
     return () => window.removeEventListener('open_vip_mentor_modal', handleOpen);
   }, []);
 
-  const nav = [['Dashboard', 'dashboard', '▣'], ['Leaderboard', 'leaderboard', '🏆'], ['Sohbet', 'chat', '💬']];
+  const nav = [['Dashboard', 'dashboard', '▣']];
   if (user && user.is_admin) {
     nav.push(['Yönetim Paneli', 'admin', '⚙️']);
   }
@@ -264,11 +264,7 @@ const AppHeader = ({ navigate, active }) => {
             </nav>
           </div>
           <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#103a26] bg-[rgba(0,255,136,.03)]">
-              <span className="text-[#00ff88] text-sm">◆</span>
-              <span className="font-mono text-sm text-[#eafff5] font-bold">{user.points}</span>
-              <span className="text-xs text-[#74998a]">puan</span>
-            </div>
+
             <div className="relative">
               <button onClick={() => setOpen(o => !o)} aria-label="Kullanıcı Menüsü" className="flex items-center gap-2 pl-1.5 pr-3 py-1.5 rounded-lg border border-[#103a26] hover:border-[#00ff88] transition-colors">
                 <span className="w-7 h-7 rounded-md grid place-items-center text-[#5cffba] font-bold text-xs border border-[#103a26]" style={{ background: 'linear-gradient(135deg,#0a3a24,#052b18)' }}>{user.avatar}</span>
@@ -277,7 +273,7 @@ const AppHeader = ({ navigate, active }) => {
               </button>
               {open && (
                 <div className="absolute right-0 top-[calc(100%+8px)] w-44 bg-[#04100a] border border-[#103a26] rounded-lg p-1.5 shadow-[0_20px_50px_-20px_#000] z-50">
-                  {[['Profilim', 'profile'], ['Rozetlerim', 'badges'], ['Sertifikalarım', 'certificates']].map(([t, p], i) => (
+                  {[['Sertifikalarım', 'certificates']].map(([t, p], i) => (
                     <button key={i} onClick={() => { setOpen(false); navigate(p); }} className="w-full text-left px-3 py-2 rounded-md text-sm text-[#74998a] hover:text-[#cdeede] hover:bg-[rgba(0,255,136,.04)] transition-colors">{t}</button>
                   ))}
                   <div className="h-px bg-[#0c2719] my-1.5"></div>
@@ -336,10 +332,7 @@ const AppHeader = ({ navigate, active }) => {
                 <span>{ic}</span>{t}
               </button>
             ))}
-            <div className="sm:hidden mt-2 p-3 border border-[#103a26] bg-[rgba(0,255,136,.03)] rounded flex items-center justify-between text-xs">
-              <span className="text-[#74998a]">Toplam Puan:</span>
-              <span className="font-mono font-bold text-[#00ff88]">◆ {user.points}</span>
-            </div>
+
           </div>
         )}
       </header>
@@ -463,465 +456,390 @@ const SectionLabel = ({ children }) => (
 /* ============ DASHBOARD ============ */
 const DashboardPage = ({ navigate, data }) => {
   const [user, updateUser] = useUser();
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [selectedLessonIdx, setSelectedLessonIdx] = useState(0);
+  const [quizAnswers, setQuizAnswers] = useState([null, null, null]);
 
-  useEffect(() => {
-    if (data && data.scrollTo === 'categories') {
-      setTimeout(() => {
-        document.getElementById('categories-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 150);
+  // Progress state: index of the highest unlocked lesson (0 to 30)
+  const [progress, setProgress] = useState(() => {
+    try {
+      const saved = localStorage.getItem('sk_lessons_progress');
+      return saved ? JSON.parse(saved) : { 'ag-guvenligi': 0, 'uyg-guvenligi': 0 };
+    } catch (e) {
+      return { 'ag-guvenligi': 0, 'uyg-guvenligi': 0 };
     }
-  }, [data]);
-
-  const solvedList = JSON.parse(localStorage.getItem('sk_solved_rooms') || '[]');
-  const progressMap = JSON.parse(localStorage.getItem('sk_room_progress') || '{}');
-  const inProgress = window.SK_ALL_ROOMS
-    .map(r => ({
-      ...r,
-      progress: progressMap[r.id] || 0
-    }))
-    .filter(r => r.progress > 0 && r.progress < 100);
-
-  const categories = window.SK_CATEGORIES.map(c => {
-    const solvedInCat = c.rooms.filter(r => solvedList.includes(r.id)).length;
-    return {
-      ...c,
-      count: c.rooms.length,
-      solvedCount: solvedInCat
-    };
   });
-  const dynamicBadges = window.getDynamicBadges ? window.getDynamicBadges(user, solvedList) : [];
-  const badges = dynamicBadges.slice(0, 7);
 
-  // daily activity chart (last 14 days)
-  const solvedDetails = JSON.parse(localStorage.getItem('sk_solved_details') || '[]');
-  let daily = Array(14).fill(0);
-  const now = new Date();
-  for (let i = 0; i < 14; i++) {
-    const targetDate = new Date(now.getTime() - (13 - i) * 24 * 60 * 60 * 1000);
-    const startOfDay = new Date(targetDate);
-    startOfDay.setHours(0, 0, 0, 0);
-    const endOfDay = new Date(targetDate);
-    endOfDay.setHours(23, 59, 59, 999);
-    
-    let pointsSum = 0;
-    solvedDetails.forEach(s => {
-      if (s.solved_at) {
-        const solvedTime = new Date(s.solved_at).getTime();
-        if (solvedTime >= startOfDay.getTime() && solvedTime <= endOfDay.getTime()) {
-          pointsSum += s.points_earned;
-        }
+  const saveProgress = (newProg) => {
+    setProgress(newProg);
+    localStorage.setItem('sk_lessons_progress', JSON.stringify(newProg));
+  };
+
+  // When active category changes, default to the highest unlocked lesson (clamped to 0-29)
+  useEffect(() => {
+    if (activeCategory) {
+      const currentProg = progress[activeCategory] || 0;
+      const defaultIdx = Math.min(currentProg, 29);
+      setSelectedLessonIdx(defaultIdx);
+      setQuizAnswers([null, null, null]);
+    }
+  }, [activeCategory]);
+
+  // Reset quiz state when changing lesson
+  useEffect(() => {
+    setQuizAnswers([null, null, null]);
+  }, [selectedLessonIdx]);
+
+  const lessons = window.SK_LESSONS ? window.SK_LESSONS[activeCategory] : [];
+  const currentLesson = lessons ? lessons[selectedLessonIdx] : null;
+
+  // Calculate progress percentages for category cards
+  const getCatProgressPercent = (catKey) => {
+    const progVal = progress[catKey] || 0;
+    return Math.min(Math.round((progVal / 30) * 100), 100);
+  };
+
+  const handleOptionClick = (qIdx, optIdx) => {
+    const newAnswers = [...quizAnswers];
+    newAnswers[qIdx] = optIdx;
+    setQuizAnswers(newAnswers);
+  };
+
+  const handleNextLesson = () => {
+    const nextIdx = selectedLessonIdx + 1;
+    const currentProg = progress[activeCategory] || 0;
+
+    let newProgVal = currentProg;
+    if (nextIdx > currentProg) {
+      newProgVal = nextIdx;
+      const newProgress = { ...progress, [activeCategory]: newProgVal };
+      saveProgress(newProgress);
+      
+      // Award user points as encouragement
+      if (updateUser) {
+        updateUser({ points: user.points + 10 });
       }
-    });
-    daily[i] = pointsSum;
+    }
+
+    if (nextIdx < 30) {
+      setSelectedLessonIdx(nextIdx);
+    } else {
+      alert("Tebrikler! Bu kategorideki tüm dersleri başarıyla tamamladınız! 🎉");
+      setActiveCategory(null);
+    }
+  };
+
+  // If no category selected, show the 2 Category Cards
+  if (!activeCategory) {
+    return (
+      <>
+        <AppHeader navigate={navigate} active="dashboard" />
+        <main className="max-w-[1280px] mx-auto px-6 py-12">
+          {/* welcome section */}
+          <div className="mb-10 text-center md:text-left">
+            <p className="font-mono text-sm text-[#74998a] mb-2">root@siberkampus: <span className="text-[#00ff88]">~/dashboard</span></p>
+            <h1 className="text-[clamp(28px,4vw,42px)] text-[#eafff5] font-disp font-bold">
+              Hoş geldin, <span className="text-[#00ff88]">{user.name}</span>
+            </h1>
+            <p className="text-sm text-[#74998a] mt-2 font-mono">Lütfen devam etmek istediğiniz eğitim rotasını seçin.</p>
+          </div>
+
+          {/* 2 Category Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1000px] mx-auto">
+            {/* Card 1: Ağ Güvenliği */}
+            <div 
+              onClick={() => setActiveCategory('ag-guvenligi')}
+              className="rounded-2xl border border-[#0c2719] p-8 flex flex-col justify-between bg-gradient-to-br from-[#07150e] to-[#04100a] hover:border-[#00ff88] transition-all cursor-pointer group shadow-[0_0_30px_rgba(0,0,0,0.5)]"
+            >
+              <div>
+                <div className="w-14 h-14 rounded-xl grid place-items-center text-3xl border border-[#00ff88]/20 bg-[#00ff88]/5 group-hover:scale-105 transition-transform mb-6">
+                  📡
+                </div>
+                <h2 className="text-2xl text-[#eafff5] font-disp font-bold group-hover:text-[#00ff88] transition-colors">
+                  Ağ Güvenliği
+                </h2>
+                <p className="text-sm text-[#74998a] mt-3 leading-relaxed font-mono">
+                  TCP/IP, OSI modeli, Nmap keşif taramaları, Wireshark paket analizi, ARP spoofing ve kablosuz ağ saldırıları gibi temel ağ güvenliği konularını uygulamalı olarak öğrenin.
+                </p>
+              </div>
+              <div className="mt-8 pt-6 border-t border-[#0c2719]">
+                <div className="flex justify-between text-xs font-mono text-[#74998a] mb-2">
+                  <span>Ders İlerlemesi: {progress['ag-guvenligi'] || 0} / 30</span>
+                  <span className="text-[#00ff88]">{getCatProgressPercent('ag-guvenligi')}%</span>
+                </div>
+                <div className="h-2 rounded-full bg-[#0c2719] overflow-hidden">
+                  <div 
+                    className="transition-all duration-500" 
+                    style={{ 
+                      width: `${getCatProgressPercent('ag-guvenligi')}%`, 
+                      height: '100%', 
+                      backgroundColor: '#00ff88', 
+                      borderRadius: '9999px',
+                      minWidth: (progress['ag-guvenligi'] || 0) > 0 ? '6px' : '0'
+                    }}
+                  ></div>
+                </div>
+                <button className="w-full mt-6 py-3 font-mono font-bold text-[#021008] bg-[#00ff88] rounded-xl group-hover:shadow-[0_0_20px_var(--glow)] transition-all uppercase tracking-wider text-sm text-center">
+                  Eğitime Git ⚡
+                </button>
+              </div>
+            </div>
+
+            {/* Card 2: Uygulama Güvenliği */}
+            <div 
+              onClick={() => setActiveCategory('uyg-guvenligi')}
+              className="rounded-2xl border border-[#0c2719] p-8 flex flex-col justify-between bg-gradient-to-br from-[#07150e] to-[#04100a] hover:border-[#ffd166] transition-all cursor-pointer group shadow-[0_0_30px_rgba(0,0,0,0.5)]"
+            >
+              <div>
+                <div className="w-14 h-14 rounded-xl grid place-items-center text-3xl border border-[#ffd166]/20 bg-[#ffd166]/5 group-hover:scale-105 transition-transform mb-6">
+                  💻
+                </div>
+                <h2 className="text-2xl text-[#eafff5] font-disp font-bold group-hover:text-[#ffd166] transition-colors">
+                  Uygulama Güvenliği
+                </h2>
+                <p className="text-sm text-[#74998a] mt-3 leading-relaxed font-mono">
+                  OWASP Top 10 standartları, SQLi, XSS, CSRF, LFI/RFI, dosya yükleme açıkları, JWT manipülasyonu, CORS zafiyetleri ve API güvenliğini adım adım keşfedin.
+                </p>
+              </div>
+              <div className="mt-8 pt-6 border-t border-[#0c2719]">
+                <div className="flex justify-between text-xs font-mono text-[#74998a] mb-2">
+                  <span>Ders İlerlemesi: {progress['uyg-guvenligi'] || 0} / 30</span>
+                  <span className="text-[#ffd166]">{getCatProgressPercent('uyg-guvenligi')}%</span>
+                </div>
+                <div className="h-2 rounded-full bg-[#0c2719] overflow-hidden">
+                  <div 
+                    className="transition-all duration-500" 
+                    style={{ 
+                      width: `${getCatProgressPercent('uyg-guvenligi')}%`, 
+                      height: '100%', 
+                      backgroundColor: '#ffd166', 
+                      borderRadius: '9999px',
+                      minWidth: (progress['uyg-guvenligi'] || 0) > 0 ? '6px' : '0'
+                    }}
+                  ></div>
+                </div>
+                <button className="w-full mt-6 py-3 font-mono font-bold text-[#021008] bg-[#ffd166] rounded-xl group-hover:shadow-[0_0_20px_rgba(255,209,102,0.3)] transition-all uppercase tracking-wider text-sm text-center">
+                  Eğitime Git ⚡
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+        <SKFooter navigate={navigate} />
+      </>
+    );
   }
-  const dayLabels = ['Pzt','Sal','Çar','Per','Cum','Cmt','Paz','Pzt','Sal','Çar','Per','Cum','Cmt','Paz'];
-  const w = 620, h = 160, pad = 8;
-  const max = Math.max(...daily), min = Math.min(...daily);
-  const pts = daily.map((val, i) => {
-    const x = pad + (i * (w - pad * 2)) / 13;
-    const y = h - pad - (max > 0 ? (val / max) * (h - pad * 2) : 0);
-    return [x, y];
-  });
-  const line = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
-  const area = line + ` L${(w - pad).toFixed(1)} ${h - pad} L${pad} ${h - pad} Z`;
+
+  // Split-screen Workspace view
+  const categoryTitle = activeCategory === 'ag-guvenligi' ? 'Ağ Güvenliği Eğitimi' : 'Uygulama Güvenliği Eğitimi';
+  const catProgressVal = progress[activeCategory] || 0;
 
   return (
     <>
       <AppHeader navigate={navigate} active="dashboard" />
-      <main className="max-w-[1280px] mx-auto px-6 py-10">
-        {/* welcome */}
-        <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
-          <div>
-            <p className="font-mono text-sm text-[#74998a] mb-1">root@siberkampus: <span className="text-[#00ff88]">~/dashboard</span></p>
-            <div className="flex items-center gap-3 flex-wrap">
-              <h1 className="text-[clamp(28px,4vw,42px)] text-[#eafff5]">Hoş geldin, <span className="text-[#00ff88]">{user.name}</span></h1>
-            </div>
+      
+      {/* Category workspace header */}
+      <div className="bg-[#04100a] border-b border-[#0c2719] py-4 px-6">
+        <div className="max-w-[1400px] mx-auto flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => setActiveCategory(null)}
+              className="px-4 py-2 border border-[#103a26] text-[#74998a] hover:text-[#00ff88] hover:border-[#00ff88] rounded-xl font-mono text-xs transition-all flex items-center gap-1.5"
+            >
+              <span>←</span> Kategoriler
+            </button>
+            <h1 className="text-lg md:text-xl text-[#eafff5] font-disp font-bold flex items-center gap-2">
+              <span>{activeCategory === 'ag-guvenligi' ? '📡' : '💻'}</span>
+              {categoryTitle}
+            </h1>
           </div>
-          <button onClick={() => document.getElementById('categories-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="font-mono text-sm font-bold text-[#021008] bg-[#00ff88] px-6 py-3 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] transition-all">Yeni Görev Başlat →</button>
-        </div>
-
-        {/* VIP Bire Bir Mentörlük Banner */}
-        <div 
-          onClick={() => window.dispatchEvent(new Event('open_vip_mentor_modal'))}
-          className="mb-8 p-5 rounded-xl border cursor-pointer transition-all duration-500 flex flex-col md:flex-row items-center justify-between gap-5 relative overflow-hidden group select-none animate-[borderGlow_3s_infinite_ease-in-out]"
-          style={{
-            background: 'linear-gradient(135deg, rgba(8,32,20,0.95) 0%, rgba(18,50,30,0.9) 50%, rgba(35,60,25,0.85) 100%)',
-          }}
-        >
-          {/* Style block for local custom keyframe animations */}
-          <style dangerouslySetInnerHTML={{__html: `
-            @keyframes borderGlow {
-              0%, 100% { border-color: rgba(255, 209, 102, 0.25); box-shadow: 0 0 15px rgba(255, 209, 102, 0.1), inset 0 0 15px rgba(255, 209, 102, 0.05); }
-              50% { border-color: rgba(255, 209, 102, 1); box-shadow: 0 0 25px rgba(255, 209, 102, 0.45), inset 0 0 20px rgba(255, 209, 102, 0.15); }
-            }
-            @keyframes badgeBlink {
-              0%, 100% { opacity: 0.7; transform: scale(0.97); }
-              50% { opacity: 1; transform: scale(1.03); filter: brightness(1.2); }
-            }
-            @keyframes textFlash {
-              0%, 100% { text-shadow: 0 0 4px rgba(255, 209, 102, 0.2); opacity: 0.8; }
-              50% { text-shadow: 0 0 12px rgba(255, 209, 102, 0.8); opacity: 1; color: #ffffff; }
-            }
-            @keyframes scanline {
-              0% { transform: translateY(-100%); }
-              100% { transform: translateY(100%); }
-            }
-          `}} />
-
-          {/* Grid overlay for digital tech look */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,255,136,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,255,136,0.03)_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none"></div>
           
-          {/* Laser scanline animation */}
-          <div className="absolute inset-0 w-full h-0.5 bg-[#ffd166]/10 opacity-30 pointer-events-none animate-[scanline_6s_linear_infinite]" style={{}}></div>
-
-          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5 w-full">
-            {/* Status indicator */}
-            <div className="flex items-center gap-2.5 shrink-0">
-              <span className="relative flex h-3.5 w-3.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd166] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#ffd166]"></span>
-              </span>
+          <div className="flex items-center gap-4">
+            <div className="text-right hidden sm:block">
+              <div className="text-[10px] font-mono text-[#5c8a74] uppercase">Toplam İlerleme</div>
+              <div className="text-xs font-mono font-bold text-[#eafff5]">
+                {catProgressVal} / 30 Ders ({getCatProgressPercent(activeCategory)}%)
+              </div>
+            </div>
+            <div className="w-36 h-2 rounded-full bg-[#0c2719] overflow-hidden">
               <div 
-                className="px-3 py-1.5 rounded-lg border border-[#ffd166]/40 bg-[#ffd166]/10 text-[#ffd166] text-xs font-mono font-bold tracking-wider uppercase animate-[badgeBlink_2s_infinite_ease-in-out]"
-                style={{}}
+                className="transition-all duration-500" 
+                style={{ 
+                  width: `${getCatProgressPercent(activeCategory)}%`, 
+                  height: '100%', 
+                  backgroundColor: activeCategory === 'ag-guvenligi' ? '#00ff88' : '#ffd166', 
+                  borderRadius: '9999px',
+                  minWidth: (progress[activeCategory] || 0) > 0 ? '6px' : '0'
+                }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[290px_1fr] h-[calc(100vh-140px)] overflow-hidden">
+        {/* Left Panel: Lessons List */}
+        <div className="border-r border-[#0c2719] bg-[#020806] overflow-y-auto p-4 space-y-2.5">
+          <div className="text-xs font-mono text-[#5c8a74] uppercase tracking-wider px-2 mb-2">Müfredat Konuları</div>
+          {lessons.map((lesson, idx) => {
+            const isUnlocked = idx <= catProgressVal;
+            const isCompleted = idx < catProgressVal;
+            const isActive = idx === selectedLessonIdx;
+
+            let statusIcon = "🔒";
+            let itemClass = "border-transparent opacity-50 cursor-not-allowed";
+            if (isUnlocked) {
+              statusIcon = isCompleted ? "✅" : "⚡";
+              itemClass = isActive 
+                ? "border-[#00ff88] bg-[rgba(0,255,136,0.06)] text-[#eafff5] cursor-pointer"
+                : "border-[#103a26] hover:border-[#00ff88]/50 hover:bg-[rgba(0,255,136,0.02)] text-[#9fc4b5] cursor-pointer";
+            }
+
+            return (
+              <div 
+                key={lesson.id}
+                onClick={() => isUnlocked && setSelectedLessonIdx(idx)}
+                className={`p-3.5 rounded-xl border transition-all flex items-start gap-3 select-none ${itemClass}`}
               >
-                ⚡ CANLI BİRE BİR MENTÖRLÜK
+                <span className="text-sm shrink-0">{statusIcon}</span>
+                <div className="min-w-0">
+                  <div className="text-[10px] font-mono text-[#5c8a74] uppercase">DERS {String(idx + 1).padStart(2, '0')}</div>
+                  <div className="text-xs font-disp font-semibold truncate mt-0.5" title={lesson.title}>{lesson.title}</div>
+                </div>
               </div>
-            </div>
-
-            {/* Description & features */}
-            <div className="flex-1 min-w-0">
-              <h2 className="text-sm md:text-base font-disp font-bold text-[#eafff5] flex flex-wrap items-center gap-2 animate-[textFlash_3s_infinite_ease-in-out]" style={{}}>
-                Online Bire Bir Siber Güvenlik Eğitimi & Kariyer Yolculuğu 👑
-              </h2>
-              <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-[#74998a] font-mono">
-                <span className="flex items-center gap-1.5"><b className="text-[#ffd166]">🕒</b> Saatlik veya Aylık Kurs</span>
-                <span className="flex items-center gap-1.5"><b className="text-[#ffd166]">🎯</b> Kişiye Özel Öğrenme Planı & İlerleme</span>
-                <span className="flex items-center gap-1.5"><b className="text-[#ffd166]">🎓</b> Resmi Başarı Sertifikası</span>
-                <span className="flex items-center gap-1.5"><b className="text-[#ffd166]">💼</b> Kariyer Planlama & İşe Giriş Desteği</span>
-              </div>
-            </div>
-          </div>
-
-          <button 
-            className="w-full lg:w-auto px-5 py-3 rounded-lg bg-[#ffd166] text-[#021008] text-xs font-mono font-bold uppercase tracking-wider hover:bg-white hover:shadow-[0_0_20px_rgba(255,209,102,0.6)] transition-all shrink-0 animate-pulse"
-          >
-            Planla & Detayları Gör ➔
-          </button>
+            );
+          })}
         </div>
 
-        {/* summary + goals */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-5 mb-10">
-          <div className="rounded-2xl border border-[#0c2719] p-7" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-            <SectionLabel>Özet İstatistik</SectionLabel>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-              {[
-                { l: 'Toplam Puan', v: user.points, c: '#00ff88' },
-                { l: 'Sıralama', v: '#' + user.rank, c: '#eafff5' },
-                { l: 'Çözülen Görev', v: user.solved, c: '#eafff5' },
-                { l: 'Level', v: user.level + '/' + user.maxLevel, c: '#5cffba' },
-              ].map((s, i) => (
-                <div key={i}>
-                  <div className="font-disp font-bold text-3xl tracking-tight" style={{ color: s.c, textShadow: s.c === '#00ff88' ? '0 0 22px rgba(0,255,136,.3)' : 'none' }}>{s.v}</div>
-                  <div className="text-xs text-[#74998a] mt-1.5 tracking-wide">{s.l}</div>
-                </div>
-              ))}
-            </div>
-            {/* level progress */}
-            <div className="mt-6 pt-5 border-t border-[#0c2719]">
-              <div className="flex justify-between text-xs text-[#74998a] mb-2"><span>Level {user.level} ilerlemesi</span><span className="text-[#00ff88]">{user.points % 100}%</span></div>
-              <div className="h-2 rounded-full bg-[#0c2719] overflow-hidden"><div className="h-full rounded-full bg-gradient-to-r from-[#00d978] to-[#00ff88] shadow-[0_0_12px_var(--glow)]" style={{ width: (user.points % 100) + '%' }}></div></div>
-            </div>
-          </div>
+        {/* Right Panel: Content & Quiz Workspace */}
+        <div className="bg-[#030e09] overflow-y-auto p-6 md:p-8 flex flex-col justify-between">
+          {currentLesson ? (
+            <div className="max-w-[850px] mx-auto w-full space-y-8">
+              {/* Lesson Metadata */}
+              <div>
+                <span className="font-mono text-xs text-[#00ff88] uppercase tracking-wider">
+                  // {categoryTitle} — DERS {String(selectedLessonIdx + 1).padStart(2, '0')}
+                </span>
+                <h2 className="text-2xl md:text-3xl text-[#eafff5] font-disp font-bold mt-2">
+                  {currentLesson.title}
+                </h2>
+              </div>
 
-          <div className="rounded-2xl border border-[#0c2719] p-7" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-            <SectionLabel>Hedefler</SectionLabel>
-            <div className="space-y-4">
-              {[
-                { l: 'Bu ay kazanılan', v: '+' + user.points + ' puan', ic: '📈' },
-                { l: 'Toplam rozet', v: user.badges + ' / 32', ic: '🏅' },
-                { l: 'Günlük seri', v: user.streak + ' gün 🔥', ic: '⚡' },
-              ].map((g, i) => (
-                <div key={i} className="flex items-center justify-between p-3.5 rounded-lg bg-[#04100a] border border-[#0c2719]">
-                  <span className="flex items-center gap-3 text-sm text-[#74998a]"><span>{g.ic}</span>{g.l}</span>
-                  <span className="font-mono text-sm font-bold text-[#eafff5]">{g.v}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+              {/* Lesson HTML Content */}
+              <div 
+                className="prose prose-invert max-w-none text-[#cdeede] text-sm md:text-base leading-relaxed space-y-4 font-sans"
+                dangerouslySetInnerHTML={{ __html: currentLesson.content }}
+              />
 
-        {/* recommendations (sequential unsolved rooms) */}
-        <div className="mb-10">
-          <h2 className="text-2xl text-[#eafff5] mb-5">Sana Uygun Görevler</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {(() => {
-              const allRooms = window.SK_ALL_ROOMS || [];
-              const solved = solvedList;
-              const unsolvedRooms = allRooms.filter(r => !solved.includes(r.id)).slice(0, 2);
-              return unsolvedRooms.length > 0 ? (
-                unsolvedRooms.map((t, i) => {
-                  const roomProgress = progressMap[t.id] || 0;
-                  const hasStarted = roomProgress > 0 && roomProgress < 100;
-                  return (
-                    <div key={i} className={"rounded-xl border p-6 transition-all group " + (hasStarted ? "border-[#00ff88] hover:border-[#00ff88]" : "border-[#0c2719] hover:border-[#5cffba]")} style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-                      <div className="flex items-start justify-between mb-4">
+              {/* Lesson Example Box */}
+              <div 
+                className="rounded-xl border border-[#103a26] bg-[#020806] p-5 font-mono text-xs md:text-sm text-[#9fc4b5]"
+                dangerouslySetInnerHTML={{ __html: currentLesson.example }}
+              />
+
+              {/* Quiz Section */}
+              <div className="pt-8 border-t border-[#0c2719] space-y-8">
+                <div>
+                  <h3 className="text-lg text-[#eafff5] font-disp font-bold flex items-center gap-2">
+                    <span>📝</span> Değerlendirme Testi
+                  </h3>
+                  <p className="text-xs text-[#74998a] mt-1 font-mono">
+                    Bir sonraki dersi açabilmek için aşağıdaki 3 soruyu da doğru yanıtlamanız gerekmektedir.
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  {currentLesson.questions.map((q, qIdx) => {
+                    const selectedOpt = quizAnswers[qIdx];
+                    const isAnswered = selectedOpt !== null;
+                    const isCorrect = isAnswered && selectedOpt === q.correct;
+
+                    return (
+                      <div key={qIdx} className="p-5 rounded-xl border border-[#103a26] bg-[#04100a] space-y-4">
+                        <div className="text-sm font-semibold text-[#eafff5]">
+                          Soru {qIdx + 1}: {q.q}
+                        </div>
+                        <div className="grid grid-cols-1 gap-2.5">
+                          {q.options.map((opt, optIdx) => {
+                            const isThisSelected = selectedOpt === optIdx;
+                            const isCorrectOpt = optIdx === q.correct;
+                            
+                            let optClass = "border-[#103a26] text-[#9fc4b5] hover:border-[#00ff88]/50 hover:bg-[rgba(0,255,136,0.02)]";
+                            if (isThisSelected) {
+                              optClass = isCorrectOpt
+                                ? "border-[#00ff88] bg-[rgba(0,255,136,0.08)] text-[#00ff88] font-bold"
+                                : "border-red-500 bg-red-500/10 text-red-500 font-bold";
+                            } else if (isAnswered && isCorrectOpt) {
+                              optClass = "border-[#00ff88]/30 text-[#00ff88]/70";
+                            }
+
+                            return (
+                              <button
+                                key={optIdx}
+                                onClick={() => handleOptionClick(qIdx, optIdx)}
+                                className={`w-full text-left p-3 rounded-lg border text-xs font-mono transition-all flex items-center justify-between ${optClass}`}
+                              >
+                                <span>{opt}</span>
+                                {isThisSelected && (
+                                  <span>{isCorrectOpt ? "✓" : "✗"}</span>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Quiz Success / Next button */}
+                {(() => {
+                  const allQuestionsAnswered = quizAnswers.every(ans => ans !== null);
+                  const allQuestionsCorrect = currentLesson.questions.every((q, qIdx) => quizAnswers[qIdx] === q.correct);
+
+                  if (allQuestionsCorrect) {
+                    const isAlreadyCompleted = selectedLessonIdx < catProgressVal;
+                    return (
+                      <div className="p-5 rounded-xl border border-[#00ff88]/30 bg-[rgba(0,255,136,0.04)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="text-lg">{hasStarted ? '🎮' : '💡'}</span>
-                            <h3 className={"text-lg text-[#eafff5] transition-colors " + (hasStarted ? "group-hover:text-[#00ff88]" : "group-hover:text-[#5cffba]")} style={{ lineHeight: 1.25 }}>{t.name}</h3>
+                          <div className="text-sm font-bold text-[#00ff88] flex items-center gap-1.5">
+                            <span>🎉</span> Harika! Tüm soruları doğru yanıtladınız!
                           </div>
-                          <span className="text-xs text-[#74998a]">{t.catSlug === 'web-exploitation' ? '🌐 Web Exploitation' : t.catSlug === 'network-pentest' ? '🔗 Ağ Sızma Testi' : '💻 Sistem Güvenliği'}</span>
+                          <p className="text-xs text-[#74998a] mt-1 font-mono">
+                            {isAlreadyCompleted ? "Bu dersi daha önce tamamladınız." : "Tebrikler! +10 Puan kazandınız ve sonraki dersin kilidi açıldı."}
+                          </p>
                         </div>
-                        {hasStarted ? (
-                          <span className="text-xs px-2 py-1 rounded bg-[#00ff88]/10 text-[#00ff88] border border-[#00ff88]/20">Devam Ediyor</span>
-                        ) : (
-                          <span className="text-xs px-2 py-1 rounded bg-[#5cffba]/10 text-[#5cffba] border border-[#5cffba]/20">Sıradaki</span>
-                        )}
+                        <button
+                          onClick={handleNextLesson}
+                          className="px-6 py-3 font-mono font-bold text-[#021008] bg-[#00ff88] rounded-xl hover:shadow-[0_0_24px_rgba(0,255,136,0.4)] transition-all flex items-center gap-1.5 uppercase text-xs self-start sm:self-auto"
+                        >
+                          {selectedLessonIdx < 29 ? "Sonraki Derse Geç" : "Eğitimi Tamamla"} <span>→</span>
+                        </button>
                       </div>
-                      
-                      {hasStarted ? (
-                        <>
-                          <div className="flex justify-between text-xs text-[#74998a] mb-2"><span>İlerleme</span><span className="text-[#00ff88]">{roomProgress}%</span></div>
-                          <div className="h-2 rounded-full bg-[#0c2719] overflow-hidden mb-5"><div className="h-full rounded-full bg-gradient-to-r from-[#00d978] to-[#00ff88]" style={{ width: roomProgress + '%' }}></div></div>
-                          <button onClick={() => navigate('roomArticle', t)} className="w-full font-mono text-sm font-bold text-[#021008] bg-[#00ff88] py-2.5 rounded-lg hover:shadow-[0_0_24px_-4px_var(--glow)] transition-all">Devam Et →</button>
-                        </>
-                      ) : (
-                        <>
-                          <p className="text-xs text-[#74998a] mb-4">{t.desc || 'Temel pratikleri öğren ve siber güvenlik becerilerini geliştir.'}</p>
-                          <div className="flex items-center justify-between text-xs text-[#5c8a74] mb-4">
-                            <span>◆ {t.points} Puan</span>
-                            <span>👥 {(t.users || 0).toLocaleString('tr-TR')} çözdü</span>
-                          </div>
-                          <button onClick={() => navigate('roomArticle', t)} className="w-full font-mono text-sm font-bold text-[#021008] bg-[#5cffba] py-2.5 rounded-lg hover:shadow-[0_0_24px_-4px_rgba(92,255,186,.4)] transition-all">Başla →</button>
-                        </>
-                      )}
-                    </div>
-                  );
-                })
-              ) : (
-                <div className="col-span-full py-8 text-center border border-dashed border-[#103a26] rounded-xl bg-[#020806]/40">
-                  <span className="text-3xl block mb-2">🏆</span>
-                  <p className="text-sm text-[#74998a] mb-1">Müthiş! Kampüsteki tüm görevleri başarıyla tamamladın.</p>
-                  <button onClick={() => navigate('leaderboard')} className="text-xs text-[#00ff88] hover:underline">Liderlik tablosunu incele →</button>
-                </div>
-              );
-            })()}
-          </div>
-        </div>
-
-        {/* Pathway Section (Uzmanın Yolu) - Premium Showcase */}
-        <div className="mb-10">
-          <div className="flex items-center gap-2.5 mb-5">
-            <span className="text-xl">👑</span>
-            <div>
-              <h2 className="text-2xl text-[#ffd166] font-disp font-bold tracking-wide">Uzmanın Yolu (VIP)</h2>
-              <p className="text-xs text-[#9fc4b5] mt-1">Sıfırdan siber güvenlik uzmanlığına giden, canlı ağ testleri ve mentor destekli VIP yolculuk.</p>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-6">
-            {(window.SK_PATHWAYS || []).map((pw, i) => {
-              const allItems = pw.phases.flatMap(p => p.items);
-              const solvedCount = allItems.filter(it => {
-                if (it.type === 'room') return solvedList.includes(it.id);
-                if (it.type === 'doc') return (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id);
-                return false;
-              }).length;
-              const totalCount = allItems.length;
-              const pct = totalCount > 0 ? Math.round((solvedCount / totalCount) * 100) : 0;
-              const currentPhase = pw.phases.find(p => {
-                const done = p.items.every(it => it.type === 'room' ? solvedList.includes(it.id) : it.type === 'doc' ? (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id) : false);
-                return !done;
-              });
-
-              return (
-                <div key={i} onClick={() => navigate('pathway', pw)} className="cursor-pointer rounded-2xl border border-[#ffd166]/20 p-6 md:p-8 hover:border-[#ffd166] hover:shadow-[0_0_35px_rgba(255,209,102,0.12)] transition-all group relative overflow-hidden" style={{ background: 'linear-gradient(165deg, #091a13 0%, #030e09 100%)' }}>
-                  {/* VIP Glow Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#ffd166]/5 rounded-full blur-3xl pointer-events-none group-hover:bg-[#ffd166]/8 transition-all"></div>
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#00ff88]/5 rounded-full blur-2xl pointer-events-none"></div>
-
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-                    <div className="flex items-start gap-4">
-                      <span className="w-14 h-14 rounded-xl grid place-items-center text-3xl border border-[#ffd166]/20 bg-[#ffd166]/5 shadow-[0_0_15px_rgba(255,209,102,0.1)] group-hover:scale-105 transition-transform">{pw.icon}</span>
-                      <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="text-lg md:text-xl text-[#eafff5] font-disp font-bold group-hover:text-[#ffd166] transition-colors">{pw.name}</h3>
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full text-[#ffd166] bg-[#ffd166]/10 border border-[#ffd166]/30 font-mono tracking-wider">👑 VIP PROGRAMI</span>
+                    );
+                  } else if (allQuestionsAnswered) {
+                    return (
+                      <div className="p-5 rounded-xl border border-red-500/30 bg-red-500/5 text-center">
+                        <div className="text-sm font-bold text-red-500 flex items-center justify-center gap-1.5">
+                          <span>✗</span> Maalesef bazı soruları yanlış cevapladınız.
                         </div>
-                        <p className="text-sm text-[#74998a] mt-1.5 max-w-2xl">{pw.desc}</p>
+                        <p className="text-xs text-[#74998a] mt-1 font-mono">
+                          Lütfen konu anlatımını tekrar inceleyip doğru cevapları bulun.
+                        </p>
                       </div>
-                    </div>
-
-                    <div className="flex flex-col items-start md:items-end gap-1.5 min-w-[150px] md:text-right">
-                      <span className="text-[10px] font-mono text-[#5c8a74] uppercase tracking-wider block">MÜFREDAT İLERLEMESİ</span>
-                      <span className="text-xl font-mono font-bold text-[#ffd166]">{solvedCount}/{totalCount} Adım</span>
-                      <span className="text-xs text-[#5cffba] font-mono">%{pct} Tamamlandı</span>
-                    </div>
-                  </div>
-
-                  {/* Curriculums Preview / Timeline */}
-                  <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 relative z-10">
-                    {pw.phases.map((phase, pIdx) => {
-                      const isComplete = phase.items.every(it => it.type === 'room' ? solvedList.includes(it.id) : it.type === 'doc' ? (JSON.parse(localStorage.getItem('sk_completed_docs') || '[]')).includes(it.id) : false);
-                      return (
-                        <div key={phase.id} className={`p-3 rounded-lg border ${isComplete ? 'border-[#00ff88]/30 bg-[#00ff88]/5' : 'border-[#103a26]/60 bg-[#020806]/40'} transition-all`}>
-                          <div className="flex items-center justify-between mb-1.5">
-                            <span className="text-[10px] font-mono text-[#5c8a74]">FAZ {pIdx + 1}</span>
-                            <span className="text-xs">{isComplete ? '🟢' : '⚪'}</span>
-                          </div>
-                          <div className="text-xs text-[#eafff5] font-semibold truncate" title={phase.name}>{phase.name}</div>
-                          <div className="text-[10px] text-[#74998a] mt-1">{phase.items.length} Görev</div>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Progress Bar */}
-                  <div className="mt-6 w-full h-1.5 rounded-full bg-[#0c2719] overflow-hidden relative z-10">
-                    <div className="h-full rounded-full transition-all duration-700" style={{ width: `${pct}%`, background: 'linear-gradient(90deg,#ffd166,#00ff88)' }}></div>
-                  </div>
-                  
-                  <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#5c8a74] relative z-10">
-                    <div className="flex flex-wrap gap-x-4 gap-y-1">
-                      <span>🎯 Toplam 4 Canlı Hacking Hedefi</span>
-                      <span>•</span>
-                      <span>👥 Bire Bir Mentor Desteği</span>
-                    </div>
-                    <span className="font-mono text-[#ffd166] group-hover:translate-x-1.5 transition-transform flex items-center gap-1 self-end sm:self-auto">Yolu İncele →</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Categories Section (Kategori Seç & Başla) */}
-        <div id="categories-section" className="mb-10 scroll-mt-24">
-          <div className="flex items-center justify-between mb-5">
-            <div>
-              <h2 className="text-2xl text-[#eafff5] font-disp font-bold">Kategori Seç & Başla</h2>
-              <p className="text-xs text-[#74998a] mt-1">İlgilendiğin siber güvenlik alanındaki laboratuvarları seç ve çözmeye başla.</p>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {categories.map((c, i) => {
-              const catPct = c.count > 0 ? Math.round((c.solvedCount / c.count) * 100) : 0;
-              return (
-                <button key={i} onClick={() => navigate('category', c)} className="text-left rounded-xl border border-[#0c2719] p-6 hover:border-[#00ff88] hover:-translate-y-1 transition-all group relative overflow-hidden" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-                  {/* Decorative faint background glow */}
-                  <div className="absolute top-[-50%] right-[-50%] w-48 h-48 bg-[#00ff88]/5 rounded-full blur-2xl pointer-events-none group-hover:bg-[#00ff88]/10 transition-all"></div>
-                  
-                  <div className="flex items-start justify-between mb-4">
-                    <span className="w-12 h-12 rounded-lg grid place-items-center text-2xl border border-[#103a26] bg-[rgba(0,255,136,.04)] group-hover:border-[#00ff88]/40 transition-colors">{c.icon}</span>
-                    <div className="text-right">
-                      <span className="text-[10px] font-mono text-[#5c8a74] uppercase tracking-wider block">Tamamlanma</span>
-                      <span className="text-sm font-mono font-bold text-[#00ff88] group-hover:text-[#5cffba] transition-colors">%{catPct}</span>
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-base text-[#eafff5] font-bold mb-1.5 group-hover:text-[#00ff88] transition-colors">{c.name}</h3>
-                  <p className="text-xs text-[#74998a] line-clamp-2 leading-relaxed mb-4">{c.desc}</p>
-                  
-                  <div className="w-full h-1.5 rounded-full bg-[#0c2719] overflow-hidden mb-3.5">
-                    <div className="h-full rounded-full bg-[#00ff88] transition-all duration-500" style={{ width: `${catPct}%` }}></div>
-                  </div>
-
-                  <div className="flex items-center justify-between text-xs text-[#5c8a74]">
-                    <span>{c.solvedCount} / {c.count} laboratuvar</span>
-                    <span className="font-mono text-[#00ff88] group-hover:translate-x-1 transition-transform">Pratik Yap →</span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* badges + chart */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-5">
-          <div className="rounded-2xl border border-[#0c2719] p-7" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-            <SectionLabel>Rozetler & Başarımlar</SectionLabel>
-            <div className="space-y-2.5">
-              {badges.map((b, i) => (
-                <div key={i} className={"flex items-center justify-between p-3 rounded-lg border " + (b.done ? 'border-[#103a26] bg-[rgba(0,255,136,.03)]' : 'border-[#0c2719] opacity-60')}>
-                  <span className="flex items-center gap-3"><span className="text-lg grayscale-0" style={{ filter: b.done ? 'none' : 'grayscale(1)' }}>{b.icon}</span><span className={"text-sm " + (b.done ? 'text-[#eafff5]' : 'text-[#74998a]')}>{b.name}</span></span>
-                  <span className={"font-mono text-xs " + (b.done ? 'text-[#00ff88]' : 'text-[#5c8a74]')}>{b.done ? '✓ ' + b.when : '✗ ' + b.when}</span>
-                </div>
-              ))}
-            </div>
-            <div className="flex gap-2 mt-5 pt-5 border-t border-[#0c2719]">
-              <button onClick={() => navigate('badges')} className="flex-1 text-xs text-[#cdeede] border border-[#103a26] py-2.5 rounded-lg hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">Tüm Rozetler →</button>
-              <button onClick={() => navigate('certificates')} className="flex-1 text-xs text-[#cdeede] border border-[#103a26] py-2.5 rounded-lg hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">Sertifikalarım →</button>
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-[#0c2719] p-7" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
-            <SectionLabel>Günlere Göre Aktivite</SectionLabel>
-            <div className="flex items-baseline gap-3 mb-4">
-              <span className="font-disp font-bold text-3xl text-[#00ff88]">+{daily.reduce((a, b) => a + b, 0)}</span>
-              <span className="text-xs text-[#74998a]">son 14 günde kazanılan puan</span>
-            </div>
-            <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-auto">
-              <defs>
-                <linearGradient id="actFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#00ff88" stopOpacity="0.32" />
-                  <stop offset="100%" stopColor="#00ff88" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              {[0.25, 0.5, 0.75].map((g, i) => (<line key={i} x1={pad} x2={w - pad} y1={pad + g * (h - pad * 2)} y2={pad + g * (h - pad * 2)} stroke="#0c2719" strokeWidth="1" />))}
-              <path d={area} fill="url(#actFill)" />
-              <path d={line} fill="none" stroke="#00ff88" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" style={{ filter: 'drop-shadow(0 0 6px rgba(0,255,136,.5))' }} />
-              {pts.map((p, i) => (<circle key={i} cx={p[0]} cy={p[1]} r={i === pts.length - 1 ? 4 : 2.5} fill={i === pts.length - 1 ? '#eafff5' : '#00ff88'} />))}
-            </svg>
-            <div className="flex justify-between mt-2 text-[10px] text-[#5c8a74] font-mono px-1">
-              {dayLabels.map((m, i) => (<span key={i} className={i % 2 ? 'opacity-0 md:opacity-100' : ''}>{m}</span>))}
-            </div>
-
-            {/* Divider */}
-            <div className="h-px bg-[#0c2719] my-6"></div>
-
-            {/* Weekly Target / Stats grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <div className="text-[11px] text-[#74998a] mb-2.5 font-mono">// HAFTALIK HEDEF</div>
-                <div className="rounded-xl border border-[#103a26] p-4 bg-[#020806]/40">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-xs text-[#eafff5] font-medium">3 Web Görevi Çöz</span>
-                    <span className="text-xs font-mono text-[#00ff88] font-bold">{(() => {
-                      const webSolvedCount = solvedList.filter(id => id.startsWith('web-')).length;
-                      return `${webSolvedCount % 3}/3`;
-                    })()}</span>
-                  </div>
-                  <div className="h-2 rounded-full bg-[#0c2719] overflow-hidden mb-2">
-                    <div className="h-full rounded-full bg-[#00ff88] shadow-[0_0_10px_#00ff88]" style={{ width: `${Math.min(100, (solvedList.filter(id => id.startsWith('web-')).length % 3) * 33.3)}%` }}></div>
-                  </div>
-                  <div className="text-[11px] text-[#74998a]">Ödül: <span className="text-[#5cffba] font-mono font-bold">◆ {50 * (Math.floor(solvedList.filter(id => id.startsWith('web-')).length / 3) + 1)} Puan</span></div>
-                </div>
-              </div>
-
-              <div>
-                <div className="text-[11px] text-[#74998a] mb-2.5 font-mono">// AKTİVİTE ANALİZİ</div>
-                <div className="rounded-xl border border-[#103a26] p-4 bg-[#020806]/40 space-y-2">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-[#74998a]">En Aktif Gün</span>
-                    <span className="text-[#eafff5] font-mono font-bold">{user.streak > 0 && solvedList.length > 0 ? ['Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi','Pazar'][new Date().getDay() === 0 ? 6 : new Date().getDay() - 1] : 'Veri yok'}</span>
-                  </div>
-                  <div className="flex justify-between text-xs">
-                    <span className="text-[#74998a]">Çözüm Oranı</span>
-                    <span className={"font-mono font-bold " + (solvedList.length > 0 ? 'text-[#00ff88]' : 'text-[#5c8a74]')}>{solvedList.length > 0 ? '+%' + Math.min(99, Math.round(solvedList.length * 5)) + ' artış' : '%0'}</span>
-                  </div>
-                  <div className="flex justify-between text-xs">
-                    <span className="text-[#74998a]">Ort. Süre / Gün</span>
-                    <span className="text-[#eafff5] font-mono font-bold">{solvedList.length > 0 ? Math.round(solvedList.length * 3.5) + ' dk' : '0 dk'}</span>
-                  </div>
-                </div>
+                    );
+                  }
+                  return null;
+                })()}
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="text-center py-12 text-[#74998a] font-mono">
+              Ders yükleniyor...
+            </div>
+          )}
         </div>
-      </main>
-      <SKFooter navigate={navigate} />
+      </div>
     </>
   );
 };

@@ -187,7 +187,7 @@ window.ROOM_ARTICLES = {
         "Cihazı fişe takıp kullanmaya başlayan kullanıcılar bu şifreyi değiştirmezse, cihaz tüm internete veya yerel ağa açık bir hedef haline gelir."
       ]},
       { icon: "💻", h: "Gerçek Dünyada Bu Zafiyetin Etkisi", body: [
-        "Hackerlar, internete bağlı milyonlarca cihazı (IP adreslerini) tarayarak otomatik robotlarla varsayılan şifreleri denerler.",
+        "Saldırganlar, internete bağlı milyonlarca cihazı (IP adreslerini) tarayarak otomatik robotlarla varsayılan şifreleri denerler.",
         "Mirai botneti gibi büyük siber ordular, tamamen varsayılan şifreleri kullanan akıllı kameraları, routerları ele geçirerek oluşturulmuştur.",
         "Bu durumdan korunmanın tek yolu: Cihazın ilk kurulum aşamasında şifrenin güçlü ve benzersiz bir şifreyle değiştirilmesini zorunlu kılmaktır."
       ]},
