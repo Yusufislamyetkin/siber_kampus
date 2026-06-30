@@ -343,8 +343,10 @@ const HomePage = ({ navigate }) => {
               <span className="w-[7px] h-[7px] rounded-full bg-[#00ff88] shadow-[0_0_10px_#00ff88] sk-pulse"></span>
               Türkiye'nin Tamamen Birebir Siber Güvenlik Eğitimi
             </span>
-            <h1 className="text-[clamp(40px,6vw,78px)] text-[#eafff5] mb-[18px] tracking-[-.025em]">
-              <span className="glitch" data-text="Siber Güvenlik Özel Ders">Siber Güvenlik Özel Ders</span>
+            <h1 className="text-[clamp(40px,6vw,78px)] mb-[18px] tracking-[-.025em] leading-[1.1]">
+              <span className="glitch" style={{ color: '#00e0ff', textShadow: '0 0 32px rgba(0, 224, 255, 0.45)' }} data-text="Siber Güvenlik">Siber Güvenlik</span>
+              <br />
+              <span className="glitch" style={{ color: '#ff2e88', textShadow: '0 0 32px rgba(255, 46, 136, 0.45)' }} data-text="Özel Ders">Özel Ders</span>
             </h1>
             <div className="text-[15.5px] text-[#74998a] max-w-[560px] mb-8 leading-[1.8] space-y-[13px]">
               <div className="text-[#cdeede] text-[16px]">Videolar arasında kaybolmayın. Sektör profesyonelleri eşliğinde, tamamen size özel hazırlanan müfredatla canlı ve uygulamalı öğrenin.</div>
