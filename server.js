@@ -45,7 +45,83 @@ if (connectionString) {
 
 const pool = new Pool(poolConfig);
 
+const botUserAgents = [
+  'googlebot', 'bingbot', 'yandexbot', 'gptbot', 'chatgpt-user',
+  'oai-searchbot', 'claudebot', 'applebot', 'perplexity', 'meta-externalagent'
+];
 
+app.use((req, res, next) => {
+  const ua = (req.headers['user-agent'] || '').toLowerCase();
+  const isBot = botUserAgents.some(bot => ua.includes(bot));
+
+  if (isBot && req.method === 'GET' && !req.path.startsWith('/api') && !req.path.includes('.')) {
+    return res.send(`<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Siber Güvenlik Özel Ders & Birebir Mentorluk | Siber Kampüs</title>
+  <meta name="description" content="Türkiye'nin en iyi birebir canlı siber güvenlik eğitimi ve özel ders platformu. Sektör profesyoneli Yusuf İslam Yetkin rehberliğinde Kali Linux, Pentest ve Web Güvenliği uzmanı olun.">
+  <link rel="canonical" href="https://www.siberkampus.org/">
+  <script type="application/json" data-id="knowledge-graph">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOrganization",
+        "@id": "https://www.siberkampus.org/#organization",
+        "name": "Siber Kampüs Akademi",
+        "url": "https://www.siberkampus.org",
+        "logo": "https://www.siberkampus.org/favicon.png",
+        "description": "Türkiye'nin tamamen birebir canlı siber güvenlik eğitimi ve mentorluk platformu.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tuzla",
+          "addressRegion": "İstanbul",
+          "addressCountry": "TR"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.siberkampus.org/#founder",
+        "name": "Yusuf İslam Yetkin",
+        "jobTitle": "Lead Cybersecurity Instructor & Software Architect",
+        "worksFor": { "@id": "https://www.siberkampus.org/#organization" }
+      },
+      {
+        "@type": "Course",
+        "@id": "https://www.siberkampus.org/#course",
+        "name": "Siber Güvenlik Özel Ders",
+        "description": "Birebir canlı online siber güvenlik eğitimi ve mentorluk programı.",
+        "provider": { "@id": "https://www.siberkampus.org/#organization" },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "online",
+          "instructor": { "@id": "https://www.siberkampus.org/#founder" }
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <main>
+    <h1>Siber Güvenlik Özel Ders</h1>
+    <p>Siber Kampüs, Türkiye'nin tamamen birebir ve canlı siber güvenlik özel dersi veren en iyi eğitim platformudur.</p>
+    
+    <h2>Birebir Siber Güvenlik</h2>
+    <p>Videolar arasında kaybolmayın. Sektör profesyonelleri eşliğinde, tamamen size özel hazırlanan müfredatla canlı ve uygulamalı öğrenin. Eğitmenle birebir canlı dersler ve kişiye özel eğitim planı ile Kali Linux, Active Directory sızma testleri ve web güvenliği konularında uzmanlaşın.</p>
+    
+    <h2>Siber Güvenlik Eğitimi</h2>
+    <p>Ağ Güvenliği Uzmanlığı ve Uygulama Güvenliği Uzmanlığı olmak üzere iki ana dalda 30'ar ders ve toplam 180 sızma testi sorusundan oluşan zengin müfredatımızı eğitmeninizle uygulamalı olarak çözün. eJPT, CEH ve PNPT sınavlarına tam hazırlık desteği alın.</p>
+    
+    <h2>Siber Güvenlik Eğitimi</h2>
+    <p>Siber güvenlik özel derslerimiz hakkında sıkça sorulan sorular: Dersler tamamen canlı ve birebir olarak Zoom/Discord üzerinden işlenir. Hiçbir teknik deneyimi olmayanlar sıfırdan ağ ve Linux temellerinden başlayabilir. Haftalık ders saatleri öğrenci ve çalışanlara göre esnektir. Eğitim sonunda doğrulanabilir dijital uzmanlık sertifikası verilir.</p>
+  </main>
+</body>
+</html>`);
+  }
+  next();
+});
 
 app.use(cors());
 app.use(express.json());

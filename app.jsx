@@ -341,20 +341,45 @@ const HomePage = ({ navigate }) => {
           <div>
             <span className="inline-flex items-center gap-2.5 text-[12.5px] tracking-[.12em] uppercase text-[#5cffba] border border-[#103a26] bg-[rgba(0,255,136,.04)] px-3.5 py-[7px] rounded-full mb-[26px]">
               <span className="w-[7px] h-[7px] rounded-full bg-[#00ff88] shadow-[0_0_10px_#00ff88] sk-pulse"></span>
-              Birebir siber güvenlik eğitimi
+              Türkiye'nin Tamamen Birebir Siber Güvenlik Eğitimi
             </span>
-            <h1 className="text-[clamp(40px,6vw,78px)] text-[#eafff5] mb-[18px] tracking-[-.025em]">
-              <span className="glitch" data-text="Siber Güvenlik">Siber Güvenlik</span><br /><span className="text-[clamp(20px,3vw,38px)] text-[#00ff88]">Uzmanı Ol, Sektörde Yerini Al</span>
+            <h1 className="text-[clamp(40px,6vw,78px)] text-[#eafff5] mb-[18px] tracking-[-.025em] font-disp font-bold">
+              Siber Güvenlik Özel Ders
             </h1>
             <div className="text-[15.5px] text-[#74998a] max-w-[560px] mb-8 leading-[1.8] space-y-[13px]">
-              <p className="text-[#cdeede] text-[16px]">Siber güvenlikte "level" atlamaya hazır mısın?</p>
-              <p>Sıkıcı teorilerle vakit kaybetmek yerine seni <strong className="text-[#00ff88]">doğrudan aksiyonun içine çeken</strong>, <strong className="text-[#cdeede] font-medium">tamamen uygulamalı</strong> bir eğitim platformu.</p>
-              <p>Kurulumlarla veya ağır sanal makinelerle uğraşmadan <strong className="text-[#cdeede] font-medium">sadece tarayıcını açarak</strong> anında gerçek saldırı ve savunma laboratuvarlarına bağlanabilirsin. Web zafiyetlerinden ağ trafiğine, zararlı yazılımlardan dijital adli bilişime kadar her şeyi <strong className="text-[#00ff88]">bizzat sistemlere sızarak</strong> öğreneceksin.</p>
-              <p>Siber güvenlik sektöründe şirketlerin peşinden koştuğu <strong className="text-[#00ff88]">aranan bir profesyonele dönüş.</strong></p>
+              <div className="text-[#cdeede] text-[16px]">Videolar arasında kaybolmayın. Sektör profesyonelleri eşliğinde, tamamen size özel hazırlanan müfredatla canlı ve uygulamalı öğrenin.</div>
+              <div className="space-y-2 mt-4">
+                <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
+                  <span>✓</span> <div><strong>Eğitmenle birebir canlı ders:</strong> Her saniye sadece sizin sorularınıza ve gelişiminize odaklanılır.</div>
+                </div>
+                <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
+                  <span>✓</span> <div><strong>Kişiye özel eğitim planı:</strong> Bilgi seviyenize ve kariyer hedeflerinize uygun esnek yol haritası.</div>
+                </div>
+                <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
+                  <span>✓</span> <div><strong>Gerçek laboratuvar ortamı:</strong> Kali Linux ve Active Directory üzerinde gerçek sızma testleri.</div>
+                </div>
+                <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
+                  <span>✓</span> <div><strong>Haftalık uygulamalı çalışmalar:</strong> Ödevler ve projelerle teoriyi anında pratiğe dönüştürün.</div>
+                </div>
+                <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
+                  <span>✓</span> <div><strong>Kariyer mentorluğu:</strong> CV hazırlama, portfolyo oluşturme ve teknik mülakat simülasyonları.</div>
+                </div>
+                <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
+                  <span>✓</span> <div><strong>İş ve staj danışmanlığı:</strong> Sektör bağlantılarıyla işe yerleştirme rehberliği.</div>
+                </div>
+              </div>
             </div>
             <div className="flex gap-4 flex-wrap items-center">
-              <button onClick={() => navigate('pricing')} className="font-mono text-[15px] font-bold text-[#021008] bg-[#00ff88] px-[30px] py-4 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] hover:-translate-y-px transition-all">Eğitim Programını İncele →</button>
-              <button onClick={() => navigate('level-test')} className="font-mono text-[15px] text-[#5cffba] px-[30px] py-4 border border-[#103a26] hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">Seviyeni Test Et</button>
+              <button onClick={() => {
+                const phone = '905389351189';
+                const msg = encodeURIComponent('Merhaba, ücretsiz tanışma dersi almak istiyorum.');
+                window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+              }} className="font-mono text-[15px] font-bold text-[#021008] bg-[#00ff88] px-[30px] py-4 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] hover:-translate-y-px transition-all">
+                Ücretsiz Tanışma Dersi Al ⚡
+              </button>
+              <button onClick={() => navigate('pricing')} className="font-mono text-[15px] text-[#5cffba] px-[30px] py-4 border border-[#103a26] hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">
+                Eğitim Programını İncele
+              </button>
             </div>
             <div className="flex items-center gap-3.5 mt-[26px] text-[13px] text-[#5c8a74]">
               <div className="flex">
@@ -396,27 +421,153 @@ const HomePage = ({ navigate }) => {
         </div>
       </div>
 
+      {/* PROBLEM & NEDEN BİREBİR */}
+      <section className="py-20 border-b border-[#0c2719]" style={{ background: 'linear-gradient(180deg,#020806,#04100a)' }}>
+        <div className="max-w-[1280px] mx-auto px-8">
+          <div className="text-center max-w-[640px] mx-auto mb-12">
+            <div className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5">
+              <span className="text-[#5c8a74] font-bold">//</span> Neden Birebir Eğitim?
+            </div>
+            <h2 className="text-[clamp(28px,4vw,42px)] text-[#eafff5] mt-4 font-disp font-bold">
+              Birebir Siber Güvenlik
+            </h2>
+            <div className="text-[#74998a] mt-3 text-[14px]">
+              Siber güvenlik alanında uzmanlaşmak isteyenlerin %85'i teorik bilgi yığınları arasında boğuluyor. Slaytlar ve izole videolar yerine gerçek mentörünüzle öğrenin.
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 items-stretch max-w-[1100px] mx-auto">
+            {/* PROBLEM KARTLARI */}
+            <div className="space-y-4">
+              <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/30">
+                <div className="text-[#ffd166] text-sm font-mono mb-2">PROBLEM 01</div>
+                <div className="text-[16px] text-[#eafff5] font-bold mb-2">Bitmeyen Video Serileri</div>
+                <p className="text-[13px] text-[#74998a] leading-[1.65]">Kendi başınıza pasif videolar izlemek bir yere kadar götürür. Hata yaptığınızda size anında kılavuzluk edecek bir mentör bulamazsınız.</p>
+              </div>
+              <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/30">
+                <div className="text-[#ffd166] text-sm font-mono mb-2">PROBLEM 02</div>
+                <div className="text-[16px] text-[#eafff5] font-bold mb-2">Slayttan İbaret Pratikler</div>
+                <p className="text-[13px] text-[#74998a] leading-[1.65]">Gerçek sistemlerde zafiyet tespiti yapmadan, ağ trafiğini analiz etmeden ve sistemlere sızmadan iş hayatına hazırlanamazsınız.</p>
+              </div>
+            </div>
+
+            {/* KARŞILAŞTIRMA TABLOSU */}
+            <div className="border border-[#0c2719] rounded-2xl p-8 bg-[#07150e]/60 flex flex-col justify-between">
+              <div>
+                <div className="text-[18px] text-[#00ff88] font-bold mb-6">Neden Birebir Mentorluk?</div>
+                <div className="space-y-4 text-[13.5px]">
+                  <div className="flex justify-between border-b border-[#0c2719] pb-3">
+                    <span className="text-[#74998a]">Öğrenme Hızı:</span>
+                    <span className="text-[#eafff5] font-medium text-right">Sizin hızınıza göre özel plan</span>
+                  </div>
+                  <div className="flex justify-between border-b border-[#0c2719] pb-3">
+                    <span className="text-[#74998a]">Anında Geri Bildirim:</span>
+                    <span className="text-[#eafff5] font-medium text-right">Canlı ders anında düzeltme</span>
+                  </div>
+                  <div className="flex justify-between border-b border-[#0c2719] pb-3">
+                    <span className="text-[#74998a]">Pratik Deneyim:</span>
+                    <span className="text-[#eafff5] font-medium text-right">Canlı laboratuvarda sızma testleri</span>
+                  </div>
+                  <div className="flex justify-between pb-2">
+                    <span className="text-[#74998a]">Kariyer Desteği:</span>
+                    <span className="text-[#eafff5] font-medium text-right">CV, mülakat ve mentör referansı</span>
+                  </div>
+                </div>
+              </div>
+              <button onClick={() => {
+                const phone = '905389351189';
+                const msg = encodeURIComponent('Merhaba, birebir siber güvenlik eğitimi hakkında bilgi almak istiyorum.');
+                window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+              }} className="w-full text-center py-3 bg-[#00ff88] text-[#021008] font-bold rounded-lg font-mono text-sm mt-6 hover:shadow-[0_0_20px_#00ff88] transition-all">
+                Detaylı Bilgi Al (WhatsApp) →
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* HOW IT WORKS */}
       <section className="py-20" style={{ background: 'linear-gradient(180deg,#020806,#04100a)' }}>
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="text-center max-w-[540px] mx-auto mb-12 reveal">
-            <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> Eğitim Formatı</span>
-            <h2 className="text-[clamp(26px,3.5vw,38px)] text-[#eafff5] mt-4">Nasıl işleniyor?</h2>
+            <div className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> Eğitim Formatı</div>
+            <div className="text-[clamp(26px,3.5vw,38px)] text-[#eafff5] mt-4 font-disp font-bold">Nasıl işleniyor?</div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-[1100px] mx-auto">
             {[
-              { n: '01', title: 'Sisteme Dahil Ol', desc: 'Paketini seç, hesabını aktifleştir ve serüveni başlat. Deneyimli mentörün seninle hemen iletişime geçer.' },
+              { n: '01', title: 'Sisteme Dahil Ol', desc: 'Paketini seç, hesabını aktifleştir og serüveni başlat. Deneyimli mentörün seninle hemen iletişime geçer.' },
               { n: '02', title: 'Strateji Belirleme', desc: 'Mentörün kariyer hedeflerini dinler, seviyeni analiz eder ve tamamen sana özel yol haritasını kurgular.' },
               { n: '03', title: 'Simülasyon Hazırlanır', desc: 'O derse özel saldırı odası ve laboratuvar ortamın saniyeler içinde ayağa kaldırılır.' },
               { n: '04', title: 'Omuz Omuza Uzmanlaş', desc: 'Mentörünle bire bir canlı görüşme başlar, gerçek saldırı/savunma senaryolarıyla uzmanlaşırsın.' },
             ].map((s, i) => (
               <div key={i} className="reveal relative border border-[#0c2719] rounded-2xl p-6" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                 <span className="font-mono text-[11px] text-[#5c8a74] mb-4 block">{s.n}</span>
-                <h3 className="text-[16px] text-[#00ff88] mb-3">{s.title}</h3>
+                <div className="text-[16px] text-[#00ff88] mb-3 font-bold">{s.title}</div>
                 <p className="text-[13px] text-[#74998a] leading-[1.7]">{s.desc}</p>
                 {i < 3 && <span className="hidden lg:block absolute top-1/2 -right-3 -translate-y-1/2 text-[#103a26] text-xl font-bold z-10">›</span>}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CURRICULUM */}
+      <section className="py-20 border-b border-[#0c2719]" style={{ background: 'linear-gradient(180deg,#04100a,#020806)' }}>
+        <div className="max-w-[1280px] mx-auto px-8">
+          <div className="text-center max-w-[640px] mx-auto mb-12">
+            <div className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5">
+              <span className="text-[#5c8a74] font-bold">//</span> Kazanım Odaklı Müfredat
+            </div>
+            <h2 className="text-[clamp(28px,4vw,42px)] text-[#eafff5] mt-4 font-disp font-bold">
+              Siber Güvenlik Eğitimi
+            </h2>
+            <div className="text-[#74998a] mt-3 text-[14px]">
+              Sıfırdan siber güvenlik kariyerinize yön verecek, her dersi bizzat uygulamalı olarak işleyeceğiniz iki ana uzmanlık alanı:
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1100px] mx-auto">
+            {/* ALAN 1 */}
+            <div className="border border-[#0c2719] rounded-2xl p-8 bg-[#07150e]/60 flex flex-col justify-between">
+              <div>
+                <div className="text-[#00ff88] font-mono text-[13px] tracking-wider mb-2">// PROGRAM 1</div>
+                <div className="text-2xl text-[#eafff5] font-bold mb-4">Ağ Güvenliği Uzmanlığı</div>
+                <p className="text-[14px] text-[#74998a] mb-6 leading-[1.65]">
+                  Ağ altyapılarını analiz etmeyi, zafiyetleri tespit etmeyi ve sistem sızma testlerini (penetration testing) uygulamalı olarak öğrenin.
+                </p>
+                <div className="space-y-3.5 text-[13.5px] text-[#cdeede]">
+                  <div className="flex items-start gap-2">✓ <span>TCP/IP ve Ağ Protokolleri Analizi (Wireshark)</span></div>
+                  <div className="flex items-start gap-2">✓ <span>Nmap ve İleri Keşif Teknikleri</span></div>
+                  <div className="flex items-start gap-2">✓ <span>Active Directory Sızma Testleri</span></div>
+                  <div className="flex items-start gap-2">✓ <span>Red Team ve Blue Team Metodolojileri</span></div>
+                  <div className="flex items-start gap-2">✓ <span>eJPT, CEH ve PNPT Sınav Hazırlığı</span></div>
+                </div>
+              </div>
+              <button onClick={() => navigate('pricing')} className="w-full text-center py-3 border border-[#103a26] text-[#5cffba] font-bold rounded-lg font-mono text-sm mt-8 hover:border-[#00ff88] hover:text-[#00ff88] transition-all">
+                Program Detayları ve Ücretler →
+              </button>
+            </div>
+
+            {/* ALAN 2 */}
+            <div className="border border-[#0c2719] rounded-2xl p-8 bg-[#07150e]/60 flex flex-col justify-between">
+              <div>
+                <div className="text-[#00ff88] font-mono text-[13px] tracking-wider mb-2">// PROGRAM 2</div>
+                <div className="text-2xl text-[#eafff5] font-bold mb-4">Uygulama Güvenliği Uzmanlığı</div>
+                <p className="text-[14px] text-[#74998a] mb-6 leading-[1.65]">
+                  Web uygulamaları, API uç noktaları ve kaynak kod seviyesinde güvenlik açıklarını bulmayı, sömürmeyi ve kapatmayı bizzat lab ortamında öğrenin.
+                </p>
+                <div className="space-y-3.5 text-[13.5px] text-[#cdeede]">
+                  <div className="flex items-start gap-2">✓ <span>OWASP Top 10 Güvenlik Açıkları</span></div>
+                  <div className="flex items-start gap-2">✓ <span>SQL Injection (SQLi) ve XSS Saldırıları</span></div>
+                  <div className="flex items-start gap-2">✓ <span>JWT Manipülasyonu ve Yetki Bypass</span></div>
+                  <div className="flex items-start gap-2">✓ <span>Bug Bounty Metodolojisi ve Raporlama</span></div>
+                  <div className="flex items-start gap-2">✓ <span>Güvenli Kod Analizi ve Yamalama</span></div>
+                </div>
+              </div>
+              <button onClick={() => navigate('pricing')} className="w-full text-center py-3 border border-[#103a26] text-[#5cffba] font-bold rounded-lg font-mono text-sm mt-8 hover:border-[#00ff88] hover:text-[#00ff88] transition-all">
+                Program Detayları ve Ücretler →
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -426,8 +577,8 @@ const HomePage = ({ navigate }) => {
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="text-center max-w-[580px] mx-auto mb-12 reveal">
             <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> Örnek Ders Konuları</span>
-            <h2 className="text-[clamp(26px,3.5vw,38px)] text-[#eafff5] mt-4">Saldırı Senaryoları</h2>
-            <p className="text-[#74998a] mt-3 text-[14px]">Her ders, gerçek bir saldırı senaryosu üzerine kurulur. Mentörünle birlikte kontrollü lab ortamında bizzat uygularsın.</p>
+            <div className="text-[clamp(26px,3.5vw,38px)] text-[#eafff5] mt-4 font-disp font-bold">Saldırı Senaryoları</div>
+            <p className="text-[#74998a] mt-3 text-[14px]">Her ders, gerçek bir saldırı senaryosu üzerine kurulur. Mentörünle birlikte kontrollü lab ortamında bizzat uygula.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[14px]">
             {[
@@ -443,7 +594,7 @@ const HomePage = ({ navigate }) => {
                   <span className="text-[11px] text-[#5c8a74] border border-[#0c2719] px-2.5 py-1 rounded-full">{sc.tag}</span>
                   <span className="w-2 h-2 rounded-full" style={{ background: sc.accent }}></span>
                 </div>
-                <h3 className="text-[16px] text-[#eafff5] mb-2">{sc.title}</h3>
+                <div className="text-[16px] text-[#eafff5] mb-2 font-bold">{sc.title}</div>
                 <p className="text-[13px] text-[#74998a] leading-[1.65]">{sc.desc}</p>
               </div>
             ))}
@@ -451,26 +602,25 @@ const HomePage = ({ navigate }) => {
         </div>
       </section>
 
-
       {/* OUTCOMES */}
       <section className="py-20">
         <div className="max-w-[1100px] mx-auto px-8">
           <div className="text-center max-w-[560px] mx-auto mb-12 reveal">
             <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> Eğitim Çıktıları</span>
-            <h2 className="text-[clamp(26px,3.5vw,38px)] text-[#eafff5] mt-4">Eğitim sonunda ne kazanırsın?</h2>
+            <div className="text-[clamp(26px,3.5vw,38px)] text-[#eafff5] mt-4 font-disp font-bold">Eğitim sonunda ne kazanırsın?</div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[14px]">
             {[
               { icon: '◎', title: 'Sektör Sertifikası', desc: 'Siber Kampüs onaylı, iş başvurularında ve LinkedIn profilinde kullanabileceğin dijital sertifika.' },
               { icon: '⊞', title: 'Gerçek Senaryo Portföyü', desc: 'Sızma testi raporları, zafiyet analizleri ve uygulama çıktılarından derlenen somut portföy.' },
               { icon: '⟁', title: 'Mentör Referansı', desc: 'Birlikte çalıştığın güvenlik uzmanından, iş başvurularında fark yaratacak kişisel referans mektubu.' },
-              { icon: '⬡', title: 'VIP Kaynak Arşivi', desc: 'Eğitim süresince ve sonrasında erişebileceğin teknik dökümanlar, saldırı rehberleri ve vaka incelemeleri.' },
+              { icon: '⌖', title: 'CV & Mülakat Desteği', desc: "Siber güvenlik CV'ni hazırlamana, teknik mülakatlara hazırlanmana ve kariyer yolunu planlamana destek." },
               { icon: '◈', title: 'Pratik Yetkinlik', desc: 'Gerçek sistemlerde deneyim kazanarak sektörde güvenle iş yapabilecek seviyeye ulaşırsın.' },
-              { icon: '⌖', title: 'CV & Mülakat Desteği', desc: 'Siber güvenlik CV\'ni hazırlamana, teknik mülakatlara hazırlanmana ve kariyer yolunu planlamana destek.' },
+              { icon: '⬡', title: 'VIP Kaynak Arşivi', desc: 'Eğitim süresince ve sonrasında erişebileceğin teknik dökümanlar, saldırı rehberleri ve vaka incelemeleri.' },
             ].map((item, i) => (
               <div key={i} className="reveal border border-[#0c2719] rounded-2xl p-6 hover:border-[#103a26] hover:-translate-y-0.5 transition-all" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                 <div className="text-[#00ff88] text-xl mb-3">{item.icon}</div>
-                <h3 className="text-[15px] text-[#eafff5] mb-2">{item.title}</h3>
+                <div className="text-[15px] text-[#eafff5] mb-2 font-bold">{item.title}</div>
                 <p className="text-[13px] text-[#74998a] leading-[1.65]">{item.desc}</p>
               </div>
             ))}
@@ -483,7 +633,7 @@ const HomePage = ({ navigate }) => {
         <div className="max-w-[1280px] mx-auto px-8">
           <div className="text-center max-w-[640px] mx-auto mb-12 reveal">
             <span className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5"><span className="text-[#5c8a74] font-bold">//</span> Öğrenci Deneyimleri</span>
-            <h2 className="text-[clamp(28px,4vw,42px)] text-[#eafff5] mt-4">Kariyerini Değiştirenler Ne Diyor?</h2>
+            <div className="text-[clamp(28px,4vw,42px)] text-[#eafff5] mt-4 font-disp font-bold">Kariyerini Değiştirenler Ne Diyor?</div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px]">
             {testimonials.map((q, i) =>
@@ -503,22 +653,74 @@ const HomePage = ({ navigate }) => {
         </div>
       </section>
 
+      {/* SSS (FAQ) SECTION */}
+      <section className="py-20 border-t border-[#0c2719]" style={{ background: 'linear-gradient(180deg,#04100a,#020806)' }}>
+        <div className="max-w-[1280px] mx-auto px-8">
+          <div className="text-center max-w-[640px] mx-auto mb-12">
+            <div className="font-mono text-[13px] font-medium tracking-[.18em] uppercase text-[#00ff88] inline-flex items-center justify-center gap-2.5">
+              <span className="text-[#5c8a74] font-bold">//</span> Merak Edilenler
+            </div>
+            <h2 className="text-[clamp(28px,4vw,42px)] text-[#eafff5] mt-4 font-disp font-bold">
+              Siber Güvenlik Eğitimi
+            </h2>
+            <div className="text-[#74998a] mt-3 text-[14px]">
+              Birebir derslerimiz ve mentorluk sürecimiz hakkında sıkça sorulan sorular:
+            </div>
+          </div>
+
+          <div className="max-w-[800px] mx-auto space-y-6">
+            <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/60">
+              <div className="text-[16px] text-[#00ff88] font-bold mb-2">Dersler nasıl işleniyor?</div>
+              <p className="text-[13.5px] text-[#74998a] leading-[1.65]">
+                Derslerimiz tamamen canlı ve birebir olarak Zoom veya Discord üzerinden gerçekleştirilir. Ders esnasında mentörünüzle birlikte ekranınızı paylaşarak Kali Linux ortamında pratik yapar, sızma testi tekniklerini bizzat uygularsınız.
+              </p>
+            </div>
+            <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/60">
+              <div className="text-[16px] text-[#00ff88] font-bold mb-2">Hiç yazılım veya ağ deneyimim yok, katılabilir miyim?</div>
+              <p className="text-[13.5px] text-[#74998a] leading-[1.65]">
+                Evet, katılabilirsiniz. Birebir mentorluğin en büyük avantajı, müfredatın tamamen sizin seviyenize göre ayarlanmasıdır. Temel Linux komutları ve Network protokollerinden başlayarak adım adım ilerliyoruz.
+              </p>
+            </div>
+            <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/60">
+              <div className="text-[16px] text-[#00ff88] font-bold mb-2">Haftalık ders saatleri esnek mi?</div>
+              <p className="text-[13.5px] text-[#74998a] leading-[1.65]">
+                Ders saatlerimiz tamamen esnektir. Çalışanlar ve öğrenciler için akşam saatleri veya hafta sonu seansları düzenlenebilmektedir. Ders takvimini mentörünüzle birlikte esnekçe planlayabilirsiniz.
+              </p>
+            </div>
+            <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/60">
+              <div className="text-[16px] text-[#00ff88] font-bold mb-2">Eğitim sonunda sertifika veriliyor mu?</div>
+              <p className="text-[13.5px] text-[#74998a] leading-[1.65]">
+                Evet. 30 derslik eğitim programını ve pratik laboratuvarları tamamlayan öğrencilerimize, sitemiz üzerinden doğrulanabilir, benzersiz koda sahip "Ağ Güvenliği Uzmanlığı" veya "Uygulama Güvenliği Uzmanlığı" sertifikası verilmektedir.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA BAND */}
       <section className="relative overflow-hidden border-y border-[#0c2719]">
         <div className="grid-floor !opacity-50" style={{ animation: 'none' }}></div>
         <div className="absolute top-[-12%] left-1/2 -translate-x-1/2 w-[900px] h-[560px] z-0 pointer-events-none opacity-70" style={{ background: 'radial-gradient(ellipse at center,rgba(0,255,136,.16),transparent 62%)' }}></div>
         <div className="max-w-[1280px] mx-auto px-8 relative z-[2] text-center py-24 reveal">
-          <h2 className="text-[clamp(32px,5vw,56px)] text-[#eafff5] mb-[18px]">Siber Güvenlik <em className="not-italic text-[#00ff88] drop-shadow-[0_0_30px_rgba(0,255,136,.4)]">Uzmanı Ol.</em></h2>
+          <div className="text-[clamp(32px,5vw,56px)] text-[#eafff5] mb-[18px] font-disp font-bold">
+            Siber Güvenlik <em className="not-italic text-[#00ff88] drop-shadow-[0_0_30px_rgba(0,255,136,.4)]">Uzmanı Ol.</em>
+          </div>
           <p className="text-[#74998a] max-w-[520px] mx-auto mb-[34px] text-[15.5px]">Gerçek saldırı senaryolarını kontrollü lab ortamında, uzman mentör eşliğinde bizzat uygula.</p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <button onClick={() => navigate('pricing')} className="font-mono text-[15px] font-bold text-[#021008] bg-[#00ff88] px-[30px] py-4 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] transition-all">Eğitime Başla →</button>
+            <button onClick={() => {
+              const phone = '905389351189';
+              const msg = encodeURIComponent('Merhaba, birebir siber güvenlik eğitimi almak istiyorum.');
+              window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+            }} className="font-mono text-[15px] font-bold text-[#021008] bg-[#00ff88] px-[30px] py-4 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] transition-all">
+              İletişime Geç (WhatsApp) →
+            </button>
           </div>
         </div>
       </section>
 
       <Footer navigate={navigate} />
-    </>);
-
+    </>
+  );
 };
 
 /* ============ BLOG LIST ============ */
