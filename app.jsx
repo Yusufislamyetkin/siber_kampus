@@ -352,22 +352,22 @@ const HomePage = ({ navigate }) => {
               <div className="text-[#cdeede] text-[16px]">Video izleyerek vakit kaybetmeyin. Sektör profesyonellerinden, tamamen size özel canlı ve uygulamalı siber güvenlik eğitimi alın.</div>
               <div className="space-y-2 mt-4">
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div><strong>Eğitmenle birebir canlı ders:</strong> Her saniye sadece sizin sorularınıza ve gelişiminize odaklanılır.</div>
+                  <span>✓</span> <div>Eğitmenle Birebir Canlı Ders</div>
                 </div>
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div><strong>Kişiye özel eğitim planı:</strong> Bilgi seviyenize ve kariyer hedeflerinize uygun esnek yol haritası.</div>
+                  <span>✓</span> <div>Kişiye Özel Eğitim Planı</div>
                 </div>
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div><strong>Gerçek laboratuvar ortamı:</strong> Kali Linux ve Active Directory üzerinde gerçek sızma testleri.</div>
+                  <span>✓</span> <div>Gerçek Laboratuvar Ortamı</div>
                 </div>
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div><strong>Haftalık uygulamalı çalışmalar:</strong> Ödevler ve projelerle teoriyi anında pratiğe dönüştürün.</div>
+                  <span>✓</span> <div>Haftalık Uygulamalı Çalışmalar</div>
                 </div>
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div><strong>Kariyer mentorluğu:</strong> CV hazırlama, portfolyo oluşturme ve teknik mülakat simülasyonları.</div>
+                  <span>✓</span> <div>Kariyer Mentorluğu</div>
                 </div>
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div><strong>İş ve staj danışmanlığı:</strong> Sektör bağlantılarıyla işe yerleştirme rehberliği.</div>
+                  <span>✓</span> <div>İş ve Staj Danışmanlığı</div>
                 </div>
               </div>
             </div>
