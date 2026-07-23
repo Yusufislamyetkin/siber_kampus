@@ -349,7 +349,7 @@ const HomePage = ({ navigate }) => {
               <span className="glitch" style={{ color: '#ff2e88', textShadow: '0 0 32px rgba(255, 46, 136, 0.45)' }} data-text="Özel Ders">Özel Ders</span>
             </h1>
             <div className="text-[15.5px] text-[#74998a] max-w-[560px] mb-8 leading-[1.8] space-y-[13px]">
-              <div className="text-[#cdeede] text-[16px]">Videolar arasında kaybolmayın. Sektör profesyonelleri eşliğinde, tamamen size özel hazırlanan müfredatla canlı ve uygulamalı öğrenin.</div>
+              <div className="text-[#cdeede] text-[16px]">Video izleyerek vakit kaybetmeyin. Sektör profesyonellerinden, tamamen size özel canlı ve uygulamalı siber güvenlik eğitimi alın.</div>
               <div className="space-y-2 mt-4">
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
                   <span>✓</span> <div><strong>Eğitmenle birebir canlı ders:</strong> Her saniye sadece sizin sorularınıza ve gelişiminize odaklanılır.</div>
@@ -434,7 +434,7 @@ const HomePage = ({ navigate }) => {
               Birebir Siber Güvenlik
             </h2>
             <div className="text-[#74998a] mt-3 text-[14px]">
-              Siber güvenlik alanında uzmanlaşmak isteyenlerin %85'i teorik bilgi yığınları arasında boğuluyor. Slaytlar ve izole videolar yerine gerçek mentörünüzle öğrenin.
+              Teorik dökümanlar ve izole videolar yerine, gerçek senaryolar üzerinde mentörünüzle canlı çalışarak uzmanlaşın.
             </div>
           </div>
 
@@ -444,12 +444,12 @@ const HomePage = ({ navigate }) => {
               <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/30">
                 <div className="text-[#ffd166] text-sm font-mono mb-2">PROBLEM 01</div>
                 <div className="text-[16px] text-[#eafff5] font-bold mb-2">Bitmeyen Video Serileri</div>
-                <p className="text-[13px] text-[#74998a] leading-[1.65]">Kendi başınıza pasif videolar izlemek bir yere kadar götürür. Hata yaptığınızda size anında kılavuzluk edecek bir mentör bulamazsınız.</p>
+                <p className="text-[13px] text-[#74998a] leading-[1.65]">Pasif videolarla öğrenirken karşılaştığınız hatalarda takılıp kalırsınız; danışabileceğiniz canlı bir uzman desteği yoktur.</p>
               </div>
               <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/30">
                 <div className="text-[#ffd166] text-sm font-mono mb-2">PROBLEM 02</div>
                 <div className="text-[16px] text-[#eafff5] font-bold mb-2">Slayttan İbaret Pratikler</div>
-                <p className="text-[13px] text-[#74998a] leading-[1.65]">Gerçek sistemlerde zafiyet tespiti yapmadan, ağ trafiğini analiz etmeden ve sistemlere sızmadan iş hayatına hazırlanamazsınız.</p>
+                <p className="text-[13px] text-[#74998a] leading-[1.65]">Sadece slayt ezberleyerek veya izleyici kalarak gerçek bir sızma testi (pentest) gerçekleştiremezsiniz.</p>
               </div>
             </div>
 
@@ -478,7 +478,7 @@ const HomePage = ({ navigate }) => {
               </div>
               <button onClick={() => {
                 const phone = '905389351189';
-                const msg = encodeURIComponent('Merhaba, birebir siber güvenlik eğitimi hakkında bilgi almak istiyorum.');
+                const msg = encodeURIComponent('Merhaba, siber güvenlik birebir özel ders eğitimi hakkında detaylı bilgi alabilir miyim?');
                 window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
               }} className="w-full text-center py-3 bg-[#00ff88] text-[#021008] font-bold rounded-lg font-mono text-sm mt-6 hover:shadow-[0_0_20px_#00ff88] transition-all">
                 Detaylı Bilgi Al (WhatsApp) →
@@ -497,10 +497,10 @@ const HomePage = ({ navigate }) => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-[1100px] mx-auto">
             {[
-              { n: '01', title: 'Sisteme Dahil Ol', desc: 'Paketini seç, hesabını aktifleştir og serüveni başlat. Deneyimli mentörün seninle hemen iletişime geçer.' },
-              { n: '02', title: 'Strateji Belirleme', desc: 'Mentörün kariyer hedeflerini dinler, seviyeni analiz eder ve tamamen sana özel yol haritasını kurgular.' },
-              { n: '03', title: 'Simülasyon Hazırlanır', desc: 'O derse özel saldırı odası ve laboratuvar ortamın saniyeler içinde ayağa kaldırılır.' },
-              { n: '04', title: 'Omuz Omuza Uzmanlaş', desc: 'Mentörünle bire bir canlı görüşme başlar, gerçek saldırı/savunma senaryolarıyla uzmanlaşırsın.' },
+              { n: '01', title: 'Tanışma Seansı', desc: 'Ücretsiz tanışma dersi planlayın. Seviyeniz ve hedefleriniz analiz edilsin.' },
+              { n: '02', title: 'Kişisel Müfredat', desc: 'Kariyer hedeflerinize uygun, tamamen size özel bir yol haritası kurgulansın.' },
+              { n: '03', title: 'Canlı Laboratuvar', desc: 'Her derse özel izole saldırı laboratuvarı ve hedef sistemler ayağa kaldırılır.' },
+              { n: '04', title: 'Canlı Uygulama', desc: "Mentörünüzle 1'e 1 canlı oturumda gerçek saldırı ve savunma senaryolarını uygulayın." },
             ].map((s, i) => (
               <div key={i} className="reveal relative border border-[#0c2719] rounded-2xl p-6" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                 <span className="font-mono text-[11px] text-[#5c8a74] mb-4 block">{s.n}</span>
@@ -535,7 +535,7 @@ const HomePage = ({ navigate }) => {
                 <div className="text-[#00ff88] font-mono text-[13px] tracking-wider mb-2">// PROGRAM 1</div>
                 <div className="text-2xl text-[#eafff5] font-bold mb-4">Ağ Güvenliği Uzmanlığı</div>
                 <p className="text-[14px] text-[#74998a] mb-6 leading-[1.65]">
-                  Ağ altyapılarını analiz etmeyi, zafiyetleri tespit etmeyi ve sistem sızma testlerini (penetration testing) uygulamalı olarak öğrenin.
+                  Kurumsal ağları analiz etmeyi, zafiyetleri tespit etmeyi ve sızma testlerini uygulamalı gerçekleştirin.
                 </p>
                 <div className="space-y-3.5 text-[13.5px] text-[#cdeede]">
                   <div className="flex items-start gap-2">✓ <span>TCP/IP ve Ağ Protokolleri Analizi (Wireshark)</span></div>
@@ -556,7 +556,7 @@ const HomePage = ({ navigate }) => {
                 <div className="text-[#00ff88] font-mono text-[13px] tracking-wider mb-2">// PROGRAM 2</div>
                 <div className="text-2xl text-[#eafff5] font-bold mb-4">Uygulama Güvenliği Uzmanlığı</div>
                 <p className="text-[14px] text-[#74998a] mb-6 leading-[1.65]">
-                  Web uygulamaları, API uç noktaları ve kaynak kod seviyesinde güvenlik açıklarını bulmayı, sömürmeyi ve kapatmayı bizzat lab ortamında öğrenin.
+                  Web uygulamaları, API uç noktaları ve kaynak kod seviyesinde güvenlik açıklarını analiz edin.
                 </p>
                 <div className="space-y-3.5 text-[13.5px] text-[#cdeede]">
                   <div className="flex items-start gap-2">✓ <span>OWASP Top 10 Güvenlik Açıkları</span></div>
@@ -584,12 +584,12 @@ const HomePage = ({ navigate }) => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[14px]">
             {[
-              { tag: 'Sosyal Medya', title: 'Sosyal Medya Pentest', desc: 'Instagram ve benzeri platformlara yönelik kimlik doğrulama açıklarını simülasyon ortamında incelersin.', accent: '#ffd166' },
-              { tag: 'Web Uygulaması', title: 'SQL Injection & XSS', desc: 'Gerçekçi bir hedef web uygulamasında SQL injection, XSS ve IDOR zafiyetlerini tespit edip sömürürsün.', accent: '#00ff88' },
-              { tag: 'Sosyal Mühendislik', title: 'Phishing & Pretexting', desc: 'Phishing kampanyası hazırlama, pretexting senaryoları ve insan faktörü temelli saldırı teknikleri.', accent: '#a78bfa' },
-              { tag: 'Ağ Güvenliği', title: 'Ağ Sızma Testi', desc: 'Nmap ile port tarama, servis tespiti ve izole ağ ortamında sızma testi metodolojisi.', accent: '#00ff88' },
-              { tag: 'API Güvenliği', title: 'Token & Auth Bypass', desc: 'JWT token manipülasyonu, yetkilendirme bypass teknikleri ve API uç nokta güvenliği.', accent: '#ffd166' },
-              { tag: 'E-posta Güvenliği', title: 'Kimlik Avı Analizi', desc: 'Phishing e-postalarını analiz etme, başlık inceleme ve sosyal mühendislik göstergelerini tespit etme.', accent: '#a78bfa' },
+              { tag: 'Web Uygulaması', title: 'SQL Injection & XSS', desc: 'Hedef web uygulamalarındaki en yaygın OWASP Top 10 açıklarının tespiti ve sömürülmesi.', accent: '#00ff88' },
+              { tag: 'Ağ Güvenliği', title: 'Ağ Sızma Testi', desc: 'Nmap ile keşif, port tarama, servis tespiti ve izole kurumsal ağlarda sızma testi metodolojisi.', accent: '#00ff88' },
+              { tag: 'API Güvenliği', title: 'Token & Auth Bypass', desc: 'JWT manipülasyonu, yetkilendirme bypass teknikleri ve modern API uç nokta denetimleri.', accent: '#ffd166' },
+              { tag: 'Sosyal Mühendislik', title: 'Phishing & Pretexting', desc: 'Oltalama kampanyalarının planlanması, kurumsal sosyal mühendislik denetimleri ve insan faktörü analizi.', accent: '#a78bfa' },
+              { tag: 'E-posta Güvenliği', title: 'Kimlik Avı Analizi', desc: 'Şüpheli e-postaların teknik analizi, header incelemesi ve zararlı eklerin tespiti.', accent: '#a78bfa' },
+              { tag: 'Sosyal Medya', title: 'Kimlik Doğrulama Zafiyetleri', desc: 'Çok faktörlü kimlik doğrulama (MFA) bypass yöntemleri ve oturum yönetimi açıkları.', accent: '#ffd166' },
             ].map((sc, i) => (
               <div key={i} className="reveal group border border-[#0c2719] rounded-2xl p-6 hover:border-[#103a26] hover:-translate-y-0.5 transition-all" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                 <div className="flex items-center justify-between mb-4">
@@ -613,12 +613,12 @@ const HomePage = ({ navigate }) => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[14px]">
             {[
-              { icon: '◎', title: 'Sektör Sertifikası', desc: 'Siber Kampüs onaylı, iş başvurularında ve LinkedIn profilinde kullanabileceğin dijital sertifika.' },
-              { icon: '⊞', title: 'Gerçek Senaryo Portföyü', desc: 'Sızma testi raporları, zafiyet analizleri ve uygulama çıktılarından derlenen somut portföy.' },
-              { icon: '⟁', title: 'Mentör Referansı', desc: 'Birlikte çalıştığın güvenlik uzmanından, iş başvurularında fark yaratacak kişisel referans mektubu.' },
-              { icon: '⌖', title: 'CV & Mülakat Desteği', desc: "Siber güvenlik CV'ni hazırlamana, teknik mülakatlara hazırlanmana ve kariyer yolunu planlamana destek." },
-              { icon: '◈', title: 'Pratik Yetkinlik', desc: 'Gerçek sistemlerde deneyim kazanarak sektörde güvenle iş yapabilecek seviyeye ulaşırsın.' },
-              { icon: '⬡', title: 'VIP Kaynak Arşivi', desc: 'Eğitim süresince ve sonrasında erişebileceğin teknik dökümanlar, saldırı rehberleri ve vaka incelemeleri.' },
+              { icon: '◎', title: 'Uzmanlık Sertifikası', desc: 'Eğitim ve pratik laboratuvar çözümleri sonunda verilen doğrulanabilir dijital başarı sertifikası.' },
+              { icon: '⊞', title: 'Teknik Portfolyo', desc: 'Dersler boyunca hazırlayacağınız sızma testi raporları ve zafiyet analiz dokümanları.' },
+              { icon: '⟁', title: 'Mentör Referansı', desc: 'Teknik başarınıza bağlı olarak kıdemli güvenlik eğitmeninizden alacağınız referans mektubu.' },
+              { icon: '⌖', title: 'Kariyer ve CV Desteği', desc: 'Sektöre uygun CV hazırlama, portfolyo optimizasyonu ve teknik mülakat simülasyonları.' },
+              { icon: '◈', title: 'Uygulamalı Yetkinlik', desc: 'Gerçek kurumsal altyapılarda sızma testi gerçekleştirebilecek düzeyde pratik deneyim.' },
+              { icon: '⬡', title: 'Teknik Kaynak Kütüphanesi', desc: 'Çözümlü sızma testi laboratuvar kılavuzları, cheat sheetler ve VIP güvenlik dökümantasyonu.' },
             ].map((item, i) => (
               <div key={i} className="reveal border border-[#0c2719] rounded-2xl p-6 hover:border-[#103a26] hover:-translate-y-0.5 transition-all" style={{ background: 'linear-gradient(165deg,#07150e,#04100a)' }}>
                 <div className="text-[#00ff88] text-xl mb-3">{item.icon}</div>
@@ -674,25 +674,25 @@ const HomePage = ({ navigate }) => {
             <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/60">
               <div className="text-[16px] text-[#00ff88] font-bold mb-2">Dersler nasıl işleniyor?</div>
               <p className="text-[13.5px] text-[#74998a] leading-[1.65]">
-                Derslerimiz tamamen canlı ve birebir olarak Zoom veya Discord üzerinden gerçekleştirilir. Ders esnasında mentörünüzle birlikte ekranınızı paylaşarak Kali Linux ortamında pratik yapar, sızma testi tekniklerini bizzat uygularsınız.
+                Tüm eğitimler Zoom veya Discord üzerinden birebir canlı oturumlar halinde gerçekleştirilir. Mentörünüz eşliğinde ekran paylaşımı yaparak gerçek laboratuvarlarda uygulamalı çalışmalar yaparsınız.
               </p>
             </div>
             <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/60">
               <div className="text-[16px] text-[#00ff88] font-bold mb-2">Hiç yazılım veya ağ deneyimim yok, katılabilir miyim?</div>
               <p className="text-[13.5px] text-[#74998a] leading-[1.65]">
-                Evet, katılabilirsiniz. Birebir mentorluğin en büyük avantajı, müfredatın tamamen sizin seviyenize göre ayarlanmasıdır. Temel Linux komutları ve Network protokollerinden başlayarak adım adım ilerliyoruz.
+                Evet. Birebir eğitim modelimizde müfredat seviyenize göre şekillendirilir. Ağ temelleri, Linux komutları ve temel zafiyet analizlerinden başlayarak sıfırdan uzmanlık seviyesine kadar ilerleyebilirsiniz.
               </p>
             </div>
             <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/60">
               <div className="text-[16px] text-[#00ff88] font-bold mb-2">Haftalık ders saatleri esnek mi?</div>
               <p className="text-[13.5px] text-[#74998a] leading-[1.65]">
-                Ders saatlerimiz tamamen esnektir. Çalışanlar ve öğrenciler için akşam saatleri veya hafta sonu seansları düzenlenebilmektedir. Ders takvimini mentörünüzle birlikte esnekçe planlayabilirsiniz.
+                Ders saatleri esnektir. Çalışanlar ve öğrenciler için hafta içi akşamları ya da hafta sonu seansları planlanarak eğitim takvimi size en uygun şekilde organize edilir.
               </p>
             </div>
             <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/60">
               <div className="text-[16px] text-[#00ff88] font-bold mb-2">Eğitim sonunda sertifika veriliyor mu?</div>
               <p className="text-[13.5px] text-[#74998a] leading-[1.65]">
-                Evet. 30 derslik eğitim programını ve pratik laboratuvarları tamamlayan öğrencilerimize, sitemiz üzerinden doğrulanabilir, benzersiz koda sahip "Ağ Güvenliği Uzmanlığı" veya "Uygulama Güvenliği Uzmanlığı" sertifikası verilmektedir.
+                Evet. Müfredatı ve pratik laboratuvar çözümlerini başarıyla tamamlayan öğrencilerimize, platformumuz üzerinden sorgulanabilir doğrulanabilir uzmanlık sertifikası verilmektedir.
               </p>
             </div>
           </div>
