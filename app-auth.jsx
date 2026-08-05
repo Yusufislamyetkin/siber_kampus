@@ -744,7 +744,7 @@ const DashboardPage = ({ navigate, data }) => {
                     <span>📝</span> Değerlendirme Testi
                   </h3>
                   <p className="text-xs text-[#74998a] mt-1 font-mono">
-                    Bir sonraki dersi açabilmek için aşağıdaki 3 soruyu da doğru yanıtlamanız gerekmektedir.
+                    Bir sonraki dersi açabilmek için aşağıdaki {currentLesson.questions.length} soruyu da doğru yanıtlamanız gerekmektedir.
                   </p>
                 </div>
 

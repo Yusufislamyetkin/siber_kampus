@@ -112,7 +112,7 @@ app.use((req, res, next) => {
     <p>Videolar arasında kaybolmayın. Sektör profesyonelleri eşliğinde, tamamen size özel hazırlanan müfredatla canlı ve uygulamalı öğrenin. Eğitmenle birebir canlı dersler ve kişiye özel eğitim planı ile Kali Linux, Active Directory sızma testleri ve web güvenliği konularında uzmanlaşın.</p>
     
     <h2>Siber Güvenlik Eğitimi</h2>
-    <p>Ağ Güvenliği Uzmanlığı ve Uygulama Güvenliği Uzmanlığı olmak üzere iki ana dalda 30'ar ders ve toplam 180 sızma testi sorusundan oluşan zengin müfredatımızı eğitmeninizle uygulamalı olarak çözün. eJPT, CEH ve PNPT sınavlarına tam hazırlık desteği alın.</p>
+    <p>Ağ Güvenliği Uzmanlığı ve Uygulama Güvenliği Uzmanlığı olmak üzere iki ana dalda 30'ar ders ve toplam 600 sızma testi sorusundan oluşan zengin müfredatımızı eğitmeninizle uygulamalı olarak çözün. eJPT, CEH ve PNPT sınavlarına tam hazırlık desteği alın.</p>
     
     <h2>Siber Güvenlik Eğitimi</h2>
     <p>Siber güvenlik özel derslerimiz hakkında sıkça sorulan sorular: Dersler tamamen canlı ve birebir olarak Zoom/Discord üzerinden işlenir. Hiçbir teknik deneyimi olmayanlar sıfırdan ağ ve Linux temellerinden başlayabilir. Haftalık ders saatleri öğrenci ve çalışanlara göre esnektir. Eğitim sonunda doğrulanabilir dijital uzmanlık sertifikası verilir.</p>
