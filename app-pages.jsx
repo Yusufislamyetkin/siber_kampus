@@ -3692,9 +3692,9 @@ const VIPPlatformLandingPage = ({ navigate }) => {
   return (
     <>
       <HeaderCmp navigate={navigate} />
-      <div className="min-h-screen text-[#cdeede] pt-24 pb-16 bg-[#010403]" style={{ background: 'radial-gradient(circle at 50% 10%, #06130e, #010403 80%)' }}>
+      <div className="min-h-screen text-[#cdeede] pt-12 sm:pt-20 pb-16 bg-[#010403]" style={{ background: 'radial-gradient(circle at 50% 10%, #06130e, #010403 80%)' }}>
         {/* HERO SECTION */}
-        <section className="max-w-[1200px] mx-auto px-6 text-center py-10 md:py-16">
+        <section className="max-w-[1200px] mx-auto px-6 text-center py-6 sm:py-10 md:py-12">
           <span className="inline-flex items-center gap-2 text-[12px] tracking-[.15em] uppercase text-[#00ff88] border border-[#103a26] bg-[rgba(0,255,136,.04)] px-4 py-2 rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-[#00ff88] shadow-[0_0_10px_#00ff88] animate-pulse"></span>
             Kampanya ve Reklam Özel Sayfası
@@ -3703,27 +3703,9 @@ const VIPPlatformLandingPage = ({ navigate }) => {
             Kendi Hacking Laboratuvarında<br/>
             <span className="text-[#00ff88] drop-shadow-[0_0_20px_rgba(0,255,136,.25)]">Siber Güvenliği Uygulamalı Öğren</span>
           </h1>
-          <p className="text-[16px] text-[#74998a] max-w-[700px] mx-auto leading-relaxed mb-10">
+          <p className="text-[16px] text-[#74998a] max-w-[700px] mx-auto leading-relaxed mb-4">
             60+ interaktif konu anlatımı, 600+ uzmanlaştırılmış değerlendirme sorusu ve 10+ uygulamalı saldırı/savunma senaryosu videosu ile siber güvenliği sıfırdan uygulamalı olarak öğrenin.
           </p>
-          
-          {/* BIG CTA CARD */}
-          <div className="max-w-[500px] mx-auto border border-[#00ff88]/30 rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,.6),0_0_40px_rgba(0,255,136,.05)] relative overflow-hidden" style={{ background: 'linear-gradient(165deg, #071e14, #030c08)' }}>
-            <div className="absolute top-0 right-0 bg-[#00ff88] text-[#021008] font-bold text-[10px] tracking-wider uppercase px-4 py-1.5 rounded-bl-2xl">
-              Yıllık Sadece 900 TL
-            </div>
-            <div className="text-[20px] font-bold text-[#eafff5] mb-2">VIP Platform Erişimi</div>
-            <div className="flex items-baseline justify-center gap-2 mb-6">
-              <span className="text-[#74998a] line-through text-[16px]">1.800 TL</span>
-              <span className="text-[42px] font-bold text-[#00ff88] tracking-tight">900 TL</span>
-              <span className="text-[#74998a] text-sm">/ Yıl</span>
-            </div>
-            
-            <button onClick={handleWhatsAppBuy} className="w-full font-mono text-[16px] font-bold text-[#021008] bg-[#00ff88] py-4 rounded-xl shadow-[0_0_24px_rgba(0,255,136,.3)] hover:scale-[1.02] transition-all mb-4">
-              WhatsApp ile Satın Al ⚡
-            </button>
-            <p className="text-[12px] text-[#5c8a74] font-mono">IBAN ile güvenli transfer · Dakikalar içinde hesap aktivasyonu</p>
-          </div>
         </section>
 
         {/* METRICS SECTION */}
@@ -3807,6 +3789,29 @@ const VIPPlatformLandingPage = ({ navigate }) => {
             <p className="text-[14.5px] text-[#74998a] leading-relaxed max-w-[600px] mx-auto">
               Platformu satın alan her üyemize, siber güvenlik yolculuğuna başlarken seviyesini belirlemek ve hedeflerini çizmek için **1\'e 1 canlı ön görüşme ve kariyer danışmanlığı** seansı hediye ediyoruz.
             </p>
+          </div>
+        </section>
+
+        {/* PRICE CTA SECTION */}
+        <section className="py-16 border-t border-[#0c2719] bg-black/10">
+          <div className="max-w-[500px] mx-auto px-6 text-center">
+            {/* BIG CTA CARD */}
+            <div className="border border-[#00ff88]/30 rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,.6),0_0_40px_rgba(0,255,136,.05)] relative overflow-hidden text-center" style={{ background: 'linear-gradient(165deg, #071e14, #030c08)' }}>
+              <div className="absolute top-0 right-0 bg-[#00ff88] text-[#021008] font-bold text-[10px] tracking-wider uppercase px-4 py-1.5 rounded-bl-2xl">
+                Yıllık Sadece 900 TL
+              </div>
+              <div className="text-[20px] font-bold text-[#eafff5] mb-2">VIP Platform Erişimi</div>
+              <div className="flex items-baseline justify-center gap-2 mb-6">
+                <span className="text-[#74998a] line-through text-[16px]">1.800 TL</span>
+                <span className="text-[42px] font-bold text-[#00ff88] tracking-tight">900 TL</span>
+                <span className="text-[#74998a] text-sm">/ Yıl</span>
+              </div>
+              
+              <button onClick={handleWhatsAppBuy} className="w-full font-mono text-[16px] font-bold text-[#021008] bg-[#00ff88] py-4 rounded-xl shadow-[0_0_24px_rgba(0,255,136,.3)] hover:scale-[1.02] transition-all mb-4">
+                WhatsApp ile Satın Al ⚡
+              </button>
+              <p className="text-[12px] text-[#5c8a74] font-mono">IBAN ile güvenli transfer · Dakikalar içinde hesap aktivasyonu</p>
+            </div>
           </div>
         </section>
 
