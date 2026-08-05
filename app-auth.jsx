@@ -640,6 +640,115 @@ const DashboardPage = ({ navigate, data }) => {
               </div>
             </div>
           </div>
+
+          {/* VIP Media Library Section */}
+          <div className="mt-16 max-w-[1000px] mx-auto">
+            <div className="flex items-center gap-2 mb-6 justify-between">
+              <h3 className="text-xl text-[#eafff5] font-disp font-bold flex items-center gap-2">
+                📂 VIP Eğitim Kütüphanesi (Slayt &amp; Video Arşivi)
+              </h3>
+              {!user.is_premium && (
+                <span className="font-mono text-xs text-[#ffd166] border border-[#ffd166]/30 bg-[#ffd166]/5 px-2.5 py-1 rounded">
+                  🔒 VIP Üyelere Özel
+                </span>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+              
+              {/* Blur Overlay for Non-Premium Users */}
+              {!user.is_premium && (
+                <div className="absolute inset-0 bg-[#020806]/60 backdrop-blur-[5px] z-20 flex flex-col items-center justify-center p-6 text-center rounded-2xl border border-[#ffd166]/20">
+                  <div className="text-4xl mb-3">🔒</div>
+                  <h4 className="text-[#ffd166] font-bold text-[16px] mb-2">Eğitim Dosyaları VIP Üyelere Özeldir</h4>
+                  <p className="text-[#74998a] text-xs max-w-[400px] mb-4 leading-relaxed">
+                    Siber güvenlik slaytlarına ve uygulamalı saldırı/savunma senaryoları video arşivine erişmek için VIP üyeliğe yükseltin.
+                  </p>
+                  <button onClick={() => navigate('pricing')} className="px-5 py-2 rounded-lg bg-[#ffd166] text-[#021008] font-bold text-xs hover:bg-[#ff9500] transition-colors font-mono">
+                    Planları Gör &amp; Katıl ⚡
+                  </button>
+                </div>
+              )}
+
+              {/* Slaytlar List */}
+              <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/30 flex flex-col justify-between" style={{ opacity: !user.is_premium ? 0.3 : 1 }}>
+                <div>
+                  <div className="text-[#00ff88] font-disp font-bold text-base mb-4 flex items-center gap-2">
+                    📄 Slaytlar (Ders Sunumları)
+                  </div>
+                  <div className="space-y-3 font-mono text-[13px]">
+                    <a href="/mediaforeducation/Slayt/Slayt1.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3.5 p-3 rounded-lg border border-[#103a26]/40 hover:border-[#00ff88]/60 bg-[#020806]/40 hover:bg-[#07150e]/50 text-[#cdeede] hover:text-[#00ff88] transition-all">
+                      <span className="text-[18px]">📁</span>
+                      <div className="text-left flex-1 truncate">
+                        <div className="font-semibold text-xs">Slayt 1 - Ağ ve Sistem Güvenliği Temelleri</div>
+                        <span className="text-[10px] text-[#74998a]">Format: PDF (16.2 MB)</span>
+                      </div>
+                      <span className="text-[#74998a] group-hover:text-[#00ff88] text-xs">Aç →</span>
+                    </a>
+                    <a href="/mediaforeducation/Slayt/slaty2.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3.5 p-3 rounded-lg border border-[#103a26]/40 hover:border-[#00ff88]/60 bg-[#020806]/40 hover:bg-[#07150e]/50 text-[#cdeede] hover:text-[#00ff88] transition-all">
+                      <span className="text-[18px]">📁</span>
+                      <div className="text-left flex-1 truncate">
+                        <div className="font-semibold text-xs">Slayt 2 - Sızma Testi Metodolojileri</div>
+                        <span className="text-[10px] text-[#74998a]">Format: PDF (17.3 MB)</span>
+                      </div>
+                      <span className="text-[#74998a] group-hover:text-[#00ff88] text-xs">Aç →</span>
+                    </a>
+                    <a href="/mediaforeducation/Slayt/slayt3.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3.5 p-3 rounded-lg border border-[#103a26]/40 hover:border-[#00ff88]/60 bg-[#020806]/40 hover:bg-[#07150e]/50 text-[#cdeede] hover:text-[#00ff88] transition-all">
+                      <span className="text-[18px]">📁</span>
+                      <div className="text-left flex-1 truncate">
+                        <div className="font-semibold text-xs">Slayt 3 - Güvenli Geliştirme Yaşam Döngüsü</div>
+                        <span className="text-[10px] text-[#74998a]">Format: PDF (8.1 MB)</span>
+                      </div>
+                      <span className="text-[#74998a] group-hover:text-[#00ff88] text-xs">Aç →</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Videolar List */}
+              <div className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/30 flex flex-col justify-between" style={{ opacity: !user.is_premium ? 0.3 : 1 }}>
+                <div>
+                  <div className="text-[#ffd166] font-disp font-bold text-base mb-4 flex items-center gap-2">
+                    🎥 Video Eğitim Kütüphanesi
+                  </div>
+                  <div className="space-y-3 font-mono text-[13px]">
+                    <a href="/mediaforeducation/Video/Ders1.mp4" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3.5 p-3 rounded-lg border border-[#103a26]/40 hover:border-[#ffd166]/60 bg-[#020806]/40 hover:bg-[#07150e]/50 text-[#cdeede] hover:text-[#ffd166] transition-all">
+                      <span className="text-[18px]">▶</span>
+                      <div className="text-left flex-1 truncate">
+                        <div className="font-semibold text-xs">Ders 1 - Wireshark ile Paket Analizi</div>
+                        <span className="text-[10px] text-[#74998a]">Format: MP4 (40.0 MB)</span>
+                      </div>
+                      <span className="text-[#74998a] group-hover:text-[#ffd166] text-xs">İzle →</span>
+                    </a>
+                    <a href="/mediaforeducation/Video/ders2.mp4" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3.5 p-3 rounded-lg border border-[#103a26]/40 hover:border-[#ffd166]/60 bg-[#020806]/40 hover:bg-[#07150e]/50 text-[#cdeede] hover:text-[#ffd166] transition-all">
+                      <span className="text-[18px]">▶</span>
+                      <div className="text-left flex-1 truncate">
+                        <div className="font-semibold text-xs">Ders 2 - SQL Injection Zafiyet Sömürüsü</div>
+                        <span className="text-[10px] text-[#74998a]">Format: MP4 (29.7 MB)</span>
+                      </div>
+                      <span className="text-[#74998a] group-hover:text-[#ffd166] text-xs">İzle →</span>
+                    </a>
+                    <a href="/mediaforeducation/Video/ders3.mp4" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3.5 p-3 rounded-lg border border-[#103a26]/40 hover:border-[#ffd166]/60 bg-[#020806]/40 hover:bg-[#07150e]/50 text-[#cdeede] hover:text-[#ffd166] transition-all">
+                      <span className="text-[18px]">▶</span>
+                      <div className="text-left flex-1 truncate">
+                        <div className="font-semibold text-xs">Ders 3 - XSS &amp; Session Hijacking Saldırıları</div>
+                        <span className="text-[10px] text-[#74998a]">Format: MP4 (35.1 MB)</span>
+                      </div>
+                      <span className="text-[#74998a] group-hover:text-[#ffd166] text-xs">İzle →</span>
+                    </a>
+                    <a href="/mediaforeducation/Video/ders4.mp4" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3.5 p-3 rounded-lg border border-[#103a26]/40 hover:border-[#ffd166]/60 bg-[#020806]/40 hover:bg-[#07150e]/50 text-[#cdeede] hover:text-[#ffd166] transition-all">
+                      <span className="text-[18px]">▶</span>
+                      <div className="text-left flex-1 truncate">
+                        <div className="font-semibold text-xs">Ders 4 - Active Directory Sızma Testi Simülasyonu</div>
+                        <span className="text-[10px] text-[#74998a]">Format: MP4 (46.1 MB)</span>
+                      </div>
+                      <span className="text-[#74998a] group-hover:text-[#ffd166] text-xs">İzle →</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </main>
         <SKFooter navigate={navigate} />
       </>
