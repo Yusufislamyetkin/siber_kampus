@@ -1586,7 +1586,7 @@ window.SK_LESSONS = {
           "correct": 2
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Nmap Versiyon ve OS Tespiti' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Nmap Versiyon ve OS Tespiti' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -1606,52 +1606,52 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Nmap Versiyon ve OS Tespiti' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'Nmap Versiyon ve OS Tespiti' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Nmap",
-            "Wireshark",
-            "Metasploit",
-            "Nessus"
+            "Sektör standardı güvenlik analiz araçları",
+            "Sadece tarayıcı",
+            "Notepad++",
+            "Hesap Makinesi"
           ],
           "correct": 0
         },
         {
-          "q": "'Nmap Versiyon ve OS Tespiti' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Nmap Versiyon ve OS Tespiti' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Nmap Versiyon ve OS Tespiti' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'Nmap Versiyon ve OS Tespiti' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Nmap Versiyon ve OS Tespiti' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'Nmap Versiyon ve OS Tespiti' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'Nmap Versiyon ve OS Tespiti' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Nmap Versiyon ve OS Tespiti' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -1694,7 +1694,7 @@ window.SK_LESSONS = {
           "correct": 2
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Nmap Scripting Engine (NSE)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Nmap Scripting Engine (NSE)' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -1714,52 +1714,52 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Nmap Scripting Engine (NSE)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'Nmap Scripting Engine (NSE)' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Nmap",
-            "Wireshark",
-            "Metasploit",
-            "Nessus"
+            "Sektör standardı güvenlik analiz araçları",
+            "Sadece tarayıcı",
+            "Notepad++",
+            "Hesap Makinesi"
           ],
           "correct": 0
         },
         {
-          "q": "'Nmap Scripting Engine (NSE)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Nmap Scripting Engine (NSE)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Nmap Scripting Engine (NSE)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'Nmap Scripting Engine (NSE)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Nmap Scripting Engine (NSE)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'Nmap Scripting Engine (NSE)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'Nmap Scripting Engine (NSE)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Nmap Scripting Engine (NSE)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -1802,11 +1802,11 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Wireshark ile Paket Analizine Giriş' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Wireshark ile Paket Analizine Giriş' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Paket analizi ve trafik inceleme",
             "Veritabanı sızma testi",
-            "XSS payload üretimi",
+            "SQLi zafiyeti sömürme",
             "IP adresi dağıtma"
           ],
           "correct": 0
@@ -1822,52 +1822,52 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Wireshark ile Paket Analizine Giriş' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'Wireshark ile Paket Analizine Giriş' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Wireshark / tcpdump",
-            "Burp Suite",
-            "Sqlmap",
-            "Nmap"
+            "Trafik koklayıcılar (Wireshark / tcpdump)",
+            "Web uygulama tarayıcıları",
+            "Şifre kırıcılar",
+            "Açık kaynak istihbaratı"
           ],
           "correct": 0
         },
         {
-          "q": "'Wireshark ile Paket Analizine Giriş' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Wireshark ile Paket Analizine Giriş' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Wireshark ile Paket Analizine Giriş' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'Wireshark ile Paket Analizine Giriş' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Wireshark ile Paket Analizine Giriş' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'Wireshark ile Paket Analizine Giriş' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'Wireshark ile Paket Analizine Giriş' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Wireshark ile Paket Analizine Giriş' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -1910,11 +1910,11 @@ window.SK_LESSONS = {
           "correct": 2
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Wireshark Filtreleme Teknikleri' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Wireshark Filtreleme Teknikleri' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Paket analizi ve trafik inceleme",
             "Veritabanı sızma testi",
-            "XSS payload üretimi",
+            "SQLi zafiyeti sömürme",
             "IP adresi dağıtma"
           ],
           "correct": 0
@@ -1930,52 +1930,52 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Wireshark Filtreleme Teknikleri' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'Wireshark Filtreleme Teknikleri' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Wireshark / tcpdump",
-            "Burp Suite",
-            "Sqlmap",
-            "Nmap"
+            "Trafik koklayıcılar (Wireshark / tcpdump)",
+            "Web uygulama tarayıcıları",
+            "Şifre kırıcılar",
+            "Açık kaynak istihbaratı"
           ],
           "correct": 0
         },
         {
-          "q": "'Wireshark Filtreleme Teknikleri' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Wireshark Filtreleme Teknikleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Wireshark Filtreleme Teknikleri' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'Wireshark Filtreleme Teknikleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Wireshark Filtreleme Teknikleri' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'Wireshark Filtreleme Teknikleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'Wireshark Filtreleme Teknikleri' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Wireshark Filtreleme Teknikleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -2018,7 +2018,7 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'ARP Spoofing Saldırısı' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'ARP Spoofing Saldırısı' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -2038,9 +2038,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'ARP Spoofing Saldırısı' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'ARP Spoofing Saldırısı' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -2048,42 +2048,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'ARP Spoofing Saldırısı' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'ARP Spoofing Saldırısı' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'ARP Spoofing Saldırısı' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'ARP Spoofing Saldırısı' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'ARP Spoofing Saldırısı' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'ARP Spoofing Saldırısı' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'ARP Spoofing Saldırısı' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'ARP Spoofing Saldırısı' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -2126,7 +2126,7 @@ window.SK_LESSONS = {
           "correct": 2
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Man-in-the-Middle (MITM) Saldırıları' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Man-in-the-Middle (MITM) Saldırıları' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -2146,9 +2146,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Man-in-the-Middle (MITM) Saldırıları' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'Man-in-the-Middle (MITM) Saldırıları' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -2156,42 +2156,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'Man-in-the-Middle (MITM) Saldırıları' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Man-in-the-Middle (MITM) Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Man-in-the-Middle (MITM) Saldırıları' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'Man-in-the-Middle (MITM) Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Man-in-the-Middle (MITM) Saldırıları' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'Man-in-the-Middle (MITM) Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'Man-in-the-Middle (MITM) Saldırıları' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Man-in-the-Middle (MITM) Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -2234,7 +2234,7 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DHCP Starvation ve Rogue DHCP' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'DHCP Starvation ve Rogue DHCP' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -2254,9 +2254,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'DHCP Starvation ve Rogue DHCP' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'DHCP Starvation ve Rogue DHCP' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -2264,42 +2264,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'DHCP Starvation ve Rogue DHCP' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'DHCP Starvation ve Rogue DHCP' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DHCP Starvation ve Rogue DHCP' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'DHCP Starvation ve Rogue DHCP' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DHCP Starvation ve Rogue DHCP' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'DHCP Starvation ve Rogue DHCP' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'DHCP Starvation ve Rogue DHCP' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'DHCP Starvation ve Rogue DHCP' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -2342,7 +2342,7 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DNS Spoofing (DNS Önbellek Zehirlenmesi)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'DNS Spoofing (DNS Önbellek Zehirlenmesi)' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -2362,9 +2362,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'DNS Spoofing (DNS Önbellek Zehirlenmesi)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'DNS Spoofing (DNS Önbellek Zehirlenmesi)' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -2372,42 +2372,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'DNS Spoofing (DNS Önbellek Zehirlenmesi)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'DNS Spoofing (DNS Önbellek Zehirlenmesi)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DNS Spoofing (DNS Önbellek Zehirlenmesi)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'DNS Spoofing (DNS Önbellek Zehirlenmesi)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DNS Spoofing (DNS Önbellek Zehirlenmesi)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'DNS Spoofing (DNS Önbellek Zehirlenmesi)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'DNS Spoofing (DNS Önbellek Zehirlenmesi)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'DNS Spoofing (DNS Önbellek Zehirlenmesi)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -2450,12 +2450,12 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Firewall (Güvenlik Duvarı) Türleri' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Firewall (Güvenlik Duvarı) Türleri' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Ağ trafiğini filtreleme ve erişim kontrolü",
-            "Şifre kırma",
+            "Parola kırma",
             "Dosya yükleme",
-            "SSL sertifikası üretme"
+            "IP adresi atama"
           ],
           "correct": 0
         },
@@ -2470,9 +2470,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Firewall (Güvenlik Duvarı) Türleri' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'Firewall (Güvenlik Duvarı) Türleri' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -2480,42 +2480,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'Firewall (Güvenlik Duvarı) Türleri' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Firewall (Güvenlik Duvarı) Türleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Firewall (Güvenlik Duvarı) Türleri' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'Firewall (Güvenlik Duvarı) Türleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Firewall (Güvenlik Duvarı) Türleri' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'Firewall (Güvenlik Duvarı) Türleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'Firewall (Güvenlik Duvarı) Türleri' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Firewall (Güvenlik Duvarı) Türleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -2558,7 +2558,7 @@ window.SK_LESSONS = {
           "correct": 2
         },
         {
-          "q": "Aşağıdakilerden hangisi 'IDS ve IPS Sistemleri' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'IDS ve IPS Sistemleri' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -2578,9 +2578,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'IDS ve IPS Sistemleri' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'IDS ve IPS Sistemleri' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -2588,42 +2588,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'IDS ve IPS Sistemleri' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'IDS ve IPS Sistemleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'IDS ve IPS Sistemleri' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'IDS ve IPS Sistemleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'IDS ve IPS Sistemleri' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'IDS ve IPS Sistemleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'IDS ve IPS Sistemleri' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'IDS ve IPS Sistemleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -2666,7 +2666,7 @@ window.SK_LESSONS = {
           "correct": 2
         },
         {
-          "q": "Aşağıdakilerden hangisi 'VPN Teknolojileri' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'VPN Teknolojileri' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Trafiği şifreleyerek güvenli tünel oluşturma",
             "Ağdaki tüm portları tarama",
@@ -2686,9 +2686,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'VPN Teknolojileri' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'VPN Teknolojileri' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -2696,42 +2696,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'VPN Teknolojileri' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'VPN Teknolojileri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'VPN Teknolojileri' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'VPN Teknolojileri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'VPN Teknolojileri' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'VPN Teknolojileri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'VPN Teknolojileri' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'VPN Teknolojileri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -2774,7 +2774,7 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Wi-Fi Şifreleme Protokolleri' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Wi-Fi Şifreleme Protokolleri' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -2794,9 +2794,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Wi-Fi Şifreleme Protokolleri' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'Wi-Fi Şifreleme Protokolleri' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -2804,42 +2804,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'Wi-Fi Şifreleme Protokolleri' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Wi-Fi Şifreleme Protokolleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Wi-Fi Şifreleme Protokolleri' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'Wi-Fi Şifreleme Protokolleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Wi-Fi Şifreleme Protokolleri' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'Wi-Fi Şifreleme Protokolleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'Wi-Fi Şifreleme Protokolleri' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Wi-Fi Şifreleme Protokolleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -2882,7 +2882,7 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Deauth (Bağlantı Kesme) Saldırıları' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Deauth (Bağlantı Kesme) Saldırıları' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -2902,52 +2902,52 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Deauth (Bağlantı Kesme) Saldırıları' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'Deauth (Bağlantı Kesme) Saldırıları' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Aircrack-ng / Aireplay-ng",
+            "Sqlmap",
+            "Nmap",
+            "Wireshark"
           ],
           "correct": 0
         },
         {
-          "q": "'Deauth (Bağlantı Kesme) Saldırıları' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Deauth (Bağlantı Kesme) Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Deauth (Bağlantı Kesme) Saldırıları' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'Deauth (Bağlantı Kesme) Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Deauth (Bağlantı Kesme) Saldırıları' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'Deauth (Bağlantı Kesme) Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'Deauth (Bağlantı Kesme) Saldırıları' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Deauth (Bağlantı Kesme) Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -2990,7 +2990,7 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'WPS Açıklıkları ve Pixie Dust' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'WPS Açıklıkları ve Pixie Dust' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -3010,9 +3010,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'WPS Açıklıkları ve Pixie Dust' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'WPS Açıklıkları ve Pixie Dust' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -3020,42 +3020,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'WPS Açıklıkları ve Pixie Dust' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'WPS Açıklıkları ve Pixie Dust' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'WPS Açıklıkları ve Pixie Dust' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'WPS Açıklıkları ve Pixie Dust' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'WPS Açıklıkları ve Pixie Dust' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'WPS Açıklıkları ve Pixie Dust' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'WPS Açıklıkları ve Pixie Dust' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'WPS Açıklıkları ve Pixie Dust' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -3098,7 +3098,7 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Ağ Trafiğinde Şifreleme (SSL/TLS)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Ağ Trafiğinde Şifreleme (SSL/TLS)' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -3118,9 +3118,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Ağ Trafiğinde Şifreleme (SSL/TLS)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'Ağ Trafiğinde Şifreleme (SSL/TLS)' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -3128,42 +3128,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'Ağ Trafiğinde Şifreleme (SSL/TLS)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Ağ Trafiğinde Şifreleme (SSL/TLS)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Ağ Trafiğinde Şifreleme (SSL/TLS)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'Ağ Trafiğinde Şifreleme (SSL/TLS)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Ağ Trafiğinde Şifreleme (SSL/TLS)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'Ağ Trafiğinde Şifreleme (SSL/TLS)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'Ağ Trafiğinde Şifreleme (SSL/TLS)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Ağ Trafiğinde Şifreleme (SSL/TLS)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -3206,7 +3206,7 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'SSH Tünelleme ve Port Yönlendirme' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'SSH Tünelleme ve Port Yönlendirme' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -3226,9 +3226,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'SSH Tünelleme ve Port Yönlendirme' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'SSH Tünelleme ve Port Yönlendirme' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -3236,42 +3236,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'SSH Tünelleme ve Port Yönlendirme' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'SSH Tünelleme ve Port Yönlendirme' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'SSH Tünelleme ve Port Yönlendirme' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'SSH Tünelleme ve Port Yönlendirme' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'SSH Tünelleme ve Port Yönlendirme' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'SSH Tünelleme ve Port Yönlendirme' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'SSH Tünelleme ve Port Yönlendirme' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'SSH Tünelleme ve Port Yönlendirme' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -3314,12 +3314,12 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'VLAN ve VLAN Hopping Saldırıları' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'VLAN ve VLAN Hopping Saldırıları' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Ağı mantıksal bölümlere ayırma ve izole etme",
+            "Şifre kırma",
+            "Dosya yükleme",
+            "SSL sertifikası üretme"
           ],
           "correct": 0
         },
@@ -3334,9 +3334,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'VLAN ve VLAN Hopping Saldırıları' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'VLAN ve VLAN Hopping Saldırıları' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -3344,42 +3344,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'VLAN ve VLAN Hopping Saldırıları' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'VLAN ve VLAN Hopping Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'VLAN ve VLAN Hopping Saldırıları' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'VLAN ve VLAN Hopping Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'VLAN ve VLAN Hopping Saldırıları' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'VLAN ve VLAN Hopping Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'VLAN ve VLAN Hopping Saldırıları' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'VLAN ve VLAN Hopping Saldırıları' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -3422,7 +3422,7 @@ window.SK_LESSONS = {
           "correct": 2
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DDoS ve DoS Saldırı Çeşitleri' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'DDoS ve DoS Saldırı Çeşitleri' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -3434,17 +3434,17 @@ window.SK_LESSONS = {
         {
           "q": "Aşağıdakilerden hangisi 'DDoS ve DoS Saldırı Çeşitleri' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
-            "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "Servislerin aşırı trafik veya kaynak tüketimiyle erişilemez hale getirilmesi",
+            "Veritabanından tablo silinmesi",
+            "Parola sızdırılması",
+            "Clickjacking"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'DDoS ve DoS Saldırı Çeşitleri' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'DDoS ve DoS Saldırı Çeşitleri' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -3452,42 +3452,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'DDoS ve DoS Saldırı Çeşitleri' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'DDoS ve DoS Saldırı Çeşitleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DDoS ve DoS Saldırı Çeşitleri' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'DDoS ve DoS Saldırı Çeşitleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DDoS ve DoS Saldırı Çeşitleri' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'DDoS ve DoS Saldırı Çeşitleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'DDoS ve DoS Saldırı Çeşitleri' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'DDoS ve DoS Saldırı Çeşitleri' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -3530,7 +3530,7 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Honeypot (Bal Küpü) Teknolojisi' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Honeypot (Bal Küpü) Teknolojisi' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -3550,9 +3550,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Honeypot (Bal Küpü) Teknolojisi' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'Honeypot (Bal Küpü) Teknolojisi' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -3560,42 +3560,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'Honeypot (Bal Küpü) Teknolojisi' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Honeypot (Bal Küpü) Teknolojisi' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Honeypot (Bal Küpü) Teknolojisi' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'Honeypot (Bal Küpü) Teknolojisi' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Honeypot (Bal Küpü) Teknolojisi' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'Honeypot (Bal Küpü) Teknolojisi' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'Honeypot (Bal Küpü) Teknolojisi' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Honeypot (Bal Küpü) Teknolojisi' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -3638,7 +3638,7 @@ window.SK_LESSONS = {
           "correct": 2
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' teknolojisinin/saldırısının ana odağıdır?",
           "options": [
             "Güvenli konfigürasyon ve analiz",
             "Sistem kaynaklarını tüketme",
@@ -3658,9 +3658,9 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' analizinde veya testinde sıklıkla kullanılan araç veya metot hangisidir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
+            "Sektör standardı güvenlik analiz araçları",
             "Sadece tarayıcı",
             "Notepad++",
             "Hesap Makinesi"
@@ -3668,42 +3668,42 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         },
         {
-          "q": "'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Ağ Güvenliğinde Sıfır Güven (Zero Trust)' konusuyla ilgili olarak, aşağıdakilerden hangisi ağ güvenliği standartlarında en kritik güvenlik yapılandırmasıdır?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili protokolün veya servisin en güncel sürümünü kullanmak ve en az yetki kuralını (least privilege) uygulamak",
+            "Tüm trafiği şifresiz ve filtreleme yapmadan ağa almak",
+            "Varsayılan fabrika çıkışlı kullanıcı adı ve şifreleri değiştirmeden kullanmak",
+            "Tüm ağ portlarını dış dünyaya şifresiz ve filtresiz açmak"
           ],
           "correct": 0
         }
@@ -3748,72 +3748,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'OWASP Top 10 Nedir?' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'OWASP Top 10 Nedir?' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'OWASP Top 10 Nedir?' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'OWASP Top 10 Nedir?' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'OWASP Top 10 Nedir?' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'OWASP Top 10 Nedir?' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'OWASP Top 10 Nedir?' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'OWASP Top 10 Nedir?' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'OWASP Top 10 Nedir?' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'OWASP Top 10 Nedir?' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'OWASP Top 10 Nedir?' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'OWASP Top 10 Nedir?' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'OWASP Top 10 Nedir?' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -3856,72 +3956,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Veritabanı sorgularının manipüle edilmesi",
-            "Tarayıcı kodlarının çalıştırılması",
-            "Ağ paketlerinin izlenmesi",
-            "Kullanıcı adı şifre denemesi"
+            "Kullanıcı girdilerinin SQL sorgularını değiştirecek şekilde veritabanına sızması",
+            "Tarayıcıda zararlı scriptlerin çalıştırılması",
+            "Sunucu portlarının taranması",
+            "Parolaların brute-force yöntemiyle kırılması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
-            "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "Veritabanındaki hassas bilgilerin çalınması, değiştirilmesi veya silinmesi",
+            "Sadece web sayfasının yavaş yüklenmesi",
+            "Kullanıcının bilgisayarının kapanması",
+            "IP adresinin değişmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'SQL Injection (SQLi) Temelleri' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sqlmap / Burp Suite",
-            "Hashcat",
-            "Wireshark",
-            "Hydra"
+            "Burp Suite ile sorgu manipülasyonu ve SQLMap otomatik tarama aracı",
+            "John the Ripper şifre kırıcı",
+            "Nmap port tarama aracı",
+            "Wireshark ağ koklayıcı"
           ],
           "correct": 0
         },
         {
-          "q": "'SQL Injection (SQLi) Temelleri' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'SQL Injection (SQLi) Temelleri' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Parametreli sorgular (Prepared Statements) ve ORM kullanımı",
+            "Girdileri tırnak işaretinden temizlemek",
+            "Veritabanını şifrelemek",
+            "Sadece HTTPS kullanmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'SQL Injection (SQLi) Temelleri' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'SQL Injection (SQLi) Temelleri' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'SQL Injection (SQLi) Temelleri' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'SQL Injection (SQLi) Temelleri' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'SQL Injection (SQLi) Temelleri' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'SQL Injection (SQLi) Temelleri' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'SQL Injection (SQLi) Temelleri' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'SQL Injection (SQLi) Temelleri' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'SQL Injection (SQLi) Temelleri' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'SQL Injection (SQLi) Temelleri' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -3964,72 +4164,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Veritabanı sorgularının manipüle edilmesi",
-            "Tarayıcı kodlarının çalıştırılması",
-            "Ağ paketlerinin izlenmesi",
-            "Kullanıcı adı şifre denemesi"
+            "Kullanıcı girdilerinin SQL sorgularını değiştirecek şekilde veritabanına sızması",
+            "Tarayıcıda zararlı scriptlerin çalıştırılması",
+            "Sunucu portlarının taranması",
+            "Parolaların brute-force yöntemiyle kırılması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
-            "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "Veritabanındaki hassas bilgilerin çalınması, değiştirilmesi veya silinmesi",
+            "Sadece web sayfasının yavaş yüklenmesi",
+            "Kullanıcının bilgisayarının kapanması",
+            "IP adresinin değişmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'In-Band SQLi (Error & Union Based)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sqlmap / Burp Suite",
-            "Hashcat",
-            "Wireshark",
-            "Hydra"
+            "Burp Suite ile sorgu manipülasyonu ve SQLMap otomatik tarama aracı",
+            "John the Ripper şifre kırıcı",
+            "Nmap port tarama aracı",
+            "Wireshark ağ koklayıcı"
           ],
           "correct": 0
         },
         {
-          "q": "'In-Band SQLi (Error & Union Based)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'In-Band SQLi (Error & Union Based)' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Parametreli sorgular (Prepared Statements) ve ORM kullanımı",
+            "Girdileri tırnak işaretinden temizlemek",
+            "Veritabanını şifrelemek",
+            "Sadece HTTPS kullanmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'In-Band SQLi (Error & Union Based)' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'In-Band SQLi (Error & Union Based)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'In-Band SQLi (Error & Union Based)' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'In-Band SQLi (Error & Union Based)' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'In-Band SQLi (Error & Union Based)' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'In-Band SQLi (Error & Union Based)' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'In-Band SQLi (Error & Union Based)' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'In-Band SQLi (Error & Union Based)' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'In-Band SQLi (Error & Union Based)' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'In-Band SQLi (Error & Union Based)' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -4072,72 +4372,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Veritabanı sorgularının manipüle edilmesi",
-            "Tarayıcı kodlarının çalıştırılması",
-            "Ağ paketlerinin izlenmesi",
-            "Kullanıcı adı şifre denemesi"
+            "Kullanıcı girdilerinin SQL sorgularını değiştirecek şekilde veritabanına sızması",
+            "Tarayıcıda zararlı scriptlerin çalıştırılması",
+            "Sunucu portlarının taranması",
+            "Parolaların brute-force yöntemiyle kırılması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
-            "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "Veritabanındaki hassas bilgilerin çalınması, değiştirilmesi veya silinmesi",
+            "Sadece web sayfasının yavaş yüklenmesi",
+            "Kullanıcının bilgisayarının kapanması",
+            "IP adresinin değişmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Blind SQLi (Boolean & Time-Based)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sqlmap / Burp Suite",
-            "Hashcat",
-            "Wireshark",
-            "Hydra"
+            "Burp Suite ile sorgu manipülasyonu ve SQLMap otomatik tarama aracı",
+            "John the Ripper şifre kırıcı",
+            "Nmap port tarama aracı",
+            "Wireshark ağ koklayıcı"
           ],
           "correct": 0
         },
         {
-          "q": "'Blind SQLi (Boolean & Time-Based)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Blind SQLi (Boolean & Time-Based)' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Parametreli sorgular (Prepared Statements) ve ORM kullanımı",
+            "Girdileri tırnak işaretinden temizlemek",
+            "Veritabanını şifrelemek",
+            "Sadece HTTPS kullanmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Blind SQLi (Boolean & Time-Based)' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Blind SQLi (Boolean & Time-Based)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Blind SQLi (Boolean & Time-Based)' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Blind SQLi (Boolean & Time-Based)' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Blind SQLi (Boolean & Time-Based)' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Blind SQLi (Boolean & Time-Based)' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Blind SQLi (Boolean & Time-Based)' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Blind SQLi (Boolean & Time-Based)' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Blind SQLi (Boolean & Time-Based)' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Blind SQLi (Boolean & Time-Based)' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -4180,72 +4580,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Veritabanı sorgularının manipüle edilmesi",
-            "Tarayıcı kodlarının çalıştırılması",
-            "Ağ paketlerinin izlenmesi",
-            "Kullanıcı adı şifre denemesi"
+            "Kullanıcı girdilerinin SQL sorgularını değiştirecek şekilde veritabanına sızması",
+            "Tarayıcıda zararlı scriptlerin çalıştırılması",
+            "Sunucu portlarının taranması",
+            "Parolaların brute-force yöntemiyle kırılması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
-            "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "Veritabanındaki hassas bilgilerin çalınması, değiştirilmesi veya silinmesi",
+            "Sadece web sayfasının yavaş yüklenmesi",
+            "Kullanıcının bilgisayarının kapanması",
+            "IP adresinin değişmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Out-of-Band (OAST) SQLi' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sqlmap / Burp Suite",
-            "Hashcat",
-            "Wireshark",
-            "Hydra"
+            "Burp Suite ile sorgu manipülasyonu ve SQLMap otomatik tarama aracı",
+            "John the Ripper şifre kırıcı",
+            "Nmap port tarama aracı",
+            "Wireshark ağ koklayıcı"
           ],
           "correct": 0
         },
         {
-          "q": "'Out-of-Band (OAST) SQLi' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Out-of-Band (OAST) SQLi' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Parametreli sorgular (Prepared Statements) ve ORM kullanımı",
+            "Girdileri tırnak işaretinden temizlemek",
+            "Veritabanını şifrelemek",
+            "Sadece HTTPS kullanmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Out-of-Band (OAST) SQLi' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Out-of-Band (OAST) SQLi' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Out-of-Band (OAST) SQLi' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Out-of-Band (OAST) SQLi' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Out-of-Band (OAST) SQLi' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Out-of-Band (OAST) SQLi' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Out-of-Band (OAST) SQLi' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Out-of-Band (OAST) SQLi' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Out-of-Band (OAST) SQLi' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Out-of-Band (OAST) SQLi' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -4288,72 +4788,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Kullanıcı tarayıcısında zararlı JS çalıştırma",
-            "Sunucuda işletim sistemi komutu çalıştırma",
-            "Veritabanına yetkisiz erişim",
-            "DNS önbelleğini zehirleme"
+            "Kullanıcının tarayıcısında zararlı JavaScript kodlarının çalıştırılması",
+            "Veritabanının tamamen ele geçirilmesi",
+            "İşletim sisteminde root komutları çalıştırılması",
+            "Trafiğin dinlenmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
-            "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "Kullanıcının oturum çerezlerinin (session cookies) çalınması ve oturumunun ele geçirilmesi",
+            "Veritabanı sunucusunun çökmesi",
+            "Portların taranması",
+            "Ağdaki kabloların dinlenmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Cross-Site Scripting (XSS) Giriş' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Burp Suite / OWASP ZAP",
+            "Tarayıcı konsolu ve Burp Suite ile girdi alanlarına script enjekte etme",
             "Nmap",
             "Wireshark",
-            "John the Ripper"
+            "Hydra"
           ],
           "correct": 0
         },
         {
-          "q": "'Cross-Site Scripting (XSS) Giriş' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Cross-Site Scripting (XSS) Giriş' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Kullanıcı girdilerini HTML Encoding ve Context-Aware Escaping işlemlerinden geçirmek",
+            "Parametreli sorgu kullanmak",
+            "Token doğrulaması yapmak",
+            "Sunucuda yetki kısıtlamak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Cross-Site Scripting (XSS) Giriş' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Cross-Site Scripting (XSS) Giriş' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Cross-Site Scripting (XSS) Giriş' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "Content-Security-Policy (CSP) ve X-Frame-Options",
+            "Cache-Control",
+            "Access-Control-Allow-Origin",
+            "Server Header"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Cross-Site Scripting (XSS) Giriş' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Cross-Site Scripting (XSS) Giriş' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Cross-Site Scripting (XSS) Giriş' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Cross-Site Scripting (XSS) Giriş' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Cross-Site Scripting (XSS) Giriş' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Cross-Site Scripting (XSS) Giriş' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Cross-Site Scripting (XSS) Giriş' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -4396,72 +4996,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Kullanıcı tarayıcısında zararlı JS çalıştırma",
-            "Sunucuda işletim sistemi komutu çalıştırma",
-            "Veritabanına yetkisiz erişim",
-            "DNS önbelleğini zehirleme"
+            "Kullanıcının tarayıcısında zararlı JavaScript kodlarının çalıştırılması",
+            "Veritabanının tamamen ele geçirilmesi",
+            "İşletim sisteminde root komutları çalıştırılması",
+            "Trafiğin dinlenmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
-            "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "Kullanıcının oturum çerezlerinin (session cookies) çalınması ve oturumunun ele geçirilmesi",
+            "Veritabanı sunucusunun çökmesi",
+            "Portların taranması",
+            "Ağdaki kabloların dinlenmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Reflected XSS Saldırıları' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Burp Suite / OWASP ZAP",
+            "Tarayıcı konsolu ve Burp Suite ile girdi alanlarına script enjekte etme",
             "Nmap",
             "Wireshark",
-            "John the Ripper"
+            "Hydra"
           ],
           "correct": 0
         },
         {
-          "q": "'Reflected XSS Saldırıları' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Reflected XSS Saldırıları' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Kullanıcı girdilerini HTML Encoding ve Context-Aware Escaping işlemlerinden geçirmek",
+            "Parametreli sorgu kullanmak",
+            "Token doğrulaması yapmak",
+            "Sunucuda yetki kısıtlamak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Reflected XSS Saldırıları' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Reflected XSS Saldırıları' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Reflected XSS Saldırıları' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "Content-Security-Policy (CSP) ve X-Frame-Options",
+            "Cache-Control",
+            "Access-Control-Allow-Origin",
+            "Server Header"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Reflected XSS Saldırıları' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Reflected XSS Saldırıları' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Reflected XSS Saldırıları' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Reflected XSS Saldırıları' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Reflected XSS Saldırıları' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Reflected XSS Saldırıları' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Reflected XSS Saldırıları' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -4504,72 +5204,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Kullanıcı tarayıcısında zararlı JS çalıştırma",
-            "Sunucuda işletim sistemi komutu çalıştırma",
-            "Veritabanına yetkisiz erişim",
-            "DNS önbelleğini zehirleme"
+            "Kullanıcının tarayıcısında zararlı JavaScript kodlarının çalıştırılması",
+            "Veritabanının tamamen ele geçirilmesi",
+            "İşletim sisteminde root komutları çalıştırılması",
+            "Trafiğin dinlenmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
-            "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "Kullanıcının oturum çerezlerinin (session cookies) çalınması ve oturumunun ele geçirilmesi",
+            "Veritabanı sunucusunun çökmesi",
+            "Portların taranması",
+            "Ağdaki kabloların dinlenmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Stored XSS ve Oturum Çalma' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Burp Suite / OWASP ZAP",
+            "Tarayıcı konsolu ve Burp Suite ile girdi alanlarına script enjekte etme",
             "Nmap",
             "Wireshark",
-            "John the Ripper"
+            "Hydra"
           ],
           "correct": 0
         },
         {
-          "q": "'Stored XSS ve Oturum Çalma' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Stored XSS ve Oturum Çalma' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Kullanıcı girdilerini HTML Encoding ve Context-Aware Escaping işlemlerinden geçirmek",
+            "Parametreli sorgu kullanmak",
+            "Token doğrulaması yapmak",
+            "Sunucuda yetki kısıtlamak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Stored XSS ve Oturum Çalma' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Stored XSS ve Oturum Çalma' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Stored XSS ve Oturum Çalma' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "Content-Security-Policy (CSP) ve X-Frame-Options",
+            "Cache-Control",
+            "Access-Control-Allow-Origin",
+            "Server Header"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Stored XSS ve Oturum Çalma' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Stored XSS ve Oturum Çalma' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Stored XSS ve Oturum Çalma' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Stored XSS ve Oturum Çalma' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Stored XSS ve Oturum Çalma' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Stored XSS ve Oturum Çalma' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Stored XSS ve Oturum Çalma' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -4612,72 +5412,172 @@ window.SK_LESSONS = {
           "correct": 2
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Kullanıcı tarayıcısında zararlı JS çalıştırma",
-            "Sunucuda işletim sistemi komutu çalıştırma",
-            "Veritabanına yetkisiz erişim",
-            "DNS önbelleğini zehirleme"
+            "Kullanıcının tarayıcısında zararlı JavaScript kodlarının çalıştırılması",
+            "Veritabanının tamamen ele geçirilmesi",
+            "İşletim sisteminde root komutları çalıştırılması",
+            "Trafiğin dinlenmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
-            "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "Kullanıcının oturum çerezlerinin (session cookies) çalınması ve oturumunun ele geçirilmesi",
+            "Veritabanı sunucusunun çökmesi",
+            "Portların taranması",
+            "Ağdaki kabloların dinlenmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'DOM-Based XSS' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Burp Suite / OWASP ZAP",
+            "Tarayıcı konsolu ve Burp Suite ile girdi alanlarına script enjekte etme",
             "Nmap",
             "Wireshark",
-            "John the Ripper"
+            "Hydra"
           ],
           "correct": 0
         },
         {
-          "q": "'DOM-Based XSS' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'DOM-Based XSS' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Kullanıcı girdilerini HTML Encoding ve Context-Aware Escaping işlemlerinden geçirmek",
+            "Parametreli sorgu kullanmak",
+            "Token doğrulaması yapmak",
+            "Sunucuda yetki kısıtlamak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'DOM-Based XSS' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'DOM-Based XSS' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'DOM-Based XSS' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "Content-Security-Policy (CSP) ve X-Frame-Options",
+            "Cache-Control",
+            "Access-Control-Allow-Origin",
+            "Server Header"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'DOM-Based XSS' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'DOM-Based XSS' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'DOM-Based XSS' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'DOM-Based XSS' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'DOM-Based XSS' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'DOM-Based XSS' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'DOM-Based XSS' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -4720,72 +5620,172 @@ window.SK_LESSONS = {
           "correct": 2
         },
         {
-          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Kullanıcı adına habersizce tarayıcı üzerinden istek gönderilmesi (Cross-Site Request Forgery)",
+            "Veritabanına doğrudan SQL gönderilmesi",
+            "Sunucu dosya sistemine sızılması",
+            "Port taraması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'CSRF Saldırısı ve Korunma' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'CSRF Saldırısı ve Korunma' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'CSRF Saldırısı ve Korunma' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Benzersiz, tahmin edilemez ve kullanıcı oturumuna bağlı Anti-CSRF Token'ları kullanmak",
+            "Girdileri filtrelemek",
+            "Parametreli sorgu kullanmak",
+            "SQLMap kullanmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'CSRF Saldırısı ve Korunma' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'CSRF Saldırısı ve Korunma' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'CSRF Saldırısı ve Korunma' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'CSRF Saldırısı ve Korunma' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'CSRF Saldırısı ve Korunma' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'CSRF Saldırısı ve Korunma' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'CSRF Saldırısı ve Korunma' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'CSRF Saldırısı ve Korunma' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'CSRF Saldırısı ve Korunma' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'CSRF Saldırısı ve Korunma' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -4828,72 +5828,172 @@ window.SK_LESSONS = {
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
-            "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "Sunucu üzerinde işletim sistemi seviyesinde tam yetkili komut çalıştırılması (RCE)",
+            "Veritabanında basit bir yavaşlık olması",
+            "Clickjacking saldırısı",
+            "MAC adresinin ifşası"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'Command Injection (Komut Enjeksiyonu) ve RCE' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Command Injection (Komut Enjeksiyonu) ve RCE' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Command Injection (Komut Enjeksiyonu) ve RCE' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Command Injection (Komut Enjeksiyonu) ve RCE' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Command Injection (Komut Enjeksiyonu) ve RCE' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Command Injection (Komut Enjeksiyonu) ve RCE' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Command Injection (Komut Enjeksiyonu) ve RCE' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Command Injection (Komut Enjeksiyonu) ve RCE' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Command Injection (Komut Enjeksiyonu) ve RCE' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Command Injection (Komut Enjeksiyonu) ve RCE' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Command Injection (Komut Enjeksiyonu) ve RCE' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -4936,72 +6036,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Sunucu üzerindeki yerel/uzak dosyaların okunması",
-            "Ağ paketlerinin analizi",
-            "Veritabanı şifrelerinin çalınması",
-            "DNS yönlendirmesi"
+            "Sistem dosyalarının yetkisizce dahil edilerek okunması veya çalıştırılması",
+            "Ağ katmanı yönlendirme hatası",
+            "Veritabanı tablolarının silinmesi",
+            "Token manipülasyonu"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Local File Inclusion (LFI)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'Local File Inclusion (LFI)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Local File Inclusion (LFI)' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Local File Inclusion (LFI)' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Local File Inclusion (LFI)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Local File Inclusion (LFI)' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Local File Inclusion (LFI)' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Local File Inclusion (LFI)' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Local File Inclusion (LFI)' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Local File Inclusion (LFI)' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Local File Inclusion (LFI)' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Local File Inclusion (LFI)' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Local File Inclusion (LFI)' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -5044,72 +6244,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Sunucu üzerindeki yerel/uzak dosyaların okunması",
-            "Ağ paketlerinin analizi",
-            "Veritabanı şifrelerinin çalınması",
-            "DNS yönlendirmesi"
+            "Sistem dosyalarının yetkisizce dahil edilerek okunması veya çalıştırılması",
+            "Ağ katmanı yönlendirme hatası",
+            "Veritabanı tablolarının silinmesi",
+            "Token manipülasyonu"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Remote File Inclusion (RFI)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'Remote File Inclusion (RFI)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Remote File Inclusion (RFI)' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Remote File Inclusion (RFI)' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Remote File Inclusion (RFI)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Remote File Inclusion (RFI)' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Remote File Inclusion (RFI)' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Remote File Inclusion (RFI)' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Remote File Inclusion (RFI)' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Remote File Inclusion (RFI)' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Remote File Inclusion (RFI)' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Remote File Inclusion (RFI)' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Remote File Inclusion (RFI)' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -5152,72 +6452,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Sunucuda web shell (zararlı script) çalıştırılması",
-            "DNS zehirlenmesi",
-            "ARP spoofing",
-            "Clickjacking"
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
+            "İnternet hızının düşmesi",
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'File Upload (Dosya Yükleme) Açıklıkları' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'File Upload (Dosya Yükleme) Açıklıkları' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'File Upload (Dosya Yükleme) Açıklıkları' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'File Upload (Dosya Yükleme) Açıklıkları' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'File Upload (Dosya Yükleme) Açıklıkları' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'File Upload (Dosya Yükleme) Açıklıkları' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'File Upload (Dosya Yükleme) Açıklıkları' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'File Upload (Dosya Yükleme) Açıklıkları' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'File Upload (Dosya Yükleme) Açıklıkları' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'File Upload (Dosya Yükleme) Açıklıkları' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'File Upload (Dosya Yükleme) Açıklıkları' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'File Upload (Dosya Yükleme) Açıklıkları' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'File Upload (Dosya Yükleme) Açıklıkları' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -5260,72 +6660,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Sunucuda web shell (zararlı script) çalıştırılması",
-            "DNS zehirlenmesi",
-            "ARP spoofing",
-            "Clickjacking"
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
+            "İnternet hızının düşmesi",
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'File Upload Bypass Teknikleri' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'File Upload Bypass Teknikleri' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'File Upload Bypass Teknikleri' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'File Upload Bypass Teknikleri' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'File Upload Bypass Teknikleri' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'File Upload Bypass Teknikleri' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'File Upload Bypass Teknikleri' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'File Upload Bypass Teknikleri' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'File Upload Bypass Teknikleri' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'File Upload Bypass Teknikleri' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'File Upload Bypass Teknikleri' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'File Upload Bypass Teknikleri' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'File Upload Bypass Teknikleri' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -5368,72 +6868,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'XML External Entity (XXE)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'XML External Entity (XXE)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'XML External Entity (XXE)' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'XML External Entity (XXE)' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'XML External Entity (XXE)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'XML External Entity (XXE)' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'XML External Entity (XXE)' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'XML External Entity (XXE)' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'XML External Entity (XXE)' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'XML External Entity (XXE)' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'XML External Entity (XXE)' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'XML External Entity (XXE)' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'XML External Entity (XXE)' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -5476,72 +7076,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Server-Side Request Forgery (SSRF)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'Server-Side Request Forgery (SSRF)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Server-Side Request Forgery (SSRF)' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Server-Side Request Forgery (SSRF)' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Server-Side Request Forgery (SSRF)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Server-Side Request Forgery (SSRF)' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Server-Side Request Forgery (SSRF)' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Server-Side Request Forgery (SSRF)' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Server-Side Request Forgery (SSRF)' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Server-Side Request Forgery (SSRF)' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Server-Side Request Forgery (SSRF)' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Server-Side Request Forgery (SSRF)' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Server-Side Request Forgery (SSRF)' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -5584,72 +7284,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Broken Authentication' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Broken Authentication' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Broken Authentication' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Broken Authentication' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Broken Authentication' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Broken Authentication' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'Broken Authentication' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Broken Authentication' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Broken Authentication' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Broken Authentication' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Broken Authentication' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Broken Authentication' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Broken Authentication' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Broken Authentication' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Broken Authentication' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Broken Authentication' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Broken Authentication' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Broken Authentication' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Broken Authentication' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Broken Authentication' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Broken Authentication' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Broken Authentication' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Broken Authentication' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Broken Authentication' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -5692,72 +7492,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Nesne referanslarının yetkisizce değiştirilerek başka kullanıcıların verilerine erişilmesi",
+            "Komut çalıştırılması",
+            "Şifreleme zayıflıkları",
+            "Kullanıcı tarayıcısında JS çalışması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'BOLA / IDOR Zafiyeti' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'BOLA / IDOR Zafiyeti' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'BOLA / IDOR Zafiyeti' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'BOLA / IDOR Zafiyeti' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'BOLA / IDOR Zafiyeti' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'BOLA / IDOR Zafiyeti' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'BOLA / IDOR Zafiyeti' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'BOLA / IDOR Zafiyeti' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'BOLA / IDOR Zafiyeti' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'BOLA / IDOR Zafiyeti' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'BOLA / IDOR Zafiyeti' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'BOLA / IDOR Zafiyeti' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'BOLA / IDOR Zafiyeti' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -5800,72 +7700,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Broken Function Level Authorization (BFLA)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'Broken Function Level Authorization (BFLA)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Broken Function Level Authorization (BFLA)' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Broken Function Level Authorization (BFLA)' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Broken Function Level Authorization (BFLA)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Broken Function Level Authorization (BFLA)' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Broken Function Level Authorization (BFLA)' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Broken Function Level Authorization (BFLA)' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Broken Function Level Authorization (BFLA)' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Broken Function Level Authorization (BFLA)' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Broken Function Level Authorization (BFLA)' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Broken Function Level Authorization (BFLA)' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Broken Function Level Authorization (BFLA)' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -5908,72 +7908,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'Hassas Veri İfşası (Sensitive Data Exposure)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Hassas Veri İfşası (Sensitive Data Exposure)' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Hassas Veri İfşası (Sensitive Data Exposure)' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Hassas Veri İfşası (Sensitive Data Exposure)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Hassas Veri İfşası (Sensitive Data Exposure)' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Hassas Veri İfşası (Sensitive Data Exposure)' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Hassas Veri İfşası (Sensitive Data Exposure)' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Hassas Veri İfşası (Sensitive Data Exposure)' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Hassas Veri İfşası (Sensitive Data Exposure)' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Hassas Veri İfşası (Sensitive Data Exposure)' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Hassas Veri İfşası (Sensitive Data Exposure)' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -6016,72 +8116,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Güvenlik Yapılandırma Hataları' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'Güvenlik Yapılandırma Hataları' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Güvenlik Yapılandırma Hataları' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Güvenlik Yapılandırma Hataları' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Güvenlik Yapılandırma Hataları' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Güvenlik Yapılandırma Hataları' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Güvenlik Yapılandırma Hataları' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Güvenlik Yapılandırma Hataları' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Güvenlik Yapılandırma Hataları' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Güvenlik Yapılandırma Hataları' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Güvenlik Yapılandırma Hataları' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Güvenlik Yapılandırma Hataları' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Güvenlik Yapılandırma Hataları' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -6124,72 +8324,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'CORS Açıklıkları' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'CORS Açıklıkları' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'CORS Açıklıkları' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'CORS Açıklıkları' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'CORS Açıklıkları' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'CORS Açıklıkları' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'CORS Açıklıkları' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'CORS Açıklıkları' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'CORS Açıklıkları' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'CORS Açıklıkları' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'CORS Açıklıkları' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'CORS Açıklıkları' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'CORS Açıklıkları' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -6232,72 +8532,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Oturum yönetimi ve token güvenliği",
-            "Port taraması",
-            "Ağ trafiği izleme",
-            "XML verisi işleme"
+            "Oturum token'larının şifreleme ve imza doğrulamalarının manipüle edilmesi",
+            "SQL sorgularının ele geçirilmesi",
+            "Fiziksel bağlantı hatası",
+            "XML şeması açığı"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'JWT Güvenliği ve Manipülasyonu' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'JWT Güvenliği ve Manipülasyonu' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'JWT Güvenliği ve Manipülasyonu' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'JWT Güvenliği ve Manipülasyonu' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'JWT Güvenliği ve Manipülasyonu' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'JWT Güvenliği ve Manipülasyonu' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'JWT Güvenliği ve Manipülasyonu' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'JWT Güvenliği ve Manipülasyonu' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'JWT Güvenliği ve Manipülasyonu' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'JWT Güvenliği ve Manipülasyonu' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'JWT Güvenliği ve Manipülasyonu' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'JWT Güvenliği ve Manipülasyonu' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'JWT Güvenliği ve Manipülasyonu' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -6340,72 +8740,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Clickjacking Saldırısı ve Savunma' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'Clickjacking Saldırısı ve Savunma' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Clickjacking Saldırısı ve Savunma' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Clickjacking Saldırısı ve Savunma' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Clickjacking Saldırısı ve Savunma' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Clickjacking Saldırısı ve Savunma' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "Content-Security-Policy (CSP) ve X-Frame-Options",
+            "Cache-Control",
+            "Access-Control-Allow-Origin",
+            "Server Header"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Clickjacking Saldırısı ve Savunma' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Clickjacking Saldırısı ve Savunma' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Clickjacking Saldırısı ve Savunma' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Clickjacking Saldırısı ve Savunma' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Clickjacking Saldırısı ve Savunma' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Clickjacking Saldırısı ve Savunma' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Clickjacking Saldırısı ve Savunma' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -6448,72 +8948,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'SSTI (Server-Side Template Injection)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'SSTI (Server-Side Template Injection)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'SSTI (Server-Side Template Injection)' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'SSTI (Server-Side Template Injection)' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'SSTI (Server-Side Template Injection)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'SSTI (Server-Side Template Injection)' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'SSTI (Server-Side Template Injection)' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'SSTI (Server-Side Template Injection)' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'SSTI (Server-Side Template Injection)' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'SSTI (Server-Side Template Injection)' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'SSTI (Server-Side Template Injection)' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'SSTI (Server-Side Template Injection)' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'SSTI (Server-Side Template Injection)' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -6556,72 +9156,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Veritabanı sorgularının manipüle edilmesi",
-            "Tarayıcı kodlarının çalıştırılması",
-            "Ağ paketlerinin izlenmesi",
-            "Kullanıcı adı şifre denemesi"
+            "Kullanıcı girdilerinin SQL sorgularını değiştirecek şekilde veritabanına sızması",
+            "Tarayıcıda zararlı scriptlerin çalıştırılması",
+            "Sunucu portlarının taranması",
+            "Parolaların brute-force yöntemiyle kırılması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
-            "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "Veritabanındaki hassas bilgilerin çalınması, değiştirilmesi veya silinmesi",
+            "Sadece web sayfasının yavaş yüklenmesi",
+            "Kullanıcının bilgisayarının kapanması",
+            "IP adresinin değişmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'NoSQL Injection' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sqlmap / Burp Suite",
-            "Hashcat",
-            "Wireshark",
-            "Hydra"
+            "Burp Suite ile sorgu manipülasyonu ve SQLMap otomatik tarama aracı",
+            "John the Ripper şifre kırıcı",
+            "Nmap port tarama aracı",
+            "Wireshark ağ koklayıcı"
           ],
           "correct": 0
         },
         {
-          "q": "'NoSQL Injection' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'NoSQL Injection' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Parametreli sorgular (Prepared Statements) ve ORM kullanımı",
+            "Girdileri tırnak işaretinden temizlemek",
+            "Veritabanını şifrelemek",
+            "Sadece HTTPS kullanmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'NoSQL Injection' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'NoSQL Injection' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'NoSQL Injection' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'NoSQL Injection' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'NoSQL Injection' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'NoSQL Injection' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'NoSQL Injection' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'NoSQL Injection' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'NoSQL Injection' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'NoSQL Injection' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -6664,72 +9364,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Hız sınırlaması eksikliği ve yetkisiz veri erişimi",
-            "Fiziksel kablo kopması",
-            "MAC adresi çakışması",
-            "WPS açıkları"
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
+            "İnternet hızının düşmesi",
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'API Güvenliği ve Hız Sınırlaması' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'API Güvenliği ve Hız Sınırlaması' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'API Güvenliği ve Hız Sınırlaması' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'API Güvenliği ve Hız Sınırlaması' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'API Güvenliği ve Hız Sınırlaması' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'API Güvenliği ve Hız Sınırlaması' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'API Güvenliği ve Hız Sınırlaması' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'API Güvenliği ve Hız Sınırlaması' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'API Güvenliği ve Hız Sınırlaması' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'API Güvenliği ve Hız Sınırlaması' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'API Güvenliği ve Hız Sınırlaması' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'API Güvenliği ve Hız Sınırlaması' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'API Güvenliği ve Hız Sınırlaması' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -6772,72 +9572,172 @@ window.SK_LESSONS = {
           "correct": 1
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'Güvenli Kod Analizi (SAST/DAST)' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'Güvenli Kod Analizi (SAST/DAST)' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'Güvenli Kod Analizi (SAST/DAST)' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'Güvenli Kod Analizi (SAST/DAST)' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'Güvenli Kod Analizi (SAST/DAST)' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'Güvenli Kod Analizi (SAST/DAST)' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Güvenli Kod Analizi (SAST/DAST)' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'Güvenli Kod Analizi (SAST/DAST)' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'Güvenli Kod Analizi (SAST/DAST)' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'Güvenli Kod Analizi (SAST/DAST)' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'Güvenli Kod Analizi (SAST/DAST)' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'Güvenli Kod Analizi (SAST/DAST)' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'Güvenli Kod Analizi (SAST/DAST)' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
@@ -6880,72 +9780,172 @@ window.SK_LESSONS = {
           "correct": 2
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' sürecinin/zafiyetinin ana odağıdır?",
+          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' zafiyetinin/konusunun temel siber güvenlik tanımıdır?",
           "options": [
-            "Güvenli konfigürasyon ve analiz",
-            "Sistem kaynaklarını tüketme",
-            "Şifresiz veri aktarımı",
-            "Ağ kartını kapatma"
+            "Uygulama veya API katmanında güvenlik zafiyetlerinin tespiti ve çözümü",
+            "Sunucu diskinin silinmesi",
+            "Ağ kartının devre dışı bırakılması",
+            "Sadece kullanıcı şifresinin değiştirilmesi"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' kapsamında karşılaşılan en büyük güvenlik risklerinden biridir?",
+          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' ile ilgili bir zafiyetin sömürülmesi durumunda oluşabilecek en kritik zarardır?",
           "options": [
-            "Yetkisiz erişim ve veri sızıntısı",
-            "Sistem saatinin yanlış olması",
+            "Hassas verilerin yetkisiz kişilerin eline geçmesi ve sistem güvenliğinin bozulması",
             "İnternet hızının düşmesi",
-            "DNS A kaydının olmaması"
+            "CSS kodlarının çalışmaması",
+            "Arama motorlarında görünürlüğün kaybolması"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdaki araçlardan hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' analizinde veya sızma testinde sıklıkla kullanılır?",
+          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' zafiyetini test etmek ve doğrulamak için sızma testi uzmanlarının kullandığı en yaygın araç veya yöntemdir?",
           "options": [
-            "Sektör standardı güvenlik araçları ve analizörler",
-            "Sadece tarayıcı",
-            "Notepad++",
-            "Hesap Makinesi"
+            "Web Proxy araçları (Burp Suite, OWASP ZAP) ve manuel kod analizi",
+            "Sadece işletim sistemi terminali",
+            "Not Defteri",
+            "DNS Sorgu paneli"
           ],
           "correct": 0
         },
         {
-          "q": "'DevSecOps ve Güvenli Yaşam Döngüsü' konusunun temel çalışma prensibi aşağıdakilerden hangisidir?",
+          "q": "'DevSecOps ve Güvenli Yaşam Döngüsü' zafiyetine karşı en temel kodlama düzeyindeki önlem aşağıdakilerden hangisidir?",
           "options": [
-            "Doğru yapılandırılmış kurallar ve girdi/çıktı filtreleme mekanizmaları",
-            "Tüm trafiğin engellenmesi",
-            "Sadece parola koruması kullanmak",
-            "Log kayıtlarının tamamen silinmesi"
+            "Girdileri sıkı bir şekilde doğrulamak, filtrelemek ve çıktıları uygun formatta kodlamak",
+            "Tüm sistemi şifrelemek",
+            "Logları temizlemek",
+            "Kullanıcı kaydını kapatmak"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' ile ilgili bir saldırıyı engellemek için sistem yöneticilerine önerilen en iyi yöntemlerden biridir?",
+          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' zafiyetinin tespiti için statik kod analizi (SAST) sürecinde aranması gereken zayıf kod kalıplarından biridir?",
           "options": [
-            "Güvenli protokoller kullanmak, sistemleri güncel tutmak ve en az yetki prensibini uygulamak",
-            "Tüm ağ bağlantılarını kesmek",
-            "Ağdaki tüm şifreleri kaldırmak",
-            "Sunucuyu her gün yeniden başlatmak"
+            "Güvenli olmayan API çağrıları, girdi temizliği yapılmadan doğrudan işlenen değişkenler",
+            "Doğru yapılandırılmış try-catch blokları",
+            "Yorum satırları ve temiz değişken isimleri",
+            "Parametreli sorguların kullanıldığı SQL satırları"
           ],
           "correct": 0
         },
         {
-          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' kavramının temel siber güvenlik rollerinden biridir?",
+          "q": "Dinamik Güvenlik Analizi (DAST) sırasında, 'DevSecOps ve Güvenli Yaşam Döngüsü' zafiyetini tetiklemek için gönderilen test girdilerine ne ad verilir?",
           "options": [
-            "Sistemlerin gizliliğini, bütünlüğünü ve erişilebilirliğini (CIA Triad) korumak",
-            "Sadece veri depolama kapasitesini artırmak",
-            "Kullanıcıların internet hızını kısıtlamak",
-            "Sadece web tasarımı yapmak"
+            "Payload (Zararlı yük / girdi)",
+            "Cookie (Çerez)",
+            "Header (Başlık)",
+            "Token"
           ],
           "correct": 0
         },
         {
-          "q": "'DevSecOps ve Güvenli Yaşam Döngüsü' hakkında aşağıda verilen ifadelerden hangisi doğrudur?",
+          "q": "'DevSecOps ve Güvenli Yaşam Döngüsü' zafiyetinin tarayıcı tarafında etkilerini sınırlandırmak için HTTP yanıt başlıklarında (Headers) hangi güvenlik direktifi kullanılabilir?",
           "options": [
-            "Doğru savunma katmanları ve düzenli testlerle riskler minimize edilebilir.",
-            "Hiçbir şekilde önlem alınamaz, tamamen savunmasızdır.",
-            "Sadece Windows sistemlerde risk oluşturur.",
-            "Sadece fiziksel güvenlik önlemleri ile korunabilir."
+            "İlgili güvenlik direktifleri (örn. CSP, HSTS, X-Content-Type-Options)",
+            "Sadece Cache-Control",
+            "Access-Control-Allow-Methods",
+            "Pragma"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' konusundaki güvenlik testlerinin temel adımlarından biridir?",
+          "options": [
+            "Girdi noktalarını belirleme, sınır değerleri test etme ve beklenen davranış sapmalarını analiz etme",
+            "Sadece veritabanı yedeği almak",
+            "İnternet bağlantısını kesip test etmek",
+            "Kullanıcı rollerini tamamen silip test etmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'DevSecOps ve Güvenli Yaşam Döngüsü' zafiyetinin ortaya çıkma nedeni olarak hangisi gösterilebilir?",
+          "options": [
+            "Kullanıcıdan gelen verilere güvensiz yaklaşılmaması ve girdi/çıktı kontrolü yapılmaması",
+            "SSL/TLS protokolünün kullanılması",
+            "Güçlü şifreleme algoritmalarının seçilmesi",
+            "Sunucunun güncel tutulması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdaki HTTP istek metotlarından hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' testlerinde parametre manipülasyonu için en sık incelenen metotlardandır?",
+          "options": [
+            "GET ve POST metotları",
+            "OPTIONS metodu",
+            "HEAD metodu",
+            "TRACE metodu"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Geliştirici ekibinin 'DevSecOps ve Güvenli Yaşam Döngüsü' konusundaki farkındalığını artırmak için hangisi yapılmalıdır?",
+          "options": [
+            "Güvenli kodlama eğitimleri vermek ve CI/CD süreçlerine otomatik güvenlik testleri entegre etmek",
+            "Geliştiricilerin internet erişimini kesmek",
+            "Kod yazımını tamamen durdurmak",
+            "Tüm sistemi dış kaynaklı bir firmaya devretmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' zafiyeti sömürüldüğünde log analizinde görülebilecek şüpheli izlerden biridir?",
+          "options": [
+            "İstek parametrelerinde özel karakterler, script blokları, beklenmeyen dosya yolları veya SQL ifadeleri",
+            "Sadece normal 200 OK yanıtları",
+            "Resim dosyalarının yüklenme logları",
+            "Statik CSS dosyası istekleri"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Mikroservis mimarilerinde 'DevSecOps ve Güvenli Yaşam Döngüsü' güvenliğini sağlamak için hangisi kritik bir önem taşır?",
+          "options": [
+            "Her bir servisin kendi girdi doğrulama ve yetkilendirme kontrollerini bağımsız olarak yapması",
+            "Sadece en dıştaki API Gateway'e güvenmek",
+            "Servisler arasındaki şifrelemeyi tamamen kaldırmak",
+            "Tüm servisleri tek bir sunucuda birleştirmek"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' zafiyetine karşı savunmada kullanılan 'En Az Yetki' (Least Privilege) prensibinin uygulamasıdır?",
+          "options": [
+            "Uygulamanın veritabanı veya işletim sistemi üzerinde sadece çalışması için gereken minimum yetkilerle başlatılması",
+            "Tüm kullanıcılara admin yetkisi verilmesi",
+            "Geliştiricilerin sunucuya erişiminin engellenmesi",
+            "Sadece misafir kullanıcı rolü tanımlanması"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Aşağıdakilerden hangisi 'DevSecOps ve Güvenli Yaşam Döngüsü' zafiyetinin çözülmesinde 'Savunma Derinliği' (Defense in Depth) yaklaşımına uygundur?",
+          "options": [
+            "Zafiyete karşı hem girdi doğrulaması yapmak, hem çıktı kodlamak, hem de sunucu/ağ düzeyinde koruma sağlamak",
+            "Sadece tek bir filtreleme kuralına güvenmek",
+            "Uygulamayı kapatmak",
+            "Sadece antivirüs programı kullanmak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Bir uygulamanın 'DevSecOps ve Güvenli Yaşam Döngüsü' konusunda güvende olduğundan emin olmak için hangi test sıklığı önerilir?",
+          "options": [
+            "Her kod değişikliğinde (CI/CD) otomatik testler ve düzenli aralıklarla (yıllık/yarı yıllık) sızma testleri",
+            "Sadece sistem ilk kurulduğunda bir kez test etmek",
+            "Sadece bir siber saldırı gerçekleştikten sonra test etmek",
+            "Hiç test yapmamak"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "'DevSecOps ve Güvenli Yaşam Döngüsü' riskini minimize etmek için üçüncü taraf kütüphanelerin (dependencies) yönetimi nasıl olmalıdır?",
+          "options": [
+            "Otomatik tarama araçlarıyla (SCA) bilinen zafiyetlerin taranması ve düzenli güncelleme yapılması",
+            "Kütüphanelerin hiç güncellenmemesi",
+            "Tüm kütüphanelerin internetten rastgele indirilmesi",
+            "Üçüncü taraf kütüphanelerin tamamen yasaklanması"
           ],
           "correct": 0
         }
