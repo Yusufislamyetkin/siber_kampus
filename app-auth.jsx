@@ -371,43 +371,50 @@ const AppHeader = ({ navigate, active }) => {
                   {/* Small arrow for speech bubble */}
                   <div className="hidden md:block absolute left-[-8px] top-8 w-4 h-4 bg-[#07150e] border-l border-b border-[#103a26] rotate-45"></div>
                   
-                  {user.is_premium || user.is_vip ? (
+                  {user.is_vip ? (
                     <>
-                      <div className="font-disp font-bold text-base text-[#ffd166] mb-3">Hoş geldin VIP Siber Hacking Öğrencim! 👑</div>
+                      <div className="font-disp font-bold text-base text-[#ffd166] mb-3">Hoş geldin VIP Siber Mentorluk Öğrencim! 👑</div>
                       <p className="text-xs text-[#cdeede] leading-relaxed mb-3">
                         Bire bir mentörlük desteğin aktif durumdadır!
                       </p>
                       <p className="text-xs text-[#9fc4b5] leading-relaxed mb-3">
-                        Kişisel öğrenme taleplerine göre hazırlanmış müfredat planımız ve saatlik/aylık ders programımız doğrultusunda canlı pentest seanslarımıza devam edebiliriz.
+                        Kişisel öğrenme hedeflerine göre hazırlanmış ders programımız doğrultusunda canlı pentest seanslarımıza devam edebiliriz.
                       </p>
                       <p className="text-xs text-[#9fc4b5] leading-relaxed mb-3">
-                        Bire bir canlı dersler, kariyer planlaması ve işe giriş sürecine kadar olan mentörlük desteği için Discord kanallarımız veya Canlı Destek üzerinden doğrudan bana yazabilirsin.
+                        Bire bir canlı dersler ve mülakat simülasyonları için Discord kanallarımız veya Canlı Destek üzerinden doğrudan bana yazabilirsin.
+                      </p>
+                    </>
+                  ) : user.is_premium ? (
+                    <>
+                      <div className="font-disp font-bold text-base text-[#ffd166] mb-3">Hoş geldin VIP Platform Öğrencim! 👑</div>
+                      <p className="text-xs text-[#cdeede] leading-relaxed mb-3">
+                        Siber Kampüs VIP Platform erişim üyeliğiniz aktif durumdadır!
+                      </p>
+                      <p className="text-xs text-[#9fc4b5] leading-relaxed mb-3">
+                        60 interaktif ders, 600+ test sorusu ve pratik video kütüphanemize tam erişiminiz bulunmaktadır.
                       </p>
                       <p className="text-xs text-[#9fc4b5] leading-relaxed">
-                        Eğitim sonundaki başarı sertifikanı almak ve hedeflerine ulaşmak için çalışmaya devam edelim!
+                        <strong>Not:</strong> Bu üyelik modeli 1'e 1 canlı dersleri veya direkt eğitmen chat desteğini kapsamaz. Haftalık birebir canlı dersler ve 7/24 soru sorma hakkı elde etmek isterseniz, mentorluk paketine geçebilirsiniz.
                       </p>
                     </>
                   ) : (
                     <>
                       <div className="font-disp font-bold text-base text-[#ffd166] mb-3">Selam Geleceğin Hacker'ı! 👋</div>
                       <p className="text-xs text-[#cdeede] leading-relaxed mb-3">
-                        Bire Bir Online Siber Güvenlik Eğitimi ile siber güvenlik kariyerini en üst seviyeye taşımaya hazır mısın?
+                        Siber Kampüs Platformu ile siber güvenlik kariyerini en üst seviyeye taşımaya hazır mısın?
                       </p>
                       <ul className="text-xs text-[#9fc4b5] leading-relaxed mb-3 space-y-1.5 list-disc pl-4">
-                        <li><strong>Saatlik veya Aylık Kurs:</strong> Kendi bütçene ve zaman planına göre eğitim alabilirsin.</li>
-                        <li><strong>Kişiselleştirilmiş Müfredat:</strong> Senin öğrenme taleplerine ve hedeflerine göre tamamen özel bir çalışma planı hazırlanır ve ilerlemen adım adım takip edilir.</li>
-                        <li><strong>Resmi Başarı Sertifikası:</strong> Eğitimi tamamladığında özgeçmişine ekleyebileceğin resmi sertifika verilir.</li>
-                        <li><strong>Kariyer & İşe Giriş Desteği:</strong> Profesyonel kariyer planlaması yardımı ve işe kabul sürecine kadar bire bir mentorluk desteği sunulur.</li>
+                        <li><strong>60 Konu Anlatımı & 600+ Soru:</strong> Kendi laboratuvar ortamında pratik yaparak sızma testlerini deneyimleyin.</li>
+                        <li><strong>10+ Saldırı & Savunma Videosu:</strong> Sektör uzmanlarının gerçek sistemlerdeki pentest kayıtlarını izleyin.</li>
+                        <li><strong>Resmi Başarı Sertifikası:</strong> Eğitimleri tamamladığınızda doğrulanabilir sertifika kazanın.</li>
+                        <li><strong>Canlı Ön Görüşme (Hediye):</strong> Platforma yıllık kayıt olan VIP üyelerimize özel birebir kariyer yol haritası seansı.</li>
                       </ul>
-                      <p className="text-xs text-[#9fc4b5] leading-relaxed font-mono text-[10px] text-[#74998a] border-t border-[#103a26] pt-3 mt-3">
-                        // Kişinin öğrenme talebine göre plan ve ilerleme takibi yapılır.
-                      </p>
                     </>
                   )}
                 </div>
               </div>
             </div>
-
+ 
             {/* Actions Panel */}
             <div className="bg-[#020806]/60 border-t border-[#0c2719] px-6 py-4 flex flex-col sm:flex-row gap-2.5 justify-end">
               <button 
@@ -416,11 +423,10 @@ const AppHeader = ({ navigate, active }) => {
               >
                 Kapat
               </button>
-              {user.is_premium || user.is_vip ? (
+              {user.is_vip ? (
                 <button 
                   onClick={() => {
                     setShowVIPMentorModal(false);
-                    // Open support widget (Eylül) or trigger direct action
                     const supportLauncher = document.querySelector('[aria-label="Destek Sohbetini Aç/Kapat"]');
                     if (supportLauncher) {
                       supportLauncher.click();
@@ -430,7 +436,7 @@ const AppHeader = ({ navigate, active }) => {
                 >
                   💬 Canlı Desteğe Yaz
                 </button>
-              ) : (
+              ) : user.is_premium ? (
                 <button 
                   onClick={() => {
                     setShowVIPMentorModal(false);
@@ -438,7 +444,17 @@ const AppHeader = ({ navigate, active }) => {
                   }}
                   className="order-1 sm:order-2 px-4 py-2.5 rounded-xl bg-[#ffd166] text-[#021008] font-bold hover:bg-[#ff9500] hover:shadow-[0_0_20px_rgba(255,209,102,0.3)] transition-all font-mono text-xs animate-pulse"
                 >
-                  ⚡ VIP Üyeliğe Yükselt
+                  ⚡ Birebir Mentorluğa Yükselt
+                </button>
+              ) : (
+                <button 
+                  onClick={() => {
+                    setShowVIPMentorModal(false);
+                    navigate('pricing');
+                  }}
+                  className="order-1 sm:order-2 px-4 py-2.5 rounded-xl bg-[#00ff88] text-[#021008] font-bold hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] transition-all font-mono text-xs animate-pulse"
+                >
+                  ⚡ VIP Platforma Katıl (900 TL)
                 </button>
               )}
             </div>
@@ -6511,8 +6527,10 @@ const AdminPage = ({ navigate }) => {
                           <div className="text-xs text-[#74998a]">{u.badges} Rozet</div>
                         </td>
                         <td className="p-4 text-center">
-                          {u.is_premium ? (
-                            <span className="px-2.5 py-1 text-xs font-bold rounded bg-[#ffd166]/10 text-[#ffd166] border border-[#ffd166]/20">👑 Premium</span>
+                          {u.is_vip ? (
+                            <span className="px-2.5 py-1 text-xs font-bold rounded bg-[#ffd166]/10 text-[#ffd166] border border-[#ffd166]/20">👑 VIP Mentor</span>
+                          ) : u.is_premium ? (
+                            <span className="px-2.5 py-1 text-xs font-bold rounded bg-[#00ff88]/10 text-[#00ff88] border border-[#00ff88]/20">💎 Platform</span>
                           ) : (
                             <span className="px-2.5 py-1 text-xs font-bold rounded bg-[#3d564b]/10 text-[#74998a] border border-[#3d564b]/20">Free</span>
                           )}
@@ -6528,14 +6546,13 @@ const AdminPage = ({ navigate }) => {
                           <button
                             onClick={() => {
                               const token = localStorage.getItem('sk_token');
-                              if (confirm(`${u.name} adlı kullanıcının premium durumunu değiştirmek istediğinize emin misiniz?`)) {
+                              if (confirm(`${u.name} adlı kullanıcının platform (premium) durumunu değiştirmek istediğinize emin misiniz?`)) {
                                 fetch(`/api/admin/users/${u.id}/premium`, {
                                   method: 'PUT',
                                   headers: {
                                     'Content-Type': 'application/json',
                                     'Authorization': `Bearer ${token}`
-                                  },
-                                  body: JSON.stringify({ is_premium: !u.is_premium })
+                                  }
                                 }).then(res => {
                                   if (res.ok) {
                                     fetchUsers();
@@ -6546,12 +6563,39 @@ const AdminPage = ({ navigate }) => {
                               }
                             }}
                             className={`font-mono text-xs px-3.5 py-1.5 rounded-lg border transition-all ${
-                              u.is_premium
+                              u.is_premium && !u.is_vip
+                                ? 'text-[#00ff88] border-[#00ff88]/30 hover:bg-[#00ff88]/10'
+                                : 'text-[#74998a] border-[#74998a]/30 hover:bg-[#74998a]/10'
+                            }`}
+                          >
+                            {u.is_premium && !u.is_vip ? '💎 Platform Kapat' : '💎 Platform Ver'}
+                          </button>
+                          <button
+                            onClick={() => {
+                              const token = localStorage.getItem('sk_token');
+                              if (confirm(`${u.name} adlı kullanıcının mentor (VIP) durumunu değiştirmek istediğinize emin misiniz?`)) {
+                                fetch(`/api/admin/users/${u.id}/vip`, {
+                                  method: 'PUT',
+                                  headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${token}`
+                                  }
+                                }).then(res => {
+                                  if (res.ok) {
+                                    fetchUsers();
+                                  } else {
+                                    alert('VIP durumu değiştirilemedi.');
+                                  }
+                                }).catch(() => alert('Ağ hatası.'));
+                              }
+                            }}
+                            className={`font-mono text-xs px-3.5 py-1.5 rounded-lg border transition-all ${
+                              u.is_vip
                                 ? 'text-[#ffd166] border-[#ffd166]/30 hover:bg-[#ffd166]/10'
                                 : 'text-[#74998a] border-[#74998a]/30 hover:bg-[#74998a]/10'
                             }`}
                           >
-                            {u.is_premium ? '👑 Premium' : 'Premium Ver'}
+                            {u.is_vip ? '👑 VIP Kapat' : '👑 VIP Ver'}
                           </button>
                           <button
                             onClick={() => handleToggleBan(u.id, u.name, u.is_banned)}

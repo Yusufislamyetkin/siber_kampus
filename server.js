@@ -1148,8 +1148,8 @@ app.put('/api/admin/users/:id/vip', authenticateToken, async (req, res) => {
     }
 
     const nextVip = !user.rows[0].is_vip;
-    await pool.query('UPDATE users SET is_vip = $1, is_premium = $1 WHERE id = $2', [nextVip, userId]);
-    res.json({ success: true, is_vip: nextVip, is_premium: nextVip });
+    await pool.query('UPDATE users SET is_vip = $1 WHERE id = $2', [nextVip, userId]);
+    res.json({ success: true, is_vip: nextVip });
   } catch (err) {
     console.error('Kullanıcı VIP hatası:', err);
     res.status(500).json({ error: 'Kullanıcı VIP durumu güncellenirken hata oluştu.' });
@@ -1192,14 +1192,14 @@ app.put('/api/admin/users/:id/premium', authenticateToken, async (req, res) => {
     }
 
     const userId = parseInt(req.params.id);
-    const user = await pool.query('SELECT is_vip FROM users WHERE id = $1', [userId]);
+    const user = await pool.query('SELECT is_premium FROM users WHERE id = $1', [userId]);
     if (user.rows.length === 0) {
       return res.status(404).json({ error: 'Kullanıcı bulunamadı.' });
     }
 
-    const nextVip = !user.rows[0].is_vip;
-    await pool.query('UPDATE users SET is_vip = $1, is_premium = $1 WHERE id = $2', [nextVip, userId]);
-    res.json({ success: true, is_vip: nextVip, is_premium: nextVip });
+    const nextPremium = !user.rows[0].is_premium;
+    await pool.query('UPDATE users SET is_premium = $1 WHERE id = $2', [nextPremium, userId]);
+    res.json({ success: true, is_premium: nextPremium });
   } catch (err) {
     console.error('Kullanıcı premium hatası:', err);
     res.status(500).json({ error: 'Kullanıcı premium durumu güncellenirken hata oluştu.' });

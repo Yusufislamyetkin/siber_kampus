@@ -2636,24 +2636,44 @@ const PricingPage = ({ navigate }) => {
       accent: '#74998a'
     },
     {
+      id: 'vip-platform',
+      name: 'VIP Platform Erişimi',
+      tag: '🔥 ÇOK POPÜLER',
+      price: 900,
+      oldPrice: 1800,
+      period: 'Yıllık Program',
+      img: '/freeeducationiamge-fiyatlandırma.jpg',
+      features: [
+        '**10+ Siber Güvenlik Saldırı/Savunma Videosu**',
+        '**600+ Uzmanlaştırılmış Test Sorusu**',
+        '**60+ İnteraktif Konu Anlatımı**',
+        'Web, Wi-Fi ve Sistem Güvenliği Modülleri',
+        'Ağ ve Uygulama Güvenliği Sertifikaları',
+        '1\'e 1 Canlı Ön Görüşme (Hediye)'
+      ],
+      cta: 'WhatsApp ile Satın Al ⚡',
+      popular: true,
+      accent: '#00ff88'
+    },
+    {
       id: 'one-on-one',
       name: "1'e 1 VIP Mentorluk & Özel Ders",
-      tag: '🔥 %50 İNDİRİM',
+      tag: '🔥 VIP SEÇENEK',
       price: 14000,
       oldPrice: 28000,
       period: 'Aylık Program',
       img: '/mentoregitimi-fiyatlandırma.jpg',
       features: [
-        '**Bire Bir Özel Ders & Canlı Mentorluk**',
+        '**Bire Bir Canlı Ders & Canlı Mentorluk**',
         'Aylık Eğitim (Toplam 12 Saat)',
-        'Siber Kampüs VIP Eğitim Materyallerine Sınırsız Erişim',
-        'Ağ ve Uygulama Güvenliği Başarı Sertifikaları',
+        'Siber Kampüs VIP Platform Erişiminin Tamamı',
+        'Eğitmenle Özel Direkt Chat Hattı (7/24)',
         'Kişiye Özel Çalışma ve İlerleme Planı',
         'CV Hazırlama & Mülakat Desteği'
       ],
-      cta: 'İletişime Geç',
-      popular: true,
-      accent: '#00ff88'
+      cta: 'WhatsApp ile İletişime Geç ⚡',
+      popular: false,
+      accent: '#ffd166'
     }
   ];
 
@@ -2662,13 +2682,18 @@ const PricingPage = ({ navigate }) => {
       navigate('level-test');
       return;
     }
-    if (plan.id === 'one-on-one') {
+    if (plan.id === 'vip-platform') {
       const phone = '905389351189';
-      const msg = encodeURIComponent('Merhaba, birebir siber güvenlik uzmanlığı eğitimi almak istiyorum.');
+      const msg = encodeURIComponent('Merhaba, yıllık 900 TL olan VIP Platform Erişimi paketini satın almak ve hesabımı aktifleştirmek istiyorum.');
       window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
       return;
     }
-    openCheckoutModal(plan);
+    if (plan.id === 'one-on-one') {
+      const phone = '905389351189';
+      const msg = encodeURIComponent('Merhaba, 1\'e 1 VIP Mentorluk & Özel Ders eğitimi almak istiyorum.');
+      window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+      return;
+    }
   };
 
   const openCheckoutModal = (plan) => {
@@ -3609,6 +3634,172 @@ const LevelTestPage = ({ navigate }) => {
   );
 };
 
+/* ============ VIP PLATFORM LANDING PAGE (ADVERTISING) ============ */
+const VIPPlatformLandingPage = ({ navigate }) => {
+  const HeaderCmp = window.SKHeader || (() => null);
+  const FooterCmp = window.SKFooter || (() => null);
+  const [activeTab, setActiveTab] = useState('ag'); // 'ag' or 'uyg'
+  
+  const agLessons = window.SK_LESSONS ? window.SK_LESSONS['ag-guvenligi'] || [] : [];
+  const uygLessons = window.SK_LESSONS ? window.SK_LESSONS['uyg-guvenligi'] || [] : [];
+
+  const handleWhatsAppBuy = () => {
+    const phone = '905389351189';
+    const msg = encodeURIComponent('Merhaba, yıllık 900 TL olan VIP Platform Erişimi paketini satın almak ve hesabımı aktifleştirmek istiyorum.');
+    window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+  };
+
+  const faqItems = [
+    {
+      q: "VIP Platform Paketinde neler yer alıyor?",
+      a: "Paket kapsamında 30 Ağ Güvenliği ve 30 Uygulama Güvenliği olmak üzere 60 adet interaktif konu anlatımı, 600+ uzmanlaştırılmış test sorusu ve pratik saldırı/savunma senaryolarını anlatan 10+ siber güvenlik eğitim videosu bulunmaktadır."
+    },
+    {
+      q: "Ödeme işlemi nasıl gerçekleştiriliyor ve hesabım ne zaman açılır?",
+      a: "Satın al butonuna tıkladığınızda doğrudan WhatsApp hattımıza yönlendirilirsiniz. WhatsApp üzerinden iletilen IBAN adresine 900 TL transfer yaptıktan sonra dekontunuzu iletmeniz yeterlidir. Yönetici ekibimiz hesabınızı dakikalar içinde 'Premium VIP' durumuna getirerek erişiminizi aktif edecektir."
+    },
+    {
+      q: "1'e 1 mentorluk paketinden farkı nedir?",
+      a: "Platform paketi, kendi kendinize konu anlatımlarını okuyup testleri ve videoları tamamlamanız için tasarlanmıştır. Canlı Zoom/Discord dersleri içermez. Ancak platformu satın alan tüm VIP üyelerimize ilk kayıt anında 1'e 1 canlı ön görüşme ve kariyer planlama seansı hediye edilir."
+    },
+    {
+      q: "Sertifika süreci nasıl çalışıyor?",
+      a: "Platformdaki Ağ Güvenliği veya Uygulama Güvenliği modüllerindeki tüm dersleri ve testleri başarıyla tamamladığınızda, sistem otomatik olarak sizin adınıza doğrulanabilir başarı sertifikası oluşturur ve profilinize ekler."
+    }
+  ];
+
+  return (
+    <>
+      <HeaderCmp navigate={navigate} />
+      <div className="min-h-screen text-[#cdeede] pt-24 pb-16" style={{ background: 'radial-gradient(circle at 50% 10%, #0d2a1c, #020806 60%)' }}>
+        {/* HERO SECTION */}
+        <section className="max-w-[1200px] mx-auto px-6 text-center py-16">
+          <span className="inline-flex items-center gap-2 text-[12px] tracking-[.15em] uppercase text-[#00ff88] border border-[#103a26] bg-[rgba(0,255,136,.04)] px-4 py-2 rounded-full mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#00ff88] shadow-[0_0_10px_#00ff88] animate-pulse"></span>
+            Kampanya ve Reklam Özel Sayfası
+          </span>
+          <h1 className="text-[clamp(32px,5vw,60px)] font-disp font-bold text-[#eafff5] leading-[1.2] tracking-tight mb-6">
+            Kendi Hacking Laboratuvarında<br/>
+            <span className="text-[#00ff88] drop-shadow-[0_0_20px_rgba(0,255,136,.25)]">Siber Güvenliği Uygulamalı Öğren</span>
+          </h1>
+          <p className="text-[16px] text-[#74998a] max-w-[700px] mx-auto leading-relaxed mb-10">
+            Sadece kuru videolar izlemeyi bırakın. 60+ interaktif konu anlatımı, 600+ uzmanlaştırılmış değerlendirme sorusu ve 10+ saldırı/savunma senaryosu videosu ile pratik yaparak kendinizi kanıtlayın.
+          </p>
+          
+          {/* BIG CTA CARD */}
+          <div className="max-w-[500px] mx-auto border border-[#00ff88]/30 rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,.6),0_0_40px_rgba(0,255,136,.05)] relative overflow-hidden" style={{ background: 'linear-gradient(165deg, #071e14, #030c08)' }}>
+            <div className="absolute top-0 right-0 bg-[#00ff88] text-[#021008] font-bold text-[10px] tracking-wider uppercase px-4 py-1.5 rounded-bl-2xl">
+              Yıllık Sadece 900 TL
+            </div>
+            <div className="text-[20px] font-bold text-[#eafff5] mb-2">VIP Platform Erişimi</div>
+            <div className="flex items-baseline justify-center gap-2 mb-6">
+              <span className="text-[#74998a] line-through text-[16px]">1.800 TL</span>
+              <span className="text-[42px] font-bold text-[#00ff88] tracking-tight">900 TL</span>
+              <span className="text-[#74998a] text-sm">/ Yıl</span>
+            </div>
+            
+            <button onClick={handleWhatsAppBuy} className="w-full font-mono text-[16px] font-bold text-[#021008] bg-[#00ff88] py-4 rounded-xl shadow-[0_0_24px_rgba(0,255,136,.3)] hover:scale-[1.02] transition-all mb-4">
+              WhatsApp ile Satın Al ⚡
+            </button>
+            <p className="text-[12px] text-[#5c8a74] font-mono">IBAN ile güvenli transfer · Dakikalar içinde hesap aktivasyonu</p>
+          </div>
+        </section>
+
+        {/* METRICS SECTION */}
+        <section className="border-t border-b border-[#0c2719] bg-black/20 py-12">
+          <div className="max-w-[1100px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-[40px] font-bold text-[#00ff88]">10+</div>
+              <div className="text-sm text-[#74998a] mt-1">Saldırı & Savunma Senaryosu Videosu</div>
+            </div>
+            <div className="text-center border-y md:border-y-0 md:border-x border-[#0c2719] py-6 md:py-0">
+              <div className="text-[40px] font-bold text-[#00ff88]">600+</div>
+              <div className="text-sm text-[#74998a] mt-1">Uzmanlaştırılmış Değerlendirme Sorusu</div>
+            </div>
+            <div className="text-center">
+              <div className="text-[40px] font-bold text-[#00ff88]">60</div>
+              <div className="text-sm text-[#74998a] mt-1">İnteraktif Konu Anlatımı Modülü</div>
+            </div>
+          </div>
+        </section>
+
+        {/* CURRICULUM ACCORDION */}
+        <section className="max-w-[1000px] mx-auto px-6 py-20">
+          <div className="text-center mb-12">
+            <h2 className="text-[28px] font-bold text-[#eafff5]">Kapsamlı Hacking & Savunma Müfredatı</h2>
+            <p className="text-sm text-[#74998a] mt-2">Dersleri okuyun, konu sonlarındaki test sorularını çözerek bilginizi test edin.</p>
+          </div>
+
+          <div className="flex justify-center gap-4 mb-10">
+            <button 
+              onClick={() => setActiveTab('ag')} 
+              className={`px-6 py-2.5 rounded-lg font-mono text-sm border transition-all ${activeTab === 'ag' ? 'bg-[#00ff88] text-[#021008] border-[#00ff88] font-bold' : 'border-[#103a26] text-[#74998a] hover:border-[#00ff88]'}`}
+            >
+              Ağ Güvenliği (30 Ders)
+            </button>
+            <button 
+              onClick={() => setActiveTab('uyg')} 
+              className={`px-6 py-2.5 rounded-lg font-mono text-sm border transition-all ${activeTab === 'uyg' ? 'bg-[#00ff88] text-[#021008] border-[#00ff88] font-bold' : 'border-[#103a26] text-[#74998a] hover:border-[#00ff88]'}`}
+            >
+              Uygulama Güvenliği (30 Ders)
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {(activeTab === 'ag' ? agLessons : uygLessons).map((lesson, idx) => (
+              <div key={idx} className="border border-[#0c2719] rounded-xl p-4 bg-[#07150e]/30 flex items-center gap-3">
+                <span className="font-mono text-xs text-[#00ff88]/60 bg-[#00ff88]/5 px-2 py-1 rounded">
+                  {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
+                </span>
+                <span className="text-[14px] text-[#eafff5] font-medium">{lesson.title}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SPECIAL BENEFIT SECTION */}
+        <section className="py-16 border-t border-[#0c2719]" style={{ background: 'linear-gradient(180deg, #020806, #07150e)' }}>
+          <div className="max-w-[800px] mx-auto px-6 text-center">
+            <span className="text-[28px]">🎁</span>
+            <h2 className="text-[24px] font-bold text-[#eafff5] mt-4 mb-3">VIP Üyelerimize Özel Birebir Canlı Ön Görüşme Hediye</h2>
+            <p className="text-[14.5px] text-[#74998a] leading-relaxed max-w-[600px] mx-auto">
+              Platformu satın alan her üyemize, siber güvenlik yolculuğuna başlarken seviyesini belirlemek ve hedeflerini çizmek için **1\'e 1 canlı ön görüşme ve kariyer danışmanlığı** seansı hediye ediyoruz.
+            </p>
+          </div>
+        </section>
+
+        {/* FAQ SECTION */}
+        <section className="max-w-[800px] mx-auto px-6 py-20 border-t border-[#0c2719]">
+          <h2 className="text-[28px] font-bold text-center text-[#eafff5] mb-12">Sıkça Sorulan Sorular</h2>
+          <div className="space-y-6">
+            {faqItems.map((item, idx) => (
+              <div key={idx} className="border-b border-[#0c2719] pb-6">
+                <h3 className="text-[16px] text-[#eafff5] font-bold mb-3 flex items-start gap-2">
+                  <span className="text-[#00ff88]">?</span> {item.q}
+                </h3>
+                <p className="text-[14px] text-[#74998a] leading-relaxed pl-5">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* STICKY BOTTOM BAR FOR MOBILE/CONVERSION */}
+        <div className="fixed bottom-0 left-0 right-0 bg-[#020806]/90 backdrop-blur-md border-t border-[#0c2719] py-4 px-6 z-50 flex items-center justify-between sm:hidden">
+          <div>
+            <div className="text-xs text-[#74998a]">VIP Platform Erişimi</div>
+            <div className="text-lg font-bold text-[#00ff88]">900 TL <span className="text-[10px] text-[#74998a] font-normal">/ Yıl</span></div>
+          </div>
+          <button onClick={handleWhatsAppBuy} className="font-mono text-xs font-bold text-[#021008] bg-[#00ff88] px-4 py-2.5 rounded-lg">
+            Satın Al ⚡
+          </button>
+        </div>
+      </div>
+      <FooterCmp navigate={navigate} />
+    </>
+  );
+};
+window.SKVIPPlatformLandingPage = VIPPlatformLandingPage;
+
 /* ============ REGISTER PAGES ============ */
 Object.assign(PAGES, {
   about: AboutPage,
@@ -3625,4 +3816,5 @@ Object.assign(PAGES, {
   'set-password': SetPasswordPage,
   'level-test': LevelTestPage,
   certificates: CertificatesPage,
+  'vip-platform': VIPPlatformLandingPage
 });
