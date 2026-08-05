@@ -2618,24 +2618,6 @@ const PricingPage = ({ navigate }) => {
 
   const plans = [
     {
-      id: 'level-test',
-      name: 'Ücretsiz Seviye Testi',
-      tag: 'ÜCRETSİZ',
-      price: 0,
-      oldPrice: null,
-      period: null,
-      img: '/freeeducationiamge-fiyatlandırma.jpg',
-      features: [
-        'Teknik Seviye Tespiti (6 Soru)',
-        'Başlangıç / Orta / İleri Sonucu',
-        'Sana Özel Eğitim Önerisi',
-        'E-posta ile Detaylı Sonuç Raporu'
-      ],
-      cta: 'Ücretsiz Testi Başlat →',
-      popular: false,
-      accent: '#74998a'
-    },
-    {
       id: 'vip-platform',
       name: 'VIP Platform Erişimi',
       tag: '🔥 ÇOK POPÜLER',

@@ -372,15 +372,8 @@ const HomePage = ({ navigate }) => {
               </div>
             </div>
             <div className="flex gap-4 flex-wrap items-center">
-              <button onClick={() => {
-                const phone = '905389351189';
-                const msg = encodeURIComponent('Merhaba, ücretsiz tanışma dersi almak istiyorum.');
-                window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
-              }} className="font-mono text-[15px] font-bold text-[#021008] bg-[#00ff88] px-[30px] py-4 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] hover:-translate-y-px transition-all">
-                Ücretsiz Tanışma Dersi Al ⚡
-              </button>
-              <button onClick={() => navigate('pricing')} className="font-mono text-[15px] text-[#5cffba] px-[30px] py-4 border border-[#103a26] hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">
-                Eğitim Programını İncele
+              <button onClick={() => navigate('pricing')} className="font-mono text-[15px] font-bold text-[#021008] bg-[#00ff88] px-[30px] py-4 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] hover:-translate-y-px transition-all">
+                Eğitim Programlarını İncele ⚡
               </button>
             </div>
             <div className="flex items-center gap-3.5 mt-[26px] text-[13px] text-[#5c8a74]">
@@ -497,7 +490,7 @@ const HomePage = ({ navigate }) => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-[1100px] mx-auto">
             {[
-              { n: '01', title: 'Tanışma Seansı', desc: 'Ücretsiz tanışma dersi planlayın. Seviyeniz ve hedefleriniz analiz edilsin.' },
+              { n: '01', title: 'Kayıt ve Seviye Belirleme', desc: 'VIP Platform veya mentorluk kaydınızı başlatın, seviyeniz ve hedefleriniz için ilk birebir planlamayı yapın.' },
               { n: '02', title: 'Kişisel Müfredat', desc: 'Kariyer hedeflerinize uygun, tamamen size özel bir yol haritası kurgulansın.' },
               { n: '03', title: 'Canlı Laboratuvar', desc: 'Her derse özel izole saldırı laboratuvarı ve hedef sistemler ayağa kaldırılır.' },
               { n: '04', title: 'Canlı Uygulama', desc: "Mentörünüzle 1'e 1 canlı oturumda gerçek saldırı ve savunma senaryolarını uygulayın." },
