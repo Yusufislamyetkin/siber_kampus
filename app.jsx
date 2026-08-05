@@ -341,7 +341,7 @@ const HomePage = ({ navigate }) => {
           <div>
             <span className="inline-flex items-center gap-2.5 text-[12.5px] tracking-[.12em] uppercase text-[#5cffba] border border-[#103a26] bg-[rgba(0,255,136,.04)] px-3.5 py-[7px] rounded-full mb-[26px]">
               <span className="w-[7px] h-[7px] rounded-full bg-[#00ff88] shadow-[0_0_10px_#00ff88] sk-pulse"></span>
-              Siber Güvenlik Özel Ders & VIP Hacking Akademi
+              Türkiye'nin Tamamen Birebir Siber Güvenlik Eğitimi
             </span>
             <h1 className="text-[clamp(40px,6vw,78px)] mb-[18px] tracking-[-.025em] leading-[1.1]">
               <span className="glitch" style={{ color: '#00e0ff', textShadow: '0 0 32px rgba(0, 224, 255, 0.45)' }} data-text="Siber Güvenlik">Siber Güvenlik</span>
@@ -349,34 +349,38 @@ const HomePage = ({ navigate }) => {
               <span className="glitch" style={{ color: '#ff2e88', textShadow: '0 0 32px rgba(255, 46, 136, 0.45)' }} data-text="Özel Ders">Özel Ders</span>
             </h1>
             <div className="text-[15.5px] text-[#74998a] max-w-[560px] mb-8 leading-[1.8] space-y-[13px]">
-              <div className="text-[#cdeede] text-[16px]">Kendi hacking laboratuvarında <strong>10+ siber güvenlik saldırı/savunma senaryosu videosu</strong>, <strong>600+ uzmanlaştırılmış soru</strong> ve <strong>60 adet konu anlatımı</strong> (WiFi, Web, Ethical Hacking vb.) içeren VIP Platform Paketi ile siber güvenliği hackleyerek öğrenin.</div>
+              <div className="text-[#cdeede] text-[16px]">Video izleyerek vakit kaybetmeyin. Sektör profesyonellerinden, tamamen size özel canlı ve uygulamalı siber güvenlik eğitimi alın.</div>
               <div className="space-y-2 mt-4">
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div>10+ Siber Güvenlik Saldırı & Savunma Videosu</div>
+                  <span>✓</span> <div>Eğitmenle Birebir Canlı Ders</div>
                 </div>
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div>600+ Uzmanlaştırılmış Test Sorusu</div>
+                  <span>✓</span> <div>Kişiye Özel Eğitim Planı</div>
                 </div>
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div>60+ İnteraktif Konu Anlatımı (Web, Wi-Fi, Sistem)</div>
+                  <span>✓</span> <div>Gerçek Laboratuvar Ortamı</div>
                 </div>
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div>Ağ ve Uygulama Güvenliği Sertifikaları</div>
+                  <span>✓</span> <div>Haftalık Uygulamalı Çalışmalar</div>
                 </div>
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div>VIP Müşterilerimize Özel 1'e 1 Canlı Ön Görüşme</div>
+                  <span>✓</span> <div>Kariyer Mentorluğu</div>
                 </div>
                 <div className="flex items-start gap-2 text-[14.5px] text-[#5cffba]">
-                  <span>✓</span> <div>Yıllık Tek Seferlik Sadece 900 TL</div>
+                  <span>✓</span> <div>İş ve Staj Danışmanlığı</div>
                 </div>
               </div>
             </div>
             <div className="flex gap-4 flex-wrap items-center">
-              <button onClick={() => navigate('pricing')} className="font-mono text-[15px] font-bold text-[#021008] bg-[#00ff88] px-[30px] py-4 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] hover:-translate-y-px transition-all">
-                Planları İncele & Kayıt Ol ⚡
+              <button onClick={() => {
+                const phone = '905389351189';
+                const msg = encodeURIComponent('Merhaba, ücretsiz tanışma dersi almak istiyorum.');
+                window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+              }} className="font-mono text-[15px] font-bold text-[#021008] bg-[#00ff88] px-[30px] py-4 clip-btn hover:shadow-[0_0_28px_-4px_var(--glow)] hover:-translate-y-px transition-all">
+                Ücretsiz Tanışma Dersi Al ⚡
               </button>
-              <button onClick={() => navigate('vip-platform')} className="font-mono text-[15px] text-[#5cffba] px-[30px] py-4 border border-[#103a26] hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">
-                VIP Platform Paketi Detayları
+              <button onClick={() => navigate('pricing')} className="font-mono text-[15px] text-[#5cffba] px-[30px] py-4 border border-[#103a26] hover:border-[#00ff88] hover:text-[#00ff88] transition-colors">
+                Eğitim Programını İncele
               </button>
             </div>
             <div className="flex items-center gap-3.5 mt-[26px] text-[13px] text-[#5c8a74]">
@@ -406,10 +410,10 @@ const HomePage = ({ navigate }) => {
       <div ref={statsRef} className="border-b border-[#0c2719]" style={{ background: 'linear-gradient(180deg,#04100a,#020806)' }}>
         <div className="max-w-[1280px] mx-auto px-8 grid grid-cols-2 md:grid-cols-4">
           {[
-          { c: 60, s: '+', l: 'İnteraktif Ders Konusu' },
-          { c: 600, s: '+', l: 'Uzmanlaştırılmış Soru' },
-          { c: 10, s: '+', l: 'Saat Video Eğitim' },
-          { c: 900, s: ' TL', l: 'Yıllık Platform Erişimi' }].
+          { c: 1227, s: '+', l: 'Eğitim Alan Öğrenci' },
+          { c: 10000, s: '+', l: 'Saat Canlı Eğitim' },
+          { c: 98, s: '+', l: 'Saldırı Senaryosu' },
+          { c: 96, s: '%', l: 'Öğrenci Memnuniyeti' }].
           map((st, i) =>
           <div key={i} className={"py-11 px-7 text-center " + (i ? 'border-l border-[#0c2719]' : '')}>
               <div key={st.c} data-count={st.c} data-suffix={st.s} className="font-disp font-bold text-[clamp(32px,4vw,52px)] text-[#00ff88] tracking-[-.02em] drop-shadow-[0_0_26px_rgba(0,255,136,.3)]">0</div>
@@ -493,7 +497,7 @@ const HomePage = ({ navigate }) => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-[1100px] mx-auto">
             {[
-              { n: '01', title: 'Ön Görüşme Seansı', desc: 'VIP üyeliğinizi başlatın, seviyeniz ve hedefleriniz için ilk birebir planlamayı yapın.' },
+              { n: '01', title: 'Tanışma Seansı', desc: 'Ücretsiz tanışma dersi planlayın. Seviyeniz ve hedefleriniz analiz edilsin.' },
               { n: '02', title: 'Kişisel Müfredat', desc: 'Kariyer hedeflerinize uygun, tamamen size özel bir yol haritası kurgulansın.' },
               { n: '03', title: 'Canlı Laboratuvar', desc: 'Her derse özel izole saldırı laboratuvarı ve hedef sistemler ayağa kaldırılır.' },
               { n: '04', title: 'Canlı Uygulama', desc: "Mentörünüzle 1'e 1 canlı oturumda gerçek saldırı ve savunma senaryolarını uygulayın." },
@@ -1289,12 +1293,8 @@ const updateSEOMeta = (p, d) => {
     }
   } else if (p === 'pricing') {
     title = "Eğitim Paketleri & Fiyatlandırma | Siber Kampüs Akademi";
-    desc = "Siber Kampüs Akademi birebir canlı siber güvenlik eğitim paketleri ve VIP platform fiyatlandırma planları. Yıllık 900 TL'ye sızma testi laboratuvarlarına katılın veya 1'e 1 canlı mentorluk desteği alın.";
-    keys = "siber kampüs eğitimleri, siber güvenlik eğitim fiyatları, siber güvenlik kursu ücreti, siber güvenlik mentörlük, ucuz siber güvenlik eğitimi";
-  } else if (p === 'vip-platform') {
-    title = "VIP Platform Paketi | Siber Kampüs Akademi";
-    desc = "Kendi hacking laboratuvarınızda 10+ sızma testi videosu, 600+ uzmanlaştırılmış soru ve 60 interaktif ders konusu (WiFi, Web, Ethical Hacking vb.) ile siber güvenliği uygulamalı öğrenin.";
-    keys = "vip platform, siber güvenlik platformu, hacking laboratuvarı, sızma testi eğitimi, uygulamalı hack, siber kampüs vip";
+    desc = "Siber Kampüs Akademi birebir canlı siber güvenlik eğitim paketleri ve fiyatlandırma planları. Ücretsiz tanışma görüşmesinden 1'e 1 canlı mentörlük eğitimlerimize kadar inceleyin.";
+    keys = "siber kampüs eğitimleri, siber güvenlik eğitim fiyatları, siber güvenlik kursu ücreti, siber güvenlik mentörlük";
   } else if (p === 'product' && d && d.id) {
     if (d.id === 'free-basic') {
       title = "Ücretsiz Tanışma Görüşmesi | Siber Kampüs Akademi";
