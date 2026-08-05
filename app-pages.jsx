@@ -3665,7 +3665,7 @@ const VIPPlatformLandingPage = ({ navigate }) => {
             <span className="text-[#00ff88] drop-shadow-[0_0_20px_rgba(0,255,136,.25)]">Siber Güvenliği Uygulamalı Öğren</span>
           </h1>
           <p className="text-[16px] text-[#74998a] max-w-[700px] mx-auto leading-relaxed mb-10">
-            Sadece kuru videolar izlemeyi bırakın. 60+ interaktif konu anlatımı, 600+ uzmanlaştırılmış değerlendirme sorusu ve 10+ saldırı/savunma senaryosu videosu ile pratik yaparak kendinizi kanıtlayın.
+            60+ interaktif konu anlatımı, 600+ uzmanlaştırılmış değerlendirme sorusu ve 10+ uygulamalı saldırı/savunma senaryosu videosu ile siber güvenliği sıfırdan uygulamalı olarak öğrenin.
           </p>
           
           {/* BIG CTA CARD */}
