@@ -1650,7 +1650,7 @@ const App = () => {
   return (
     <div className="min-h-screen">
       <Cmp navigate={navigate} data={data} blog={data} />
-      <WhatsAppButton />
+      {page !== 'vip-platform' && <WhatsAppButton />}
       
       {trainingPromptRoom && (
         <div className="fixed inset-0 bg-[#020806]/85 z-[999] grid place-items-center p-4 overflow-y-auto" style={{ animation: 'modalFadeIn .4s cubic-bezier(0.16,1,0.3,1) both' }} onClick={() => setTrainingPromptRoom(null)}>

@@ -3621,9 +3621,6 @@ const VIPPlatformLandingPage = ({ navigate }) => {
   const HeaderCmp = window.SKHeader || (() => null);
   const FooterCmp = window.SKFooter || (() => null);
   const [activeTab, setActiveTab] = useState('ag'); // 'ag' or 'uyg'
-  
-  const agLessons = window.SK_LESSONS ? window.SK_LESSONS['ag-guvenligi'] || [] : [];
-  const uygLessons = window.SK_LESSONS ? window.SK_LESSONS['uyg-guvenligi'] || [] : [];
 
   const handleWhatsAppBuy = () => {
     const phone = '905389351189';
@@ -3642,7 +3639,7 @@ const VIPPlatformLandingPage = ({ navigate }) => {
     },
     {
       q: "1'e 1 mentorluk paketinden farkı nedir?",
-      a: "Platform paketi, kendi kendinize konu anlatımlarını okuyup testleri ve videoları tamamlamanız için tasarlanmıştır. Canlı Zoom/Discord dersleri içermez. Ancak platformu satın alan tüm VIP üyelerimize ilk kayıt anında 1'e 1 canlı ön görüşme ve kariyer planlama seansı hediye edilir."
+      a: "Platform paketi, kendi kendinize konu anlatımlarını okup testleri ve videoları tamamlamanız için tasarlanmıştır. Canlı Zoom/Discord dersleri içermez. Ancak platformu satın alan tüm VIP üyelerimize ilk kayıt anında 1'e 1 canlı ön görüşme ve kariyer planlama seansı hediye edilir."
     },
     {
       q: "Sertifika süreci nasıl çalışıyor?",
@@ -3650,12 +3647,54 @@ const VIPPlatformLandingPage = ({ navigate }) => {
     }
   ];
 
+  const agHighlights = [
+    {
+      emoji: '📶',
+      title: 'Wi-Fi & Kablosuz Ağ Saldırıları',
+      desc: 'Çevredeki Wi-Fi ağlarını izleme, el sıkışma (handshake) paketleri yakalama ve WPA/WPA2 şifre kırma simülasyonları ile kablosuz ağ sızma testlerini uygulamalı öğrenin.',
+      skills: ['Aircrack-ng & Wifite kullanımı', 'Handshake yakalama ve Hashcat', 'Sahte Erişim Noktası (Rogue AP) kurma']
+    },
+    {
+      emoji: '🛡️',
+      title: 'Ağ Savunması & Trafik Analizi',
+      desc: 'Ağ trafiğini en alt katmana kadar izleyin. Wireshark kullanarak siber saldırganların ayak izlerini tespit edin, zararlı paketleri yakalayın ve savunma kurun.',
+      skills: ['Wireshark paket seviyesinde analiz', 'TCP/IP ve OSI paket yapısı', 'Nmap port tarama tespiti ve analizi']
+    },
+    {
+      emoji: '👑',
+      title: 'Active Directory & Kurumsal Ağ Sızma',
+      desc: 'Şirket ağlarındaki en büyük hedef olan Active Directory mimarisini hackleyin. Domain Controller ele geçirme, yetki yükseltme ve ağ içinde yatay hareket (lateral movement).',
+      skills: ['Mimikatz ile kimlik bilgisi toplama', 'Kerberoasting ve Pass-the-Hash', 'BloodHound ile saldırı yollarının haritalanması']
+    }
+  ];
+
+  const uygHighlights = [
+    {
+      emoji: '🌐',
+      title: 'Web Sızma Testleri (Web Pentesting)',
+      desc: 'Web sitelerindeki ve modern web API\'lerindeki en kritik güvenlik açıklarını (SQLi, XSS, CSRF, IDOR) bularak hedef sistemleri hacklemeyi deneyimleyin.',
+      skills: ['OWASP Top 10 zafiyet sömürüsü', 'Burp Suite ile HTTP istek manipülasyonu', 'SQL Injection (SQLi) ve XSS bypass']
+    },
+    {
+      emoji: '💰',
+      title: 'Bug Bounty (Zafiyet Avcılığı)',
+      desc: 'Dünya çapındaki dev şirketlerin web sistemlerinde yasal olarak güvenlik açığı bularak dolar bazlı para ödülü kazanma metodolojileri ve profesyonel raporlama.',
+      skills: ['Alt alan adı (Subdomain) keşfi', 'Bilgi toplama (Reconnaissance) teknikleri', 'Zafiyet Raporlama ve CV portfolyosu']
+    },
+    {
+      emoji: '🎭',
+      title: 'Sosyal Mühendislik & Oltalama (Phishing)',
+      desc: 'Siber güvenliğin en zayıf halkası olan insan faktörünü hedef alın. İkna yöntemleri, sahte giriş sayfaları hazırlama ve kurumsal phishing simülasyonları.',
+      skills: ['GoPhish ile oltalama kampanyaları', 'SET (Social Engineer Toolkit)', 'Sosyal Mühendislik senaryo analizleri']
+    }
+  ];
+
   return (
     <>
       <HeaderCmp navigate={navigate} />
-      <div className="min-h-screen text-[#cdeede] pt-24 pb-16" style={{ background: 'radial-gradient(circle at 50% 10%, #0d2a1c, #020806 60%)' }}>
+      <div className="min-h-screen text-[#cdeede] pt-24 pb-16 bg-[#010403]" style={{ background: 'radial-gradient(circle at 50% 10%, #06130e, #010403 80%)' }}>
         {/* HERO SECTION */}
-        <section className="max-w-[1200px] mx-auto px-6 text-center py-16">
+        <section className="max-w-[1200px] mx-auto px-6 text-center py-10 md:py-16">
           <span className="inline-flex items-center gap-2 text-[12px] tracking-[.15em] uppercase text-[#00ff88] border border-[#103a26] bg-[rgba(0,255,136,.04)] px-4 py-2 rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-[#00ff88] shadow-[0_0_10px_#00ff88] animate-pulse"></span>
             Kampanya ve Reklam Özel Sayfası
@@ -3669,7 +3708,7 @@ const VIPPlatformLandingPage = ({ navigate }) => {
           </p>
           
           {/* BIG CTA CARD */}
-          <div className="max-w-[500px] mx-auto border border-[#00ff88]/30 rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,.6),0_0_40px_rgba(0,255,136,.05)] relative overflow-hidden" style={{ background: 'linear-gradient(165deg, #071e14, #030c08)' }}>
+          <div className="max-w-[500px] mx-auto border border-[#00ff88]/30 rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,.6),0_0_40px_rgba(0,255,136,.05)] relative overflow-hidden" style={{ background: 'linear-gradient(165deg, #071e14, #030c08)' }}>
             <div className="absolute top-0 right-0 bg-[#00ff88] text-[#021008] font-bold text-[10px] tracking-wider uppercase px-4 py-1.5 rounded-bl-2xl">
               Yıllık Sadece 900 TL
             </div>
@@ -3692,7 +3731,7 @@ const VIPPlatformLandingPage = ({ navigate }) => {
           <div className="max-w-[1100px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="text-[40px] font-bold text-[#00ff88]">10+</div>
-              <div className="text-sm text-[#74998a] mt-1">Saldırı & Savunma Senaryosu Videosu</div>
+              <div className="text-sm text-[#74998a] mt-1">Saldırı &amp; Savunma Senaryosu Videosu</div>
             </div>
             <div className="text-center border-y md:border-y-0 md:border-x border-[#0c2719] py-6 md:py-0">
               <div className="text-[40px] font-bold text-[#00ff88]">600+</div>
@@ -3708,36 +3747,57 @@ const VIPPlatformLandingPage = ({ navigate }) => {
         {/* CURRICULUM ACCORDION */}
         <section className="max-w-[1000px] mx-auto px-6 py-20">
           <div className="text-center mb-12">
-            <h2 className="text-[28px] font-bold text-[#eafff5]">Kapsamlı Hacking & Savunma Müfredatı</h2>
+            <h2 className="text-[28px] font-bold text-[#eafff5]">Kapsamlı Hacking &amp; Savunma Müfredatı</h2>
             <p className="text-sm text-[#74998a] mt-2">Dersleri okuyun, konu sonlarındaki test sorularını çözerek bilginizi test edin.</p>
           </div>
 
-          <div className="flex justify-center gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 mb-10 max-w-[500px] mx-auto">
             <button 
               onClick={() => setActiveTab('ag')} 
-              className={`px-6 py-2.5 rounded-lg font-mono text-sm border transition-all ${activeTab === 'ag' ? 'bg-[#00ff88] text-[#021008] border-[#00ff88] font-bold' : 'border-[#103a26] text-[#74998a] hover:border-[#00ff88]'}`}
+              className={`w-full sm:w-auto px-6 py-2.5 rounded-lg font-mono text-sm border transition-all ${activeTab === 'ag' ? 'bg-[#00ff88] text-[#021008] border-[#00ff88] font-bold' : 'border-[#103a26] text-[#74998a] hover:border-[#00ff88]'}`}
             >
-              Ağ Güvenliği (30 Ders)
+              Ağ Güvenliği Modülleri
             </button>
             <button 
               onClick={() => setActiveTab('uyg')} 
-              className={`px-6 py-2.5 rounded-lg font-mono text-sm border transition-all ${activeTab === 'uyg' ? 'bg-[#00ff88] text-[#021008] border-[#00ff88] font-bold' : 'border-[#103a26] text-[#74998a] hover:border-[#00ff88]'}`}
+              className={`w-full sm:w-auto px-6 py-2.5 rounded-lg font-mono text-sm border transition-all ${activeTab === 'uyg' ? 'bg-[#00ff88] text-[#021008] border-[#00ff88] font-bold' : 'border-[#103a26] text-[#74998a] hover:border-[#00ff88]'}`}
             >
-              Uygulama Güvenliği (30 Ders)
+              Uygulama Güvenliği Modülleri
             </button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {(activeTab === 'ag' ? agLessons : uygLessons).map((lesson, idx) => (
-              <div key={idx} className="border border-[#0c2719] rounded-xl p-4 bg-[#07150e]/30 flex items-center gap-3">
-                <span className="font-mono text-xs text-[#00ff88]/60 bg-[#00ff88]/5 px-2 py-1 rounded">
-                  {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
-                </span>
-                <span className="text-[14px] text-[#eafff5] font-medium">{lesson.title}</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1050px] mx-auto">
+            {(activeTab === 'ag' ? agHighlights : uygHighlights).map((item, idx) => (
+              <div 
+                key={idx} 
+                className="border border-[#0c2719] rounded-2xl p-6 bg-[#07150e]/30 flex flex-col justify-between hover:border-[#00ff88]/40 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-xl grid place-items-center text-2xl border border-[#103a26] bg-[#020806] mb-5">
+                    {item.emoji}
+                  </div>
+                  <h3 className="text-[17px] text-[#eafff5] font-disp font-bold mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-[12.5px] text-[#74998a] leading-[1.6] mb-5 font-sans">
+                    {item.desc}
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-[#0c2719]/60">
+                  <div className="text-[10px] font-mono text-[#5c8a74] uppercase tracking-wider mb-2">// Kazanacağın Yetkinlikler</div>
+                  <ul className="space-y-1.5 font-mono text-[11px] text-[#cdeede]">
+                    {item.skills.map((s, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="text-[#00ff88]">▸</span> <span>{s}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>
         </section>
+
 
         {/* SPECIAL BENEFIT SECTION */}
         <section className="py-16 border-t border-[#0c2719]" style={{ background: 'linear-gradient(180deg, #020806, #07150e)' }}>
